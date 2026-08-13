@@ -73,6 +73,25 @@ test("32 concurrent claimers produce one lease owner", async (t) => {
   assert.equal(state.opportunities.filter((item) => item.status === "CLAIMED").length, 1);
 });
 
+test("the orchestrator caps active workers at four and prevents one worker from holding two leases", async (t) => {
+  const { root, ops } = await fixture();
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await ops.scan(Array.from({ length: 5 }, (_, index) => ({
+    ...opportunity,
+    title: `Parallel DSH opportunity ${index}`,
+    summary: `Independent verified change ${index}`,
+  })), "scout");
+
+  const claims = [];
+  for (let index = 0; index < 4; index += 1) {
+    claims.push(await ops.claimNext(`worker-${index}`));
+  }
+  assert.equal(claims.filter(Boolean).length, 4);
+  assert.equal(await ops.claimNext("worker-0"), null);
+  assert.equal(await ops.claimNext("worker-4"), null);
+  assert.deepEqual((await ops.status()).workerCapacity, { max: 4, active: 4, available: 0 });
+});
+
 test("equal-score opportunity ordering is stable across input order", async (t) => {
   const first = await fixture();
   const second = await fixture();
@@ -195,6 +214,54 @@ test("queued dispatcher only writes DRAFT_ONLY outboxes and skips mock jobs", as
   assert.equal(outbox.content, "# Draft-only card\n");
   const state = await ops.store.read();
   assert.equal(state.publishJobs.find((job) => job.channel === "local")?.status, "QUEUED");
+});
+
+test("a channel requiring user approval cannot be dispatched by cycle", async (t) => {
+  const { root, ops } = await fixture(true);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "ops", "channels.json"), JSON.stringify({
+    github: { enabled: true, mode: "DRAFT_ONLY" },
+    weibo: { enabled: true, mode: "DRAFT_ONLY" },
+    zhihu: { enabled: true, mode: "DRAFT_ONLY", requiresApproval: true },
+    wechat: { enabled: false, mode: "UNAVAILABLE", reason: "not configured" },
+    x: { enabled: false, mode: "DISABLED", reason: "disabled" },
+  }));
+  await writeFile(join(root, "content", "card.md"), "# Approval-gated card\n");
+  await ops.scan([opportunity], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, evidence);
+  const registered = await ops.registerAsset({
+    opportunityId: claim.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "tutorial", title: "Approval-gated card",
+    canonicalPath: "content/card.md",
+  });
+  const ready = await ops.readyAsset({
+    assetId: registered.asset.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: registered.opportunity.revision, validation: assetValidation,
+  });
+  const [job] = await ops.queuePublish(ready.asset.id, { zhihu: "content/card.md" });
+
+  const skipped = await ops.dispatchQueued();
+  assert.equal(skipped.dispatched.length, 0);
+  assert.match(skipped.skipped[0]?.reason ?? "", /需要主理人明确批准/);
+  await assert.rejects(ops.dispatch(job.id), /requires explicit user approval/);
+  await assert.rejects(ops.recordReceipt(job.id, {
+    remoteId: "unapproved",
+    url: "https://zhihu.com/p/never-published",
+    publishedAt: "2026-08-13T01:00:00.000Z",
+  }), /requires explicit user approval/);
+
+  const approved = await ops.approvePublish(job.id, "主理人", "本次明确同意知乎发布");
+  assert.equal(approved.userApproval?.approvedBy, "主理人");
+  const outbox = await ops.dispatch(job.id);
+  assert.equal(outbox.status, "OUTBOX");
+  const payload = JSON.parse(await readFile(join(root, "outbox", "zhihu", `${job.dedupeKey}.json`), "utf8")) as {
+    requiresUserApproval: boolean;
+    userApproval?: { approvedBy: string };
+  };
+  assert.equal(payload.requiresUserApproval, true);
+  assert.equal(payload.userApproval?.approvedBy, "主理人");
 });
 
 test("channel failure is job-local and stale evidence cancels queued jobs", async (t) => {
@@ -585,6 +652,36 @@ test("a channel-confirmed missing remote can move from unknown to a safe retry",
   assert.equal((await ops.store.read()).publishJobs[0].status, "RETRYABLE_FAILED");
   const retried = await ops.retryPublish(job.id);
   assert.equal(retried.status, "QUEUED");
+});
+
+test("an exhausted publish job is cancelled instead of being retried indefinitely", async (t) => {
+  const { root, ops } = await fixture(true);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "content", "card.md"), "# Exhausted card\n");
+  await ops.scan([opportunity], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, evidence);
+  const registered = await ops.registerAsset({
+    opportunityId: claim.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "tutorial", title: "Exhausted card",
+    canonicalPath: "content/card.md",
+  });
+  const ready = await ops.readyAsset({
+    assetId: registered.asset.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: registered.opportunity.revision, validation: assetValidation,
+  });
+  const [job] = await ops.queuePublish(ready.asset.id, { github: "content/card.md" });
+  await ops.store.transact("test", { type: "test.exhaust-publish" }, (state) => {
+    const current = state.publishJobs.find((item) => item.id === job.id)!;
+    current.status = "RETRYABLE_FAILED";
+    current.attempts = 2;
+  });
+
+  const cancelled = await ops.retryPublish(job.id);
+  assert.equal(cancelled.status, "CANCELLED");
+  assert.match(cancelled.blockedReason ?? "", /最多 2 次/);
+  await assert.rejects(ops.retryPublish(job.id), /not retryable: CANCELLED/);
 });
 
 test("manual remote absence confirmation archives stale jobs and requeues current revisions safely", async (t) => {
