@@ -113,6 +113,8 @@ Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线
 
 零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界。
 
+完全新手下载项目后，可以先运行 `pnpm beginner:doctor`。它只在本地检查 Node.js、npm、npx、练习文件和路径提示，不联网、不读取 API Key；通过以后会直接打印固定版本的 DSH 启动命令。
+
 工具插件实验可以运行 `pnpm validate:tool-plugin-lab`，检查 `ctx.tools.register`、参数与返回值 schema、bundle manifest 和无 Key 边界；`pnpm validate:tool-plugin-offline` 可以在无网络时验证执行函数和渲染器，真实 DSH 安装探针仍需要 npm registry 可达，模型工具调用仍是 `NOT_RUN`。
 
 启动与插件安装排障教程复用同一份无 Key 实验，并把 CLI、profile、bundle、插件加载、Web UI、模型和工具调用分层；官方 Discussions 中的真实启动、Node、路径和全局安装问题只作为公开排障信号，不被写成同一个故障。

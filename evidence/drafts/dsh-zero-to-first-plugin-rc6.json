@@ -49,6 +49,7 @@
     "environment": "macOS; browser screenshot capture; Node.js v25.8.2 for existing hello-plugin record; no API key",
     "commands": [
       "pnpm validate:beginner-entry",
+      "pnpm validate:beginner-doctor",
       "pnpm validate:plugin-lab",
       "pnpm validate:tool-plugin-offline",
       "pnpm validate:tool-plugin-lab",
@@ -56,7 +57,7 @@
       "pnpm public-audit"
     ],
     "result": "PASS",
-    "notes": "官方 README 与插件教程截图来自固定 commit 页面；终端图为明确标注的示意图。hello-plugin 的无 Key 真实验证沿用既有通过回执，tool-plugin 的离线注册/执行/渲染检查通过，真实 npx 探针因 npm registry 下载阶段超时而未标成通过。文章不启动模型请求，不读取或保存任何 API Key。"
+    "notes": "官方 README 与插件教程截图来自固定 commit 页面；终端图为明确标注的示意图，新增 beginner-doctor 图也明确标注为示例输出。hello-plugin 的无 Key 真实验证沿用既有通过回执，tool-plugin 的离线注册/执行/渲染检查通过，真实 npx 探针因 npm registry 下载阶段超时而未标成通过。文章不启动模型请求，不读取或保存任何 API Key。"
   },
   "confidence": 98
 }

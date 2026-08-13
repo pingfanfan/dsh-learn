@@ -27,6 +27,16 @@ node --version
 npm --version
 ```
 
+如果你不确定环境有没有准备好，可以在 dsh-learn 根目录先运行下面这条检查，它会把 Node.js、npm、npx、练习文件和路径提示一次打印出来。
+
+```bash
+node scripts/beginner-doctor.mjs
+```
+
+这条检查只读取本机版本和项目文件，不联网，也不读取或发送 API Key。看到 `PASS 环境可以进入 DSH 启动步骤` 后，再运行下面的 DSH 命令。
+
+![DSH 新手环境检查示意图](../../assets/dsh-beginner/06-terminal-beginner-doctor.svg)
+
 你会看到两个版本号，下面这张图是输出样式，版本号不需要和图里完全一样。
 
 ![终端里确认 Node.js 和 npm](../../assets/dsh-beginner/03-terminal-node-version.svg)
@@ -118,7 +128,7 @@ dsh plugin --profile demo remove dsh-hello-plugin
 
 DSH 官方还支持把工具注册到 `ctx.tools`，工具插件需要参数 schema、返回值 schema、渲染器和执行逻辑，之后还要观察模型是否真的发起工具调用，它比只打印加载日志多了几项变量。
 
-所以 dsh-learn 把 `labs/tool-plugin` 放在 hello 插件之后，当前静态验证已经覆盖 manifest、`inject`、工具名称、参数和返回值 schema，真实安装探针还依赖 npm registry，网络不可达时不把它写成通过，你可以把它当成第二个实验，等第一个插件的安装路径已经熟悉以后再碰。
+所以 dsh-learn 把 `labs/tool-plugin` 放在 hello 插件之后，当前离线检查已经覆盖 manifest、`inject`、工具名称、参数和返回值 schema、执行函数和渲染器，真实安装探针还依赖 npm registry，网络不可达时不把它写成通过，你可以把它当成第二个实验，等第一个插件的安装路径已经熟悉以后再碰。
 
 ## 新手最常遇到的几种情况
 
@@ -154,8 +164,8 @@ Windows 用户还要留意路径问题，官方 Discussions 中已经有中文�
 - dsh-learn 仓库：[pingfanfan/dsh-learn](https://github.com/pingfanfan/dsh-learn)。
 - 截图一：官方 README 的本地浏览器截图，展示 Developer Preview、Node.js、`npx` 和默认 Web UI 地址。
 - 截图二：官方插件教程的本地浏览器截图，展示 bundle、profile、`dsh plugin add` 和移除命令。
-- 截图三至五：dsh-learn 的新手示例图。终端卡片中的输出是示意，不冒充每台机器的实际输出。
-- 本地验证边界：hello-plugin 的无 Key 安装、配置导出、加载和移除此前已经有真实验证记录；tool-plugin 的静态检查通过，当前真实探针因 npm registry 下载阶段超时而未标成通过。
+- 截图三至六：dsh-learn 的新手示例图。终端卡片中的输出是示意，不冒充每台机器的实际输出。
+- 本地验证边界：hello-plugin 的无 Key 安装、配置导出、加载和移除此前已经有真实验证记录；tool-plugin 的离线注册/执行/渲染检查通过，当前真实探针因 npm registry 下载阶段超时而未标成通过。
 - 凭据边界：本文不使用、不保存、不展示任何 API Key。模型请求为未运行项。
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。

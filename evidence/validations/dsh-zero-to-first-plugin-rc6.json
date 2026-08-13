@@ -1,7 +1,7 @@
 {
   "kind": "validator",
   "result": "PASS",
-  "command": "python3 <polish-article-skill>/scripts/check_tone_cliches.py content/canonical/dsh-zero-to-first-plugin-rc6.md && python3 <polish-article-skill>/scripts/check_period_density.py content/canonical/dsh-zero-to-first-plugin-rc6.md && pnpm validate:beginner-entry && pnpm validate:plugin-lab && pnpm validate:tool-plugin-offline && pnpm validate:tool-plugin-lab && pnpm check && pnpm public-audit",
-  "notes": "零基础教程通过口吻、句子长度、正文密度、图片存在性、规范稿与 GitHub 渠道稿图片路径、编辑附录隔离、版本命令、无 Key 边界和公开审计。官方页面截图来自固定 commit。hello-plugin 无 Key 真实验证沿用既有回执；tool-plugin 离线注册/执行/渲染检查通过，真实下载探针因 npm registry 超时未标成通过；知乎未发布。",
-  "checkedAt": "2026-08-13T21:35:27.000Z"
+  "command": "python3 <polish-article-skill>/scripts/check_tone_cliches.py content/canonical/dsh-zero-to-first-plugin-rc6.md && python3 <polish-article-skill>/scripts/check_period_density.py content/canonical/dsh-zero-to-first-plugin-rc6.md && pnpm validate:beginner-doctor && pnpm validate:beginner-entry && pnpm validate:plugin-lab && pnpm validate:tool-plugin-offline && pnpm validate:tool-plugin-lab && pnpm check && pnpm public-audit",
+  "notes": "零基础教程通过口吻、句子长度、正文密度、环境前置诊断、图片存在性、规范稿与 GitHub 渠道稿图片路径、编辑附录隔离、版本命令、无 Key 边界和公开审计。官方页面截图来自固定 commit，新增 beginner-doctor 终端图明确标为示意输出。hello-plugin 无 Key 真实验证沿用既有回执；tool-plugin 离线注册/执行/渲染检查通过，真实下载探针因 npm registry 超时未标成通过；知乎未发布。",
+  "checkedAt": "2026-08-13T21:40:51.000Z"
 }

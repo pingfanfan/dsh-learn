@@ -21,6 +21,8 @@
     "validate:plugin-lab": "node scripts/validate-plugin-lab.mjs labs/hello-plugin/compatibility.json labs/hello-plugin/README.md labs/hello-plugin/package.json labs/hello-plugin/index.js labs/hello-plugin/cordis.patch.yml labs/hello-plugin/verify.mjs",
     "validate:tool-plugin-lab": "node scripts/validate-tool-plugin-lab.mjs labs/tool-plugin/compatibility.json labs/tool-plugin/README.md labs/tool-plugin/package.json labs/tool-plugin/index.js labs/tool-plugin/cordis.patch.yml labs/tool-plugin/verify.mjs labs/tool-plugin/verify-offline.mjs",
     "validate:tool-plugin-offline": "node labs/tool-plugin/verify-offline.mjs",
+    "beginner:doctor": "node scripts/beginner-doctor.mjs",
+    "validate:beginner-doctor": "node scripts/validate-beginner-doctor.mjs",
     "validate:beginner-entry": "node scripts/validate-beginner-entry.mjs content/canonical/dsh-zero-to-first-plugin-rc6.md content/channels/github/dsh-zero-to-first-plugin-rc6.md",
     "validate:extension-map": "node scripts/validate-extension-map.mjs content/canonical/extension-map-47f9438.md diagram/cordis-mind-model/cordis-mind-model.svg",
     "validate:cordis-lab": "node scripts/validate-cordis-lab.mjs labs/cordis-no-key/compatibility.json labs/cordis-no-key/README.md labs/cordis-no-key/probe.mjs",

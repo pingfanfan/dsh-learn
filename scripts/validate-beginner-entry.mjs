@@ -16,6 +16,7 @@ const requiredCanonical = [
   "# 备用标题",
   "node --version",
   "npm --version",
+  "node scripts/beginner-doctor.mjs",
   "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web",
   "node labs/hello-plugin/verify.mjs",
   "dsh plugin --profile demo add ./my-first-plugin",
@@ -28,6 +29,7 @@ const requiredImages = [
   "03-terminal-node-version.svg",
   "04-terminal-dsh-web.svg",
   "05-terminal-plugin.svg",
+  "06-terminal-beginner-doctor.svg",
 ];
 const failures = [];
 

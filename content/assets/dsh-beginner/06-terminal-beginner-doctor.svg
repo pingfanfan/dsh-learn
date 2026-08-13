@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">DSH 新手环境检查示意图</title>
+  <desc id="desc">终端示意输出，展示 Node.js、npm、npx、练习文件检查和下一条 DSH 启动命令</desc>
+  <rect width="1400" height="760" rx="24" fill="#111827"/>
+  <rect x="0" y="0" width="1400" height="74" rx="24" fill="#1f2937"/>
+  <circle cx="42" cy="37" r="10" fill="#ef4444"/>
+  <circle cx="76" cy="37" r="10" fill="#f59e0b"/>
+  <circle cx="110" cy="37" r="10" fill="#22c55e"/>
+  <text x="150" y="45" fill="#cbd5e1" font-family="Menlo, Monaco, Consolas, monospace" font-size="24">Terminal — dsh-learn</text>
+  <g font-family="Menlo, Monaco, Consolas, monospace" font-size="26">
+    <text x="54" y="130" fill="#93c5fd">$ node scripts/beginner-doctor.mjs</text>
+    <text x="54" y="178" fill="#e5e7eb">DSH 新手环境检查</text>
+    <text x="54" y="226" fill="#86efac">PASS Node.js 25.8.2</text>
+    <text x="54" y="274" fill="#86efac">PASS npm 11.11.1</text>
+    <text x="54" y="322" fill="#86efac">PASS npx 11.11.1</text>
+    <text x="54" y="370" fill="#86efac">PASS dsh-learn 练习文件</text>
+    <text x="54" y="418" fill="#fcd34d">WARN 当前路径含有非 ASCII 字符</text>
+    <text x="54" y="466" fill="#86efac">PASS 环境可以进入 DSH 启动步骤</text>
+    <text x="54" y="532" fill="#e5e7eb">下一步：</text>
+    <text x="54" y="580" fill="#93c5fd">$ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web</text>
+  </g>
+  <text x="54" y="690" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22">示例输出：版本号和路径提示会因电脑不同而变化；检查过程不联网、不读取 API Key。</text>
+</svg>
