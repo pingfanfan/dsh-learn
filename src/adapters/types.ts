@@ -17,5 +17,6 @@ export interface ChannelAdapter {
 export interface ChannelConfig {
   enabled: boolean;
   mode: "DRAFT_ONLY" | "UNAVAILABLE" | "DISABLED";
+  requiresApproval?: boolean;
   reason?: string;
 }
