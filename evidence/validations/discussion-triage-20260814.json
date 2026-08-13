@@ -2,6 +2,6 @@
   "kind": "content-review",
   "result": "PASS",
   "command": "pnpm public-audit && pnpm check",
-  "notes": "已复核 Discussion #37、#38、#40 的公开标题、正文、环境、错误边界和评论上下文；三张排障线索仍与当前内容一致，明确区分用户报告、待复核线索和官方解决方案，没有新增未经验证的修复命令、凭据或私有路径。",
-  "checkedAt": "2026-08-13T23:14:50Z"
+  "notes": "已在 Discussions revision github-discussions-public-list-through-537-2026-08-14 下复核 Discussion #37、#38、#40 的公开标题、正文、环境、错误边界和评论上下文；当前公开列表为 6 页、523 条、最后编号 #537，三张排障线索仍与当前内容一致，明确区分用户报告、待复核线索和官方解决方案，没有新增未经验证的修复命令、凭据或私有路径。",
+  "checkedAt": "2026-08-13T23:24:35Z"
 }
