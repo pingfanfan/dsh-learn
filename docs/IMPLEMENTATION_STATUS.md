@@ -27,6 +27,7 @@
 - [x] 确定性评分、DSH 硬边界和反馈调整。
 - [x] 机会、证据、资产和发布任务分离状态机。
 - [x] 独占租约、fencing token、崩溃恢复和一次换线程重试。
+- [x] 编排器强制最多 4 个活跃 worker，单个 worker 不能同时持有两项租约；发布任务最多 2 次外部尝试，耗尽后自动安全取消。
 - [x] 快照与追加式账本采用事务日志恢复；`doctor` 检查完整 revision 连续性。
 - [x] 内容哈希、渠道去重、更新稿替代与未知远端状态保护。
 - [x] 上游 HEAD/npm/贡献政策、架构/Cordis/Python SDK/sandbox 文档、Discussions 和插件 topic 游标，以及固定 commit URL 到逻辑文档源的自动失效映射。
@@ -40,6 +41,7 @@
 - [x] `scan`、`watch`、`source-attest`、`next`、`claim`、`verify`、`publish`、`dispatch-queued`、`reconcile`、`doctor`、`status`、`cycle` 等内部命令。
 - [x] `confirm-not-found` 可记录渠道 Agent 已核验的远端缺失；当前绑定任务进入安全重试，过期绑定任务归档后必须按当前资产 revision 重新排队。
 - [x] `dispatch-queued` 和 `cycle` 只自动派发 `DRAFT_ONLY` 队列到本地 outbox，明确跳过 `MOCK`、未授权和真实渠道。
+- [x] 知乎已设置为强制人工批准渠道：未有 `approve` 记录时，`cycle`、`dispatch-queued` 和直接 `dispatch` 均拒绝派发；批准只绑定单个 PublishJob。
 
 ## 能力门 C
 
