@@ -868,6 +868,51 @@ test("the first source watch invalidates evidence whose stored baseline is alrea
   assert.equal(state.assets[0].status, "STALE");
 });
 
+test("source watch classifies an ecosystem repository change as an ecosystem opportunity", async (t) => {
+  const { root, ops } = await fixture(false);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const ecosystemOpportunity: OpportunityDraft = {
+    ...opportunity,
+    title: "Plugin ecosystem change",
+    summary: "Explain a DSH plugin ecosystem change",
+    sourceType: "ecosystem",
+    sourceUrl: "https://github.com/omdsh-dev/dsh-plugin-check/commit/example",
+  };
+  await ops.scan([ecosystemOpportunity], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, {
+    ...evidence,
+    claim: "The plugin ecosystem change is present at the pinned commit.",
+    sources: [{
+      url: "https://github.com/omdsh-dev/dsh-plugin-check/commit/example",
+      title: "Pinned plugin commit",
+      kind: "repository",
+      accessedAt: "2026-08-13T00:00:00.000Z",
+    }],
+    baseline: { repository: "omdsh-dev/dsh-plugin-check", commit: "old-head" },
+  });
+  await writeFile(join(root, "ops", "sources-ecosystem.json"), JSON.stringify([{
+    id: "plugin-check", label: "dsh-plugin-check HEAD", kind: "github-head",
+    url: "https://api.github.com/repos/omdsh-dev/dsh-plugin-check/commits/main",
+    sourceId: "omdsh-dev/dsh-plugin-check", enabled: true, scope: "ecosystem",
+  }]));
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => new Response(JSON.stringify({ sha: "new-head" }), {
+    status: 200, headers: { "content-type": "application/json" },
+  });
+  t.after(() => { globalThis.fetch = originalFetch; });
+
+  const result = await ops.scanSources("ops/sources-ecosystem.json") as {
+    changed: Array<{ initialized?: boolean }>;
+  };
+  assert.equal(result.changed.length, 1);
+  const state = await ops.store.read();
+  const change = state.opportunities.find((item) => item.sourceType === "ecosystem" && item.title.includes("复核生态变化"));
+  assert.ok(change);
+  assert.equal(change?.signals.ecosystemValue, 100);
+});
+
 test("a fixed-commit document URL maps to its logical watched source", async (t) => {
   const { root, ops } = await fixture(false);
   t.after(() => rm(root, { recursive: true, force: true }));
