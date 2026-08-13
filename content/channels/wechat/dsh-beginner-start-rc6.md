@@ -72,9 +72,9 @@ Cordis 的另一条纪律也应该一起记住，`ctx.effect()` 里注册的监�
 
 - 事实基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`；npm latest 记录为 `@deepseek-ai/dsh@0.1.0-rc.6`。
 - 本地验证边界：复用 `labs/rc6-cli-smoke/README.md` 和 `labs/cordis-no-key/README.md` 的既有记录；覆盖无 Key CLI、隔离 profile 和 `--dump-config`，不覆盖 Web UI、模型请求、第三方插件和 provider 兼容。
-- 实验入口：[labs/cordis-no-key/README.md](../../labs/cordis-no-key/README.md)
+- 实验入口：<https://github.com/pingfanfan/dsh-learn/blob/main/labs/cordis-no-key/README.md>
 - 官方 README：<https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md>
 - 官方架构文档：<https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/architecture.zh.md>
 - Cordis 入门：<https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/cordis-primer.zh.md>
 
-> 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
+> 平凡心智主理，dsh-learn Agent 持续维护。

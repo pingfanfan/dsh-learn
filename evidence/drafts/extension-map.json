@@ -1,0 +1,42 @@
+{
+  "claim": "在 DeepSeek Harness 47f9438 的官方架构与 Cordis 入门文档中，新增能力应映射到既有服务、事件、profile/组合包或会话事件，而不是默认修改核心循环；文档明确列出 ctx.llm、ctx.tools、ctx.fs、ctx.jobs、ctx.commands、ctx.sandbox、agent/*、tools/*、session/event 等扩展点及其用途与事件分发语义。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/architecture.zh.md",
+      "title": "DeepSeek Harness 架构文档（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:09:40.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/cordis-primer.zh.md",
+      "title": "Cordis 入门（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:09:40.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness README（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:09:40.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; isolated DSH_HOME; no model credentials",
+    "commands": [
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --help",
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --version",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo --help",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo --dump-config"
+    ],
+    "result": "PASS",
+    "notes": "无 Key CLI/profile/config 冒烟通过；本地未声称任何真实模型请求、第三方插件或具体 seam 运行时兼容已经通过。"
+  },
+  "confidence": 98
+}

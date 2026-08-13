@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "node scripts/validate-cordis-lab.mjs labs/cordis-no-key/compatibility.json labs/cordis-no-key/README.md labs/cordis-no-key/probe.mjs",
+  "notes": "已检查固定基线、隔离 DSH_HOME、可重复探针、无 Key 边界、未运行项和秘密扫描；未把 Cordis 文档扩展点写成运行时兼容承诺。",
+  "checkedAt": "2026-08-13T17:22:00.000Z"
+}

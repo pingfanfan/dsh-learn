@@ -1,4 +1,10 @@
-# 第一次上手 DeepSeek Harness，先跑出一个隔离 profile
+# 标题候选
+
+| 标题 | 点击欲 | 信息量 | 跟我有关 | 可信 | 差异化 | 总分 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 推荐标题：第一次上手 DeepSeek Harness，先跑出一个隔离 profile | 9 | 10 | 10 | 10 | 9 | 48 |
+
+# 正文
 
 第一次看到 DeepSeek Harness，很多人会先找一条命令，把模型接上，然后让它马上完成一个任务。这个愿望很正常，但在 DSH 还处于 Developer Preview 的阶段，最容易浪费时间的地方往往在模型调用之前，你还没有确认自己运行的版本、profile 和插件组合到底是什么。
 
@@ -67,8 +73,12 @@ Cordis 的另一条纪律也应该一起记住，`ctx.effect()` 里注册的监�
 这也是 dsh-learn 现在更愿意做新手实验而不是一次写完大课程的原因。第一次上手的人需要一条能跑、能解释、能知道边界的路径，维护者需要一份跟版本一起变化的证据，二者合在一起，才不会把一个短暂通过的命令包装成永久教程。
 
 如果你刚开始接触 DSH，可以先把这次实验当作认识框架的入口，等 profile、bundle 和 Cordis 的关系看清楚，再决定自己到底要接模型、写插件，还是做自动化，不用一上来就把所有能力都装进同一个环境。
+# 备用标题
 
-## 验证范围与来源
+1. DSH 新手怎么开始：先用无 Key 实验看懂 profile 和 Cordis
+2. DeepSeek Harness 第一次运行，为什么要把 DSH_HOME 隔离出来
+
+# 编辑附录（不随正文发布）
 
 - 事实基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`；npm latest 记录为 `@deepseek-ai/dsh@0.1.0-rc.6`。
 - 本地验证边界：复用 `labs/rc6-cli-smoke/README.md` 和 `labs/cordis-no-key/README.md` 的既有记录；覆盖无 Key CLI、隔离 profile 和 `--dump-config`，不覆盖 Web UI、模型请求、第三方插件和 provider 兼容。
@@ -76,5 +86,4 @@ Cordis 的另一条纪律也应该一起记住，`ctx.effect()` 里注册的监�
 - 官方 README：<https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md>
 - 官方架构文档：<https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/architecture.zh.md>
 - Cordis 入门：<https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/cordis-primer.zh.md>
-
-> 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
+- 维护规则：官方来源、npm 版本、实验环境或内容哈希变化时，资产进入复测流程，不把网络不可达记录成 DSH 失败。

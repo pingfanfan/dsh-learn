@@ -1,0 +1,39 @@
+{
+  "claim": "在 DeepSeek Harness 47f9438 的官方 Python SDK 文档中，程序化运行要求隔离 workspace；官方示例的 DeepSeekHarness 会复用运行时与 session 状态，jsonrpc-agent 组合使用 danger-full-access 并把请求与工具调用写入 JSONL。dsh-learn 因此先提供只做本地路径、权限和凭据存在性判断的 preflight，不把安装成功或文档示例写成生产安全保证；真实模型请求、provider smoke、Headless/ACP 运行时均未运行。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/guide/python-sdk.zh.md",
+      "title": "Python SDK 快速上手（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:27:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/python/sdk/README.md",
+      "title": "Python SDK 参考（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:27:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/cordis-primer.zh.md",
+      "title": "Cordis 入门（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:27:00.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "deepseek-harness-sdk"
+  },
+  "reproduction": {
+    "environment": "macOS; Python 3; no model credentials",
+    "commands": [
+      "python3 labs/python-sdk-safety/preflight.py --workspace <disposable-workspace> --session-root <private-session-root> --session-id task-001"
+    ],
+    "result": "PASS",
+    "notes": "只验证本地安全前置检查的代码路径；没有安装 SDK、启动 harness 或调用模型。"
+  },
+  "confidence": 95
+}
+

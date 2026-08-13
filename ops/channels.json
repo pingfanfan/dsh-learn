@@ -1,0 +1,27 @@
+{
+  "github": {
+    "enabled": true,
+    "mode": "DRAFT_ONLY",
+    "reason": "pingfanfan/dsh-learn 的当前公开候选母仓已通过 GitHub 连接器同步；后续新增或修订文件仍需逐项审计后回写远端。"
+  },
+  "weibo": {
+    "enabled": true,
+    "mode": "DRAFT_ONLY",
+    "reason": "浏览器已确认登录平凡ZhiH；发布必须通过微博写作门禁并回写远端回执。"
+  },
+  "zhihu": {
+    "enabled": true,
+    "mode": "DRAFT_ONLY",
+    "reason": "浏览器已确认知乎创作中心可用，并已回写术语 FAQ 与 Cordis mini-lab 的真实文章回执；开放平台 CLI 仅支持读取且未配置 Secret。"
+  },
+  "wechat": {
+    "enabled": false,
+    "mode": "UNAVAILABLE",
+    "reason": "浏览器安全策略禁止访问 mp.weixin.qq.com，未尝试绕过。"
+  },
+  "x": {
+    "enabled": false,
+    "mode": "DISABLED",
+    "reason": "中文渠道优先，第一阶段不启用。"
+  }
+}

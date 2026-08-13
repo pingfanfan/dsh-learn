@@ -1,0 +1,24 @@
+[
+  {
+    "title": "官方将 DSH 会话内容搜索改为部署级 opt-in，需要中文配置与排查入口",
+    "summary": "官方在 base 与 web bundle 将 session-query-sqlite 的 openAt 固定为 never，保留精确读取、导出、标题和 lineage 能力，并以类型化错误关闭全文搜索；部署者可在后续 patch 层覆盖为 first-search 或 startup。这个变化会直接影响新手排查、隐私边界和部署配置，适合制作可持续复测的中文教程与 FAQ。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/.agents/notes/implemented/architecture/2026-08-13-session-content-search-opt-in.zh.md",
+    "observedAt": "2026-08-13T12:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["DSH 新手", "profile 维护者", "隐私敏感部署者", "中文技术读者"],
+    "proposedAssets": ["官方变更教程", "配置 FAQ", "版本复测卡"],
+    "signals": {
+      "userImpact": 92,
+      "freshness": 100,
+      "compounding": 94,
+      "ecosystemValue": 90,
+      "evidenceConfidence": 98,
+      "executability": 90,
+      "duplicatePenalty": 0,
+      "riskPenalty": 2,
+      "maintenancePenalty": 6
+    },
+    "risk": "LOW"
+  }
+]

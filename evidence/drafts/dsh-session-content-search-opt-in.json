@@ -1,0 +1,41 @@
+{
+  "claim": "在官方 commit 47f943859bef60e4160492346772ded9b24f765a 中，base 与 web bundle 将 @deepseek-ai/dsh-session-query-sqlite 的 openAt 设为 never：全文搜索在请求规范化前以 SESSION_QUERY_SEARCH_DISABLED 失败，node:sqlite 不会被导入或打开；精确读取、标题、导出和 lineage 相关能力仍保留，部署者可在后续 patch 层覆盖为 first-search 或 startup。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/.agents/notes/implemented/architecture/2026-08-13-session-content-search-opt-in.zh.md",
+      "title": "官方实现记录：会话内容搜索通过 openAt never 以 opt-in 方式交付",
+      "kind": "official",
+      "accessedAt": "2026-08-13T12:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/bundle/base/cordis.patch.yml",
+      "title": "官方 base bundle patch",
+      "kind": "repository",
+      "accessedAt": "2026-08-13T12:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/bundle/web-app/cordis.patch.yml",
+      "title": "官方 web bundle patch",
+      "kind": "repository",
+      "accessedAt": "2026-08-13T12:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/subsystems/session-query.zh.md",
+      "title": "官方 session-query 子系统文档",
+      "kind": "official",
+      "accessedAt": "2026-08-13T12:00:00.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a"
+  },
+  "reproduction": {
+    "environment": "官方 GitHub 文件级核对；未启动本地 DSH 进程",
+    "commands": [],
+    "result": "NOT_RUN",
+    "notes": "已核对实现记录、base/web bundle patch 与 session-query 子系统文档；本资产不把未运行的本地进程行为写成实测。"
+  },
+  "confidence": 96
+}

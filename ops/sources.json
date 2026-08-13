@@ -1,0 +1,74 @@
+[
+  {
+    "id": "deepseek-harness-head",
+    "label": "DeepSeek Harness master HEAD",
+    "kind": "github-head",
+    "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/commits/master",
+    "sourceId": "deepseek-ai/deepseek-harness",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-npm",
+    "label": "@deepseek-ai/dsh npm latest",
+    "kind": "npm-latest",
+    "url": "https://registry.npmjs.org/@deepseek-ai%2Fdsh/latest",
+    "sourceId": "@deepseek-ai/dsh",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-contribution-policy",
+    "label": "DeepSeek Harness contribution policy",
+    "kind": "content-hash",
+    "url": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/CONTRIBUTING.md",
+    "sourceId": "deepseek-ai/deepseek-harness/CONTRIBUTING.md",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-architecture",
+    "label": "DeepSeek Harness architecture docs",
+    "kind": "content-hash",
+    "url": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/docs/architecture.zh.md",
+    "sourceId": "deepseek-ai/deepseek-harness/docs/architecture.zh.md",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-cordis-primer",
+    "label": "DeepSeek Harness Cordis primer",
+    "kind": "content-hash",
+    "url": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/docs/cordis-primer.zh.md",
+    "sourceId": "deepseek-ai/deepseek-harness/docs/cordis-primer.zh.md",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-python-sdk",
+    "label": "DeepSeek Harness Python SDK guide",
+    "kind": "content-hash",
+    "url": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/docs/user/guide/python-sdk.zh.md",
+    "sourceId": "deepseek-ai/deepseek-harness/docs/user/guide/python-sdk.zh.md",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-sandbox",
+    "label": "DeepSeek Harness sandbox docs",
+    "kind": "content-hash",
+    "url": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/docs/subsystems/sandbox.zh.md",
+    "sourceId": "deepseek-ai/deepseek-harness/docs/sandbox.zh.md",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-discussions",
+    "label": "DeepSeek Harness Discussions",
+    "kind": "content-hash",
+    "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+    "sourceId": "deepseek-ai/deepseek-harness/discussions",
+    "enabled": true
+  },
+  {
+    "id": "deepseek-harness-plugin-topic",
+    "label": "DeepSeek Harness plugin topic",
+    "kind": "content-hash",
+    "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/topics",
+    "sourceId": "deepseek-ai/deepseek-harness/topics",
+    "enabled": true
+  }
+]

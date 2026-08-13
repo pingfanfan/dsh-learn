@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+coverage/
+state/.lock
+state/.transaction.json
+state/*.tmp
+state/private/
+state/snapshot.json
+state/events.jsonl
+outbox/
+state/private/
+*.log
+.env
+.env.*
+.weibo/

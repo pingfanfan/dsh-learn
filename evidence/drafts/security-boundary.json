@@ -1,0 +1,42 @@
+{
+  "claim": "DeepSeek Harness 47f9438 的官方沙箱文档明确限定 SandboxMode 只描述文件系统效果，区分 read-only、workspace-write 与 danger-full-access，并要求调用级策略、full/partial 强制执行事实、后端拒绝方言和 fail-closed 的 SANDBOX_UNAVAILABLE 处理；网络和进程可见性不在该模式定义内。因此安全手册必须把文件、网络、进程、runner failure 和正常 denial 分开测试，并对未运行的后端实验标记 NOT_RUN。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/subsystems/sandbox.zh.md",
+      "title": "DeepSeek Harness 进程沙箱文档（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:12:20.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/architecture.zh.md",
+      "title": "DeepSeek Harness 架构文档（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:12:20.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness README（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:12:20.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; isolated DSH_HOME; no model credentials; no third-party plugin",
+    "commands": [
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --help",
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --version",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo --help",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo --dump-config"
+    ],
+    "result": "PASS",
+    "notes": "只完成 CLI/profile/config 无 Key 冒烟；实际沙箱 runner、文件写入阻断、网络和进程可见性均保持 NOT_RUN。"
+  },
+  "confidence": 99
+}

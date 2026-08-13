@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "node scripts/validate-plugin-clinic.mjs content/canonical/plugin-migration-clinic-47f9438.md",
+  "notes": "已检查官方迁移路径、旧格式边界、profile bundle 目标、最小安装命令、迁移报告字段、凭据提醒和不冒充具体插件成功的限定语。",
+  "checkedAt": "2026-08-13T17:07:00.000Z"
+}

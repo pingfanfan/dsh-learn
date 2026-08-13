@@ -1,0 +1,36 @@
+{
+  "claim": "固定在 DeepSeek Harness 47f9438 与 @deepseek-ai/dsh@0.1.0-rc.6 基线下，官方 provider 指南明确区分 DeepSeek 专用卡片、已安装目录提供方和自定义提供方；自定义提供方需要 Provider ID、基础 URL、API 协议、凭据和至少一个模型。该指南没有为 Hunyuan、Qwen、Kimi、GLM、Doubao 或 Ollama 提供本地成功回执，因此本矩阵把它们标为 provider-specific 未确认，而不是兼容承诺。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/guide/providers.zh.md",
+      "title": "DeepSeek Harness provider 配置指南（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:03:18.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness README（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:03:18.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; isolated DSH_HOME; no model credentials",
+    "commands": [
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --help",
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --version",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo --help",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo --dump-config"
+    ],
+    "result": "PASS",
+    "notes": "无 Key CLI、profile 和配置导出通过；没有请求任何模型，因此所有 keyedSmoke 保持 NOT_RUN。"
+  },
+  "confidence": 96
+}

@@ -1,0 +1,40 @@
+{
+  "claim": "在 DeepSeek Harness 47f9438 的官方移除说明中，外部插件分发从专用 repository plugin 路径收敛到可安装的 profile 组合包；`.dsh-plugin`、repository 源列表、专用 prepare 流程和兼容解析器不再是当前契约。官方说明组合包通过 `dsh.bundle.patch` 组合普通 Cordis 插件、skill 和 MCP 能力。因此，面向旧教程的迁移诊所应指导用户盘点旧路径、使用 `dsh plugin --profile <name> add <package-or-git-spec>`、在干净 profile 中验证，并明确不声称具体插件已迁移。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/.agents/notes/implemented/simplification/2026-08-09-remove-repository-plugin.zh.md",
+      "title": "移除专用 repository 插件路径（固定 commit）",
+      "kind": "repository",
+      "accessedAt": "2026-08-13T17:07:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/CONTRIBUTING.md",
+      "title": "DeepSeek Harness CONTRIBUTING.md（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:07:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness README（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T17:07:00.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; isolated DSH_HOME; no third-party package installed",
+    "commands": [
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo --help",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo --dump-config"
+    ],
+    "result": "PASS",
+    "notes": "只验证 rc.6 的 profile/plugin 入口和配置导出；没有安装未知第三方包，也没有执行第三方生命周期脚本。"
+  },
+  "confidence": 99
+}

@@ -1,0 +1,34 @@
+{
+  "name": "dsh-learn",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent-operated Chinese DeepSeek Harness ecosystem growth system",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "ops": "node src/cli.ts",
+    "ops:init": "node src/cli.ts init",
+    "ops:doctor": "node src/cli.ts doctor",
+    "ops:next": "node src/cli.ts next",
+    "ops:status": "node src/cli.ts status",
+    "ops:cycle": "node src/cli.ts cycle",
+    "public-audit": "node src/cli.ts public-audit",
+    "validate:discussion": "node scripts/validate-discussion-kit.mjs content/canonical/discussion-minimal-repro-kit.md",
+    "validate:providers": "node scripts/validate-provider-matrix.mjs labs/provider-matrix/compatibility.json labs/provider-matrix/README.md",
+    "validate:plugin-clinic": "node scripts/validate-plugin-clinic.mjs content/canonical/plugin-migration-clinic-47f9438.md",
+    "validate:extension-map": "node scripts/validate-extension-map.mjs content/canonical/extension-map-47f9438.md diagram/cordis-mind-model/cordis-mind-model.svg",
+    "validate:cordis-lab": "node scripts/validate-cordis-lab.mjs labs/cordis-no-key/compatibility.json labs/cordis-no-key/README.md labs/cordis-no-key/probe.mjs",
+    "validate:python-sdk-safety": "node scripts/validate-python-sdk-safety.mjs labs/python-sdk-safety/safety-matrix.json labs/python-sdk-safety/README.md labs/python-sdk-safety/preflight.py",
+    "validate:security": "node scripts/validate-security-manual.mjs content/canonical/security-boundary-47f9438.md",
+    "test": "node --test test/**/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "pnpm typecheck && node --check src/cli.ts && node --test test/**/*.test.ts"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2"
+  }
+}

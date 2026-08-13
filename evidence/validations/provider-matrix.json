@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "node scripts/validate-provider-matrix.mjs labs/provider-matrix/compatibility.json labs/provider-matrix/README.md",
+  "notes": "已检查固定 commit、package 版本、提供方条目、关键状态、无 Key 边界、配置字段、测试层级和凭据模式；未将任何厂商的 keyed smoke 写成已通过。",
+  "checkedAt": "2026-08-13T17:03:18.000Z"
+}

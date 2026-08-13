@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "node scripts/validate-security-manual.mjs content/canonical/security-boundary-47f9438.md",
+  "notes": "已检查三种模式、文件/网络/进程边界、full/partial、fail-closed、runner failure、安全测试矩阵、插件审查清单和 NOT_RUN 限定。",
+  "checkedAt": "2026-08-13T17:12:20.000Z"
+}

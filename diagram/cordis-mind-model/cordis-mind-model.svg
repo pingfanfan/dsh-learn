@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap');
+    text { font-family: 'JetBrains Mono', 'Noto Sans SC', 'PingFang SC', sans-serif; }
+    .title { font-size: 22px; font-weight: 700; fill: #f8fafc; }
+    .subtitle { font-size: 11px; fill: #94a3b8; }
+    .node-title { font-size: 13px; font-weight: 700; fill: #f8fafc; }
+    .node-label { font-size: 10px; fill: #cbd5e1; }
+    .small { font-size: 9px; fill: #94a3b8; }
+    .edge-label { font-size: 9px; font-weight: 500; fill: #cbd5e1; }
+    .legend { font-size: 9px; fill: #cbd5e1; }
+  </style>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <filter id="glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrow-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrow-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24"/>
+    </marker>
+    <marker id="arrow-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="900" fill="#0f172a"/>
+  <rect width="1440" height="900" fill="url(#grid)"/>
+
+  <text x="48" y="48" class="title">Cordis × DSH：先找扩展点，再写插件</text>
+  <text x="48" y="72" class="subtitle">47f9438 基线 · 这是一张能力地图，不是未来版本的兼容承诺</text>
+
+  <!-- Branches behind nodes -->
+  <path d="M 650 420 C 530 340, 460 220, 330 180" fill="none" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+  <path d="M 650 455 C 520 450, 455 430, 300 430" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+  <path d="M 650 500 C 520 585, 440 660, 315 700" fill="none" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow-violet)"/>
+  <path d="M 790 420 C 915 340, 980 230, 1110 180" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-amber)"/>
+  <path d="M 790 455 C 925 450, 1000 430, 1140 430" fill="none" stroke="#fb923c" stroke-width="2" marker-end="url(#arrow-amber)"/>
+  <path d="M 790 500 C 915 585, 990 660, 1120 700" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arrow-rose)"/>
+
+  <!-- Secondary edges -->
+  <path d="M 276 155 C 240 120, 190 118, 142 138" fill="none" stroke="#22d3ee" stroke-width="1.2" opacity=".7"/>
+  <path d="M 276 190 C 225 205, 175 225, 130 250" fill="none" stroke="#22d3ee" stroke-width="1.2" opacity=".7"/>
+  <path d="M 268 405 C 215 370, 160 365, 110 378" fill="none" stroke="#34d399" stroke-width="1.2" opacity=".7"/>
+  <path d="M 268 455 C 210 480, 160 505, 110 520" fill="none" stroke="#34d399" stroke-width="1.2" opacity=".7"/>
+  <path d="M 284 680 C 230 640, 180 640, 125 660" fill="none" stroke="#a78bfa" stroke-width="1.2" opacity=".7"/>
+  <path d="M 284 720 C 235 750, 180 770, 125 770" fill="none" stroke="#a78bfa" stroke-width="1.2" opacity=".7"/>
+  <path d="M 1164 155 C 1215 120, 1265 118, 1320 138" fill="none" stroke="#fbbf24" stroke-width="1.2" opacity=".7"/>
+  <path d="M 1164 190 C 1220 205, 1270 225, 1330 250" fill="none" stroke="#fbbf24" stroke-width="1.2" opacity=".7"/>
+  <path d="M 1170 405 C 1230 370, 1280 365, 1340 378" fill="none" stroke="#fb923c" stroke-width="1.2" opacity=".7"/>
+  <path d="M 1170 455 C 1230 480, 1280 505, 1340 520" fill="none" stroke="#fb923c" stroke-width="1.2" opacity=".7"/>
+  <path d="M 1150 680 C 1210 640, 1260 640, 1320 660" fill="none" stroke="#fb7185" stroke-width="1.2" opacity=".7"/>
+  <path d="M 1150 720 C 1210 750, 1260 770, 1320 770" fill="none" stroke="#fb7185" stroke-width="1.2" opacity=".7"/>
+
+  <!-- Left group labels -->
+  <text x="72" y="120" class="small" fill="#22d3ee">服务 / 消费者</text>
+  <text x="72" y="335" class="small" fill="#34d399">事件 / 流程</text>
+  <text x="72" y="610" class="small" fill="#a78bfa">持久化 / 组装</text>
+  <text x="1190" y="120" class="small" fill="#fbbf24">运行时能力</text>
+  <text x="1190" y="335" class="small" fill="#fb923c">会话与 Agent</text>
+  <text x="1190" y="610" class="small" fill="#fb7185">安全边界</text>
+
+  <!-- Left nodes -->
+  <g>
+    <rect x="88" y="135" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="88" y="135" width="190" height="60" rx="8" fill="rgba(8,51,68,.55)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="183" y="160" class="node-title" text-anchor="middle">ctx.llm</text>
+    <text x="183" y="178" class="node-label" text-anchor="middle">模型适配器 / 流式协议</text>
+  </g>
+  <g>
+    <rect x="88" y="230" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="88" y="230" width="190" height="60" rx="8" fill="rgba(8,51,68,.55)" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="183" y="255" class="node-title" text-anchor="middle">ctx.tools</text>
+    <text x="183" y="273" class="node-label" text-anchor="middle">模型可见能力 / schema</text>
+  </g>
+  <g>
+    <rect x="76" y="350" width="200" height="60" rx="8" fill="#0f172a"/>
+    <rect x="76" y="350" width="200" height="60" rx="8" fill="rgba(6,78,59,.55)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="176" y="375" class="node-title" text-anchor="middle">agent/*</text>
+    <text x="176" y="393" class="node-label" text-anchor="middle">进行中的工作 / 续跑</text>
+  </g>
+  <g>
+    <rect x="76" y="445" width="200" height="60" rx="8" fill="#0f172a"/>
+    <rect x="76" y="445" width="200" height="60" rx="8" fill="rgba(6,78,59,.55)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="176" y="470" class="node-title" text-anchor="middle">tools/*</text>
+    <text x="176" y="488" class="node-label" text-anchor="middle">工具前后置策略</text>
+  </g>
+  <g>
+    <rect x="88" y="650" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="88" y="650" width="190" height="60" rx="8" fill="rgba(76,29,149,.55)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="183" y="675" class="node-title" text-anchor="middle">session/event</text>
+    <text x="183" y="693" class="node-label" text-anchor="middle">可回放的持久事实</text>
+  </g>
+  <g>
+    <rect x="88" y="745" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="88" y="745" width="190" height="60" rx="8" fill="rgba(76,29,149,.55)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="183" y="770" class="node-title" text-anchor="middle">profile / bundle</text>
+    <text x="183" y="788" class="node-label" text-anchor="middle">插件树的分层组装</text>
+  </g>
+
+  <!-- Right nodes -->
+  <g>
+    <rect x="1162" y="135" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="1162" y="135" width="190" height="60" rx="8" fill="rgba(120,53,15,.48)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1257" y="160" class="node-title" text-anchor="middle">ctx.fs</text>
+    <text x="1257" y="178" class="node-label" text-anchor="middle">文件系统提供方 / 策略</text>
+  </g>
+  <g>
+    <rect x="1162" y="230" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="1162" y="230" width="190" height="60" rx="8" fill="rgba(120,53,15,.48)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1257" y="255" class="node-title" text-anchor="middle">ctx.sandbox</text>
+    <text x="1257" y="273" class="node-label" text-anchor="middle">argv 包装 / fail-closed</text>
+  </g>
+  <g>
+    <rect x="1162" y="350" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="1162" y="350" width="190" height="60" rx="8" fill="rgba(120,53,15,.48)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1257" y="375" class="node-title" text-anchor="middle">ctx.commands</text>
+    <text x="1257" y="393" class="node-label" text-anchor="middle">无模型轮次的用户命令</text>
+  </g>
+  <g>
+    <rect x="1162" y="445" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="1162" y="445" width="190" height="60" rx="8" fill="rgba(120,53,15,.48)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1257" y="470" class="node-title" text-anchor="middle">ctx.jobs</text>
+    <text x="1257" y="488" class="node-label" text-anchor="middle">可停止的后台工作</text>
+  </g>
+  <g>
+    <rect x="1162" y="650" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="1162" y="650" width="190" height="60" rx="8" fill="rgba(136,19,55,.52)" stroke="#fb7185" stroke-width="1.5"/>
+    <text x="1257" y="675" class="node-title" text-anchor="middle">SandboxMode</text>
+    <text x="1257" y="693" class="node-label" text-anchor="middle">文件效果 ≠ 网络隔离</text>
+  </g>
+  <g>
+    <rect x="1162" y="745" width="190" height="60" rx="8" fill="#0f172a"/>
+    <rect x="1162" y="745" width="190" height="60" rx="8" fill="rgba(136,19,55,.52)" stroke="#fb7185" stroke-width="1.5"/>
+    <text x="1257" y="770" class="node-title" text-anchor="middle">effect / teardown</text>
+    <text x="1257" y="788" class="node-label" text-anchor="middle">注册必须可逆</text>
+  </g>
+
+  <!-- Central node -->
+  <g filter="url(#glow-cyan)">
+    <circle cx="720" cy="460" r="116" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+    <circle cx="720" cy="460" r="104" fill="rgba(8,51,68,.65)" stroke="#164e63" stroke-width="1"/>
+    <text x="720" y="432" class="node-title" text-anchor="middle" font-size="18">CORDIS</text>
+    <text x="720" y="457" class="node-title" text-anchor="middle">共享上下文</text>
+    <text x="720" y="480" class="node-label" text-anchor="middle">服务 · 事件 · 可逆副作用</text>
+    <text x="720" y="503" class="small" text-anchor="middle">DSH 的每一部分都是插件</text>
+  </g>
+
+  <!-- Callouts -->
+  <g>
+    <rect x="520" y="650" width="400" height="100" rx="10" fill="#0f172a" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <text x="540" y="678" class="node-title" fill="#60a5fa">开发顺序</text>
+    <text x="540" y="700" class="node-label">1. 固定 commit / profile</text>
+    <text x="540" y="720" class="node-label">2. dump-config + 读事件映射</text>
+    <text x="540" y="740" class="node-label">3. 先验证注册、teardown、回放，再测真实请求</text>
+  </g>
+
+  <g>
+    <rect x="540" y="790" width="360" height="54" rx="8" fill="rgba(136,19,55,.25)" stroke="#fb7185" stroke-width="1"/>
+    <text x="720" y="813" class="edge-label" text-anchor="middle" fill="#fb7185">47f9438 基线 · Developer Preview</text>
+    <text x="720" y="831" class="small" text-anchor="middle">图中映射不是未来版本兼容承诺</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(1010 838)">
+    <circle cx="8" cy="0" r="5" fill="#22d3ee"/><text x="20" y="4" class="legend">服务</text>
+    <circle cx="78" cy="0" r="5" fill="#34d399"/><text x="90" y="4" class="legend">事件</text>
+    <circle cx="146" cy="0" r="5" fill="#a78bfa"/><text x="158" y="4" class="legend">持久化/组装</text>
+    <circle cx="270" cy="0" r="5" fill="#fbbf24"/><text x="282" y="4" class="legend">运行时能力</text>
+    <circle cx="380" cy="0" r="5" fill="#fb7185"/><text x="392" y="4" class="legend">安全边界</text>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "node src/cli.ts public-audit",
+  "notes": "已逐段检查 `.dsh-plugin` 旧路线、当前 dsh-plugin GitHub topic、profile 安装入口和第三方插件未运行边界；正文、GitHub、知乎和微博稿均未把 topic 写成安装或兼容证明，来源使用当前官方 README、贡献政策和固定 commit 说明。",
+  "checkedAt": "2026-08-13T18:05:00.000Z"
+}

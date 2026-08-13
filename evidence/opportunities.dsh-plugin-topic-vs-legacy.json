@@ -1,0 +1,24 @@
+[
+  {
+    "title": "澄清 DSH 的 dsh-plugin topic 与旧 .dsh-plugin 格式",
+    "summary": "把当前官方 README 的 GitHub 发现 topic 与固定基线中已移除的旧 repository plugin 格式拆开解释，避免新手把仓库标签、插件安装和运行时兼容混为一谈，并为后续插件作者教程提供稳定的术语入口。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/master/README.md",
+    "observedAt": "2026-08-13T18:05:00.000Z",
+    "directDshAction": true,
+    "audience": ["DSH 新用户", "插件作者", "中文教程读者", "GitHub 生态维护者"],
+    "proposedAssets": ["术语 FAQ", "GitHub 参考卡", "知乎搜索型短文", "微博澄清"],
+    "signals": {
+      "userImpact": 94,
+      "freshness": 96,
+      "compounding": 95,
+      "ecosystemValue": 94,
+      "evidenceConfidence": 99,
+      "executability": 98,
+      "duplicatePenalty": 3,
+      "riskPenalty": 0,
+      "maintenancePenalty": 2
+    },
+    "risk": "LOW"
+  }
+]

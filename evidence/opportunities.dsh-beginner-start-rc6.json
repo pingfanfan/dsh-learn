@@ -1,0 +1,24 @@
+[
+  {
+    "title": "DSH 无 Key 新手入口与 Cordis 第一课",
+    "summary": "把固定 rc.6 的隔离 profile/config 冒烟、Cordis 组合树和版本边界组织成可复制的中文新手入口，降低第一次上手 DSH 的失败成本。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/cordis-primer.zh.md",
+    "observedAt": "2026-08-13T17:50:00.000Z",
+    "directDshAction": true,
+    "audience": ["DSH 新用户", "中文教程作者", "插件初学者"],
+    "proposedAssets": ["无 Key 新手长文", "知乎渠道稿", "复测入口", "新手 FAQ"],
+    "signals": {
+      "userImpact": 96,
+      "freshness": 90,
+      "compounding": 98,
+      "ecosystemValue": 88,
+      "evidenceConfidence": 98,
+      "executability": 96,
+      "duplicatePenalty": 2,
+      "riskPenalty": 0,
+      "maintenancePenalty": 3
+    },
+    "risk": "LOW"
+  }
+]

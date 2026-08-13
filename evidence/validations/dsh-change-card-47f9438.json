@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "validate_toutiao_final.py content/canonical/dsh-change-card-47f9438.md",
+  "notes": "终稿结构检查通过：2251 个汉字、3235 个有效字符、52 个句末统计单位；渠道衍生稿另由 render 同步测试校验。",
+  "checkedAt": "2026-08-13T16:52:11.000Z"
+}

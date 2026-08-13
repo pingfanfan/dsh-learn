@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "node scripts/validate-python-sdk-safety.mjs labs/python-sdk-safety/safety-matrix.json labs/python-sdk-safety/README.md labs/python-sdk-safety/preflight.py",
+  "notes": "已检查官方固定 commit、危险默认值、隔离路径、session 日志边界、无 Key 前置行为、未运行项和秘密扫描；未把安全配方写成官方保证。",
+  "checkedAt": "2026-08-13T17:27:00.000Z"
+}

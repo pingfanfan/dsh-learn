@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "python3 <polish-article-skill>/scripts/check_period_density.py content/canonical/dsh-session-content-search-opt-in-47f9438.md && python3 <polish-article-skill>/scripts/check_tone_cliches.py content/canonical/dsh-session-content-search-opt-in-47f9438.md && pnpm ops render content/canonical/dsh-session-content-search-opt-in-47f9438.md --channel github --output content/channels/github/dsh-session-content-search-opt-in-47f9438.md",
+  "notes": "已完成官方事实边界复核，正文只写文件级证据，附录保留 commit、bundle patch、子系统文档和复测规则；润色脚本与 GitHub 渲染均通过。",
+  "checkedAt": "2026-08-13T19:04:00.000Z"
+}

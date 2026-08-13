@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "node scripts/validate-extension-map.mjs content/canonical/extension-map-47f9438.md diagram/cordis-mind-model/cordis-mind-model.svg",
+  "notes": "已检查需求决策树、服务/事件/profile 三类入口、事件分发模式、生命周期约束、稳定性标记、无 Key 边界、官方链接，以及 SVG 的 viewBox、自包含根节点和核心标签。",
+  "checkedAt": "2026-08-13T17:18:21.000Z"
+}

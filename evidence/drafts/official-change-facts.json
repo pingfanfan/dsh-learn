@@ -1,0 +1,49 @@
+{
+  "claim": "DeepSeek Harness 仍处于 Developer Preview；官方已经无兼容层移除 repository plugin 与 SDK project toolchain，因此旧安装教程必须按当前 commit 重新核验。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness README",
+      "kind": "official",
+      "accessedAt": "2026-08-13T16:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/.agents/notes/implemented/simplification/2026-08-09-remove-repository-plugin.zh.md",
+      "title": "移除 repository plugin",
+      "kind": "repository",
+      "accessedAt": "2026-08-13T16:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/.agents/notes/implemented/simplification/2026-08-11-remove-sdk-project-toolchain.md",
+      "title": "Remove SDK Project Toolchain",
+      "kind": "repository",
+      "accessedAt": "2026-08-13T16:00:00.000Z"
+    },
+    {
+      "url": "https://registry.npmjs.org/@deepseek-ai%2Fdsh/latest",
+      "title": "npm registry latest metadata for @deepseek-ai/dsh",
+      "kind": "official",
+      "accessedAt": "2026-08-13T16:10:11.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "repo-manifest=0.1.0-rc.5; npm-latest=0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; isolated DSH_HOME under /private/tmp; @deepseek-ai/dsh@0.1.0-rc.6 via npx",
+    "commands": [
+      "git ls-remote https://github.com/deepseek-ai/deepseek-harness.git HEAD",
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --help",
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --version",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo --help",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo --dump-config"
+    ],
+    "result": "PASS",
+    "notes": "官方 HEAD、提交内版本清单和 npm 元数据已核对。rc.6 CLI 帮助、版本、隔离 profile 初始化及配置组合均成功；未启动 Web UI、未调用模型、未安装第三方插件，因此结论仅覆盖无 Key CLI 冒烟范围。"
+  },
+  "confidence": 98
+}

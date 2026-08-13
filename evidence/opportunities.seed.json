@@ -1,0 +1,122 @@
+[
+  {
+    "title": "官方变更事实站与中文迁移卡",
+    "summary": "持续把 DSH 官方 commit 和 RC 变化转化为中文影响说明、迁移步骤与可验证测试。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["DSH 用户", "插件作者", "中文教程作者"],
+    "proposedAssets": ["breaking-changes.json", "中文迁移卡", "实测前后对照", "微博快讯"],
+    "signals": {
+      "userImpact": 98, "freshness": 100, "compounding": 98,
+      "ecosystemValue": 95, "evidenceConfidence": 100, "executability": 95
+    },
+    "risk": "LOW"
+  },
+  {
+    "title": "官方 Discussions 中文首响与最小复现中心",
+    "summary": "在官方 Discussions 形成稳定的中文首响、问题补全、双语转述和最小复现能力。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/discussions",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["中文新用户", "问题报告者", "DSH 维护者"],
+    "proposedAssets": ["双语回复模板", "最小复现", "FAQ", "Discussion 回链"],
+    "signals": {
+      "userImpact": 96, "freshness": 100, "compounding": 92,
+      "ecosystemValue": 100, "evidenceConfidence": 90, "executability": 95
+    },
+    "risk": "LOW"
+  },
+  {
+    "title": "国产模型与网关接入实测矩阵",
+    "summary": "建立 DeepSeek、Hunyuan、Qwen、Kimi、GLM、Doubao、Ollama 等 provider 的版本化实测矩阵。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/guide/providers.zh.md",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["国产模型用户", "企业网关用户", "插件作者"],
+    "proposedAssets": ["provider 配置卡", "compatibility.json", "smoke tests", "脱敏模板"],
+    "signals": {
+      "userImpact": 95, "freshness": 95, "compounding": 95,
+      "ecosystemValue": 85, "evidenceConfidence": 90, "executability": 80, "riskPenalty": 2
+    },
+    "risk": "MEDIUM"
+  },
+  {
+    "title": "第三方插件迁移诊所",
+    "summary": "帮助公开插件从旧 repository plugin 和旧 RC 接口迁移到当前 profile bundle。",
+    "sourceType": "ecosystem",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/.agents/notes/implemented/simplification/2026-08-09-remove-repository-plugin.zh.md",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["插件维护者", "插件用户", "生态目录维护者"],
+    "proposedAssets": ["迁移队列", "迁移报告", "第三方修复 PR", "安装卸载回执"],
+    "signals": {
+      "userImpact": 90, "freshness": 98, "compounding": 88,
+      "ecosystemValue": 95, "evidenceConfidence": 100, "executability": 85, "duplicatePenalty": 4
+    },
+    "risk": "MEDIUM"
+  },
+  {
+    "title": "DSH 安全边界实测手册",
+    "summary": "通过跨平台实验解释沙箱、MCP、插件、安装脚本、遥测和自动化的真实安全边界。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/subsystems/sandbox.zh.md",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["普通用户", "企业用户", "自动化开发者"],
+    "proposedAssets": ["权限探针", "模式对照表", "安全默认配置", "插件审查清单"],
+    "signals": {
+      "userImpact": 90, "freshness": 90, "compounding": 95,
+      "ecosystemValue": 90, "evidenceConfidence": 100, "executability": 75, "riskPenalty": 3
+    },
+    "risk": "MEDIUM"
+  },
+  {
+    "title": "DSH 扩展点中文能力地图",
+    "summary": "把常见开发意图映射到正确的 DSH/Cordis 服务、事件、profile 和 host-client 扩展点。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/architecture.zh.md",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["插件作者", "TypeScript 开发者", "贡献者"],
+    "proposedAssets": ["决策树", "常见需求配方", "最小代码", "API 稳定度标记"],
+    "signals": {
+      "userImpact": 88, "freshness": 90, "compounding": 96,
+      "ecosystemValue": 90, "evidenceConfidence": 90, "executability": 90, "duplicatePenalty": 3
+    },
+    "risk": "LOW"
+  },
+  {
+    "title": "Cordis 可视化解释与无 Key 实验",
+    "summary": "用一张心智模型图和一个无 API Key 实验解释 Cordis 为什么是 DSH 的核心。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/cordis-primer.zh.md",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["DSH 新用户", "插件开发者", "框架研究者"],
+    "proposedAssets": ["心智模型图", "无 Key mini-lab", "20 行插件", "框架对比"],
+    "signals": {
+      "userImpact": 88, "freshness": 85, "compounding": 95,
+      "ecosystemValue": 80, "evidenceConfidence": 85, "executability": 90, "duplicatePenalty": 3
+    },
+    "risk": "LOW"
+  },
+  {
+    "title": "Python SDK、Headless 与 ACP 安全自动化配方库",
+    "summary": "把官方底层示例转化为具备隔离、恢复、幂等、日志和故障测试的无人值守配方。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/guide/python-sdk.zh.md",
+    "observedAt": "2026-08-13T16:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["Agent 自动化开发者", "Python 用户", "CI 工程师"],
+    "proposedAssets": ["CI 任务", "批量队列", "Session 恢复", "ACP 服务", "JSON-RPC worker"],
+    "signals": {
+      "userImpact": 85, "freshness": 80, "compounding": 95,
+      "ecosystemValue": 85, "evidenceConfidence": 90, "executability": 75, "riskPenalty": 2
+    },
+    "risk": "MEDIUM"
+  }
+]

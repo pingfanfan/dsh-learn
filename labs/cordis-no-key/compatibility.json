@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "dshBaseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "environment": {
+    "os": "macOS",
+    "node": "v25.8.2",
+    "credentials": "NONE",
+    "config": "isolated DSH_HOME"
+  },
+  "lastKnownResult": {
+    "status": "PASS",
+    "source": "此前 dsh-learn/labs/rc6-cli-smoke 的同版本隔离冒烟记录",
+    "currentAttempt": "BLOCKED_ENVIRONMENT: npm registry DNS ENOTFOUND"
+  },
+  "checks": [
+    { "name": "version", "status": "PASS", "scope": "CLI returns 0.1.0-rc.6" },
+    { "name": "profile-init", "status": "PASS", "scope": "demo profile files are created in isolated DSH_HOME" },
+    { "name": "dump-config", "status": "PASS", "scope": "base bundle and core plugin markers are visible" },
+    { "name": "model-request", "status": "NOT_RUN", "scope": "no API key and no model call" },
+    { "name": "third-party-plugin", "status": "NOT_RUN", "scope": "no third-party package installed" },
+    { "name": "runtime-seam", "status": "NOT_RUN", "scope": "ctx.llm/ctx.tools/etc. require a separate keyed or registration test" }
+  ]
+}
