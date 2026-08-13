@@ -62,6 +62,9 @@
 - [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；当前已同步 140 个经过公开审计的文件。公众号仍未发布；微博已完成七条，新增 Discussions 分流卡因上一条原创微博发布不久暂留 outbox，知乎仍按人工同意闸门保持未发布；GitHub 连接器已回写官方 HEAD、Discussions 和生态仓库 HEAD 的公开 attestation，本地仍有 npm、官方文档哈希和 topics 源的网络错误，未被误记为“无变化”；AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
 - [ ] X 按计划保持禁用。
 
+- [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入固定 commit 的官方 README/插件教程截图与明确标注的终端示意图；GitHub 已发布，知乎未发布。
+- [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest 和移除路径的静态验证；npm registry 下载超时导致真实探针保持未通过，模型工具调用仍为 NOT_RUN。
+
 ## 能力门 D
 
 - [x] 指标样本可按 Asset 和 Channel 追加记录。
