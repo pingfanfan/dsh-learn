@@ -150,6 +150,13 @@ async function main(): Promise<void> {
         publishedAt: requiredFlag(parsed, "published-at"),
       });
       break;
+    case "approve":
+      result = await orchestrator.approvePublish(
+        requirePositional(parsed, 0, "approve requires publish job id"),
+        requiredFlag(parsed, "by"),
+        optionalFlag(parsed, "note"),
+      );
+      break;
     case "remote-unknown":
       result = await orchestrator.markRemoteUnknown(
         requirePositional(parsed, 0, "remote-unknown requires publish job id"),
@@ -331,6 +338,7 @@ function usage(): string[] {
     "dispatch-queued [--limit 10]",
     "correct <published-job-id> --path <corrected-variant>",
     "receipt <publish-job-id> --remote-id <id> --url <url> --published-at <ISO>",
+    "approve <publish-job-id> --by <主理人> [--note <reason>]",
     "remote-unknown <publish-job-id> --reason <uncertain external result>",
     "reconcile",
     "retry <publish-job-id>",
