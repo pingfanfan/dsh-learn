@@ -829,6 +829,51 @@ test("stale evidence requires a new baseline before the unchanged asset can be r
   assert.equal(finalState.opportunities.some((item) => item.sourceType === "maintenance" && item.status === "TRIAGED"), false);
 });
 
+test("revalidating unchanged published content preserves its publication status", async (t) => {
+  const { root, ops } = await fixture(true);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "content", "card.md"), "# Published unchanged card\n");
+  await ops.scan([opportunity], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, evidence);
+  const registered = await ops.registerAsset({
+    opportunityId: claim.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "faq", title: "Published unchanged card",
+    canonicalPath: "content/card.md",
+  });
+  const ready = await ops.readyAsset({
+    assetId: registered.asset.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: registered.opportunity.revision, validation: assetValidation,
+  });
+  const [job] = await ops.queuePublish(ready.asset.id, { github: "content/card.md" });
+  await ops.dispatch(job.id);
+  await ops.recordReceipt(job.id, {
+    remoteId: "github-unchanged-1",
+    url: "https://github.com/example/repo/commit/unchanged-1",
+    publishedAt: "2026-08-13T01:00:00.000Z",
+  });
+  await ops.markSourceChanged(evidence.sources[0].url, "next-commit");
+  const stale = await ops.store.read();
+  assert.equal(stale.assets[0].status, "STALE");
+  const updatedEvidence: EvidenceDraft = {
+    ...evidence,
+    sources: [...evidence.sources, {
+      url: "https://github.com/deepseek-ai/deepseek-harness/commit/next-commit",
+      title: "Updated pinned commit", kind: "repository", accessedAt: "2026-08-13T03:00:00.000Z",
+    }],
+    baseline: { ...evidence.baseline, commit: "next-commit" },
+  };
+  await ops.augmentEvidence(verified.evidence.id, updatedEvidence);
+  const revalidated = await ops.reviseAsset(ready.asset.id, assetValidation);
+  assert.equal(revalidated.changed, true);
+  assert.equal(revalidated.asset.status, "PUBLISHED");
+  assert.equal(revalidated.asset.stalePriorStatus, undefined);
+  const finalState = await ops.store.read();
+  assert.equal(finalState.publishJobs.find((item) => item.id === job.id)?.status, "SUCCEEDED");
+  assert.equal(finalState.opportunities.some((item) => item.sourceType === "maintenance" && item.status === "TRIAGED"), false);
+});
+
 test("the first source watch invalidates evidence whose stored baseline is already old", async (t) => {
   const { root, ops } = await fixture(false);
   t.after(() => rm(root, { recursive: true, force: true }));

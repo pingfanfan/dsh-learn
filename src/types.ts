@@ -138,6 +138,7 @@ export interface Asset {
   validation?: AssetValidation;
   status: AssetStatus;
   staleSourceRevision?: string;
+  stalePriorStatus?: "DRAFT" | "VERIFIED" | "READY" | "PUBLISHED";
   channelJobIds: string[];
   createdAt: string;
   updatedAt: string;

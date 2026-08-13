@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check",
+  "notes": "已依据当前 Discussions revision 复核三张社区资产的来源、讨论编号、限定语、敏感信息边界和正文内容。当前公开列表仍为 #12 至 #41，内容哈希未变化，因此恢复原有 READY/PUBLISHED 状态，不重复发布相同正文。",
+  "checkedAt": "2026-08-13T22:07:00Z"
+}

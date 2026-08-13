@@ -328,6 +328,18 @@ export class Orchestrator {
       if (asset.revision !== beforeAsset.revision) throw new Error("Asset changed while revision was being prepared");
       const evidence = asset.evidenceIds.map((id) => requireEvidence(state, id));
       if (evidence.some((item) => item.status !== "VERIFIED")) throw new Error("Cannot revise an asset with stale evidence");
+      const sameContent = beforeAsset.contentHash === file.hash && beforeAsset.canonicalPath === normalizedPath;
+      if (sameContent && revalidating) {
+        asset.sourceRefs = sourceRefsForAsset(state, asset);
+        asset.verification = "PASS";
+        asset.validation = materializeAssetValidation(validation, file.hash, actor);
+        asset.status = asset.stalePriorStatus ?? "READY";
+        asset.staleSourceRevision = undefined;
+        asset.stalePriorStatus = undefined;
+        asset.updatedAt = new Date().toISOString();
+        closeMaintenanceForAsset(state, asset.id, asset.updatedAt);
+        return { changed: true, asset: structuredClone(asset) };
+      }
       for (const job of state.publishJobs.filter((item) => item.assetId === asset.id)) {
         if (["SUCCEEDED", "CANCELLED"].includes(job.status)) continue;
         invalidatePublishJob(job, "规范资产已修订，需要基于新 revision 重新排队");
@@ -340,6 +352,7 @@ export class Orchestrator {
       asset.validation = materializeAssetValidation(validation, file.hash, actor);
       asset.status = "READY";
       asset.staleSourceRevision = undefined;
+      asset.stalePriorStatus = undefined;
       asset.updatedAt = new Date().toISOString();
       closeMaintenanceForAsset(state, asset.id, asset.updatedAt);
       return { changed: true, asset: structuredClone(asset) };
@@ -414,6 +427,7 @@ export class Orchestrator {
       asset.verification = "PASS";
       asset.validation = materializeAssetValidation(input.validation, file.hash, input.worker);
       asset.staleSourceRevision = undefined;
+      asset.stalePriorStatus = undefined;
       asset.updatedAt = now;
       assertTransition(opportunity.status, "ARCHIVED");
       opportunity.status = "ARCHIVED";
@@ -1420,6 +1434,9 @@ function markBindingsStale(
     asset.status !== "STALE" && asset.evidenceIds.some((id) => staleIds.has(id))
   );
   for (const asset of staleAssets) {
+    asset.stalePriorStatus = ["DRAFT", "VERIFIED", "READY", "PUBLISHED"].includes(asset.status)
+      ? asset.status as "DRAFT" | "VERIFIED" | "READY" | "PUBLISHED"
+      : "READY";
     asset.status = "STALE";
     asset.staleSourceRevision = newRevision;
     asset.revision += 1;
