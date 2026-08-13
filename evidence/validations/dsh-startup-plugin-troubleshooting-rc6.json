@@ -1,0 +1,7 @@
+{
+  "kind": "reproduction",
+  "result": "PASS",
+  "command": "node labs/hello-plugin/verify.mjs && pnpm validate:plugin-lab && pnpm public-audit",
+  "notes": "复用已通过的无 API Key 隔离实验，并完成插件实验静态验证和公开文件审计。新教程只对官方文档、公开 Discussions 和本地实验已覆盖的边界作出结论；没有模型请求、知乎发布或未知第三方安装动作。",
+  "checkedAt": "2026-08-13T21:16:00.000Z"
+}

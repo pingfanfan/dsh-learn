@@ -1,0 +1,24 @@
+[
+  {
+    "title": "把 DSH 启动、插件安装和常见失败拆成一条排障路径",
+    "summary": "官方已经提供启动、插件开发和 bundle 安装文档，最新 Discussions 又出现了 npx 启动、Node 版本、全局安装依赖、Windows 路径和插件迁移等不同故障。把它们按 CLI、profile、bundle、插件加载、Web UI、模型和工具调用分层，形成可搜索且可复用的无 Key 排障卡。",
+    "sourceType": "community",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/discussions/46",
+    "observedAt": "2026-08-13T21:12:00.000Z",
+    "directDshAction": true,
+    "audience": ["DSH 新用户", "插件初学者", "中文开发者", "社区答疑者", "第三方插件作者"],
+    "proposedAssets": ["启动与插件安装排障教程", "无 Key 检查顺序", "真实 Discussions 故障分类", "插件安装安全边界 FAQ"],
+    "signals": {
+      "userImpact": 99,
+      "freshness": 100,
+      "compounding": 96,
+      "ecosystemValue": 94,
+      "evidenceConfidence": 98,
+      "executability": 99,
+      "duplicatePenalty": 5,
+      "riskPenalty": 0,
+      "maintenancePenalty": 4
+    },
+    "risk": "LOW"
+  }
+]

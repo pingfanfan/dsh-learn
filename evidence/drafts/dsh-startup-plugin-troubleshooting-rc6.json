@@ -1,0 +1,71 @@
+{
+  "claim": "在 DeepSeek Harness Developer Preview 的官方文档和 2026-08-13 的公开 Discussions 中，启动失败、依赖获取、Node 版本、Web UI/工作区、profile/bundle、插件加载、模型配置和工具调用是不同故障层；dsh-learn 可以用 @deepseek-ai/dsh@0.1.0-rc.6 的无 API Key 本地 bundle 实验验证从 CLI 到插件安装、加载和移除的前四层，但不把 Web UI、模型请求、真实工具调用、未知第三方包或 GitHub 构建授权写成已验证。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md#run",
+      "title": "DeepSeek Harness README：npm 与源码启动",
+      "kind": "official",
+      "accessedAt": "2026-08-13T21:04:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/index.zh.md",
+      "title": "DeepSeek Harness：第一个插件",
+      "kind": "official",
+      "accessedAt": "2026-08-13T21:04:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/publish.zh.md",
+      "title": "DeepSeek Harness：打包与安装插件",
+      "kind": "official",
+      "accessedAt": "2026-08-13T21:04:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/tool.zh.md",
+      "title": "DeepSeek Harness：开发一个工具",
+      "kind": "official",
+      "accessedAt": "2026-08-13T21:04:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/46",
+      "title": "公开 Discussion：无法启动 dsh",
+      "kind": "community",
+      "accessedAt": "2026-08-13T20:59:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/49",
+      "title": "公开 Discussion：Arch Linux 安装与 Node 环境",
+      "kind": "community",
+      "accessedAt": "2026-08-13T20:59:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/55",
+      "title": "公开 Discussion：全局安装后缺少 cordis-plugin-timer",
+      "kind": "community",
+      "accessedAt": "2026-08-13T20:59:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/107",
+      "title": "公开 Discussion：Windows 中文路径截断",
+      "kind": "community",
+      "accessedAt": "2026-08-13T20:59:00.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; temporary DSH_HOME; local prebuilt bundle; no API key",
+    "commands": [
+      "node labs/hello-plugin/verify.mjs",
+      "pnpm validate:plugin-lab",
+      "pnpm public-audit"
+    ],
+    "result": "PASS",
+    "notes": "文章中的端到端安装主线复用已通过的隔离实验；真实模型、Web UI、第三方包、GitHub prepare 和构建授权均明确标注为未验证。"
+  },
+  "confidence": 98
+}

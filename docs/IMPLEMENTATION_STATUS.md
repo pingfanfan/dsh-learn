@@ -80,3 +80,4 @@
 - [x] DSH 无 Key 新手入口已完成终稿润色、rc.6 固定证据、GitHub/知乎/微博真实发布回执和公众号渠道稿；模型、provider、Web UI 与第三方插件仍明确未覆盖。
 - [x] DSH plugin 术语 FAQ 已完成当前官方 README 与固定 commit 的证据绑定；没有安装未知第三方包，也没有把 topic、安装成功或未运行实验写成运行时兼容。
 - [x] DSH 第一个插件端到端教程已完成 `dsh plugin add`、profile manifest、bundle patch、加载日志和 `remove` 的无 Key 证据绑定；规范稿已完成最终润色检查，知乎未发布。
+- [x] DSH 启动与插件安装排障教程已完成官方启动/插件文档和公开 Discussions 的多源核验，复用 rc.6 无 Key bundle 实验，并明确区分 CLI、profile、bundle、插件加载、Web UI、模型和工具调用边界；规范稿已完成最终润色检查，知乎未发布。
