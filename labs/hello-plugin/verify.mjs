@@ -28,7 +28,17 @@ function assertPnpmAvailable() {
 }
 
 function safeEnv(home) {
-  const env = { ...process.env, DSH_HOME: home };
+  const env = {
+    ...process.env,
+    DSH_HOME: home,
+    // npm can retry DNS failures for a long time. The lab should fail fast and
+    // tell a beginner that the registry is unreachable, instead of looking
+    // like the plugin itself is frozen.
+    NPM_CONFIG_FETCH_RETRIES: "0",
+    NPM_CONFIG_FETCH_TIMEOUT: "10000",
+    NPM_CONFIG_FETCH_RETRY_MINTIMEOUT: "1000",
+    NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT: "2000",
+  };
   delete env.DEEPSEEK_API_KEY;
   delete env.DEEPSEEK_API_KEY_ENV;
   return env;
@@ -45,7 +55,7 @@ function runDsh(home, args, { timeoutMs = 60000 } = {}) {
     let stderr = "";
     const timer = setTimeout(() => {
       child.kill("SIGTERM");
-      rejectRun(new Error(`command timed out: ${args.join(" ")}`));
+      rejectRun(new Error(`command timed out: ${args.join(" ")}; npm registry may be unreachable, check network and npm registry before retrying`));
     }, timeoutMs);
     child.stdout.on("data", (chunk) => { stdout += chunk; });
     child.stderr.on("data", (chunk) => { stderr += chunk; });
