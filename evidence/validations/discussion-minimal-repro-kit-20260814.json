@@ -2,6 +2,6 @@
   "kind": "content-review",
   "result": "PASS",
   "command": "node scripts/validate-discussion-kit.mjs content/canonical/discussion-minimal-repro-kit.md && pnpm public-audit && pnpm check",
-  "notes": "已在当前 Discussions 分页证据下复测标题、Markdown 结构、代码块闭合、版本边界、最小复现字段、脱敏提醒、双语模板与官方来源；内容仍不包含凭据、私密日志或未经证实的具体缺陷结论。",
-  "checkedAt": "2026-08-13T23:14:50Z"
+  "notes": "已在 Discussions revision github-discussions-public-list-through-537-2026-08-14 下复测标题、Markdown 结构、代码块闭合、版本边界、最小复现字段、脱敏提醒、双语模板与官方来源；当前公开列表为 6 页、523 条、最后编号 #537，内容仍不包含凭据、私密日志或未经证实的具体缺陷结论。",
+  "checkedAt": "2026-08-13T23:24:35Z"
 }
