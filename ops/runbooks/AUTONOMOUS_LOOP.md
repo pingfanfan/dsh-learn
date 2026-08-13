@@ -9,7 +9,9 @@ pnpm ops watch
 pnpm ops:cycle
 ```
 
-`watch` 只读扫描 `ops/sources.json` 中的官方来源。首次运行建立游标，revision 变化时标记关联 EvidencePack 与 Asset 为 `STALE`，取消尚未发送的旧渠道任务，并生成复测机会。`cycle` 会先恢复状态，再把已确认的 `DRAFT_ONLY` 队列写入渠道 outbox，随后同步已经有真实回执的发布任务的互动数据；它不会自动触发真实渠道发布。
+`watch` 只读扫描 `ops/sources.json` 中的官方来源和已登记生态来源。首次运行建立游标，revision 变化时标记关联 EvidencePack 与 Asset 为 `STALE`，取消尚未发送的旧渠道任务，并生成带有 `official`/`ecosystem`/`community` 来源类型的复测机会。`cycle` 会先恢复状态，再把已确认的 `DRAFT_ONLY` 队列写入渠道 outbox，随后同步已经有真实回执的发布任务的互动数据；它不会自动触发真实渠道发布。
+
+生态来源只用于发现和排序线索；正式发布前仍需由 Research / Verify 建立一手来源或本地复现的 EvidencePack，不能把仓库 HEAD 变化直接写成兼容性结论。
 
 扫描错误会保留在 `doctor`/`status` 的 `sourceHealth.errors` 中；部分源失败不会抹掉本轮成功观察，也不会被解释成“上游没有变化”。下一轮恢复后错误自动清除。
 
