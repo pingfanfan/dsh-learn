@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readPublicContent } from "./content.ts";
 
 export type SourceKind = "github-head" | "npm-latest" | "content-hash";
+export type SourceScope = "official" | "ecosystem" | "community";
 
 export interface SourceDefinition {
   id: string;
@@ -10,6 +11,7 @@ export interface SourceDefinition {
   url: string;
   sourceId: string;
   enabled: boolean;
+  scope: SourceScope;
 }
 
 export interface SourceObservation {
@@ -105,7 +107,7 @@ export async function readSourceAttestations(
 
 function parseDefinition(value: unknown, index: number): SourceDefinition {
   if (!isObject(value)) throw new Error(`sources[${index}] must be an object`);
-  const allowed = new Set(["id", "label", "kind", "url", "sourceId", "enabled"]);
+  const allowed = new Set(["id", "label", "kind", "url", "sourceId", "enabled", "scope"]);
   const unknown = Object.keys(value).filter((key) => !allowed.has(key));
   if (unknown.length) throw new Error(`sources[${index}] contains unknown fields: ${unknown.join(", ")}`);
   const kind = requiredString(value.kind, `sources[${index}].kind`);
@@ -121,6 +123,10 @@ function parseDefinition(value: unknown, index: number): SourceDefinition {
     }
   }
   if (typeof value.enabled !== "boolean") throw new Error(`sources[${index}].enabled must be boolean`);
+  const scope = value.scope === undefined ? "official" : requiredString(value.scope, `sources[${index}].scope`);
+  if (!["official", "ecosystem", "community"].includes(scope)) {
+    throw new Error(`sources[${index}].scope is invalid`);
+  }
   return {
     id: requiredString(value.id, `sources[${index}].id`),
     label: requiredString(value.label, `sources[${index}].label`),
@@ -128,6 +134,7 @@ function parseDefinition(value: unknown, index: number): SourceDefinition {
     url: url.toString(),
     sourceId: requiredString(value.sourceId, `sources[${index}].sourceId`),
     enabled: value.enabled,
+    scope: scope as SourceScope,
   };
 }
 
@@ -141,7 +148,9 @@ async function observe(
     try {
       response = await fetch(definition.url, {
         headers: {
-          Accept: definition.kind === "content-hash" ? "text/plain" : "application/json",
+          Accept: definition.kind === "content-hash"
+            ? "application/json, text/plain;q=0.9, */*;q=0.8"
+            : "application/json",
           "User-Agent": "dsh-learn-source-watch/0.1",
         },
         redirect: "follow",
