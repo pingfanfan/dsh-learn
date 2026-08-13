@@ -26,6 +26,8 @@ import type {
 
 const DEFAULT_LEASE_MS = 30 * 60 * 1000;
 const ROUTINE_MAINTENANCE_AFTER_MS = 7 * 24 * 60 * 60 * 1000;
+const MAX_ACTIVE_WORKERS = 4;
+const MAX_PUBLISH_ATTEMPTS = 2;
 const OPEN_JOB_STATES = new Set<PublishJob["status"]>(["QUEUED", "SENDING", "OUTBOX", "UNKNOWN_REMOTE_STATE"]);
 
 export type AdapterLoader = (root: string) => Promise<Map<Channel, ChannelAdapter>>;
@@ -104,6 +106,9 @@ export class Orchestrator {
       details: { worker },
     }, (state) => {
       reclaimExpiredLeases(state);
+      const activeLeases = state.opportunities.filter((item) => item.lease);
+      if (activeLeases.some((item) => item.lease?.owner === worker)) return null;
+      if (activeLeases.length >= MAX_ACTIVE_WORKERS) return null;
       let opportunity: Opportunity | null = sortCandidates(state.opportunities.filter((item) => item.status === "TRIAGED"))[0] ?? null;
       if (!opportunity) opportunity = createMaintenanceOpportunity(state);
       if (!opportunity) return null;
@@ -576,12 +581,18 @@ export class Orchestrator {
       throw new Error("Publish state is uncertain; run reconcile before any retry");
     }
     if (beforeJob.status !== "QUEUED") throw new Error(`Publish job is not queued: ${beforeJob.status}`);
+    if (beforeJob.attempts >= MAX_PUBLISH_ATTEMPTS) {
+      throw new Error(`Publish job has reached the maximum of ${MAX_PUBLISH_ATTEMPTS} attempts; create a fresh job for the current asset revision`);
+    }
     const file = await readPublicContent(this.root, beforeJob.variantPath);
     if (file.hash !== beforeJob.contentHash) throw new Error("Publish content changed after the job was prepared");
     const adapters = await this.adapterLoader(this.root);
     const adapter = adapters.get(beforeJob.channel);
     if (!adapter) throw new Error(`Unknown channel: ${beforeJob.channel}`);
     const capability = await adapter.probe();
+    if (capability.approvalRequired && !beforeJob.userApproval) {
+      throw new Error(`Channel ${beforeJob.channel} requires explicit user approval before dispatch`);
+    }
     if (capability.mode === "MOCK" && !allowMock) throw new Error("Mock adapter requires explicit --allow-mock");
 
     const sending = (await this.store.transact("orchestrator", {
@@ -675,6 +686,10 @@ export class Orchestrator {
         });
         continue;
       }
+      if (capability.approvalRequired) {
+        skipped.push({ id: job.id, channel: job.channel, reason: "该渠道需要主理人明确批准后才能派发" });
+        continue;
+      }
       if (!capability.available) {
         skipped.push({ id: job.id, channel: job.channel, reason: capability.reason ?? "渠道不可用" });
         continue;
@@ -689,6 +704,16 @@ export class Orchestrator {
   }
 
   async recordReceipt(jobId: string, receipt: PublishReceipt, actor = "publisher-agent"): Promise<PublishJob> {
+    const before = await this.store.read();
+    const beforeJob = requireJob(before, jobId);
+    if (beforeJob.status !== "SUCCEEDED") {
+      const adapter = (await this.adapterLoader(this.root)).get(beforeJob.channel);
+      if (!adapter) throw new Error(`Unknown channel: ${beforeJob.channel}`);
+      const capability = await adapter.probe();
+      if (capability.approvalRequired && !beforeJob.userApproval) {
+        throw new Error(`Channel ${beforeJob.channel} requires explicit user approval before recording a receipt`);
+      }
+    }
     return (await this.store.transact(actor, {
       type: "publish.receipt-recorded",
       entityType: "publish-job",
@@ -704,6 +729,33 @@ export class Orchestrator {
       }
       if (job.status === "OUTBOX") assertPublishBindings(state, job);
       applyReceipt(state, job, receipt);
+      job.revision += 1;
+      job.updatedAt = new Date().toISOString();
+      return structuredClone(job);
+    })).result;
+  }
+
+  async approvePublish(jobId: string, approvedBy: string, note?: string, actor = "user-approval"): Promise<PublishJob> {
+    const cleanedBy = approvedBy.trim().slice(0, 120);
+    const cleanedNote = note?.trim().slice(0, 500);
+    if (!cleanedBy) throw new Error("An approval identity is required");
+    if (containsPotentialSecret(`${cleanedBy}\n${cleanedNote ?? ""}`)) {
+      throw new Error("Approval contains a potential secret");
+    }
+    return (await this.store.transact(actor, {
+      type: "publish.user-approved",
+      entityType: "publish-job",
+      entityId: jobId,
+    }, (state) => {
+      const job = requireJob(state, jobId);
+      if (!["QUEUED", "OUTBOX"].includes(job.status)) {
+        throw new Error(`Cannot approve a publish job in ${job.status}`);
+      }
+      job.userApproval = {
+        approvedAt: new Date().toISOString(),
+        approvedBy: cleanedBy,
+        ...(cleanedNote ? { note: cleanedNote } : {}),
+      };
       job.revision += 1;
       job.updatedAt = new Date().toISOString();
       return structuredClone(job);
@@ -823,6 +875,21 @@ export class Orchestrator {
     const before = await this.store.read();
     const beforeJob = requireJob(before, jobId);
     if (beforeJob.status !== "RETRYABLE_FAILED") throw new Error(`Publish job is not retryable: ${beforeJob.status}`);
+    if (beforeJob.attempts >= MAX_PUBLISH_ATTEMPTS) {
+      return (await this.store.transact(actor, {
+        type: "publish.retry-exhausted",
+        entityType: "publish-job",
+        entityId: jobId,
+      }, (state) => {
+        const job = requireJob(state, jobId);
+        if (job.status !== "RETRYABLE_FAILED") throw new Error(`Publish job changed: ${job.status}`);
+        job.status = "CANCELLED";
+        job.blockedReason = `已达到最多 ${MAX_PUBLISH_ATTEMPTS} 次外部发布尝试；请基于当前资产 revision 新建任务。`;
+        job.revision += 1;
+        job.updatedAt = new Date().toISOString();
+        return structuredClone(job);
+      })).result;
+    }
     const adapters = await this.adapterLoader(this.root);
     const adapter = adapters.get(beforeJob.channel);
     if (!adapter) throw new Error(`Unknown channel: ${beforeJob.channel}`);
@@ -1067,6 +1134,8 @@ export class Orchestrator {
         metrics: state.metrics.length,
         interactions: state.interactions.length,
       },
+      workerCapacity: workerCapacity(state),
+      publishPolicy: { maxAttempts: MAX_PUBLISH_ATTEMPTS },
       sourceHealth: {
         ok: state.sourceErrors.length === 0,
         errors: structuredClone(state.sourceErrors),
@@ -1128,6 +1197,8 @@ export class Orchestrator {
       channels,
       productionPublishingAvailable: channels.some((item) => item.mode === "REAL" && item.available),
       actionableOpportunities: state.opportunities.filter((item) => item.status === "TRIAGED").length,
+      workerCapacity: workerCapacity(state),
+      publishPolicy: { maxAttempts: MAX_PUBLISH_ATTEMPTS },
       sourceHealth: {
         ok: state.sourceErrors.length === 0,
         errors: structuredClone(state.sourceErrors),
@@ -1144,6 +1215,15 @@ export class Orchestrator {
     for (const adapter of adapters.values()) channels.push(await adapter.probe());
     return channels;
   }
+}
+
+function workerCapacity(state: StateSnapshot): { max: number; active: number; available: number } {
+  const active = new Set(
+    state.opportunities
+      .filter((item) => item.lease)
+      .map((item) => item.lease!.owner),
+  ).size;
+  return { max: MAX_ACTIVE_WORKERS, active, available: Math.max(0, MAX_ACTIVE_WORKERS - active) };
 }
 
 function sortCandidates(items: Opportunity[]): Opportunity[] {
