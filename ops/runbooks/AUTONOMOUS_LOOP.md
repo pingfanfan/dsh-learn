@@ -78,6 +78,8 @@ pnpm ops collect-interactions <publish-job-id>
 pnpm ops sync-interactions
 ```
 
+当同一资产和渠道累计出现至少两条评论或提及时，系统会保留经脱敏检查的公开互动正文，并自动生成一个去重的 `feedback` Opportunity，建议方向为 FAQ 或教程修订。它只是待验证线索，不会把评论直接当成事实证据，也不会自动发布。
+
 EvidencePack 只有一手官方来源或成功的本地复现才可进入 `VERIFIED`。Asset 验证回执必须说明检查方式、结果和备注，并与当前内容哈希绑定；实验、工具和插件还必须记录实际通过的命令。对同一事实补充更强的本地证据时使用 `evidence-augment`；普通增强不能改基线，`STALE` 证据则必须升级基线后才能恢复。
 
 ## 失败恢复
