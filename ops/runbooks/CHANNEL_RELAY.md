@@ -84,3 +84,4 @@ state/private/interactions/<channel>/<publish-job-id>.json
 ```
 
 总控会校验 job、渠道、类型、时间和潜在凭据，再沿用 remote ID 去重、指标生成和事件账本。缺少文件代表“本轮没有可核验互动”，不是“平台互动为零”；文件不进入 Git，互动正文也不会被写回公开内容。
+知乎发布前必须检查 PublishJob 的 `userApproval` 字段。没有主理人批准记录时，只能保存待审草稿，不得在知乎创作中心提交；批准命令为 `pnpm ops approve <publish-job-id> --by "主理人"`，且只对该任务有效。
