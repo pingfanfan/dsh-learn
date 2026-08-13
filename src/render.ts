@@ -18,7 +18,11 @@ export function renderLongform(canonical: string, channel: "github" | "zhihu" | 
     .split("\n")
     .filter((line) => !(line.trim().startsWith("【") && line.includes("发布前删除本行")))
     .join("\n")
-    .trim();
+    .trim()
+    // Canonical files live in content/canonical; channel files live one
+    // directory deeper in content/channels/<channel>. Keep shared assets
+    // reachable after rendering instead of leaking the canonical path.
+    .replaceAll("](../assets/", "](../../assets/");
   if (!cleanBody) throw new Error("Canonical article body is empty");
   const appendix = canonical.includes("# 编辑附录")
     ? canonical.split("# 编辑附录", 2)[1]

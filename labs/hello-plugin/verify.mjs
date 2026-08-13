@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { execFileSync } from "node:child_process";
 import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -11,6 +12,20 @@ const root = resolve(here, "../..");
 const dshVersion = "0.1.0-rc.6";
 const profileName = "demo";
 const pluginPath = "./labs/hello-plugin";
+
+function assertPnpmAvailable() {
+  const executable = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
+  try {
+    const version = execFileSync(executable, ["--version"], {
+      cwd: root,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    }).trim();
+    if (!version) throw new Error("empty version");
+  } catch {
+    throw new Error("找不到 pnpm。请先运行 node scripts/plugin-doctor.mjs，按提示安装 pnpm，再重新运行这个实验。Web UI 启动本身不需要 pnpm。");
+  }
+}
 
 function safeEnv(home) {
   const env = { ...process.env, DSH_HOME: home };
@@ -93,6 +108,7 @@ function assertIncludes(value, needle, label) {
 
 const home = await mkdtemp(join(tmpdir(), "dsh-learn-plugin-"));
 try {
+  assertPnpmAvailable();
   const version = await runDsh(home, ["--version"]);
   if (version.code !== 0) throw new Error(`version command failed: ${version.stderr}`);
   assertIncludes(version.stdout, dshVersion, "version output");

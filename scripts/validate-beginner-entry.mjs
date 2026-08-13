@@ -17,6 +17,8 @@ const requiredCanonical = [
   "node --version",
   "npm --version",
   "node scripts/beginner-doctor.mjs",
+  "node scripts/plugin-doctor.mjs",
+  "npm install --global pnpm",
   "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web",
   "node labs/hello-plugin/verify.mjs",
   "dsh plugin --profile demo add ./my-first-plugin",

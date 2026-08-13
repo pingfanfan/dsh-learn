@@ -21,7 +21,7 @@ node labs/hello-plugin/verify.mjs
 5. 启动隔离 profile，确认终端打印 `[hello-plugin] loaded`；
 6. 执行 `dsh plugin --profile demo remove dsh-hello-plugin`，确认组合层被移除。
 
-实验使用本地包和无 Key CLI，不调用模型，也不启动 Web UI。需要 `npx`、`pnpm`、Node.js 和可访问 npm registry；如果依赖下载失败，保留原始错误，不把环境问题写成插件不兼容。
+实验使用本地包和无 Key CLI，不调用模型，也不启动 Web UI。启动 Web UI 只需要 Node.js，但 `dsh plugin` 会调用 `pnpm`，所以运行实验前先执行 `node scripts/plugin-doctor.mjs`；若检查失败，按提示运行 `npm install --global pnpm`，再重新检查。实验还需要可访问 npm registry；如果依赖下载失败，保留原始错误，不把环境问题写成插件不兼容。
 
 ## 包的三个关键文件
 

@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "python3 <polish-article-skill>/scripts/check_tone_cliches.py content/canonical/dsh-zero-to-first-plugin-rc6.md && python3 <polish-article-skill>/scripts/check_period_density.py content/canonical/dsh-zero-to-first-plugin-rc6.md && python3 <polish-article-skill>/scripts/check_opening_heading_variety.py content/canonical/dsh-zero-to-first-plugin-rc6.md && pnpm validate:beginner-entry && pnpm validate:plugin-doctor && pnpm validate:plugin-lab && pnpm typecheck && pnpm public-audit",
+  "notes": "在完全新手路径中新增 plugin-doctor，明确区分 Node.js/Web UI 与 DSH plugin 所需的 pnpm，并让 hello-plugin 探针在创建临时 profile 前快速报告缺少 pnpm。规范稿已按项目写作规则完成最终口吻、句号密度和开头/小标题检查；渲染器同时修复了频道稿共享截图的相对路径。hello-plugin 既有无 API Key 安装、加载、配置导出和移除回执仍保留为历史验证；本次在线重跑在 npm registry 下载阶段超时，因此没有把网络失败写成插件代码通过。知乎未发布，未读取或使用 API Key。",
+  "checkedAt": "2026-08-13T23:30:00Z"
+}

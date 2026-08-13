@@ -97,6 +97,22 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 进入解压后的 `dsh-learn` 文件夹，再打开终端，让终端当前所在的位置就是这个文件夹，因为下面的路径都是从项目根目录开始写的，学习阶段不需要先安装 dsh-learn 的全部开发依赖，第一条实验命令会自己调用固定版本的 DSH。
 
+## 安装插件前先检查 pnpm
+
+启动 Web UI 只需要 Node.js，但 DSH 的 `plugin` 子命令会在 profile 目录里调用 pnpm，到了这一步才需要额外的包管理器。先运行下面这条检查，不要等安装命令卡住以后再猜网络是不是坏了。
+
+```bash
+node scripts/plugin-doctor.mjs
+```
+
+如果看到 `PASS 可以进入 hello-plugin 安装实验`，就可以继续。若提示找不到 pnpm，运行下面的安装命令，完成后关闭并重新打开终端，再重复插件检查。
+
+```bash
+npm install --global pnpm
+```
+
+这一步只安装包管理器，不会填写 API Key，也不会发起模型请求，`plugin-doctor` 只检查版本和练习文件，不读取凭据。
+
 ## 用无 Key 实验安装第一个插件
 
 项目里已经准备了 `labs/hello-plugin`，它是一个只打印加载状态的最小插件，目的是让你看清安装、profile 发现、插件加载和移除是否都发生了。

@@ -15,7 +15,8 @@
    ```
 
 4. 浏览器打开 `http://127.0.0.1:3080`。如果第一次看到 `Add an API key to get started`，先点 `Configure later`；这一步只验证页面能否打开，不代表模型已经配置好。
-5. 回到仓库根目录运行 `node labs/hello-plugin/verify.mjs`，在隔离的临时 `DSH_HOME` 中完成第一个插件的安装、加载、配置检查和移除。这个实验会主动排除 API Key，不会发起模型请求。
+5. 准备安装插件前，运行 `node scripts/plugin-doctor.mjs`。Web UI 不需要 pnpm，但 DSH 的 `plugin` 子命令会调用 pnpm；如果检查失败，按它打印的命令安装后再继续。
+6. 回到仓库根目录运行 `node labs/hello-plugin/verify.mjs`，在隔离的临时 `DSH_HOME` 中完成第一个插件的安装、加载、配置检查和移除。这个实验会主动排除 API Key，不会发起模型请求。
 
 如果你只想先了解 profile、bundle 和配置树，可以从[无 Key 的隔离 profile 实验](labs/cordis-no-key/README.md)开始；如果你想看完整的插件文件结构，再看[第一个插件实验说明](labs/hello-plugin/README.md)。
 
@@ -128,9 +129,9 @@ Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线
 
 第一个插件实验可以单独运行 `pnpm validate:plugin-lab` 做静态检查，再运行 `node labs/hello-plugin/verify.mjs` 在临时 `DSH_HOME` 中真实完成本地 bundle 安装、加载和移除；该探针不读取现有凭据，不发起模型请求。
 
-零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界。
+零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界；`pnpm validate:plugin-doctor` 会同时检查 pnpm 缺失时的失败提示。
 
-完全新手下载项目后，可以先运行 `pnpm beginner:doctor`。它只在本地检查 Node.js、npm、npx、练习文件和路径提示，不联网、不读取 API Key；通过以后会直接打印固定版本的 DSH 启动命令。
+完全新手下载项目后，可以先运行 `node scripts/beginner-doctor.mjs`。它只在本地检查 Node.js、npm、npx、练习文件和路径提示，不联网、不读取 API Key；通过以后会直接打印固定版本的 DSH 启动命令。准备安装插件时，再运行 `node scripts/plugin-doctor.mjs`，它会单独检查 DSH 所需的 pnpm。
 
 工具插件实验可以运行 `pnpm validate:tool-plugin-lab`，检查 `ctx.tools.register`、参数与返回值 schema、bundle manifest 和无 Key 边界；`pnpm validate:tool-plugin-offline` 可以在无网络时验证执行函数和渲染器，真实 DSH 安装探针仍需要 npm registry 可达，模型工具调用仍是 `NOT_RUN`。
 

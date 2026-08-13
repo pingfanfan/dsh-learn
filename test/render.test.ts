@@ -62,3 +62,19 @@ test("checked-in Zhihu and WeChat variants match the canonical renderer", async 
   assert.equal(zhihu, renderLongform(canonicalArticle, "zhihu"));
   assert.equal(wechat, renderLongform(canonicalArticle, "wechat"));
 });
+
+test("channel rendering rewrites canonical asset paths for deeper channel files", () => {
+  const canonical = [
+    "# 标题候选",
+    "| 标题 | 点击欲 | 信息量 | 跟我有关 | 可信 | 差异化 | 总分 |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+    "| 推荐标题：入口 | 1 | 1 | 1 | 1 | 1 | 1 | 6 |",
+    "# 正文",
+    "![截图](../assets/dsh-beginner/example.svg)",
+    "# 备用标题",
+    "1. 入口",
+  ].join("\n");
+  const rendered = renderLongform(canonical, "github");
+  assert.match(rendered, /\]\(\.\.\/\.\.\/assets\/dsh-beginner\/example\.svg\)/);
+  assert.doesNotMatch(rendered, /\]\(\.\.\/assets\/dsh-beginner\/example\.svg\)/);
+});
