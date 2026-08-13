@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm check && pnpm public-audit && git diff --check && node --input-type=module -e \"readFile('content/canonical/dsh-discussions-revision-20260814-537.md','utf8')\"",
+  "notes": "事实卡绑定官方 Discussions 分页 6 页、523 条、最后编号 #537 的证据，并分别标出 #535 用户报错、#536 社区想法和 #537 第三方桌面版展示；没有把用户报告、想法或第三方项目写成官方修复、官方功能或官方发行版。未调用模型 API，知乎仍保持人工批准闸门。",
+  "checkedAt": "2026-08-13T23:21:32Z"
+}
