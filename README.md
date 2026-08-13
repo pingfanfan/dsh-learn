@@ -117,6 +117,8 @@ Python SDK 安全配方可以单独运行 `pnpm validate:python-sdk-safety`，�
 
 `pnpm ops cycle` 会自动执行同样的安全队列派发；它只处理 `DRAFT_ONLY`，会跳过 `MOCK`、未授权和其他模式，并在结果中记录跳过原因。
 
+互动回流也会产生下一步工作：同一资产和渠道累计至少两条评论或提及时，系统会自动创建一个去重的 FAQ/教程修订机会。互动只是线索，仍需重新验证官方事实，不会直接变成公开内容。
+
 已发布资产仍可补发到尚未完成的其他渠道；如果浏览器或渠道 Agent 点击发送后无法判断远端结果，先运行 `pnpm ops remote-unknown <publish-job-id> --reason <说明>`，核验公开 URL 不存在后再运行 `pnpm ops confirm-not-found ...`，禁止盲目重发。
 
 未来准备公开推送前，先运行 `pnpm public-audit`。它只检查 Git 会纳入公开仓库的文件，不执行推送；发现个人路径、临时目录或高置信度秘密时会失败。
