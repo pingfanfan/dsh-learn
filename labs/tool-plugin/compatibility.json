@@ -8,6 +8,7 @@
   "modelRequest": "NOT_RUN",
   "webUi": "NOT_RUN",
   "toolInvocation": "NOT_RUN",
+  "offlineRegistration": "PASS",
   "registration": "PASS",
   "thirdPartyPackages": "NONE",
   "notes": "The lab verifies bundle installation, profile config, tools injection, tool schema visibility, and plugin teardown. It does not ask a model to call greet."

@@ -3,19 +3,20 @@
 import { readFile } from "node:fs/promises";
 
 const paths = process.argv.slice(2);
-if (paths.length !== 6) {
-  console.error("usage: validate-tool-plugin-lab.mjs compatibility.json README.md package.json index.js cordis.patch.yml verify.mjs");
+if (paths.length !== 7) {
+  console.error("usage: validate-tool-plugin-lab.mjs compatibility.json README.md package.json index.js cordis.patch.yml verify.mjs verify-offline.mjs");
   process.exit(2);
 }
 
-const [compatibilityPath, readmePath, packagePath, indexPath, patchPath, verifyPath] = paths;
-const [compatibility, readme, packageText, index, patch, verify] = await Promise.all([
+const [compatibilityPath, readmePath, packagePath, indexPath, patchPath, verifyPath, offlinePath] = paths;
+const [compatibility, readme, packageText, index, patch, verify, offline] = await Promise.all([
   readFile(compatibilityPath, "utf8"),
   readFile(readmePath, "utf8"),
   readFile(packagePath, "utf8"),
   readFile(indexPath, "utf8"),
   readFile(patchPath, "utf8"),
   readFile(verifyPath, "utf8"),
+  readFile(offlinePath, "utf8"),
 ]);
 const manifest = JSON.parse(packageText);
 const facts = JSON.parse(compatibility);
@@ -32,7 +33,9 @@ const required = [
   [verify.includes("DEEPSEEK_API_KEY"), "no-key environment boundary"],
   [verify.includes("model invocation NOT_RUN"), "model boundary"],
   [facts.apiKey === "NOT_REQUIRED" && facts.toolInvocation === "NOT_RUN", "compatibility boundaries"],
+  [facts.offlineRegistration === "PASS", "offline registration boundary"],
   [readme.includes("defineTool") && readme.includes("NOT_RUN"), "README boundary"],
+  [offline.includes("tool.execute") && offline.includes("output.render"), "offline verifier"],
 ];
 const failures = required.filter(([, label]) => !required.find(([ok, currentLabel]) => currentLabel === label && ok)).map(([, label]) => label);
 if (failures.length > 0) {

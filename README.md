@@ -53,7 +53,7 @@ pnpm public-audit
 - rc.6 无 Key CLI 冒烟实验：[labs/rc6-cli-smoke/README.md](labs/rc6-cli-smoke/README.md)。
 - 无 Key 第一个可安装插件实验：[labs/hello-plugin/README.md](labs/hello-plugin/README.md)。
 - 完全新手安装、启动 Web UI 和第一个插件：[content/canonical/dsh-zero-to-first-plugin-rc6.md](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-zero-to-first-plugin-rc6.md](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
-- 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；静态 schema/注册检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
+- 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
 - DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
 - DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
@@ -113,7 +113,7 @@ Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线
 
 零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界。
 
-工具插件实验可以运行 pnpm validate:tool-plugin-lab，检查 ctx.tools.register、参数与返回值 schema、bundle manifest 和无 Key 边界；真实安装探针需要 npm registry 可达，模型工具调用仍是 NOT_RUN。
+工具插件实验可以运行 `pnpm validate:tool-plugin-lab`，检查 `ctx.tools.register`、参数与返回值 schema、bundle manifest 和无 Key 边界；`pnpm validate:tool-plugin-offline` 可以在无网络时验证执行函数和渲染器，真实 DSH 安装探针仍需要 npm registry 可达，模型工具调用仍是 `NOT_RUN`。
 
 启动与插件安装排障教程复用同一份无 Key 实验，并把 CLI、profile、bundle、插件加载、Web UI、模型和工具调用分层；官方 Discussions 中的真实启动、Node、路径和全局安装问题只作为公开排障信号，不被写成同一个故障。
 

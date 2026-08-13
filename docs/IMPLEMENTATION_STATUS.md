@@ -63,7 +63,7 @@
 - [ ] X 按计划保持禁用。
 
 - [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入固定 commit 的官方 README/插件教程截图与明确标注的终端示意图；GitHub 已发布，知乎未发布。
-- [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest 和移除路径的静态验证；npm registry 下载超时导致真实探针保持未通过，模型工具调用仍为 NOT_RUN。
+- [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 
 ## 能力门 D
 

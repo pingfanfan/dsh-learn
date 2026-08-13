@@ -12,6 +12,14 @@
 node labs/tool-plugin/verify.mjs
 ```
 
+如果 npm registry 暂时不可达，先运行离线契约检查：
+
+```bash
+node labs/tool-plugin/verify-offline.mjs
+```
+
+离线检查用一个最小的本地工具注册表调用插件入口，验证 `greet` 注册、参数 schema、返回值、执行函数和渲染器。它不证明 DSH runtime 已加载插件，也不证明模型会发起工具调用。
+
 探针会在临时 `DSH_HOME` 中完成：
 
 1. 版本检查；
@@ -26,7 +34,7 @@ node labs/tool-plugin/verify.mjs
 
 这个实验使用原始 JSON Schema 直接注册，目的是减少首次安装时的额外依赖。生产插件应优先参考官方 `defineTool` DSL，它会从参数 schema 推导类型并在执行前校验参数。两者都属于工具注册层，但本实验没有把原始注册示例包装成生产级安全结论。
 
-看到 `[greet-tool] registered greet`，只证明工具已经进入当前 profile 的注册表。实验没有 API Key，没有启动 Web UI，也没有请求模型，所以工具执行结果和模型是否会正确选择 `greet` 仍然是 `NOT_RUN`。
+看到 `[greet-tool] registered greet`，只证明工具已经进入当前 profile 的注册表。离线检查可以进一步验证执行函数和渲染器，但真实 DSH 实验没有 API Key，没有启动 Web UI，也没有请求模型，所以 DSH runtime 兼容和模型是否会正确选择 `greet` 仍然是 `NOT_RUN`。
 
 ## 官方依据
 
