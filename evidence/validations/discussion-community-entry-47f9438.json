@@ -2,6 +2,6 @@
   "kind": "content-review",
   "result": "PASS",
   "command": "pnpm public-audit && pnpm check",
-  "notes": "已核对官方 Discussions 首页、Discussion #12 欢迎公告、Discussion #14 memory 迁移讨论及当前公开列表；检查入口分类、版本限定、事实/推测边界、内部链接和敏感信息。内容没有把任何讨论回复写成官方兼容性承诺，也没有涉及模型 API 调用。",
-  "checkedAt": "2026-08-13T20:16:50Z"
+  "notes": "已在新的 Discussions 公开列表下复核官方首页、Discussion #12 欢迎公告、Discussion #14 memory 迁移讨论、入口分类、版本限定、事实/推测边界、内部链接和敏感信息。新增讨论不会改变入口卡的范围；内容没有把任何讨论回复写成官方兼容性承诺，也没有涉及模型 API 调用。",
+  "checkedAt": "2026-08-13T20:47:00Z"
 }
