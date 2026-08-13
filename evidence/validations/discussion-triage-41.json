@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check",
+  "notes": "已逐项核对 Discussion #37、#38、#40 的公开标题、正文和评论边界；内容明确区分用户报告、待复核线索与官方解决方案，没有加入模型 API 调用、凭据、私有路径或未经验证的修复命令。",
+  "checkedAt": "2026-08-13T20:42:00Z"
+}
