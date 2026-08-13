@@ -1,0 +1,41 @@
+{
+  "kind": "beginner-entry-recheck",
+  "checkedAt": "2026-08-14T00:38:00Z",
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "result": "PARTIAL",
+  "checks": [
+    {
+      "name": "beginner-entry-document-and-image-links",
+      "command": "pnpm validate:beginner-entry",
+      "status": "PASS"
+    },
+    {
+      "name": "beginner-doctor-static-validation",
+      "command": "pnpm validate:beginner-doctor",
+      "status": "PASS"
+    },
+    {
+      "name": "plugin-doctor-static-validation",
+      "command": "pnpm validate:plugin-doctor",
+      "status": "PASS"
+    },
+    {
+      "name": "hello-plugin-dynamic-install-load-remove",
+      "command": "node labs/hello-plugin/verify.mjs",
+      "status": "BLOCKED_NETWORK",
+      "detail": "当前本机在探针的 npx --version 阶段超时；随后对 npm registry 的直接 DNS 请求得到 ENOTFOUND registry.npmjs.org。没有把网络/registry 阻塞写成插件失败，也没有把本轮写成动态通过。"
+    }
+  ],
+  "scope": [
+    "完全新手的 Node.js、终端、npx、Web UI 和插件路径",
+    "11 张本地截图/示例图及其证据边界",
+    "无 API Key 的默认路线"
+  ],
+  "credentialBoundary": "未使用、未保存、未展示任何 API Key；没有发起模型请求。",
+  "nextAction": "npm registry 可达后重新运行 node labs/hello-plugin/verify.mjs，并记录新的动态回执。"
+}
