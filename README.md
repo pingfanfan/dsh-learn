@@ -78,6 +78,7 @@ pnpm public-audit
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
 - 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
 - Discussions 新问题分流卡：[content/canonical/discussion-triage-41.md](content/canonical/discussion-triage-41.md)。
+- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-revision-20260813.md](content/canonical/dsh-discussions-revision-20260813.md)；它只记录列表变化，不把用户报告写成官方修复。
 - 国产模型与网关矩阵：[labs/provider-matrix/README.md](labs/provider-matrix/README.md)。
 - 第三方插件迁移诊所：[content/canonical/plugin-migration-clinic-47f9438.md](content/canonical/plugin-migration-clinic-47f9438.md)。
 - 扩展点中文能力地图：[content/canonical/extension-map-47f9438.md](content/canonical/extension-map-47f9438.md)。

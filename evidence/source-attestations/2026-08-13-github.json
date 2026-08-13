@@ -3,5 +3,30 @@
     "id": "deepseek-harness-head",
     "revision": "47f943859bef60e4160492346772ded9b24f765a",
     "observedAt": "2026-08-13T12:00:00.000Z"
+  },
+  {
+    "id": "dsh-plugin-check-head",
+    "revision": "636c1dbcf113b041f166fc64db88d0d4efc25762",
+    "observedAt": "2026-08-13T23:55:00.000Z"
+  },
+  {
+    "id": "dsh-plugin-dev-head",
+    "revision": "414602aaf41aad806a45aa9bcd0ddf8ba9d06a53",
+    "observedAt": "2026-08-13T23:55:00.000Z"
+  },
+  {
+    "id": "dsh-explain-head",
+    "revision": "ed25029189db2c5d1a9a1f80ac6af4609431efc2",
+    "observedAt": "2026-08-13T23:55:00.000Z"
+  },
+  {
+    "id": "plugin-registry-head",
+    "revision": "6dab4de27cde6d63094ead94ec3c98a8b2332a89",
+    "observedAt": "2026-08-13T23:55:00.000Z"
+  },
+  {
+    "id": "dsh-101-head",
+    "revision": "1876b9aadc759a8e0a4d76c62a2207233d08bb29",
+    "observedAt": "2026-08-13T23:55:00.000Z"
   }
 ]

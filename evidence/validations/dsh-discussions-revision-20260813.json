@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check",
+  "notes": "事实卡已按当前 Discussions revision ee3d0396 复核；正文明确区分列表变化、用户报告和官方修复，不制造 #42 或新功能结论，链接、版本基线、内部引用和敏感信息边界通过检查。",
+  "checkedAt": "2026-08-13T23:59:30.000Z"
+}

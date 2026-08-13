@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "node scripts/validate-discussion-kit.mjs content/canonical/discussion-minimal-repro-kit.md && pnpm public-audit && pnpm check",
+  "notes": "在 Discussions revision ee3d0396 下复测标题、Markdown 结构、代码块闭合、版本边界、最小复现字段、脱敏提醒、双语模板与官方来源；当前公开列表仍为 #12 至 #41，内容没有凭据、私密日志或未经证实的具体缺陷结论。",
+  "checkedAt": "2026-08-13T23:59:30.000Z"
+}

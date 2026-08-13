@@ -1,0 +1,27 @@
+[
+  {
+    "id": "deepseek-harness-contribution-policy",
+    "revision": "9cd02c5b784b4a616cff9421defd688e420b35b7bf466f8908cecd0282a2aab6",
+    "observedAt": "2026-08-13T23:58:00.000Z"
+  },
+  {
+    "id": "deepseek-harness-architecture",
+    "revision": "780397de376e4c53170ea7deb56915cf90e5d6605b5f685e6c21e49a3ec9937a",
+    "observedAt": "2026-08-13T23:58:00.000Z"
+  },
+  {
+    "id": "deepseek-harness-cordis-primer",
+    "revision": "bfebf7e83867cb6eac7b48f060bb0fc2db28f8e1aa45f3ff018f3cde1c521ad3",
+    "observedAt": "2026-08-13T23:58:00.000Z"
+  },
+  {
+    "id": "deepseek-harness-python-sdk",
+    "revision": "ab1202bf2b2ebe8ed3af02bf7d5a6cc2db545703868a2d01c96824f91edc1cea",
+    "observedAt": "2026-08-13T23:58:00.000Z"
+  },
+  {
+    "id": "deepseek-harness-sandbox",
+    "revision": "362ee87f3cb94fcad3a6cc3951afb3650bce66fb5db7495fda20a2ebb00e6964",
+    "observedAt": "2026-08-13T23:58:00.000Z"
+  }
+]

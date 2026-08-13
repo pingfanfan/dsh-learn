@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check",
+  "notes": "在 Discussions revision ee3d0396 下复核官方首页、Discussion #12 欢迎公告、Discussion #14 memory 迁移讨论、入口分类、版本限定、事实/推测边界、内部链接和敏感信息；当前 #12 至 #41 的列表变化不改变入口卡范围，内容没有把讨论回复写成官方兼容性承诺，也没有涉及模型 API 调用。",
+  "checkedAt": "2026-08-13T23:59:30.000Z"
+}

@@ -1,0 +1,55 @@
+{
+  "claim": "截至 2026-08-13，DeepSeek Harness 官方 Discussions API 当前仍返回 30 条公开讨论，编号范围为 #12 至 #41；这次 revision 变化来自公开讨论内容或更新时间变化，不是出现了 #42 之后的新条目。#14、#37、#38、#40 等与用户行动有关的讨论仍在，现有社区入口卡、最小复现工具包和问题分流卡的事实边界仍然成立，因此本次只需要复测旧资产，不应凭空新增热点结论。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+      "title": "DeepSeek Harness Discussions 当前公开列表",
+      "kind": "official",
+      "accessedAt": "2026-08-13T23:59:30.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/14",
+      "title": "关于 memory 迁移的官方 Discussions 讨论",
+      "kind": "official",
+      "accessedAt": "2026-08-13T23:59:30.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/37",
+      "title": "Windows 11 与 Firefox 目录选择对话框问题",
+      "kind": "official",
+      "accessedAt": "2026-08-13T23:59:30.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/38",
+      "title": "Windows 目录选择器无法打开文件夹",
+      "kind": "official",
+      "accessedAt": "2026-08-13T23:59:30.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/40",
+      "title": "会话归档后的查看与恢复问题",
+      "kind": "official",
+      "accessedAt": "2026-08-13T23:59:30.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions=ee3d03969f2c4df521d24b3b24e42d8ccc97e94f0449bc06440f88247b3031e5"
+  },
+  "reproduction": {
+    "environment": "GitHub public API and public Discussions pages; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/14",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/37",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/38",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/40"
+    ],
+    "result": "PASS",
+    "notes": "连接器返回 #12 至 #41，未发现 #42 之后的新条目；当前公开标题、环境和错误边界仍与现有三项社区资产覆盖范围一致。没有调用模型 API，也没有把讨论回复解释为官方修复或兼容性承诺。"
+  },
+  "confidence": 97
+}
