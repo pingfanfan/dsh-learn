@@ -70,5 +70,50 @@
     "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/topics",
     "sourceId": "deepseek-ai/deepseek-harness/topics",
     "enabled": true
+  },
+  {
+    "id": "dsh-plugin-check-head",
+    "label": "dsh-plugin-check HEAD",
+    "kind": "github-head",
+    "url": "https://api.github.com/repos/omdsh-dev/dsh-plugin-check/commits/main",
+    "sourceId": "omdsh-dev/dsh-plugin-check",
+    "enabled": true,
+    "scope": "ecosystem"
+  },
+  {
+    "id": "dsh-plugin-dev-head",
+    "label": "dsh-plugin-dev HEAD",
+    "kind": "github-head",
+    "url": "https://api.github.com/repos/omdsh-dev/dsh-plugin-dev/commits/main",
+    "sourceId": "omdsh-dev/dsh-plugin-dev",
+    "enabled": true,
+    "scope": "ecosystem"
+  },
+  {
+    "id": "dsh-explain-head",
+    "label": "dsh-explain HEAD",
+    "kind": "github-head",
+    "url": "https://api.github.com/repos/yuezengwu/dsh-explain/commits/main",
+    "sourceId": "yuezengwu/dsh-explain",
+    "enabled": true,
+    "scope": "ecosystem"
+  },
+  {
+    "id": "plugin-registry-head",
+    "label": "DSH plugin-registry HEAD",
+    "kind": "github-head",
+    "url": "https://api.github.com/repos/vlln/plugin-registry/commits/main",
+    "sourceId": "vlln/plugin-registry",
+    "enabled": true,
+    "scope": "ecosystem"
+  },
+  {
+    "id": "dsh-101-head",
+    "label": "dsh-101 HEAD",
+    "kind": "github-head",
+    "url": "https://api.github.com/repos/bill9109/dsh-101/commits/main",
+    "sourceId": "bill9109/dsh-101",
+    "enabled": true,
+    "scope": "ecosystem"
   }
 ]
