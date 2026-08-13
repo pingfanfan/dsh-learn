@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "dshBaseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "pythonPackage": "deepseek-harness-sdk"
+  },
+  "checks": [
+    { "name": "official-install-shape", "status": "DOC_CONFIRMED" },
+    { "name": "isolated-workspace", "status": "RECIPE_REQUIRED" },
+    { "name": "session-log-boundary", "status": "RECIPE_REQUIRED" },
+    { "name": "danger-full-access", "status": "DOC_CONFIRMED" },
+    { "name": "model-request", "status": "NOT_RUN" },
+    { "name": "provider-keyed-smoke", "status": "NOT_RUN" },
+    { "name": "headless-acp-runtime", "status": "NOT_RUN" }
+  ],
+  "preflight": {
+    "command": "python3 labs/python-sdk-safety/preflight.py --workspace <disposable-workspace> --session-root <private-session-root> --session-id task-001",
+    "sideEffects": ["creates or tightens session-root permissions to 0700"],
+    "modelRequest": "NEVER"
+  }
+}
+
