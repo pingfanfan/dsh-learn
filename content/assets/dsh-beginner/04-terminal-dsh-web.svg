@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f4f0e8"/>
+  <rect x="64" y="56" width="1152" height="608" rx="22" fill="#17222b"/>
+  <circle cx="104" cy="96" r="10" fill="#ff6b5f"/><circle cx="138" cy="96" r="10" fill="#f7c955"/><circle cx="172" cy="96" r="10" fill="#54c778"/>
+  <text x="224" y="104" fill="#b9c7d1" font-size="24" font-family="Arial, sans-serif">Terminal · 启动 DSH</text>
+  <text x="112" y="196" fill="#8ee28e" font-size="29" font-family="Menlo, Monaco, monospace">$ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web</text>
+  <text x="112" y="276" fill="#b9c7d1" font-size="27" font-family="Menlo, Monaco, monospace">Starting DeepSeek Harness...</text>
+  <text x="112" y="338" fill="#f4f7f8" font-size="30" font-family="Menlo, Monaco, monospace">http://127.0.0.1:3080</text>
+  <text x="112" y="456" fill="#f7c955" font-size="26" font-family="Arial, sans-serif">保持这个窗口打开，再用浏览器打开上面的地址</text>
+  <text x="112" y="510" fill="#b9c7d1" font-size="23" font-family="Arial, sans-serif">这是示例图，第一次下载依赖时可能需要等待</text>
+</svg>

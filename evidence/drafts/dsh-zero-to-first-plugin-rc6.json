@@ -1,0 +1,61 @@
+{
+  "claim": "DeepSeek Harness 官方 README 要求先安装 Node.js，并提供 npx 启动 Web UI 的入口，默认地址为 http://127.0.0.1:3080；官方插件教程进一步提供 bundle、profile、dsh plugin add、配置导出、启动和移除流程。dsh-learn 将这些内容重写为完全新手路径，并用本地示意图和官方文档截图降低理解成本。hello-plugin 的无 API Key 安装、加载和移除已有真实验证记录，tool-plugin 的静态检查通过但真实探针未因 npm registry 超时而标记通过。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness 官方 README：Node.js、npx 启动与 Web UI 地址",
+      "kind": "official",
+      "accessedAt": "2026-08-13T22:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/publish.zh.md",
+      "title": "DeepSeek Harness 官方教程：打包与安装插件",
+      "kind": "official",
+      "accessedAt": "2026-08-13T22:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/tool.zh.md",
+      "title": "DeepSeek Harness 官方教程：开发工具",
+      "kind": "official",
+      "accessedAt": "2026-08-13T22:00:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/46",
+      "title": "官方 Discussions：无法启动 dsh",
+      "kind": "community",
+      "accessedAt": "2026-08-13T20:59:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/107",
+      "title": "官方 Discussions：Windows 中文路径截断",
+      "kind": "community",
+      "accessedAt": "2026-08-13T20:59:00.000Z"
+    },
+    {
+      "url": "https://nodejs.org/en/download/",
+      "title": "Node.js 官方下载页",
+      "kind": "official",
+      "accessedAt": "2026-08-13T22:00:00.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; browser screenshot capture; Node.js v25.8.2 for existing hello-plugin record; no API key",
+    "commands": [
+      "pnpm validate:beginner-entry",
+      "pnpm validate:plugin-lab",
+      "pnpm validate:tool-plugin-lab",
+      "pnpm check",
+      "pnpm public-audit"
+    ],
+    "result": "PASS",
+    "notes": "官方 README 与插件教程截图来自固定 commit 页面；终端图为明确标注的示意图。hello-plugin 的无 Key 真实验证沿用既有通过回执，tool-plugin 的真实 npx 探针因 npm registry 下载阶段超时而未标成通过。文章不启动模型请求，不读取或保存任何 API Key。"
+  },
+  "confidence": 98
+}

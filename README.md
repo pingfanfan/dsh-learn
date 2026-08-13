@@ -52,6 +52,7 @@ pnpm public-audit
 - npm registry latest：`0.1.0-rc.6`。
 - rc.6 无 Key CLI 冒烟实验：[labs/rc6-cli-smoke/README.md](labs/rc6-cli-smoke/README.md)。
 - 无 Key 第一个可安装插件实验：[labs/hello-plugin/README.md](labs/hello-plugin/README.md)。
+- 完全新手安装、启动 Web UI 和第一个插件：[content/canonical/dsh-zero-to-first-plugin-rc6.md](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-zero-to-first-plugin-rc6.md](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
 - DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
 - DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
@@ -108,6 +109,8 @@ Discussion 工具包还可以单独运行 `pnpm validate:discussion`，检查版
 Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线、提供方覆盖、`NOT_RUN` 边界和凭据泄漏模式。
 
 第一个插件实验可以单独运行 `pnpm validate:plugin-lab` 做静态检查，再运行 `node labs/hello-plugin/verify.mjs` 在临时 `DSH_HOME` 中真实完成本地 bundle 安装、加载和移除；该探针不读取现有凭据，不发起模型请求。
+
+零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界。
 
 启动与插件安装排障教程复用同一份无 Key 实验，并把 CLI、profile、bundle、插件加载、Web UI、模型和工具调用分层；官方 Discussions 中的真实启动、Node、路径和全局安装问题只作为公开排障信号，不被写成同一个故障。
 

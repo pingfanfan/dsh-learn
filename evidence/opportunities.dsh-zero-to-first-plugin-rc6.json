@@ -1,0 +1,24 @@
+[
+  {
+    "title": "为完全新手补齐 DSH 从安装 Node.js 到第一个插件的带截图入口",
+    "summary": "官方资料已经覆盖 Node.js、npx 启动 Web UI、插件开发和 bundle 安装，但默认读者会使用终端与 CLI。dsh-learn 增加零基础解释、官方页面截图、终端示意图、无 Key 插件实验和常见错误分层，让新用户可以从安装到第一次成功加载插件。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+    "observedAt": "2026-08-13T22:15:00.000Z",
+    "directDshAction": true,
+    "audience": ["完全零基础的新用户", "DSH 新用户", "插件初学者", "中文教程读者"],
+    "proposedAssets": ["零基础安装教程", "官方文档截图", "终端步骤示意图", "无 Key 插件入口", "新手 FAQ"],
+    "signals": {
+      "userImpact": 100,
+      "freshness": 96,
+      "compounding": 100,
+      "ecosystemValue": 94,
+      "evidenceConfidence": 98,
+      "executability": 100,
+      "duplicatePenalty": 0,
+      "riskPenalty": 0,
+      "maintenancePenalty": 3
+    },
+    "risk": "LOW"
+  }
+]

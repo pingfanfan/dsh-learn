@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f4f0e8"/>
+  <rect x="64" y="56" width="1152" height="608" rx="22" fill="#17222b"/>
+  <circle cx="104" cy="96" r="10" fill="#ff6b5f"/><circle cx="138" cy="96" r="10" fill="#f7c955"/><circle cx="172" cy="96" r="10" fill="#54c778"/>
+  <text x="224" y="104" fill="#b9c7d1" font-size="24" font-family="Arial, sans-serif">Terminal · 插件实验</text>
+  <text x="112" y="182" fill="#8ee28e" font-size="28" font-family="Menlo, Monaco, monospace">$ node labs/hello-plugin/verify.mjs</text>
+  <text x="112" y="248" fill="#b9c7d1" font-size="27" font-family="Menlo, Monaco, monospace">version check       PASS</text>
+  <text x="112" y="302" fill="#b9c7d1" font-size="27" font-family="Menlo, Monaco, monospace">profile install     PASS</text>
+  <text x="112" y="356" fill="#b9c7d1" font-size="27" font-family="Menlo, Monaco, monospace">plugin load         PASS</text>
+  <text x="112" y="410" fill="#b9c7d1" font-size="27" font-family="Menlo, Monaco, monospace">plugin remove       PASS</text>
+  <text x="112" y="520" fill="#f7c955" font-size="26" font-family="Arial, sans-serif">这一步不调用模型，也不需要 API Key</text>
+  <text x="112" y="568" fill="#b9c7d1" font-size="23" font-family="Arial, sans-serif">示例输出来自 dsh-learn 的无 Key 实验设计</text>
+</svg>

@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "python3 /Users/pingfan/.codex/skills/polish-article/scripts/check_tone_cliches.py content/canonical/dsh-zero-to-first-plugin-rc6.md && python3 /Users/pingfan/.codex/skills/polish-article/scripts/check_period_density.py content/canonical/dsh-zero-to-first-plugin-rc6.md && pnpm validate:beginner-entry && pnpm validate:plugin-lab && pnpm validate:tool-plugin-lab && pnpm check && pnpm public-audit",
+  "notes": "零基础教程通过口吻、句子长度、正文密度、图片存在性、规范稿与 GitHub 渠道稿图片路径、编辑附录隔离、版本命令、无 Key 边界和公开审计。官方页面截图来自固定 commit。hello-plugin 无 Key 真实验证沿用既有回执；tool-plugin 静态检查通过，真实下载探针因 npm registry 超时未标成通过；知乎未发布。",
+  "checkedAt": "2026-08-13T22:25:00.000Z"
+}

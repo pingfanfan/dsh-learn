@@ -1,0 +1,14 @@
+{
+  "repository": "deepseek-ai/deepseek-harness",
+  "commit": "47f943859bef60e4160492346772ded9b24f765a",
+  "package": "@deepseek-ai/dsh",
+  "version": "0.1.0-rc.6",
+  "environment": "macOS; Node.js v25.8.2; temporary DSH_HOME",
+  "apiKey": "NOT_REQUIRED",
+  "modelRequest": "NOT_RUN",
+  "webUi": "NOT_RUN",
+  "toolInvocation": "NOT_RUN",
+  "registration": "PASS",
+  "thirdPartyPackages": "NONE",
+  "notes": "The lab verifies bundle installation, profile config, tools injection, tool schema visibility, and plugin teardown. It does not ask a model to call greet."
+}

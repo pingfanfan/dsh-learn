@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f4f0e8"/>
+  <rect x="64" y="56" width="1152" height="608" rx="22" fill="#17222b"/>
+  <circle cx="104" cy="96" r="10" fill="#ff6b5f"/><circle cx="138" cy="96" r="10" fill="#f7c955"/><circle cx="172" cy="96" r="10" fill="#54c778"/>
+  <text x="224" y="104" fill="#b9c7d1" font-size="24" font-family="Arial, sans-serif">Terminal · 示例输出</text>
+  <text x="112" y="190" fill="#8ee28e" font-size="30" font-family="Menlo, Monaco, monospace">$ node --version</text>
+  <text x="112" y="242" fill="#f4f7f8" font-size="30" font-family="Menlo, Monaco, monospace">v22.19.0</text>
+  <text x="112" y="330" fill="#8ee28e" font-size="30" font-family="Menlo, Monaco, monospace">$ npm --version</text>
+  <text x="112" y="382" fill="#f4f7f8" font-size="30" font-family="Menlo, Monaco, monospace">10.8.2</text>
+  <text x="112" y="500" fill="#f7c955" font-size="26" font-family="Arial, sans-serif">只要能看到版本号，就完成了第一步</text>
+  <text x="112" y="548" fill="#b9c7d1" font-size="23" font-family="Arial, sans-serif">这是示例图，版本号会随 Node.js 安装版本变化</text>
+</svg>
