@@ -67,6 +67,7 @@
 - [x] `status` 会展示下一项工作及其基础分和真实反馈理由。
 - [x] 已产生真实传播样本：微博六条已回执内容完成公开阅读/互动核对，新增事实卡为 5 次阅读、0 转发、0 评论、0 赞；既有 Cordis 为 122 次阅读、Python SDK 为 89 次阅读/1 赞、会话搜索为 110 次阅读/1 评论/1 赞；知乎新手入口为 2 赞同/1 收藏、Cordis 为 1 赞同/2 收藏，其余本轮核对文章暂无评论。数据已写入对应 Asset 指标；没有把页面未显示的阅读量猜入账本。
 - [x] AgentBridge 已支持从 `state/private/interactions/<channel>/<publish-job-id>.json` 读取渠道 Agent 回传的公开互动快照，并复用 job 绑定、凭据拦截、remote ID 去重和指标账本；平台实时 `fetchInteractions` 连接器仍需渠道授权。
+- [x] 同一资产/渠道累计两条评论或提及时，互动正文会保留在私有状态并自动生成去重的 `feedback` Opportunity，后续仍必须重新建立 EvidencePack；重复采集不会制造重复机会。
 - [x] 已补齐跨渠道发布与不确定远端状态：`PUBLISHED` 资产可以在不撤销既有回执的前提下补发其他渠道；`remote-unknown` 可把已尝试但无明确公开结果的 `OUTBOX/SENDING` 任务安全转入 `UNKNOWN_REMOTE_STATE`，再由远端核验决定回执或可重试。
 
 ## 当前下一项
