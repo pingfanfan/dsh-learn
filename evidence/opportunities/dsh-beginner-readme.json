@@ -1,0 +1,24 @@
+[
+  {
+    "title": "把 dsh-learn GitHub 首页改成完全新手可执行入口",
+    "summary": "官方入口把安装、Web UI、profile、bundle 和插件文档分散在多个页面；在母仓 README 首屏提供下载、环境检查、固定版本启动、跳过 API Key 和无 Key 插件验证路径，降低新用户从搜索结果进入后的第一次行动成本。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+    "observedAt": "2026-08-13T23:00:00.000Z",
+    "directDshAction": true,
+    "audience": ["完全零基础的新用户", "第一次打开 dsh-learn 的读者", "DSH 插件初学者"],
+    "proposedAssets": ["GitHub 首页新手入口", "固定版本启动命令", "无 Key 插件实验入口"],
+    "signals": {
+      "userImpact": 96,
+      "freshness": 82,
+      "compounding": 98,
+      "ecosystemValue": 88,
+      "evidenceConfidence": 98,
+      "executability": 100,
+      "duplicatePenalty": 0,
+      "riskPenalty": 0,
+      "maintenancePenalty": 3
+    },
+    "risk": "LOW"
+  }
+]

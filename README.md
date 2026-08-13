@@ -2,6 +2,23 @@
 
 `dsh-learn` 是由“平凡心智”主理、Agent 持续维护的 DeepSeek Harness 中文生态入口。它不是一个按天数推进的课程项目，而是一套持续发现机会、验证事实、构建资产、发布内容并从反馈中迭代的运行系统。
 
+## 如果你是第一次接触 DSH
+
+你不需要先会写代码，也不需要先准备 API Key。建议按下面的顺序进入：
+
+1. 阅读[完全新手教程：从安装到第一个插件](content/canonical/dsh-zero-to-first-plugin-rc6.md)，里面有 Node.js、终端、Web UI、首次 API Key 提示和实际界面截图。
+2. 下载本仓库 ZIP，解压后在项目根目录运行 `pnpm beginner:doctor`，先确认 Node.js、npm、npx 和练习文件都在。
+3. 用固定版本启动 DSH：
+
+   ```bash
+   npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
+   ```
+
+4. 浏览器打开 `http://127.0.0.1:3080`。如果第一次看到 `Add an API key to get started`，先点 `Configure later`；这一步只验证页面能否打开，不代表模型已经配置好。
+5. 回到仓库根目录运行 `node labs/hello-plugin/verify.mjs`，在隔离的临时 `DSH_HOME` 中完成第一个插件的安装、加载、配置检查和移除。这个实验会主动排除 API Key，不会发起模型请求。
+
+如果你只想先了解 profile、bundle 和配置树，可以从[无 Key 的隔离 profile 实验](labs/cordis-no-key/README.md)开始；如果你想看完整的插件文件结构，再看[第一个插件实验说明](labs/hello-plugin/README.md)。
+
 ## 当前运行方式
 
 - DSH 是内容边界：每项工作都必须对应一个明确的 DSH 用户动作或工程价值。
