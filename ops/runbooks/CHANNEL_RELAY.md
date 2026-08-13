@@ -32,6 +32,15 @@ pnpm ops receipt <job-id> \
 
 6. 发布后读取阅读、转发、评论和赞，使用一次性 JSON 运行 `measure`。没有看到数字时记录为 0，不要把页面加载失败当成真实互动。
 
+如果点击发送后页面状态不明确，先不要重发，也不要写 `receipt`。确认远端 URL 是否出现正文；若公开页面重定向、404 或仍只是编辑草稿，可把这次外部结果标记为不确定，再在核验远端不存在后安全转为可重试：
+
+```bash
+pnpm ops remote-unknown <publish-job-id> --reason "公开 URL 未出现正文，编辑器状态不确定"
+pnpm ops confirm-not-found <publish-job-id> --reason "已核验公开 URL 不存在，未重复发送"
+```
+
+`remote-unknown` 只接受已经进入 `OUTBOX` 或 `SENDING` 的任务，并拦截凭据形态的原因文本；`confirm-not-found` 不删除任何记录，只把当前绑定任务变成 `RETRYABLE_FAILED`。如果远端后来找到了正文，应直接用真实 URL 和 remote ID 记录 `receipt`，不要先确认不存在。
+
 ## 3. 知乎或其他渠道
 
 沿用相同的四步证据链：确认登录态、确认正文、确认远端 URL、记录真实指标。知乎文章/回答的 URL 和内容形态必须从当前页面读取，不能根据草稿标题猜 URL。
