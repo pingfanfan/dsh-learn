@@ -1,0 +1,49 @@
+{
+  "claim": "截至 2026-08-13，DeepSeek Harness 官方 Discussions 新增了 Windows 11/Firefox 目录选择窗口层级、Windows 目录选择器依赖加载失败和归档会话查看/恢复等用户报告；这些内容支持制作一张问题分流与发帖准备卡，但不支持宣称浏览器兼容性结论、koffi 修复方案或归档恢复方案已经得到官方确认。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/37",
+      "title": "Windows 11 下 Firefox 的目录选择对话框问题",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/38",
+      "title": "Windows 目录选择器无法打开文件夹",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/40",
+      "title": "会话归档后无法查看或恢复",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions",
+      "title": "DeepSeek Harness 官方 Discussions 首页",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified the public Discussions JSON/pages; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/37",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/38",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/40",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/38/comments",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/40/comments"
+    ],
+    "result": "PASS",
+    "notes": "仅核对公开讨论的标题、环境、错误边界和评论上下文；没有在本机复现 Windows/Firefox 行为，没有调用模型 API，没有把用户评论写成维护者确认。"
+  },
+  "confidence": 96
+}
