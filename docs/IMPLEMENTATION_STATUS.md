@@ -12,6 +12,7 @@
 - [x] rc.6 无 Key CLI 冒烟实验已经通过。
 - [x] 官方 Discussions 中文最小复现工具包已经完成 EvidencePack、专用内容验证和 GitHub 真实发布回执。
 - [x] 官方 Discussions 社区入口卡已经完成 Discussions 一手证据、专用内容验证，并获得 GitHub 与微博真实发布回执（知乎仍未发布）。
+- [x] 官方 Discussions 新问题分流卡已经完成 #37、#38、#40 一手证据、专用内容验证和 GitHub 真实发布回执；微博稿已通过写作门禁并暂留 outbox，知乎未发布。
 - [x] 国产模型与网关矩阵已经完成固定基线、兼容性 JSON、无 Key 边界和专用验证器；具体厂商 keyed smoke 仍明确为 `NOT_RUN`。
 - [x] 第三方插件迁移诊所已经完成官方移除说明核验、迁移报告模板、专用验证器和 GitHub 真实发布回执。
 - [x] 扩展点中文能力地图已经完成架构/ Cordis 证据核验、需求决策树、事件语义、稳定性标记和 GitHub 真实发布回执。
@@ -57,7 +58,7 @@
 - [x] 微博“平凡ZhiH”和知乎创作中心浏览器登录态已确认。
 - [x] GitHub 首次全仓同步已通过连接器完成；同步前运行 `public-audit`，未使用受阻的本地 SSH 推送路径。
 - [ ] 公众号后台被浏览器安全策略禁止访问，未尝试绕过。
-- [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；当前已同步 132 个经过公开审计的文件。公众号仍未发布；微博已完成七条、知乎已完成五篇浏览器发布，最新 Discussions 社区入口卡微博回执为 `https://weibo.com/7621278794/RdhRIu2qL`，知乎仍按人工同意闸门保持未发布；AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
+- [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；当前已同步 140 个经过公开审计的文件。公众号仍未发布；微博已完成七条，新增 Discussions 分流卡因上一条原创微博发布不久暂留 outbox，知乎仍按人工同意闸门保持未发布；GitHub 连接器已回写官方 HEAD、Discussions 和生态仓库 HEAD 的公开 attestation，本地仍有 npm、官方文档哈希和 topics 源的网络错误，未被误记为“无变化”；AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
 - [ ] X 按计划保持禁用。
 
 ## 能力门 D
@@ -67,13 +68,13 @@
 - [x] 短期触达与长期使用、引用、上游回应分开计算。
 - [x] `analyze` 会在样本成熟后以有限幅度调整机会排序。
 - [x] `status` 会展示下一项工作及其基础分和真实反馈理由。
-- [x] 已产生真实传播样本：微博七条已回执内容完成公开阅读/互动核对，既有新增事实卡为 5 次阅读、0 转发、0 评论、0 赞；最新 Discussions 社区入口卡刚完成发布，尚未写入猜测性指标；既有 Cordis 为 122 次阅读、Python SDK 为 89 次阅读/1 赞、会话搜索为 110 次阅读/1 评论/1 赞；知乎新手入口为 2 赞同/1 收藏、Cordis 为 1 赞同/2 收藏，其余本轮核对文章暂无评论。数据已写入对应 Asset 指标；没有把页面未显示的阅读量猜入账本。
+- [x] 已产生真实传播样本：微博七条已回执内容完成公开阅读/互动核对，既有新增事实卡为 5 次阅读、0 转发、0 评论、0 赞；社区入口卡刚完成发布，尚未写入猜测性指标；新问题分流卡尚未发布微博；既有 Cordis 为 122 次阅读、Python SDK 为 89 次阅读/1 赞、会话搜索为 110 次阅读/1 评论/1 赞；知乎新手入口为 2 赞同/1 收藏、Cordis 为 1 赞同/2 收藏，其余本轮核对文章暂无评论。数据已写入对应 Asset 指标；没有把页面未显示的阅读量猜入账本。
 - [x] AgentBridge 已支持从 `state/private/interactions/<channel>/<publish-job-id>.json` 读取渠道 Agent 回传的公开互动快照，并复用 job 绑定、凭据拦截、remote ID 去重和指标账本；平台实时 `fetchInteractions` 连接器仍需渠道授权。
 - [x] 同一资产/渠道累计两条评论或提及时，互动正文会保留在私有状态并自动生成去重的 `feedback` Opportunity，后续仍必须重新建立 EvidencePack；重复采集不会制造重复机会。
 - [x] 已补齐跨渠道发布与不确定远端状态：`PUBLISHED` 资产可以在不撤销既有回执的前提下补发其他渠道；`remote-unknown` 可把已尝试但无明确公开结果的 `OUTBOX/SENDING` 任务安全转入 `UNKNOWN_REMOTE_STATE`，再由远端核验决定回执或可重试。
 
 ## 当前下一项
 
-总控队列已完成十二项高分机会的首个规范资产：官方变更事实站、Discussions 最小复现工具包、官方 Discussions 社区入口卡、国产模型/网关矩阵、第三方插件迁移诊所、扩展点中文能力地图、安全边界实测手册、Cordis 无 Key mini-lab、Python SDK 安全自动化配方、DSH 无 Key 新手入口、DSH plugin 术语 FAQ，以及官方会话内容搜索 opt-in 教程。其中 FAQ 已在 GitHub、微博和知乎获得真实回执；Cordis mini-lab 已在 GitHub、微博和知乎获得真实回执；Python SDK 安全配方已在 GitHub、微博和知乎获得真实回执；中文 Discussions 模板、社区入口卡、插件迁移诊所、安全边界手册、provider 矩阵、扩展点能力地图和 DSH 无 Key 新手入口已在 GitHub 获得真实回执，其中社区入口卡已获得微博回执（`https://weibo.com/7621278794/RdhRIu2qL`），知乎未发布。新手入口也已获得知乎文章回执。会话内容搜索教程已获得 GitHub 回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-session-content-search-opt-in-47f9438.md`）、微博回执（`https://weibo.com/7621278794/RdhnpeP8j`）和知乎文章回执（`https://zhuanlan.zhihu.com/p/2071432880262329422`）。公众号不可用。旧版扩展点地图和旧版新手 GitHub outbox 的未知远端状态已通过渠道核验后安全归档，并按当前 revision 发布了清理后的公开版本。除已记录的真实回执外，本地 `MOCK`、Agent outbox 和 `DRAFT_ONLY` 都只证明工作流或待办已生成，不属于公开发布。
+总控队列已完成十三项高分机会的首个规范资产：官方变更事实站、Discussions 最小复现工具包、官方 Discussions 社区入口卡、Discussions 新问题分流卡、国产模型/网关矩阵、第三方插件迁移诊所、扩展点中文能力地图、安全边界实测手册、Cordis 无 Key mini-lab、Python SDK 安全自动化配方、DSH 无 Key 新手入口、DSH plugin 术语 FAQ，以及官方会话内容搜索 opt-in 教程。其中 FAQ 已在 GitHub、微博和知乎获得真实回执；Cordis mini-lab 已在 GitHub、微博和知乎获得真实回执；Python SDK 安全配方已在 GitHub、微博和知乎获得真实回执；中文 Discussions 模板、社区入口卡、Discussions 新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、扩展点能力地图和 DSH 无 Key 新手入口已在 GitHub 获得真实回执，其中社区入口卡已获得微博回执（`https://weibo.com/7621278794/RdhRIu2qL`），新问题分流卡微博稿已过门禁但暂未发布，知乎未发布。新手入口也已获得知乎文章回执。会话内容搜索教程已获得 GitHub 回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-session-content-search-opt-in-47f9438.md`）、微博回执（`https://weibo.com/7621278794/RdhnpeP8j`）和知乎文章回执（`https://zhuanlan.zhihu.com/p/2071432880262329422`）。公众号不可用。旧版扩展点地图和旧版新手 GitHub outbox 的未知远端状态已通过渠道核验后安全归档，并按当前 revision 发布了清理后的公开版本。除已记录的真实回执外，本地 `MOCK`、Agent outbox 和 `DRAFT_ONLY` 都只证明工作流或待办已生成，不属于公开发布。
 - [x] DSH 无 Key 新手入口已完成终稿润色、rc.6 固定证据、GitHub/知乎/微博真实发布回执和公众号渠道稿；模型、provider、Web UI 与第三方插件仍明确未覆盖。
 - [x] DSH plugin 术语 FAQ 已完成当前官方 README 与固定 commit 的证据绑定；没有安装未知第三方包，也没有把 topic、安装成功或未运行实验写成运行时兼容。
