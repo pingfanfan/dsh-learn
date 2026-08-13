@@ -31,8 +31,9 @@
 - [x] 快照与追加式账本采用事务日志恢复；`doctor` 检查完整 revision 连续性。
 - [x] 内容哈希、渠道去重、更新稿替代与未知远端状态保护。
 - [x] 上游 HEAD/npm/贡献政策、架构/Cordis/Python SDK/sandbox 文档、Discussions 和插件 topic 游标，以及固定 commit URL 到逻辑文档源的自动失效映射。
+- [x] 来源定义支持 `official`、`ecosystem`、`community` scope；已把 `dsh-plugin-check`、`dsh-plugin-dev`、`dsh-explain`、`plugin-registry` 和 `dsh-101` 的公开 HEAD 纳入生态监控，生态变化生成 `ecosystem` 机会并使用独立评分信号。
 - [x] `sourceHealth.errors` 会持久化部分源扫描失败并在恢复后清除；网络故障不会伪装成“上游无变化”，也不会阻塞本地维护。
-- [x] 官方源扫描对网络错误和 5xx 按 3 次指数退避重试，永久 4xx 不重试，并在错误中保留源 ID、HTTP 类型和尝试次数。
+- [x] 来源扫描对网络错误和 5xx 按 3 次指数退避重试，永久 4xx 不重试，并在错误中保留源 ID、HTTP 类型和尝试次数；GitHub API JSON 与 raw 文档共存时使用兼容的 Accept 头。
 - [x] `source-attest` 支持连接器或 Agent 只回写公开 revision，不导入源内容和凭据；只清除已被证明恢复的源错误，并复用同一套游标变化、资产失效和复测机会逻辑。
 - [x] EvidencePack、Asset、PublishJob 运行时校验和凭据拦截。
 - [x] Asset 的 `PASS` 必须绑定内容哈希与显式验证回执，CI 同时运行 TypeScript typecheck。
