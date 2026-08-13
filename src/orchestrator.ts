@@ -1442,6 +1442,9 @@ function sourceReferenceMatches(url: string, sourceId: string): boolean {
     if (parsed.hostname === "github.com" && parts.length >= 5 && parts[2] === "blob") {
       return `${parts[0]}/${parts[1]}/${parts.slice(4).join("/")}` === sourceId;
     }
+    if (parsed.hostname === "github.com" && parts.length >= 3) {
+      return `${parts[0]}/${parts[1]}/${parts.slice(2).join("/")}` === sourceId;
+    }
     if (parsed.hostname === "raw.githubusercontent.com" && parts.length >= 4) {
       return `${parts[0]}/${parts[1]}/${parts.slice(3).join("/")}` === sourceId;
     }
