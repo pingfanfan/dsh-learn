@@ -7,7 +7,7 @@
 你不需要先会写代码，也不需要先准备 API Key。建议按下面的顺序进入：
 
 1. 阅读[完全新手教程：从安装到第一个插件](content/canonical/dsh-zero-to-first-plugin-rc6.md)，里面有 Node.js、终端、Web UI、首次 API Key 提示和实际界面截图。
-2. 下载本仓库 ZIP，解压后在项目根目录运行 `pnpm beginner:doctor`，先确认 Node.js、npm、npx 和练习文件都在。
+2. 下载本仓库 ZIP，解压后在项目根目录运行 `node scripts/beginner-doctor.mjs`，先确认 Node.js、npm、npx 和练习文件都在。这一步只需要 Node.js，不要求你先安装 pnpm。
 3. 用固定版本启动 DSH：
 
    ```bash

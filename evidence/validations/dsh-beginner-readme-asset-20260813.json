@@ -3,5 +3,5 @@
   "result": "PASS",
   "command": "pnpm public-audit && pnpm validate:beginner-entry",
   "notes": "README 首屏的新手入口已核对固定版本启动命令、beginner-doctor、API Key 提示边界、hello-plugin 验证入口和相对链接；没有把 API Key、模型请求或知乎发布写成已完成。公开审计和零基础入口验证通过。",
-  "checkedAt": "2026-08-13T22:15:30.000Z"
+  "checkedAt": "2026-08-13T22:17:12Z"
 }

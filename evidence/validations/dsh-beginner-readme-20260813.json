@@ -30,7 +30,7 @@
   "reproduction": {
     "environment": "dsh-learn workspace; macOS; Node.js v25.8.2; no API key",
     "commands": [
-      "pnpm beginner:doctor",
+      "node scripts/beginner-doctor.mjs",
       "pnpm validate:beginner-entry",
       "node labs/hello-plugin/verify.mjs"
     ],
