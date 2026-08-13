@@ -12,7 +12,7 @@ test("source watch keeps successful observations when another source fails", asy
   await writeFile(join(root, "ops", "sources.json"), JSON.stringify([
     {
       id: "good", label: "good", kind: "npm-latest", url: "https://example.com/good",
-      sourceId: "package", enabled: true,
+      sourceId: "package", enabled: true, scope: "ecosystem",
     },
     {
       id: "bad", label: "bad", kind: "github-head", url: "https://example.com/bad",
@@ -29,6 +29,7 @@ test("source watch keeps successful observations when another source fails", asy
   const result = await observeSources(root, "ops/sources.json", { retryDelayMs: 0 });
   assert.equal(result.observations.length, 1);
   assert.equal(result.observations[0].revision, "1.2.3");
+  assert.equal(result.observations[0].definition.scope, "ecosystem");
   assert.deepEqual(result.errors.map((item) => item.id), ["bad"]);
   assert.match(result.errors[0].error, /failed after 3 attempts: HTTP 503/);
 });
@@ -104,6 +105,7 @@ test("source attestations resolve public revisions without importing fetched con
   const result = await readSourceAttestations(root, "attestations.json");
   assert.equal(result.length, 1);
   assert.equal(result[0].definition.sourceId, "repository");
+  assert.equal(result[0].definition.scope, "official");
   assert.equal(result[0].revision, "abc123");
   assert.equal(result[0].observedAt, "2026-08-13T12:00:00.000Z");
   await writeFile(join(root, "attestations.json"), JSON.stringify([
