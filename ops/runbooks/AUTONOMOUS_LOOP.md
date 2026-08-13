@@ -27,7 +27,7 @@ pnpm ops source-attest evidence/source-attestations/2026-08-13-github.json
 pnpm ops cycle --worker <role-instance>
 ```
 
-带 worker 时，系统使用独占租约和 fencing token 原子领取最高分机会。工作 Agent 必须在每次写回时携带返回的 token 与最新 aggregate revision，旧线程即使稍后恢复也不能覆盖新线程结果。
+带 worker 时，系统使用独占租约和 fencing token 原子领取最高分机会。系统最多允许 4 个活跃工作线程，单个 worker 不能同时持有两项租约。工作 Agent 必须在每次写回时携带返回的 token 与最新 aggregate revision，旧线程即使稍后恢复也不能覆盖新线程结果。
 
 如果只需要生成草稿 outbox，可以单独运行：
 
@@ -36,6 +36,15 @@ pnpm ops dispatch-queued --limit 10
 ```
 
 该命令只接受 `DRAFT_ONLY`，会跳过 `MOCK`、未授权和其他模式。`OUTBOX` 仍然不是公开发布，必须由渠道 Agent 完成真实操作后写回远端回执。
+
+知乎是强制人工批准渠道。即使它处于 `DRAFT_ONLY`，`dispatch-queued` 和 `cycle` 也会跳过知乎任务；只有主理人明确同意后，才可以运行：
+
+```bash
+pnpm ops approve <publish-job-id> --by "主理人" --note "本次明确同意知乎发布"
+pnpm ops dispatch <publish-job-id>
+```
+
+批准只针对指定 PublishJob，不代表后续知乎任务自动获得授权。没有批准记录时，任何 Agent 不得打开知乎发布流程或把任务当作已发布。
 
 ## 工作者写回
 
@@ -82,6 +91,8 @@ pnpm ops fail <opportunity-id> \
 ```
 
 第一次失败把任务放回队列，由另一线程重试。第二次相同工作机会失败后进入 `ARCHIVED`，总控继续处理下一项。租约过期执行同一规则。
+
+渠道发布任务最多进行 2 次外部尝试。达到上限后，`retry` 会将任务记为 `CANCELLED`；如果仍需发布，必须基于当前资产 revision 创建新的 PublishJob，不得无限重试同一远端动作。
 
 ## 空队列行为
 
