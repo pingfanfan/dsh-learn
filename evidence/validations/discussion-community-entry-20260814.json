@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check",
+  "notes": "已复核 Discussion #12、#14、当前分页列表、入口分类、版本限定、事实与推测边界、内部链接和敏感信息；分页列表增长不改变入口卡范围，正文没有把讨论回复写成官方兼容性承诺，也没有涉及模型 API 调用。",
+  "checkedAt": "2026-08-13T23:14:50Z"
+}
