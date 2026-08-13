@@ -941,6 +941,44 @@ test("a fixed-commit document URL maps to its logical watched source", async (t)
   assert.equal((await ops.store.read()).assets[0].status, "STALE");
 });
 
+test("a GitHub Discussions page maps to its API source and invalidates old evidence", async (t) => {
+  const { root, ops } = await fixture(false);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "content", "card.md"), "# Discussions card\n");
+  const discussionEvidence: EvidenceDraft = {
+    ...evidence,
+    claim: "The official Discussions entry is available at the pinned community page.",
+    sources: [{
+      url: "https://github.com/deepseek-ai/deepseek-harness/discussions",
+      title: "DeepSeek Harness Discussions",
+      kind: "official",
+      accessedAt: "2026-08-13T00:00:00.000Z",
+    }],
+  };
+  await ops.scan([{ ...opportunity, title: "Discussions card opportunity" }], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, discussionEvidence);
+  const registered = await ops.registerAsset({
+    opportunityId: claim.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "faq", title: "Discussions card",
+    canonicalPath: "content/card.md",
+  });
+  await ops.readyAsset({
+    assetId: registered.asset.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: registered.opportunity.revision, validation: assetValidation,
+  });
+
+  const impact = await ops.markSourceChanged(
+    "deepseek-ai/deepseek-harness/discussions",
+    "new-discussions-hash",
+  );
+  assert.deepEqual(impact, { evidence: 1, assets: 1, jobs: 0 });
+  const state = await ops.store.read();
+  assert.equal(state.evidence[0].status, "STALE");
+  assert.equal(state.assets[0].status, "STALE");
+});
+
 test("source health retains partial failures and clears after recovery", async (t) => {
   const { root, ops } = await fixture(false);
   t.after(() => rm(root, { recursive: true, force: true }));
