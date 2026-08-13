@@ -16,6 +16,7 @@
 - [x] 扩展点中文能力地图已经完成架构/ Cordis 证据核验、需求决策树、事件语义、稳定性标记和 GitHub 真实发布回执。
 - [x] 安全边界实测手册已经完成沙箱官方契约核验、无 Key 边界、权限探针矩阵、fail-closed 审查清单和 GitHub 真实发布回执。
 - [x] Cordis 无 Key mini-lab 已完成固定版本、隔离 `DSH_HOME`、`--dump-config` 探针、超时保护和 GitHub 真实发布回执，并通过微博与知乎创作中心获得真实文章回执；本轮 npm registry DNS 故障未被误记为 DSH 失败。
+- [x] npm registry 已通过公开 JSON 响应恢复核对，`@deepseek-ai/dsh/latest` 当前为 `0.1.0-rc.6`；对应公开 revision 已写入 `evidence/source-attestations/2026-08-13-npm.json`，未把包内容或凭据写入公开仓。
 - [x] Python SDK 安全自动化配方已完成官方文档核验、隔离 workspace/session preflight、无凭据阻断和 GitHub 真实发布回执；真实模型、provider、Headless/ACP 仍为 `NOT_RUN`。
 - [x] DSH plugin 术语 FAQ 已完成当前 README topic 与固定 commit 旧格式的双源核验，并获得 GitHub/知乎/微博真实回执。
 - [x] 官方会话内容搜索 opt-in 教程已完成 `openAt: never`、`SESSION_QUERY_SEARCH_DISABLED`、base/web bundle 与 session-query 文档的多源核验，并获得 GitHub、知乎和微博真实发布回执。
@@ -52,7 +53,7 @@
 - [x] 微博“平凡ZhiH”和知乎创作中心浏览器登录态已确认。
 - [x] GitHub 首次全仓同步已通过连接器完成；同步前运行 `public-audit`，未使用受阻的本地 SSH 推送路径。
 - [ ] 公众号后台被浏览器安全策略禁止访问，未尝试绕过。
-- [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；当前已同步 126 个经过公开审计的文件。公众号仍未发布；微博已完成五条、知乎已完成五篇浏览器发布，AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
+- [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；当前已同步 127 个经过公开审计的文件。公众号仍未发布；微博已完成五条、知乎已完成五篇浏览器发布，AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
 - [ ] X 按计划保持禁用。
 
 ## 能力门 D
@@ -62,7 +63,7 @@
 - [x] 短期触达与长期使用、引用、上游回应分开计算。
 - [x] `analyze` 会在样本成熟后以有限幅度调整机会排序。
 - [x] `status` 会展示下一项工作及其基础分和真实反馈理由。
-- [x] 已产生首批真实传播样本：微博术语 FAQ 读取 6 次、微博 DSH 无 Key 新手入口读取 1 次，均为 0 转发、0 评论、0 赞；知乎术语 FAQ 初始可见互动为 0 赞同、0 评论、0 收藏。3 个样本已写入对应 Asset 指标；Cordis 新回执尚未有可核验的互动数据，现有样本仍不足以调整机会排序。
+- [x] 已产生真实传播样本：微博五条已回执内容完成公开阅读/互动核对，其中 Cordis 为 122 次阅读、Python SDK 为 89 次阅读/1 赞、会话搜索为 110 次阅读/1 评论/1 赞；知乎新手入口为 2 赞同/1 收藏、Cordis 为 1 赞同/2 收藏，其余本轮核对文章暂无评论。数据已写入对应 Asset 指标；没有把页面未显示的阅读量猜入账本。
 - [x] AgentBridge 已支持从 `state/private/interactions/<channel>/<publish-job-id>.json` 读取渠道 Agent 回传的公开互动快照，并复用 job 绑定、凭据拦截、remote ID 去重和指标账本；平台实时 `fetchInteractions` 连接器仍需渠道授权。
 
 ## 当前下一项
