@@ -53,7 +53,8 @@ async function fixture(githubEnabled = false, adapterLoader?: AdapterLoader): Pr
   const unavailable = { enabled: false, mode: "UNAVAILABLE", reason: "not configured" };
   await writeFile(join(root, "ops", "channels.json"), JSON.stringify({
     github: githubEnabled ? { enabled: true, mode: "DRAFT_ONLY" } : unavailable,
-    weibo: unavailable, zhihu: unavailable, wechat: unavailable,
+    weibo: githubEnabled ? { enabled: true, mode: "DRAFT_ONLY" } : unavailable,
+    zhihu: unavailable, wechat: unavailable,
     x: { enabled: false, mode: "DISABLED", reason: "disabled" },
   }));
   await writeFile(join(root, "AUTONOMOUS_PLAN.md"), "test policy");
@@ -116,6 +117,40 @@ test("verified asset reaches mock channel without pretending to be publicly publ
   assert.equal(state.opportunities[0].status, "READY");
   const duplicate = await ops.queuePublish(ready.asset.id, { local: "content/card.md" });
   assert.equal(duplicate[0].id, job.id);
+});
+
+test("a published asset can add a new channel without invalidating its existing receipt", async (t) => {
+  const { root, ops } = await fixture(true);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "content", "card.md"), "# Published card\n");
+  await writeFile(join(root, "content", "social.md"), "# Social variant\n");
+  await ops.scan([opportunity], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, evidence);
+  const registered = await ops.registerAsset({
+    opportunityId: claim.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "tutorial", title: "Published card",
+    canonicalPath: "content/card.md",
+  });
+  const ready = await ops.readyAsset({
+    assetId: registered.asset.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: registered.opportunity.revision, validation: assetValidation,
+  });
+  const [githubJob] = await ops.queuePublish(ready.asset.id, { github: "content/card.md" });
+  await ops.dispatch(githubJob.id);
+  await ops.recordReceipt(githubJob.id, {
+    remoteId: "github-commit-1",
+    url: "https://github.com/example/repo/blob/main/content/card.md",
+    publishedAt: "2026-08-13T01:00:00.000Z",
+  });
+
+  const [weiboJob] = await ops.queuePublish(ready.asset.id, { weibo: "content/social.md" });
+  assert.equal(weiboJob.status, "QUEUED");
+  const state = await ops.store.read();
+  assert.equal(state.assets[0].status, "PUBLISHED");
+  assert.equal(state.publishJobs.find((job) => job.id === githubJob.id)?.status, "SUCCEEDED");
+  assert.equal(state.publishJobs.find((job) => job.id === weiboJob.id)?.status, "QUEUED");
 });
 
 test("queued dispatcher only writes DRAFT_ONLY outboxes and skips mock jobs", async (t) => {
@@ -298,6 +333,33 @@ test("a published job can be corrected without deleting its receipt history", as
   );
   const state = await ops.store.read();
   assert.equal(state.publishJobs.filter((item) => item.status === "SUCCEEDED").length, 2);
+});
+
+test("a channel agent can explicitly preserve an uncertain external publish state", async (t) => {
+  const { root, ops } = await fixture(true);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "content", "card.md"), "# Uncertain card\n");
+  await ops.scan([opportunity], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, evidence);
+  const registered = await ops.registerAsset({
+    opportunityId: claim.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "tutorial", title: "Uncertain card",
+    canonicalPath: "content/card.md",
+  });
+  const ready = await ops.readyAsset({
+    assetId: registered.asset.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: registered.opportunity.revision, validation: assetValidation,
+  });
+  const [job] = await ops.queuePublish(ready.asset.id, { github: "content/card.md" });
+  await ops.dispatch(job.id);
+  const uncertain = await ops.markRemoteUnknown(job.id, "浏览器已提交，但公开页面尚未确认");
+  assert.equal(uncertain.status, "UNKNOWN_REMOTE_STATE");
+  await assert.rejects(
+    ops.markRemoteUnknown(job.id, `token=${["ghp_", "0123456789012345678901234567890123456789"].join("")}`),
+    /potential secret/,
+  );
 });
 
 test("published interactions are deduplicated and feed durable metrics", async (t) => {
