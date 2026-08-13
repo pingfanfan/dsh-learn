@@ -22,6 +22,8 @@
 
 如果你只想先了解 profile、bundle 和配置树，可以从[无 Key 的隔离 profile 实验](labs/cordis-no-key/README.md)开始；如果你想看完整的插件文件结构，再看[第一个插件实验说明](labs/hello-plugin/README.md)。
 
+如果你想按截图逐步核对每一关，查看[完全新手入口地图](docs/BEGINNER_ENTRY_MAP.md)；里面标明了每张图能证明什么，以及当前哪些动态步骤受网络影响尚未重新通过。
+
 ## 当前运行方式
 
 - DSH 是内容边界：每项工作都必须对应一个明确的 DSH 用户动作或工程价值。
