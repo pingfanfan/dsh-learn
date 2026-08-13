@@ -1815,6 +1815,13 @@ function evidenceRevisionForSource(
     const npmLatest = version.match(/(?:^|[;\s])npm-latest=([^;\s]+)/)?.[1];
     return npmLatest ?? (/^[0-9]+\.[0-9]+\.[0-9]+/.test(version) ? version : undefined);
   }
+  if (!kind || kind === "content-hash") {
+    const version = evidence.baseline.version;
+    const sourceKey = sourceId.split("/").at(-1);
+    if (!version || !sourceKey) return undefined;
+    const escapedKey = sourceKey.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return version.match(new RegExp(`(?:^|[;\\s])${escapedKey}(?:-hash)?=([^;\\s]+)`))?.[1];
+  }
   return undefined;
 }
 

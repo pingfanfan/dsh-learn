@@ -59,9 +59,15 @@
     "id": "deepseek-harness-discussions",
     "label": "DeepSeek Harness Discussions",
     "kind": "content-hash",
-    "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+    "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100",
     "sourceId": "deepseek-ai/deepseek-harness/discussions",
-    "enabled": true
+    "enabled": true,
+    "pagination": {
+      "pageParam": "page",
+      "perPageParam": "per_page",
+      "perPage": 100,
+      "maxPages": 100
+    }
   },
   {
     "id": "deepseek-harness-plugin-topic",

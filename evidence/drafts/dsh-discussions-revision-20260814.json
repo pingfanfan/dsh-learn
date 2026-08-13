@@ -1,0 +1,98 @@
+{
+  "claim": "截至 2026-08-14，通过 DeepSeek Harness 官方 Discussions API 的分页复核，观察到 6 页、521 条公开讨论，编号从 #12 到 #535，中间存在编号空缺；新增条目集中暴露安装、启动、原生依赖、插件迁移、模型输出和平台兼容等用户问题或需求。这支持更新社区索引和新手排障入口，但不支持把任何讨论或回复写成官方修复、兼容性承诺或新功能发布。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1",
+      "title": "DeepSeek Harness Discussions 公共列表第 1 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2",
+      "title": "DeepSeek Harness Discussions 公共列表第 2 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3",
+      "title": "DeepSeek Harness Discussions 公共列表第 3 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4",
+      "title": "DeepSeek Harness Discussions 公共列表第 4 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5",
+      "title": "DeepSeek Harness Discussions 公共列表第 5 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6",
+      "title": "DeepSeek Harness Discussions 公共列表第 6 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/43",
+      "title": "Discussion #43：安装缺失的 unrun 模块依赖",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/46",
+      "title": "Discussion #46：无法启动 dsh",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/49",
+      "title": "Discussion #49：在 ArchLinux 上无法安装",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/55",
+      "title": "Discussion #55：全局安装后插件树加载问题",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/68",
+      "title": "Discussion #68：迁移现有插件到 deepseek-harness",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/111",
+      "title": "Discussion #111：启动时卡住",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:00:00Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "repo-manifest=0.1.0-rc.5; npm-latest=0.1.0-rc.6; discussions-pages=6; discussions-items=521; discussions-last=535; discussions-hash=ebe2911c00a1b33412b096b8ae89321607c4ba2c0d14337fb5d68579d1317140"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified the official Discussions API pages 1–6 and selected discussion detail pages; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6"
+    ],
+    "result": "PASS",
+    "notes": "已核对分页数量、首尾编号和代表性讨论标题；分页监控实现已加入本地测试。没有调用模型 API，没有复现用户环境，也没有把社区建议写成官方解决方案。"
+  },
+  "confidence": 98
+}

@@ -12,6 +12,14 @@ export interface SourceDefinition {
   sourceId: string;
   enabled: boolean;
   scope: SourceScope;
+  pagination?: SourcePagination;
+}
+
+export interface SourcePagination {
+  pageParam: string;
+  perPageParam: string;
+  perPage: number;
+  maxPages: number;
 }
 
 export interface SourceObservation {
@@ -107,7 +115,7 @@ export async function readSourceAttestations(
 
 function parseDefinition(value: unknown, index: number): SourceDefinition {
   if (!isObject(value)) throw new Error(`sources[${index}] must be an object`);
-  const allowed = new Set(["id", "label", "kind", "url", "sourceId", "enabled", "scope"]);
+  const allowed = new Set(["id", "label", "kind", "url", "sourceId", "enabled", "scope", "pagination"]);
   const unknown = Object.keys(value).filter((key) => !allowed.has(key));
   if (unknown.length) throw new Error(`sources[${index}] contains unknown fields: ${unknown.join(", ")}`);
   const kind = requiredString(value.kind, `sources[${index}].kind`);
@@ -127,6 +135,9 @@ function parseDefinition(value: unknown, index: number): SourceDefinition {
   if (!["official", "ecosystem", "community"].includes(scope)) {
     throw new Error(`sources[${index}].scope is invalid`);
   }
+  const pagination = value.pagination === undefined
+    ? undefined
+    : parsePagination(value.pagination, `sources[${index}].pagination`);
   return {
     id: requiredString(value.id, `sources[${index}].id`),
     label: requiredString(value.label, `sources[${index}].label`),
@@ -135,18 +146,51 @@ function parseDefinition(value: unknown, index: number): SourceDefinition {
     sourceId: requiredString(value.sourceId, `sources[${index}].sourceId`),
     enabled: value.enabled,
     scope: scope as SourceScope,
+    pagination,
   };
+}
+
+function parsePagination(value: unknown, label: string): SourcePagination {
+  if (!isObject(value)) throw new Error(`${label} must be an object`);
+  const unknown = Object.keys(value).filter((key) => !["pageParam", "perPageParam", "perPage", "maxPages"].includes(key));
+  if (unknown.length) throw new Error(`${label} contains unknown fields: ${unknown.join(", ")}`);
+  const pageParam = requiredString(value.pageParam, `${label}.pageParam`);
+  const perPageParam = requiredString(value.perPageParam, `${label}.perPageParam`);
+  if (!/^[A-Za-z][A-Za-z0-9_]*$/.test(pageParam) || !/^[A-Za-z][A-Za-z0-9_]*$/.test(perPageParam)) {
+    throw new Error(`${label} query parameter names are invalid`);
+  }
+  const perPage = positiveInteger(value.perPage, `${label}.perPage`);
+  const maxPages = positiveInteger(value.maxPages, `${label}.maxPages`);
+  if (perPage > 100) throw new Error(`${label}.perPage must be at most 100`);
+  if (maxPages > 100) throw new Error(`${label}.maxPages must be at most 100`);
+  return { pageParam, perPageParam, perPage, maxPages };
+}
+
+function positiveInteger(value: unknown, label: string): number {
+  if (!Number.isInteger(value) || (value as number) < 1) throw new Error(`${label} must be a positive integer`);
+  return value as number;
 }
 
 async function observe(
   definition: SourceDefinition,
   options: Required<SourceWatchOptions>,
 ): Promise<SourceObservation> {
+  const revision = definition.pagination
+    ? await extractPaginatedRevision(definition, options)
+    : await extractRevision(definition.kind, await fetchSource(definition, definition.url, options));
+  return { definition, revision, observedAt: new Date().toISOString() };
+}
+
+async function fetchSource(
+  definition: SourceDefinition,
+  url: string,
+  options: Required<SourceWatchOptions>,
+): Promise<Response> {
   let lastError: unknown = new Error("unknown source-watch failure");
   for (let attempt = 1; attempt <= options.maxAttempts; attempt += 1) {
     let response: Response;
     try {
-      response = await fetch(definition.url, {
+      response = await fetch(url, {
         headers: {
           Accept: definition.kind === "content-hash"
             ? "application/json, text/plain;q=0.9, */*;q=0.8"
@@ -162,21 +206,35 @@ async function observe(
       continue;
     }
 
-    if (!response.ok) {
-      const message = `HTTP ${response.status}`;
-      if (!isRetryableStatus(response.status)) {
-        throw new Error(`Source ${definition.id} returned ${message}`);
-      }
-      lastError = new Error(message);
-      if (attempt < options.maxAttempts) await delay(options.retryDelayMs * 2 ** (attempt - 1));
-      continue;
+    if (response.ok) return response;
+    const message = `HTTP ${response.status}`;
+    if (!isRetryableStatus(response.status)) {
+      throw new Error(`Source ${definition.id} returned ${message}`);
     }
-
-    const revision = await extractRevision(definition.kind, response);
-    return { definition, revision, observedAt: new Date().toISOString() };
+    lastError = new Error(message);
+    if (attempt < options.maxAttempts) await delay(options.retryDelayMs * 2 ** (attempt - 1));
   }
-
   throw new Error(`Source ${definition.id} failed after ${options.maxAttempts} attempts: ${errorMessage(lastError)}`);
+}
+
+async function extractPaginatedRevision(
+  definition: SourceDefinition,
+  options: Required<SourceWatchOptions>,
+): Promise<string> {
+  const pagination = definition.pagination;
+  if (!pagination) throw new Error("Paginated source is missing pagination settings");
+  const pages: unknown[][] = [];
+  for (let page = 1; page <= pagination.maxPages; page += 1) {
+    const url = new URL(definition.url);
+    url.searchParams.set(pagination.pageParam, String(page));
+    url.searchParams.set(pagination.perPageParam, String(pagination.perPage));
+    const response = await fetchSource(definition, url.toString(), options);
+    const value: unknown = await response.json();
+    if (!Array.isArray(value)) throw new Error(`Source ${definition.id} paginated response must be an array`);
+    pages.push(value);
+    if (value.length < pagination.perPage) return hashRevision(JSON.stringify(pages));
+  }
+  throw new Error(`Source ${definition.id} exceeded pagination maxPages=${pagination.maxPages}`);
 }
 
 function normalizeOptions(options: SourceWatchOptions): Required<SourceWatchOptions> {
@@ -209,12 +267,16 @@ async function delay(milliseconds: number): Promise<void> {
 async function extractRevision(kind: SourceKind, response: Response): Promise<string> {
   if (kind === "content-hash") {
     const text = await response.text();
-    return createHash("sha256").update(text).digest("hex");
+    return hashRevision(text);
   }
   const value: unknown = await response.json();
   if (!isObject(value)) throw new Error("Source response must be an object");
   const field = kind === "github-head" ? "sha" : "version";
   return requiredString(value[field], `source response ${field}`);
+}
+
+function hashRevision(value: string): string {
+  return createHash("sha256").update(value).digest("hex");
 }
 
 function isObject(value: unknown): value is Record<string, unknown> {

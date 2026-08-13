@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm typecheck && node --test test/source-watch.test.ts && pnpm public-audit",
+  "notes": "事实卡已按官方 Discussions 分页复核更新为 6 页、521 条、最后编号 #535 的观察结果；正文明确区分社区需求信号、用户回复和官方修复，不制造新功能或兼容性结论。监控器已支持配置的分页扫描，并有测试确认不会只读取第一页。未调用模型 API，知乎仍保持人工批准闸门。",
+  "checkedAt": "2026-08-14T00:00:00Z"
+}

@@ -84,6 +84,34 @@ test("source watch does not retry a permanent client error", async (t) => {
   assert.deepEqual(result.errors, [{ id: "forbidden", error: "Source forbidden returned HTTP 403" }]);
 });
 
+test("source watch hashes every page of a configured list", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "dsh-source-watch-pagination-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await mkdir(join(root, "ops"), { recursive: true });
+  await writeFile(join(root, "ops", "sources.json"), JSON.stringify([{
+    id: "discussions", label: "discussions", kind: "content-hash",
+    url: "https://example.com/discussions?per_page=2", sourceId: "repository/discussions",
+    enabled: true, pagination: { pageParam: "page", perPageParam: "per_page", perPage: 2, maxPages: 10 },
+  }]));
+  const originalFetch = globalThis.fetch;
+  const requestedPages: string[] = [];
+  globalThis.fetch = async (input) => {
+    const url = new URL(String(input));
+    requestedPages.push(url.searchParams.get("page") ?? "missing");
+    const page = Number(url.searchParams.get("page"));
+    const values = page === 1 ? [{ id: 1 }, { id: 2 }] : [{ id: 3 }];
+    return new Response(JSON.stringify(values), { status: 200 });
+  };
+  t.after(() => { globalThis.fetch = originalFetch; });
+
+  const result = await observeSources(root, "ops/sources.json", { retryDelayMs: 0 });
+
+  assert.equal(result.errors.length, 0);
+  assert.equal(result.observations.length, 1);
+  assert.notEqual(result.observations[0].revision.length, 0);
+  assert.deepEqual(requestedPages, ["1", "2"]);
+});
+
 test("source attestations resolve public revisions without importing fetched content", async (t) => {
   const root = await mkdtemp(join(tmpdir(), "dsh-source-attestation-"));
   t.after(() => rm(root, { recursive: true, force: true }));
