@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "matrixVersion": "2026-08-13/47f9438/rc.6",
+  "dshBaseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "evidenceBoundary": "NO_KEY_SMOKE_PASS 只覆盖 CLI、profile 和配置导出，不代表任何 provider 的模型请求成功。",
+  "entries": [
+    {"provider": "DeepSeek", "route": "built-in-card", "status": "DOC_CONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "OpenAI", "route": "catalog-provider", "status": "DOC_CONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "Anthropic", "route": "catalog-provider", "status": "DOC_CONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "企业网关", "route": "custom-provider", "status": "DOC_CONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "Hunyuan", "route": "custom-provider-candidate", "status": "PROVIDER_SPECIFIC_UNCONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "Qwen", "route": "custom-provider-candidate", "status": "PROVIDER_SPECIFIC_UNCONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "Kimi", "route": "custom-provider-candidate", "status": "PROVIDER_SPECIFIC_UNCONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "GLM", "route": "custom-provider-candidate", "status": "PROVIDER_SPECIFIC_UNCONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "Doubao", "route": "custom-provider-candidate", "status": "PROVIDER_SPECIFIC_UNCONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "Ollama", "route": "custom-provider-candidate", "status": "PROVIDER_SPECIFIC_UNCONFIRMED", "keyedSmoke": "NOT_RUN"},
+    {"provider": "视觉模型", "route": "input-or-defaultInput", "status": "DOC_CONFIRMED", "keyedSmoke": "NOT_RUN"}
+  ]
+}
