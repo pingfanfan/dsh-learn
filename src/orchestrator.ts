@@ -1020,6 +1020,7 @@ export class Orchestrator {
     jobId: string;
     added: Interaction[];
     metric?: MetricSample;
+    createdOpportunityIds?: string[];
   }> {
     const before = await this.store.read();
     const beforeJob = requireJob(before, jobId);
@@ -1032,7 +1033,7 @@ export class Orchestrator {
     const normalized = normalizeInteractions(beforeJob, fetched);
     const known = new Set(before.interactions.map(interactionKey));
     const additions = normalized.filter((item) => !known.has(interactionKey(item)));
-    if (additions.length === 0) return { jobId, added: [] };
+    if (additions.length === 0) return { jobId, added: [], createdOpportunityIds: [] };
 
     return (await this.store.transact(actor, {
       type: "interactions.collected",
@@ -1044,7 +1045,7 @@ export class Orchestrator {
       if (job.status !== "SUCCEEDED") throw new Error(`Publish job changed: ${job.status}`);
       const stateKnown = new Set(state.interactions.map(interactionKey));
       const added = additions.filter((item) => !stateKnown.has(interactionKey(item)));
-      if (added.length === 0) return { jobId, added: [] };
+      if (added.length === 0) return { jobId, added: [], createdOpportunityIds: [] };
       state.interactions.push(...added);
       const values = summarizeInteractions(state.interactions, job.assetId, job.channel);
       const metric: MetricSample = {
@@ -1055,7 +1056,13 @@ export class Orchestrator {
         values,
       };
       state.metrics.push(metric);
-      return { jobId, added: structuredClone(added), metric: structuredClone(metric) };
+      const feedbackOpportunity = ensureFeedbackOpportunity(state, job, new Date().toISOString());
+      return {
+        jobId,
+        added: structuredClone(added),
+        metric: structuredClone(metric),
+        createdOpportunityIds: feedbackOpportunity ? [feedbackOpportunity.id] : [],
+      };
     })).result;
   }
 
@@ -1476,6 +1483,7 @@ function normalizeInteractions(job: PublishJob, fetched: Interaction[]): Interac
       channel: job.channel,
       remoteId,
       kind: item.kind,
+      ...(item.body === undefined ? {} : { body: item.body }),
       observedAt: new Date(item.observedAt).toISOString(),
     });
   }
@@ -1494,6 +1502,54 @@ function summarizeInteractions(interactions: Interaction[], assetId: string, cha
     values[key] = (values[key] ?? 0) + 1;
   }
   return values;
+}
+
+function ensureFeedbackOpportunity(state: StateSnapshot, job: PublishJob, observedAt: string): Opportunity | null {
+  const substantive = state.interactions.filter((item) =>
+    item.assetId === job.assetId && item.channel === job.channel && ["comment", "mention"].includes(item.kind),
+  );
+  if (substantive.length < 2) return null;
+
+  const key = fingerprint(["feedback-follow-up", job.assetId, job.channel]);
+  const existing = state.opportunities.find((item) => item.fingerprint === key);
+  if (existing) return null;
+
+  const asset = requireAsset(state, job.assetId);
+  const signals = {
+    userImpact: 75,
+    freshness: 75,
+    compounding: 90,
+    ecosystemValue: 65,
+    evidenceConfidence: 85,
+    executability: 90,
+    maintenancePenalty: 5,
+  };
+  const scored = scoreOpportunity(signals, true);
+  const opportunity: Opportunity = {
+    id: makeId("opp"),
+    fingerprint: key,
+    title: `社区重复问题：${asset.title}`,
+    summary: `${asset.title} 在 ${job.channel} 已出现 ${substantive.length} 条评论或提及，整理为 FAQ 或教程修订候选。`,
+    sourceType: "feedback",
+    sourceUrl: job.url,
+    observedAt,
+    directDshAction: true,
+    audience: ["已有用户", "中文读者"],
+    proposedAssets: ["FAQ", "教程修订"],
+    signals,
+    score: scored.score,
+    lane: scored.lane,
+    status: "TRIAGED",
+    risk: "LOW",
+    evidenceIds: [],
+    assetIds: [asset.id],
+    failureCount: 0,
+    revision: 1,
+    createdAt: observedAt,
+    updatedAt: observedAt,
+  };
+  state.opportunities.push(opportunity);
+  return opportunity;
 }
 
 function ensureSourceChangeOpportunity(
