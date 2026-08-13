@@ -436,8 +436,8 @@ test("published interactions are deduplicated and feed durable metrics", async (
       body: "这个实验很容易复现。", observedAt: "2026-08-13T01:00:00.000Z",
     },
     {
-      id: "remote-citation-1", channel: "local", remoteId: "citation-1", kind: "citation",
-      body: "引用到团队内部的迁移笔记。", observedAt: "2026-08-13T01:01:00.000Z",
+      id: "remote-comment-2", channel: "local", remoteId: "comment-2", kind: "comment",
+      body: "我也遇到同样的迁移问题。", observedAt: "2026-08-13T01:01:00.000Z",
     },
   ];
   const interactionLoader: AdapterLoader = async (candidateRoot) => {
@@ -475,15 +475,20 @@ test("published interactions are deduplicated and feed durable metrics", async (
 
   const first = await ops.collectInteractions(published.id);
   assert.equal(first.added.length, 2);
-  assert.deepEqual(first.metric?.values, { comments: 1, citations: 1 });
+  assert.equal(first.createdOpportunityIds?.length, 1);
+  assert.deepEqual(first.metric?.values, { comments: 2 });
   const second = await ops.collectInteractions(published.id);
   assert.equal(second.added.length, 0);
+  assert.deepEqual(second.createdOpportunityIds, []);
   assert.deepEqual(await ops.syncInteractions(), { jobs: 1, added: 0, errors: [] });
 
   const analysis = await ops.analyzeFeedback();
   assert.equal(analysis.changed, 1);
   const state = await ops.store.read();
   assert.equal(state.interactions.length, 2);
+  assert.equal(state.interactions[0].body, "这个实验很容易复现。");
+  assert.equal(state.opportunities.filter((item) => item.sourceType === "feedback").length, 1);
+  assert.match(state.opportunities.find((item) => item.sourceType === "feedback")?.title ?? "", /社区重复问题/);
   assert.equal(state.metrics.length, 1);
   assert.equal(state.opportunities[0].feedback?.sampleCount, 1);
 });
