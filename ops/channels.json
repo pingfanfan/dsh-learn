@@ -12,6 +12,7 @@
   "zhihu": {
     "enabled": true,
     "mode": "DRAFT_ONLY",
+    "requiresApproval": true,
     "reason": "浏览器已确认知乎创作中心可用，并已回写术语 FAQ 与 Cordis mini-lab 的真实文章回执；开放平台 CLI 仅支持读取且未配置 Secret。"
   },
   "wechat": {
