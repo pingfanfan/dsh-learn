@@ -1,0 +1,20 @@
+{
+  "kind": "runtime-evidence",
+  "result": "PASS",
+  "version": "@deepseek-ai/dsh@0.1.0-rc.6",
+  "command": "env -u DEEPSEEK_API_KEY -u DEEPSEEK_API_KEY_ENV DSH_HOME=<temporary-isolated-home> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web --port 8080",
+  "observed": [
+    "dsh web: http://127.0.0.1:8080",
+    "首次进入显示 Internal Testing Notice",
+    "继续后显示 Add an API key to get started",
+    "未填写凭据，点击 Configure later 后进入空白 Web UI 工作台",
+    "页面显示 Workspaces、Choose a workspace 和输入框，未发起模型请求"
+  ],
+  "artifacts": [
+    "content/assets/dsh-beginner/07-dsh-first-run-api-key-prompt.jpg",
+    "content/assets/dsh-beginner/08-dsh-web-ui-no-key.jpg"
+  ],
+  "boundary": "本记录只证明固定版本 DSH 可在隔离临时目录启动并进入 Web UI；不证明 provider、模型回答或工具调用可用。",
+  "credentials": "未读取、未填写、未发送 API Key。",
+  "checkedAt": "2026-08-13T22:15:00.000Z"
+}

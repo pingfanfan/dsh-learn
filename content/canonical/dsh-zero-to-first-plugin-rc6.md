@@ -69,7 +69,7 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 ![终端里启动 DSH Web UI](../assets/dsh-beginner/04-terminal-dsh-web.svg)
 
-图二是启动过程的示例，官方 README 也把 Web UI 的默认地址写成本机 `127.0.0.1` 的 `3080` 端口，网页打不开时先看终端有没有报错，不要只刷新浏览器。
+启动过程的终端图是示例，官方 README 也把 Web UI 的默认地址写成本机 `127.0.0.1` 的 `3080` 端口，网页打不开时先看终端有没有报错，不要只刷新浏览器。
 
 这一条命令和官方 README 中的未固定版本命令作用相同，教程把版本写全是为了让新手遇到问题时能复现同一个环境，等你熟悉以后再考虑使用不带版本号的命令跟随最新版本。
 
@@ -78,6 +78,14 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 ## 第一次打开页面不要急着接模型
 
 看到网页，只能说明 DSH 的 Web UI 进程已经启动，还不能说明 provider 配置正确，也不能说明模型已经能够回答问题。
+
+第一次打开页面时，你可能会看到一个 `Add an API key to get started` 对话框。页面出现这个提示，说明 Web UI 已经继续加载。现在只是验证安装和页面加载，就不要把 Key 粘贴进去，点击 `Configure later`。
+
+![DSH 首次打开时的 API Key 提示](../assets/dsh-beginner/07-dsh-first-run-api-key-prompt.jpg)
+
+点击以后会进入一个没有会话的工作台。看到左侧的 `Workspaces`、中间的 `Choose a workspace` 和输入框，说明页面已经加载。这一步仍然不代表模型已经配置成功。
+
+![跳过 API Key 后的 DSH Web UI](../assets/dsh-beginner/08-dsh-web-ui-no-key.jpg)
 
 第一次上手建议先不填 API Key，观察页面能否打开，确认终端进程不会马上退出，再进入无模型的插件实验，模型配置涉及 provider、模型名、接口地址和凭据，这些内容会随着版本变化，也不适合出现在截图、文章或 Git 仓库里。
 
@@ -103,7 +111,7 @@ node labs/hello-plugin/verify.mjs
 
 ![无 Key 插件实验的终端示例](../assets/dsh-beginner/05-terminal-plugin.svg)
 
-图三是这条实验想留下的成功信号，图中输出只是示例，实际终端可能多出 npm 日志，只要版本检查、profile 安装、插件加载和移除都通过，第一次实验就有了可复查的结果。
+这张图是这条实验想留下的成功信号，图中输出只是示例，实际终端可能多出 npm 日志，只要版本检查、profile 安装、插件加载和移除都通过，第一次实验就有了可复查的结果。
 
 这一步遇到 npm registry 超时，不能写成插件代码失败，等网络恢复以后用同一条命令重新运行，遇到 Node 版本错误先修 Node.js，遇到本地路径错误先把项目移到短路径，再重复实验。
 
@@ -176,5 +184,7 @@ Windows 用户还要留意路径问题，官方 Discussions 中已经有中文�
 - 截图一：官方 README 的本地浏览器截图，展示 Developer Preview、Node.js、`npx` 和默认 Web UI 地址。
 - 截图二：官方插件教程的本地浏览器截图，展示 bundle、profile、`dsh plugin add` 和移除命令。
 - 截图三至六：dsh-learn 的新手示例图。终端卡片中的输出是示意，不冒充每台机器的实际输出。
+- 截图七：rc.6 在隔离临时目录首次打开时的 API Key 提示；没有填写凭据，点击 `Configure later`。
+- 截图八：同一实例跳过 Key 后的实际 DSH Web UI；页面为空工作台，不代表模型已经可用。
 - 本地验证边界：hello-plugin 的无 Key 安装、配置导出、加载和移除此前已经有真实验证记录；tool-plugin 的离线注册/执行/渲染检查通过，当前真实探针因 npm registry 下载阶段超时而未标成通过。
 - 凭据边界：本文不使用、不保存、不展示任何 API Key。模型请求为未运行项。

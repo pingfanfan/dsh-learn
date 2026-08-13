@@ -30,6 +30,8 @@ const requiredImages = [
   "04-terminal-dsh-web.svg",
   "05-terminal-plugin.svg",
   "06-terminal-beginner-doctor.svg",
+  "07-dsh-first-run-api-key-prompt.jpg",
+  "08-dsh-web-ui-no-key.jpg",
 ];
 const failures = [];
 
