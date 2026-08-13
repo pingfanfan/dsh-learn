@@ -169,6 +169,11 @@ export interface PublishJob {
   remoteId?: string;
   url?: string;
   publishedAt?: string;
+  userApproval?: {
+    approvedAt: string;
+    approvedBy: string;
+    note?: string;
+  };
   correctionOf?: string;
   blockedReason?: string;
   attempts: number;
@@ -246,6 +251,7 @@ export interface ChannelCapability {
   channel: Channel;
   available: boolean;
   mode: "REAL" | "DRAFT_ONLY" | "MOCK" | "UNAVAILABLE" | "DEGRADED" | "DISABLED";
+  approvalRequired?: boolean;
   reason?: string;
 }
 
