@@ -4,17 +4,19 @@
 
 ## 如果你是第一次接触 DSH
 
+这里默认你是完全新手：不会写代码、不熟悉终端、不知道 Node.js 和 `npx` 是什么，也没有准备 API Key。第一层不要求你先理解 Cordis、Agent 或插件源码，只要求你按照提示完成一次可撤销的本地练习。
+
 你不需要先会写代码，也不需要先准备 API Key。建议按下面的顺序进入：
 
 1. 阅读[完全新手教程：从安装到第一个插件](content/canonical/dsh-zero-to-first-plugin-rc6.md)，里面有 Node.js、终端、Web UI、首次 API Key 提示和实际界面截图。
 2. 下载本仓库 ZIP，解压后在项目根目录运行 `node scripts/beginner-doctor.mjs`，先确认 Node.js、npm、npx 和练习文件都在。这一步只需要 Node.js，不要求你先安装 pnpm。
-3. 用固定版本启动 DSH：
+3. 用固定版本安装并启动 DSH：
 
    ```bash
    npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
    ```
 
-   这不是把 DSH 永久安装到系统里，而是由 `npx` 第一次运行时下载并启动指定版本。这样新手不需要先处理全局 CLI，教程也能固定在同一个版本；等熟悉以后，再按官方文档选择其他安装方式。
+   这里的“安装”指 `npx` 按固定版本下载并运行 DSH，不是把 CLI 永久写进系统。第一层故意不让新手先处理全局安装、PATH 和版本切换；等 Web UI 和无 Key 插件实验通过以后，再学习官方的其他安装方式。
 
 4. 浏览器打开 `http://127.0.0.1:3080`。如果第一次看到 `Add an API key to get started`，先点 `Configure later`；这一步只验证页面能否打开，不代表模型已经配置好。
 5. 准备安装插件前，运行 `node scripts/plugin-doctor.mjs`。Web UI 不需要 pnpm，但 DSH 的 `plugin` 子命令会调用 pnpm；如果检查失败，按它打印的命令安装后再继续。
@@ -23,6 +25,8 @@
 如果你只想先了解 profile、bundle 和配置树，可以从[无 Key 的隔离 profile 实验](labs/cordis-no-key/README.md)开始；如果你想看完整的插件文件结构，再看[第一个插件实验说明](labs/hello-plugin/README.md)。
 
 如果你想按截图逐步核对每一关，查看[完全新手入口地图](docs/BEGINNER_ENTRY_MAP.md)；里面标明了每张图能证明什么，以及当前哪些动态步骤受网络影响尚未重新通过。
+
+新手层目前包含 Node.js 下载页、终端版本检查、固定版本 DSH 启动、首次 API Key 提示、无 Key Web UI、`pnpm` 前置检查、插件安装/加载/移除结果、GitHub 下载 ZIP 和插件入口文件共 11 张图。其中终端 SVG 是“应该看到什么”的示意卡，网页 JPG 是固定版本或公开页面截图；它们都不能替代你自己电脑上的命令回执。
 
 ## 当前运行方式
 
@@ -82,7 +86,7 @@ pnpm public-audit
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
 - 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
 - Discussions 新问题分流卡：[content/canonical/discussion-triage-41.md](content/canonical/discussion-triage-41.md)。
-- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-revision-20260814-537.md](content/canonical/dsh-discussions-revision-20260814-537.md)；截至 2026-08-13T23:21:32Z 观察到 6 页、523 条公开讨论，新增的 #535–#537 分别按用户报错、社区想法和第三方项目展示处理，不把它们写成官方修复或官方发行版。旧版分页卡保留作历史记录。
+- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-revision-20260814-549.md](content/canonical/dsh-discussions-revision-20260814-549.md)；截至 2026-08-13T23:44:07Z 观察到 6 页、535 条公开讨论，新增的 #539–#549 按 Web/Windows 排障、社区插件静态审查和用户报告分层处理，不把社区观察写成官方修复或官方发行版。旧版分页卡保留作历史记录。
 - 国产模型与网关矩阵：[labs/provider-matrix/README.md](labs/provider-matrix/README.md)。
 - 第三方插件迁移诊所：[content/canonical/plugin-migration-clinic-47f9438.md](content/canonical/plugin-migration-clinic-47f9438.md)。
 - 扩展点中文能力地图：[content/canonical/extension-map-47f9438.md](content/canonical/extension-map-47f9438.md)。
@@ -90,7 +94,7 @@ pnpm public-audit
 - Cordis 无 Key mini-lab：[labs/cordis-no-key/README.md](labs/cordis-no-key/README.md)。
 - Python SDK 安全自动化配方：[labs/python-sdk-safety/README.md](labs/python-sdk-safety/README.md)。
 
-GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程和最新 Discussions #535–#537 复核卡；最新复核卡已获得 GitHub 文件回执。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。术语 FAQ、Cordis mini-lab、Python SDK 安全配方、DSH 无 Key 新手入口和会话内容搜索教程也已通过知乎创作中心获得真实文章 URL。知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
+GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程和最新 Discussions #539–#549 复核卡；最新复核卡已获得 GitHub 文件回执。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。术语 FAQ、Cordis mini-lab、Python SDK 安全配方、DSH 无 Key 新手入口和会话内容搜索教程也已通过知乎创作中心获得真实文章 URL。知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
 
 ## 常用命令
 
