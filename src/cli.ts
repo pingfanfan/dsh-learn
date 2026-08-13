@@ -184,6 +184,12 @@ async function main(): Promise<void> {
         reason: requiredFlag(parsed, "reason"),
       });
       break;
+    case "dedupe":
+      result = await orchestrator.markDuplicate(
+        requirePositional(parsed, 0, "dedupe requires opportunity id"),
+        requiredFlag(parsed, "reason"),
+      );
+      break;
     case "stale":
       result = await orchestrator.markSourceChanged(requiredFlag(parsed, "source"), requiredFlag(parsed, "revision"));
       break;
@@ -344,6 +350,7 @@ function usage(): string[] {
     "retry <publish-job-id>",
     "confirm-not-found <publish-job-id> --reason <channel verification>",
     "fail <opportunity-id> --worker <id> --token <lease> --revision <n> --reason <text>",
+    "dedupe <opportunity-id> --reason <duplicate explanation>",
     "stale --source <url-or-package> --revision <version>",
     "measure <asset-id> --channel <channel> --file <metrics.json>",
     "collect-interactions <publish-job-id>",

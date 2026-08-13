@@ -977,6 +977,26 @@ export class Orchestrator {
     })).result;
   }
 
+  async markDuplicate(opportunityId: string, reason: string, actor = "orchestrator"): Promise<Opportunity> {
+    const cleanedReason = reason.trim().slice(0, 500);
+    if (!cleanedReason) throw new Error("Duplicate reason is required");
+    return (await this.store.transact(actor, {
+      type: "opportunity.duplicate",
+      entityType: "opportunity",
+      entityId: opportunityId,
+    }, (state) => {
+      const opportunity = requireOpportunity(state, opportunityId);
+      assertTransition(opportunity.status, "DUPLICATE");
+      opportunity.status = "DUPLICATE";
+      opportunity.lastError = cleanedReason;
+      opportunity.owner = undefined;
+      opportunity.lease = undefined;
+      opportunity.revision += 1;
+      opportunity.updatedAt = new Date().toISOString();
+      return structuredClone(opportunity);
+    })).result;
+  }
+
   async markSourceChanged(sourceId: string, newRevision: string, actor = "scout"): Promise<{ evidence: number; assets: number; jobs: number }> {
     return (await this.store.transact(actor, {
       type: "source.changed",

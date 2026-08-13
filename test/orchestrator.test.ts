@@ -109,6 +109,18 @@ test("equal-score opportunity ordering is stable across input order", async (t) 
   );
 });
 
+test("duplicate opportunities can be archived without pretending a worker failed", async (t) => {
+  const { root, ops } = await fixture();
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await ops.scan([{ ...opportunity, title: "Duplicate source event" }], "scout");
+  const [candidate] = await ops.next(1);
+  assert.ok(candidate);
+  const duplicate = await ops.markDuplicate(candidate.id, "同一公开 revision 的表示形式变化，已由现有事实卡处理");
+  assert.equal(duplicate.status, "DUPLICATE");
+  assert.equal(duplicate.owner, undefined);
+  assert.match(duplicate.lastError ?? "", /表示形式变化/);
+});
+
 test("verified asset reaches mock channel without pretending to be publicly published", async (t) => {
   const { root, ops } = await fixture();
   t.after(() => rm(root, { recursive: true, force: true }));
