@@ -151,6 +151,13 @@ export function assertState(state: StateSnapshot): void {
       if (!job.remoteId || !job.url || !job.publishedAt) throw new Error(`Succeeded job ${job.id} is missing a real receipt`);
       assertDate(job.publishedAt, `Publish job ${job.id} publishedAt`);
     }
+    if (job.userApproval) {
+      if (!job.userApproval.approvedBy?.trim()) throw new Error(`Publish job ${job.id} approval identity is empty`);
+      assertDate(job.userApproval.approvedAt, `Publish job ${job.id} approvedAt`);
+      if (job.userApproval.note !== undefined && typeof job.userApproval.note !== "string") {
+        throw new Error(`Publish job ${job.id} approval note must be a string`);
+      }
+    }
     if (job.correctionOf) {
       const original = state.publishJobs.find((item) => item.id === job.correctionOf);
       if (!original || original.status !== "SUCCEEDED" || original.channel !== job.channel || original.assetId !== job.assetId) {
