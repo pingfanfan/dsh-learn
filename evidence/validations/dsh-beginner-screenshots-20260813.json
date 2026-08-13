@@ -1,0 +1,27 @@
+{
+  "kind": "screenshot-assets",
+  "result": "PASS",
+  "purpose": "完全新手入口的下载、解压和插件文件定位视觉引导",
+  "capturedAt": "2026-08-13T22:49:04Z",
+  "assets": [
+    {
+      "file": "content/assets/dsh-beginner/09-nodejs-download-page.jpg",
+      "source": "https://nodejs.org/en/download/",
+      "description": "Node.js 官方下载页，当前页面选择 macOS，展示 macOS Installer (.pkg) 入口",
+      "kind": "official-webpage-screenshot"
+    },
+    {
+      "file": "content/assets/dsh-beginner/10-github-download-zip.jpg",
+      "source": "https://github.com/pingfanfan/dsh-learn",
+      "description": "dsh-learn GitHub 仓库的 Code 菜单和 Download ZIP 入口",
+      "kind": "public-repository-screenshot"
+    },
+    {
+      "file": "content/assets/dsh-beginner/11-plugin-edit-indexjs.jpg",
+      "source": "https://github.com/pingfanfan/dsh-learn/blob/main/labs/hello-plugin/index.js",
+      "description": "hello-plugin 文件树和 index.js 入口文件，帮助新手定位本地副本中的修改位置",
+      "kind": "public-repository-screenshot"
+    }
+  ],
+  "boundary": "这些截图只证明网页按钮和示例文件位置，不证明 Node.js 安装、DSH 启动或插件运行成功；运行结果仍由 beginner-doctor 和 hello-plugin 探针分别验证。"
+}

@@ -20,6 +20,10 @@ Node.js 是运行 DSH 所需的基础软件，它不是 DSH，也不是模型，
 
 打开 Node.js 官方下载页，选择一个满足 DSH 要求的版本。当前官方根目录的 package manifest 要求 Node.js `22.19.0` 或更高的 22.x，或者 24.x 及以上版本。安装器一路使用默认选项即可，安装结束以后重新打开终端。
 
+如果你用的是 macOS，可以在页面下方选择 `macOS Installer (.pkg)`，双击下载的安装器，一路使用默认选项。Windows 和 Linux 用户先把操作系统切换成自己的系统，再选择官方安装器或对应的安装方式，下面的截图是 macOS 页面，按钮位置会随系统选择变化。
+
+![Node.js 官方下载页](../../assets/dsh-beginner/09-nodejs-download-page.jpg)
+
 在终端一行一行输入下面两条命令，每输入一行按一次回车。
 
 ```bash
@@ -89,6 +93,10 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 想完成下面的插件实验，需要 dsh-learn 的文件，完全不会 Git 也没有关系，可以打开 dsh-learn 的 GitHub 页面，选择下载 ZIP，解压到一个路径短、只包含英文和数字的文件夹。
 
+打开仓库首页后，点击绿色的 `Code`，再点击菜单里的 `Download ZIP`，下载完成后解压，不需要先学习 Git。
+
+![GitHub 仓库下载 ZIP](../../assets/dsh-beginner/10-github-download-zip.jpg)
+
 进入解压后的 `dsh-learn` 文件夹，再打开终端，让终端当前所在的位置就是这个文件夹，因为下面的路径都是从项目根目录开始写的，学习阶段不需要先安装 dsh-learn 的全部开发依赖，第一条实验命令会自己调用固定版本的 DSH。
 
 ## 安装插件前先检查 pnpm
@@ -128,6 +136,10 @@ node labs/hello-plugin/verify.mjs
 ## 从示例复制一个自己的插件
 
 无 Key 实验成功以后，可以复制 `labs/hello-plugin` 文件夹，把副本改名为 `my-first-plugin`，用文本编辑器打开副本里的 `index.js`，只改日志中的文字，例如改成 `my-first-plugin loaded`，其他文件先不要动。
+
+下面的截图先帮你找到应该打开哪个文件，复制到本机以后，在自己的副本里修改，不要在 GitHub 网页上改。左侧的 `hello-plugin` 文件夹里，`index.js` 是插件入口，`package.json` 和 `cordis.patch.yml` 先保持不动。
+
+![第一个插件的文件结构和 index.js](../../assets/dsh-beginner/11-plugin-edit-indexjs.jpg)
 
 这个小改动能让你看到自己的代码是否被加载，`package.json` 负责声明这是一个 npm 包，`dsh.bundle.patch` 负责声明它提供一层组合配置，`cordis.patch.yml` 负责把插件入口插进配置树，`index.js` 负责导出插件并执行 `apply`，四个文件各自只管一层。
 
@@ -191,6 +203,10 @@ Windows 用户还要留意路径问题，官方 Discussions 中已经有中文�
 - 截图三至六：dsh-learn 的新手示例图。终端卡片中的输出是示意，不冒充每台机器的实际输出。
 - 截图七：rc.6 在隔离临时目录首次打开时的 API Key 提示；没有填写凭据，点击 `Configure later`。
 - 截图八：同一实例跳过 Key 后的实际 DSH Web UI；页面为空工作台，不代表模型已经可用。
+- 截图九：Node.js 官方下载页实景，页面当前选择 macOS，展示官方 `.pkg` 安装器入口。
+- 截图十：dsh-learn GitHub 仓库的 `Code → Download ZIP` 菜单实景。
+- 截图十一：dsh-learn 的 `labs/hello-plugin/index.js` 文件页实景，用来帮助新手确认要修改的入口文件；修改应在本地副本中完成。
+- 截图九至十一来自公开官方网站或公开仓库页面，页面内容可能随网站更新变化，截图只用于定位按钮和文件，不作为 DSH 运行结果。
 - 本地验证边界：hello-plugin 的无 Key 安装、配置导出、加载和移除此前已经有真实验证记录；tool-plugin 的离线注册/执行/渲染检查通过，当前真实探针因 npm registry 下载阶段超时而未标成通过。
 - 凭据边界：本文不使用、不保存、不展示任何 API Key。模型请求为未运行项。
 

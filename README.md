@@ -14,6 +14,8 @@
    npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
    ```
 
+   这不是把 DSH 永久安装到系统里，而是由 `npx` 第一次运行时下载并启动指定版本。这样新手不需要先处理全局 CLI，教程也能固定在同一个版本；等熟悉以后，再按官方文档选择其他安装方式。
+
 4. 浏览器打开 `http://127.0.0.1:3080`。如果第一次看到 `Add an API key to get started`，先点 `Configure later`；这一步只验证页面能否打开，不代表模型已经配置好。
 5. 准备安装插件前，运行 `node scripts/plugin-doctor.mjs`。Web UI 不需要 pnpm，但 DSH 的 `plugin` 子命令会调用 pnpm；如果检查失败，按它打印的命令安装后再继续。
 6. 回到仓库根目录运行 `node labs/hello-plugin/verify.mjs`，在隔离的临时 `DSH_HOME` 中完成第一个插件的安装、加载、配置检查和移除。这个实验会主动排除 API Key，不会发起模型请求。
@@ -41,7 +43,7 @@ pnpm ops:next
 pnpm public-audit
 ```
 
-项目使用 Node.js 原生 TypeScript 支持，不依赖运行时第三方包。推荐 Node.js 22.18 或更高版本。
+项目使用 Node.js 原生 TypeScript 支持，不依赖运行时第三方包。DSH 新手路径需要 Node.js `22.19.0` 或更高的 22.x，或者 24.x 及以上版本。
 
 ## 目录
 

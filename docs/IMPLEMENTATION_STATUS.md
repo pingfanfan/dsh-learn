@@ -62,7 +62,7 @@
 - [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；公众号仍未发布；微博已完成七条，新增 Discussions 分流卡因上一条原创微博发布不久暂留 outbox，知乎仍按人工同意闸门保持未发布；GitHub 连接器已回写官方 HEAD、Discussions、生态仓库 HEAD、npm latest 和官方文档哈希的公开 attestation，最近一次 `doctor` 的 `sourceHealth` 为 healthy；AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
 - [ ] X 按计划保持禁用。
 
-- [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入 beginner-doctor 环境前置诊断、固定 commit 的官方 README/插件教程截图与明确标注的终端示意图；GitHub 已发布，知乎未发布。
+- [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入 beginner-doctor 环境前置诊断、固定 commit 的官方 README/插件教程截图、明确标注的终端示意图，以及 Node.js 下载、GitHub ZIP 下载和 `index.js` 文件定位的 11 张配套图；GitHub 已发布，知乎未发布。
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 官方 Discussions revision `ee3d03969f2c4df521d24b3b24e42d8ccc97e94f0449bc06440f88247b3031e5` 已通过连接器复核；当前列表仍为 #12 至 #41，没有把列表更新时间变化包装成新功能或官方修复。
 
