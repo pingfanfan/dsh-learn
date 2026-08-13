@@ -40,6 +40,8 @@ pnpm public-audit
 
 `pnpm ops:doctor` 会校验状态、完整事件账本和适配器当前声明的能力。现阶段非本地适配器仍是静态配置加 Agent outbox，并不等于登录账号的实时探测。写入 outbox 只表示“等待渠道 Agent”，不等于已经公开发布；只有可信渠道回写远端 URL 和 remote ID 后，PublishJob 才算 `SUCCEEDED`。
 
+知乎是例外的人工批准渠道：Agent 可以准备任务，但不会由 `cycle` 自动派发。只有主理人明确批准指定任务后，运行 `pnpm ops approve <publish-job-id> --by "主理人"`，才允许生成知乎 outbox；这不等于公开发布，仍需人工完成发布并回写真实回执。
+
 本项目是非官方社区项目。DeepSeek Harness 仍处于 Developer Preview，公开内容必须标注验证版本。
 
 ## 已建立的事实基线
@@ -74,6 +76,10 @@ pnpm ops cycle --worker scout-1
 
 # 只把已配置为 DRAFT_ONLY 的队列任务写入渠道 outbox；不会触发真实发布
 pnpm ops dispatch-queued --limit 10
+
+# 知乎必须先得到主理人对指定任务的明确批准
+pnpm ops approve <publish-job-id> --by "主理人" --note "本次明确同意知乎发布"
+pnpm ops dispatch <publish-job-id>
 
 # 运行全部确定性检查
 pnpm check
