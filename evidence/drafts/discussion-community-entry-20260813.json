@@ -1,0 +1,47 @@
+{
+  "claim": "截至 2026-08-13，DeepSeek Harness 官方 GitHub Discussions 已有维护者欢迎公告、Announcements、Q&A、Ideas、Show and tell、General 等入口，并出现 memory 迁移、企微添加和飞书问卷等中文讨论；这支持制作一张社区入口与发帖准备卡，但不支持把任何具体问题写成已有官方解决方案。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/12",
+      "title": "DeepSeek Harness 维护者欢迎公告（Discussion #12）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/14",
+      "title": "关于 memory 迁移的官方 Discussions 讨论（Discussion #14）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+      "title": "DeepSeek Harness Discussions 当前公开列表",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness README（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:35:00Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions=github-discussions-public-list-through-41-2026-08-13"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified the public Discussions JSON/pages; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/12",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/14"
+    ],
+    "result": "PASS",
+    "notes": "复核欢迎公告、原有中文讨论和当前公开列表；新增讨论不会改变入口卡对“仅整理社区入口、不声称具体问题已解决”的事实边界，没有调用模型 API。"
+  },
+  "confidence": 98
+}
