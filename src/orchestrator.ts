@@ -1558,26 +1558,49 @@ function ensureSourceChangeOpportunity(
   url: string,
   previousRevision: string,
   revision: string,
+  sourceType: "official" | "ecosystem" | "community" = "official",
 ): Opportunity {
   const key = fingerprint(["source-change", url, revision]);
   const existing = state.opportunities.find((item) => item.fingerprint === key);
   if (existing) return existing;
   const now = new Date().toISOString();
-  const signals = {
-    userImpact: 80, freshness: 100, compounding: 90, ecosystemValue: 85,
-    evidenceConfidence: 95, executability: 90,
-  };
+  const signals = sourceChangeSignals(sourceType);
   const scored = scoreOpportunity(signals, true);
+  const titlePrefix = sourceType === "official"
+    ? "复核上游变化"
+    : sourceType === "ecosystem" ? "复核生态变化" : "复核社区变化";
+  const sourceLabel = sourceType === "official"
+    ? "上游"
+    : sourceType === "ecosystem" ? "生态来源" : "社区来源";
   const opportunity: Opportunity = {
-    id: makeId("opp"), fingerprint: key, title: `复核上游变化：${label}`,
-    summary: `上游 revision 从 ${previousRevision} 变化为 ${revision}，需要判断用户影响并更新关联资产。`,
-    sourceType: "official", sourceUrl: url, observedAt: now, directDshAction: true,
+    id: makeId("opp"), fingerprint: key, title: `${titlePrefix}：${label}`,
+    summary: `${sourceLabel} revision 从 ${previousRevision} 变化为 ${revision}，需要判断用户影响并更新关联资产。`,
+    sourceType, sourceUrl: url, observedAt: now, directDshAction: true,
     audience: ["DSH 用户", "教程维护者"], proposedAssets: ["变更事实卡", "兼容复测"], signals,
     score: scored.score, lane: scored.lane, status: "TRIAGED", risk: "LOW",
     evidenceIds: [], assetIds: [], failureCount: 0, revision: 1, createdAt: now, updatedAt: now,
   };
   state.opportunities.push(opportunity);
   return opportunity;
+}
+
+function sourceChangeSignals(sourceType: "official" | "ecosystem" | "community"): Opportunity["signals"] {
+  if (sourceType === "ecosystem") {
+    return {
+      userImpact: 75, freshness: 100, compounding: 90, ecosystemValue: 100,
+      evidenceConfidence: 95, executability: 90,
+    };
+  }
+  if (sourceType === "community") {
+    return {
+      userImpact: 75, freshness: 95, compounding: 85, ecosystemValue: 85,
+      evidenceConfidence: 80, executability: 85,
+    };
+  }
+  return {
+    userImpact: 80, freshness: 100, compounding: 90, ecosystemValue: 85,
+    evidenceConfidence: 95, executability: 90,
+  };
 }
 
 function assertPublishBindings(state: StateSnapshot, job: PublishJob): void {
@@ -1684,7 +1707,7 @@ function sourceRefsForAsset(state: StateSnapshot, asset: Asset): Asset["sourceRe
 
 function applySourceObservations(
   state: StateSnapshot,
-  observations: Array<{ definition: { id: string; label: string; kind: "github-head" | "npm-latest" | "content-hash"; url: string; sourceId: string }; revision: string; observedAt: string }>,
+  observations: Array<{ definition: { id: string; label: string; kind: "github-head" | "npm-latest" | "content-hash"; url: string; sourceId: string; scope?: "official" | "ecosystem" | "community" }; revision: string; observedAt: string }>,
   errors: Array<{ id: string; error: string }>,
   errorMode: "replace" | "clear-attested",
 ): { initialized: string[]; unchanged: string[]; changed: Array<Record<string, unknown>>; errors: Array<{ id: string; error: string }> } {
@@ -1722,7 +1745,7 @@ function applySourceObservations(
       if (baselineRevisions.length > 0 && baselineRevisions.some((revision) => revision !== observation.revision)) {
         const previousRevision = baselineRevisions.join(",");
         const impact = markBindingsStale(state, definition.sourceId, observation.revision);
-        ensureSourceChangeOpportunity(state, definition.label, definition.url, previousRevision, observation.revision);
+        ensureSourceChangeOpportunity(state, definition.label, definition.url, previousRevision, observation.revision, definition.scope);
         changed.push({ id: definition.id, previousRevision, revision: observation.revision, impact, initialized: true });
       } else {
         initialized.push(definition.id);
@@ -1741,7 +1764,7 @@ function applySourceObservations(
     cursor.revision = observation.revision;
     cursor.changedAt = observation.observedAt;
     const impact = markBindingsStale(state, definition.sourceId, observation.revision);
-    ensureSourceChangeOpportunity(state, definition.label, definition.url, previousRevision, observation.revision);
+    ensureSourceChangeOpportunity(state, definition.label, definition.url, previousRevision, observation.revision, definition.scope);
     changed.push({ id: definition.id, previousRevision, revision: observation.revision, impact });
   }
   return { initialized, unchanged, changed, errors };
