@@ -1,0 +1,24 @@
+[
+  {
+    "title": "补齐 DSH 从启动到安装第一个插件的端到端中文路径",
+    "summary": "把官方的 CLI 启动、profile、bundle manifest、Cordis 插件、安装、加载和移除串成一个无 API Key 可复现实验，解决现有无 Key 冒烟只看到配置树、却没有真正装上插件的缺口。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/publish.zh.md",
+    "observedAt": "2026-08-13T20:45:16.000Z",
+    "directDshAction": true,
+    "audience": ["DSH 新用户", "插件初学者", "Cordis 学习者", "中文教程读者", "社区插件作者"],
+    "proposedAssets": ["无 Key 插件实战实验", "启动与安装中文教程", "GitHub 可复现示例", "插件故障排查 FAQ"],
+    "signals": {
+      "userImpact": 98,
+      "freshness": 96,
+      "compounding": 99,
+      "ecosystemValue": 98,
+      "evidenceConfidence": 100,
+      "executability": 98,
+      "duplicatePenalty": 0,
+      "riskPenalty": 0,
+      "maintenancePenalty": 3
+    },
+    "risk": "LOW"
+  }
+]

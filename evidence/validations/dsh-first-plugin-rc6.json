@@ -1,0 +1,7 @@
+{
+  "kind": "reproduction",
+  "result": "PASS",
+  "command": "node labs/hello-plugin/verify.mjs && pnpm validate:plugin-lab && node --check labs/hello-plugin/index.js && node --check labs/hello-plugin/verify.mjs",
+  "notes": "已在隔离 DSH_HOME 中真实完成本地 bundle 安装、组合配置导出、插件加载和移除；无 API Key、无模型请求、无 Web UI。静态验证器检查 manifest、patch、生命周期示例、无 Key 边界和秘密模式。",
+  "checkedAt": "2026-08-13T20:51:02.000Z"
+}

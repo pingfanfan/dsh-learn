@@ -51,6 +51,8 @@ pnpm public-audit
 - HEAD 中 CLI 清单：`@deepseek-ai/dsh@0.1.0-rc.5`。
 - npm registry latest：`0.1.0-rc.6`。
 - rc.6 无 Key CLI 冒烟实验：[labs/rc6-cli-smoke/README.md](labs/rc6-cli-smoke/README.md)。
+- 无 Key 第一个可安装插件实验：[labs/hello-plugin/README.md](labs/hello-plugin/README.md)。
+- DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
 - 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
@@ -103,6 +105,8 @@ pnpm ops source-attest evidence/source-attestations/2026-08-13-github.json
 Discussion 工具包还可以单独运行 `pnpm validate:discussion`，检查版本字段、最小复现字段、双语模板、代码围栏、官方链接和常见凭据模式。
 
 Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线、提供方覆盖、`NOT_RUN` 边界和凭据泄漏模式。
+
+第一个插件实验可以单独运行 `pnpm validate:plugin-lab` 做静态检查，再运行 `node labs/hello-plugin/verify.mjs` 在临时 `DSH_HOME` 中真实完成本地 bundle 安装、加载和移除；该探针不读取现有凭据，不发起模型请求。
 
 插件迁移诊所可以单独运行 `pnpm validate:plugin-clinic`，检查旧格式边界、当前安装路径、迁移报告字段和代码块完整性。
 

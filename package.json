@@ -18,6 +18,7 @@
     "validate:discussion": "node scripts/validate-discussion-kit.mjs content/canonical/discussion-minimal-repro-kit.md",
     "validate:providers": "node scripts/validate-provider-matrix.mjs labs/provider-matrix/compatibility.json labs/provider-matrix/README.md",
     "validate:plugin-clinic": "node scripts/validate-plugin-clinic.mjs content/canonical/plugin-migration-clinic-47f9438.md",
+    "validate:plugin-lab": "node scripts/validate-plugin-lab.mjs labs/hello-plugin/compatibility.json labs/hello-plugin/README.md labs/hello-plugin/package.json labs/hello-plugin/index.js labs/hello-plugin/cordis.patch.yml labs/hello-plugin/verify.mjs",
     "validate:extension-map": "node scripts/validate-extension-map.mjs content/canonical/extension-map-47f9438.md diagram/cordis-mind-model/cordis-mind-model.svg",
     "validate:cordis-lab": "node scripts/validate-cordis-lab.mjs labs/cordis-no-key/compatibility.json labs/cordis-no-key/README.md labs/cordis-no-key/probe.mjs",
     "validate:python-sdk-safety": "node scripts/validate-python-sdk-safety.mjs labs/python-sdk-safety/safety-matrix.json labs/python-sdk-safety/README.md labs/python-sdk-safety/preflight.py",

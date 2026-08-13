@@ -10,6 +10,7 @@
 - [x] 官方 HEAD、npm latest、贡献政策和首批 10 个机会已经扫描。
 - [x] 首个版本化事实卡、微博稿、GitHub 稿、知乎稿和公众号稿已经完成。
 - [x] rc.6 无 Key CLI 冒烟实验已经通过。
+- [x] 第一个可安装插件实验已经完成固定 rc.6 基线、临时 `DSH_HOME`、本地 `dsh.bundle` 安装、`--dump-config`、插件加载和移除验证；没有使用 API Key、没有启动 Web UI、没有安装未知第三方包。
 - [x] 官方 Discussions 中文最小复现工具包已经完成 EvidencePack、专用内容验证和 GitHub 真实发布回执。
 - [x] 官方 Discussions 社区入口卡已经完成 Discussions 一手证据、专用内容验证，并获得 GitHub 与微博真实发布回执（知乎仍未发布）。
 - [x] 官方 Discussions 新问题分流卡已经完成 #37、#38、#40 一手证据、专用内容验证和 GitHub 真实发布回执；微博稿已通过写作门禁并暂留 outbox，知乎未发布。
@@ -78,3 +79,4 @@
 总控队列已完成十三项高分机会的首个规范资产：官方变更事实站、Discussions 最小复现工具包、官方 Discussions 社区入口卡、Discussions 新问题分流卡、国产模型/网关矩阵、第三方插件迁移诊所、扩展点中文能力地图、安全边界实测手册、Cordis 无 Key mini-lab、Python SDK 安全自动化配方、DSH 无 Key 新手入口、DSH plugin 术语 FAQ，以及官方会话内容搜索 opt-in 教程。其中 FAQ 已在 GitHub、微博和知乎获得真实回执；Cordis mini-lab 已在 GitHub、微博和知乎获得真实回执；Python SDK 安全配方已在 GitHub、微博和知乎获得真实回执；中文 Discussions 模板、社区入口卡、Discussions 新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、扩展点能力地图和 DSH 无 Key 新手入口已在 GitHub 获得真实回执，其中社区入口卡已获得微博回执（`https://weibo.com/7621278794/RdhRIu2qL`），新问题分流卡微博稿已过门禁但暂未发布，知乎未发布。新手入口也已获得知乎文章回执。会话内容搜索教程已获得 GitHub 回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-session-content-search-opt-in-47f9438.md`）、微博回执（`https://weibo.com/7621278794/RdhnpeP8j`）和知乎文章回执（`https://zhuanlan.zhihu.com/p/2071432880262329422`）。公众号不可用。旧版扩展点地图和旧版新手 GitHub outbox 的未知远端状态已通过渠道核验后安全归档，并按当前 revision 发布了清理后的公开版本。除已记录的真实回执外，本地 `MOCK`、Agent outbox 和 `DRAFT_ONLY` 都只证明工作流或待办已生成，不属于公开发布。
 - [x] DSH 无 Key 新手入口已完成终稿润色、rc.6 固定证据、GitHub/知乎/微博真实发布回执和公众号渠道稿；模型、provider、Web UI 与第三方插件仍明确未覆盖。
 - [x] DSH plugin 术语 FAQ 已完成当前官方 README 与固定 commit 的证据绑定；没有安装未知第三方包，也没有把 topic、安装成功或未运行实验写成运行时兼容。
+- [x] DSH 第一个插件端到端教程已完成 `dsh plugin add`、profile manifest、bundle patch、加载日志和 `remove` 的无 Key 证据绑定；规范稿已完成最终润色检查，知乎未发布。

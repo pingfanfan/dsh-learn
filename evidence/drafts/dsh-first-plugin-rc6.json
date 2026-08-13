@@ -1,0 +1,48 @@
+{
+  "claim": "在 DeepSeek Harness 官方 commit 47f943859bef60e4160492346772ded9b24f765a 与 @deepseek-ai/dsh@0.1.0-rc.6 下，使用临时 DSH_HOME 可以无 API Key 创建 profile，安装 dsh-learn 提供的本地 dsh.bundle，导出组合配置，启动 profile 看到插件加载，并移除该 bundle；这条实验不发起模型请求、不启动 Web UI，也不代表未知第三方插件兼容。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md#run",
+      "title": "DeepSeek Harness README：运行入口",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:42:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/index.zh.md",
+      "title": "DeepSeek Harness：第一个插件",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:42:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/publish.zh.md",
+      "title": "DeepSeek Harness：打包与安装插件",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:42:00.000Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/cordis-primer.zh.md",
+      "title": "DeepSeek Harness：Cordis 入门",
+      "kind": "official",
+      "accessedAt": "2026-08-13T20:42:00.000Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; temporary DSH_HOME; local prebuilt bundle; no API key",
+    "commands": [
+      "node labs/hello-plugin/verify.mjs",
+      "pnpm validate:plugin-lab",
+      "node --check labs/hello-plugin/index.js",
+      "node --check labs/hello-plugin/verify.mjs"
+    ],
+    "result": "PASS",
+    "notes": "真实提权网络运行通过：探针完成 version、profile 初始化、本地 bundle 安装、manifest 检查、--dump-config、profile 启动加载和 remove。探针显式从子进程环境删除 DEEPSEEK_API_KEY，并在 finally 中清理临时 home。没有启动 Web UI、没有发起模型请求、没有安装未知第三方包。"
+  },
+  "confidence": 99
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "dshBaseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "scope": {
+    "credentials": "none",
+    "modelRequests": "not-run",
+    "webUi": "not-run",
+    "pluginSource": "local-file-bundle"
+  },
+  "checks": [
+    { "name": "version", "status": "PASS" },
+    { "name": "profile-init", "status": "PASS" },
+    { "name": "profile-install", "status": "PASS" },
+    { "name": "dump-config", "status": "PASS" },
+    { "name": "plugin-load", "status": "PASS" },
+    { "name": "plugin-remove", "status": "PASS" },
+    { "name": "no-api-key", "status": "PASS" }
+  ],
+  "reproduction": {
+    "command": "node labs/hello-plugin/verify.mjs",
+    "result": "PASS",
+    "notes": "验证使用临时 DSH_HOME、workspace 内本地 bundle 和无凭据环境；不会读取用户现有 DSH 配置，不发起模型请求。"
+  }
+}
