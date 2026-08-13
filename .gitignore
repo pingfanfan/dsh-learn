@@ -8,7 +8,6 @@ state/private/
 state/snapshot.json
 state/events.jsonl
 outbox/
-state/private/
 *.log
 .env
 .env.*
