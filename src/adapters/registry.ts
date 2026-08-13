@@ -34,17 +34,21 @@ function parseChannelConfig(value: unknown): ChannelConfigFile {
     if (raw === undefined) continue;
     if (typeof raw !== "object" || raw === null || Array.isArray(raw)) throw new Error(`channel ${channel} config must be an object`);
     const item = raw as Record<string, unknown>;
-    const unknown = Object.keys(item).filter((key) => !["enabled", "mode", "reason"].includes(key));
+    const unknown = Object.keys(item).filter((key) => !["enabled", "mode", "requiresApproval", "reason"].includes(key));
     if (unknown.length > 0) throw new Error(`channel ${channel} contains unknown fields: ${unknown.join(", ")}`);
     if (typeof item.enabled !== "boolean") throw new Error(`channel ${channel} enabled must be boolean`);
     if (typeof item.mode !== "string" || !["DRAFT_ONLY", "UNAVAILABLE", "DISABLED"].includes(item.mode)) {
       throw new Error(`channel ${channel} mode is invalid`);
+    }
+    if (item.requiresApproval !== undefined && typeof item.requiresApproval !== "boolean") {
+      throw new Error(`channel ${channel} requiresApproval must be a boolean`);
     }
     if (item.reason !== undefined && typeof item.reason !== "string") throw new Error(`channel ${channel} reason must be a string`);
     if (item.mode !== "DRAFT_ONLY" && item.enabled) throw new Error(`channel ${channel} cannot be enabled in ${item.mode} mode`);
     result[channel as Exclude<Channel, "local">] = {
       enabled: item.enabled,
       mode: item.mode as ChannelConfig["mode"],
+      requiresApproval: item.requiresApproval === true,
       reason: item.reason as string | undefined,
     };
   }
