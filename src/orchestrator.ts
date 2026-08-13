@@ -445,7 +445,7 @@ export class Orchestrator {
       details: { channels: prepared.map((item) => item.channel) },
     }, (state) => {
       const asset = requireAsset(state, assetId);
-      if (asset.revision !== sourceAsset.revision || asset.status !== "READY" || asset.verification !== "PASS") {
+      if (asset.revision !== sourceAsset.revision || !["READY", "PUBLISHED"].includes(asset.status) || asset.verification !== "PASS") {
         throw new Error("Asset changed or is not ready");
       }
       const opportunity = requireOpportunity(state, asset.opportunityId);
@@ -704,6 +704,27 @@ export class Orchestrator {
       }
       if (job.status === "OUTBOX") assertPublishBindings(state, job);
       applyReceipt(state, job, receipt);
+      job.revision += 1;
+      job.updatedAt = new Date().toISOString();
+      return structuredClone(job);
+    })).result;
+  }
+
+  async markRemoteUnknown(jobId: string, reason: string, actor = "channel-agent"): Promise<PublishJob> {
+    const cleanedReason = reason.trim().slice(0, 500);
+    if (!cleanedReason) throw new Error("An uncertain remote state reason is required");
+    if (containsPotentialSecret(cleanedReason)) throw new Error("Remote state reason contains a potential secret");
+    return (await this.store.transact(actor, {
+      type: "publish.remote-state-unknown",
+      entityType: "publish-job",
+      entityId: jobId,
+    }, (state) => {
+      const job = requireJob(state, jobId);
+      if (!["OUTBOX", "SENDING", "UNKNOWN_REMOTE_STATE"].includes(job.status)) {
+        throw new Error(`Publish job is not externally attempted: ${job.status}`);
+      }
+      job.status = "UNKNOWN_REMOTE_STATE";
+      job.blockedReason = cleanedReason;
       job.revision += 1;
       job.updatedAt = new Date().toISOString();
       return structuredClone(job);
