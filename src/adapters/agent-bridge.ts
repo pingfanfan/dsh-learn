@@ -24,6 +24,7 @@ export class AgentBridgeAdapter implements ChannelAdapter {
       channel: this.id,
       available: this.config.enabled && this.config.mode === "DRAFT_ONLY",
       mode: this.config.mode,
+      approvalRequired: this.config.requiresApproval === true,
       reason: this.config.reason,
     };
   }
@@ -79,6 +80,8 @@ export class AgentBridgeAdapter implements ChannelAdapter {
       channel: this.id,
       jobId: job.id,
       dedupeKey: job.dedupeKey,
+      requiresUserApproval: this.config.requiresApproval === true,
+      userApproval: job.userApproval,
       content,
       createdAt: new Date().toISOString(),
       note: "OUTBOX 不是发布回执；渠道 Agent 成功后必须记录 remoteId、url 和 publishedAt。",
