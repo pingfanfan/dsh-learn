@@ -13,6 +13,9 @@ for (const item of [
   "npm install --global pnpm",
   "node scripts/plugin-doctor.mjs",
   "labs/hello-plugin/verify.mjs",
+  "--network",
+  "npm registry 可达",
+  "网络、DNS、代理或防火墙",
 ]) {
   if (!script.includes(item)) failures.push(`missing ${item}`);
 }
@@ -42,4 +45,4 @@ if (failures.length > 0) {
   console.error(`FAIL ${failures.join(", ")}`);
   process.exit(1);
 }
-console.log(`PASS ${scriptPath} checks=9`);
+console.log(`PASS ${scriptPath} checks=12`);
