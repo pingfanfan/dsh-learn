@@ -1,6 +1,6 @@
 # DSH Discussions 当前复核：从 #721 到 #822
 
-截至 2026 年 8 月 14 日，DeepSeek Harness 官方 Discussions 的公开分页已经推进到第 8 页，最后编号为 `#822`。编号连续性并不稳定，分页变长也不等于 DSH 发布了新功能；下面把用户报告、功能建议、社区插件展示和高风险安全信息分开处理。
+截至 2026 年 8 月 14 日，DeepSeek Harness 官方 Discussions 的公开分页已经推进到第 11 页，当前最后编号为 `#1068`。此前使用的第 8 页快照只是历史复核入口，不是当前列表基线。本卡仍只分析历史范围 `#721–#822`；后续分页仅用于刷新“当前列表”基线。编号连续性并不稳定，分页变长也不等于 DSH 发布了新功能；下面把用户报告、功能建议、社区插件展示和高风险安全信息分开处理。
 
 ## 先给完全新手的结论
 
@@ -59,7 +59,7 @@ npm install --global pnpm
 
 ## 来源与版本边界
 
-- [DeepSeek Harness Discussions 第 8 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=8)
+- [DeepSeek Harness Discussions 当前分页快照（维护复核至 #1068）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 - [官方 README 固定 commit](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md)
 - 本卡基线：`@deepseek-ai/dsh@0.1.0-rc.6`，commit `47f9438`。
 
