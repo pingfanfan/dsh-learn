@@ -1,6 +1,6 @@
 # DeepSeek Harness Discussions 新问题分流卡：先分清报告、复现和解决方案
 
-> 事实基线：2026-08-13；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；npm `@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview。本文整理的是官方 Discussions 中的用户报告，不是官方修复公告，也没有调用模型 API。
+> 事实基线：2026-08-14；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；npm `@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview。本文整理的是官方 Discussions 中的用户报告，不是官方修复公告，也没有调用模型 API。
 
 ## 这一轮新增了哪些可复用线索
 
