@@ -70,11 +70,12 @@ dsh-learn 可以先提供不依赖 API Key 的 DSH 安装、Web UI 启动和 hel
 
 这张卡以后既可以帮助用户自己排障，也可以帮助社区作者贡献 preset，前提是它把真实回执、适用范围和未测试的部分一起写出来，不能只留下一个看起来很完整的字段表。
 
-维护基线（2026-08-14）。官方 Discussions 当前已复核到 7 页、700 条公开讨论，编号从 `#12` 到 `#720`。#559 链接的 `dsh-gateway-presets` 已在后续核验中恢复可访问，但这只更新来源状态，不改写本卡对 #553–#559 的历史观察，也不把后续 `#560–#720` 的其他报告混入结论。
+维护基线（2026-08-14）。官方 Discussions 当前已复核到第 11 页、1100 条公开讨论，编号从 `#12` 到 `#1068`。#559 链接的 `dsh-gateway-presets` 已在后续核验中恢复可访问，但这只更新来源状态，不改写本卡对 #553–#559 的历史观察，也不把后续 `#560–#1068` 的其他报告混入结论。
 
 ## 验证范围与来源
 
 - [官方 Discussions 第 6 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
+- [当前分页快照（维护复核至 #1068）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 - [#553](https://github.com/deepseek-ai/deepseek-harness/discussions/553) · [#554](https://github.com/deepseek-ai/deepseek-harness/discussions/554) · [#555](https://github.com/deepseek-ai/deepseek-harness/discussions/555)
 - [#556](https://github.com/deepseek-ai/deepseek-harness/discussions/556) · [#557](https://github.com/deepseek-ai/deepseek-harness/discussions/557) · [#558](https://github.com/deepseek-ai/deepseek-harness/discussions/558) · [#559](https://github.com/deepseek-ai/deepseek-harness/discussions/559)
 - [官方固定 commit 的 `catalog.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/llm/llm-pi-ai/src/catalog.ts)
