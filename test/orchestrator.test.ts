@@ -46,6 +46,12 @@ const assetValidation: AssetValidationDraft = {
   checkedAt: "2026-08-13T00:30:00.000Z",
 };
 
+const toolAssetValidation: AssetValidationDraft = {
+  ...assetValidation,
+  kind: "validator",
+  command: "node scripts/validate-tool-schema-doctor.mjs",
+};
+
 async function fixture(githubEnabled = false, adapterLoader?: AdapterLoader): Promise<{ root: string; ops: Orchestrator }> {
   const root = await mkdtemp(join(tmpdir(), "dsh-learn-test-"));
   await mkdir(join(root, "ops"), { recursive: true });
@@ -148,6 +154,41 @@ test("verified asset reaches mock channel without pretending to be publicly publ
   assert.equal(state.opportunities[0].status, "READY");
   const duplicate = await ops.queuePublish(ready.asset.id, { local: "content/card.md" });
   assert.equal(duplicate[0].id, job.id);
+});
+
+test("a multi-asset opportunity keeps its lease until every registered asset is ready", async (t) => {
+  const { root, ops } = await fixture();
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "content", "tool.mjs"), "export const tool = true;\n");
+  await writeFile(join(root, "content", "card.md"), "# Multi-asset card\n");
+  await ops.scan([opportunity], "scout");
+  const claim = await ops.claimNext("builder");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "builder", claim.lease.token, claim.revision, evidence);
+  const first = await ops.registerAsset({
+    opportunityId: claim.id, worker: "builder", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "tool", title: "Tool fixture",
+    canonicalPath: "content/tool.mjs",
+  });
+  const second = await ops.registerAsset({
+    opportunityId: claim.id, worker: "builder", leaseToken: claim.lease.token,
+    aggregateRevision: first.opportunity.revision, type: "tutorial", title: "Card fixture",
+    canonicalPath: "content/card.md",
+  });
+  const firstReady = await ops.readyAsset({
+    assetId: first.asset.id, worker: "builder", leaseToken: claim.lease.token,
+    aggregateRevision: second.opportunity.revision, validation: toolAssetValidation,
+  });
+  assert.equal(firstReady.opportunity.status, "BUILDING");
+  assert.ok(firstReady.opportunity.lease);
+
+  const secondReady = await ops.readyAsset({
+    assetId: second.asset.id, worker: "builder", leaseToken: firstReady.opportunity.lease.token,
+    aggregateRevision: firstReady.opportunity.revision, validation: assetValidation,
+  });
+  assert.equal(secondReady.opportunity.status, "READY");
+  assert.equal(secondReady.opportunity.lease, undefined);
+  assert.deepEqual((await ops.store.read()).assets.map((item) => item.status), ["READY", "READY"]);
 });
 
 test("a published asset can add a new channel without invalidating its existing receipt", async (t) => {
@@ -802,6 +843,32 @@ test("an empty queue creates one bounded routine maintenance task and refreshes 
   assert.equal(completed.opportunity.status, "ARCHIVED");
   assert.notEqual(completed.asset.validation?.checkedAt, oldCheckedAt);
   assert.equal(await ops.claimNext("maintenance-after-complete"), null);
+});
+
+test("a superseded stale asset can be retired without leaving maintenance work queued", async (t) => {
+  const { root, ops } = await fixture(false);
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await writeFile(join(root, "content", "card.md"), "# Superseded card\n");
+  await ops.scan([opportunity], "scout");
+  const claim = await ops.claimNext("researcher");
+  assert.ok(claim?.lease);
+  const verified = await ops.verify(claim.id, "researcher", claim.lease.token, claim.revision, evidence);
+  const registered = await ops.registerAsset({
+    opportunityId: claim.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: verified.opportunity.revision, type: "faq", title: "Superseded card",
+    canonicalPath: "content/card.md",
+  });
+  await ops.readyAsset({
+    assetId: registered.asset.id, worker: "researcher", leaseToken: claim.lease.token,
+    aggregateRevision: registered.opportunity.revision, validation: assetValidation,
+  });
+  await ops.markSourceChanged(evidence.sources[0].url, "next-commit");
+
+  const retired = await ops.retireAsset(registered.asset.id, "已由新的事实卡替代，旧卡仅保留作历史记录");
+  assert.equal(retired.status, "RETIRED");
+  assert.match(retired.retiredReason ?? "", /新的事实卡/);
+  assert.equal((await ops.store.read()).opportunities.some((item) => item.sourceType === "maintenance" && item.status === "TRIAGED"), false);
+  assert.equal(await ops.claimNext("maintenance-after-retire"), null);
 });
 
 test("stale evidence requires a new baseline before the unchanged asset can be revalidated", async (t) => {
