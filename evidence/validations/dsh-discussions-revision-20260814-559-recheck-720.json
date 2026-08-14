@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "check_tone_cliches.py && check_period_density.py && pnpm public-audit && pnpm check && git diff --check && canonical-to-github render check",
+  "notes": "#553–#559 历史复核卡的结论仍基于当时状态；证据当前基线已更新至官方 Discussions 7 页、700 条、最新 #720。正文只更新维护基线，不把 #560–#720 的后续报告混入原主题；润色检查通过。#559 的 fork 与 gateway-presets 仍只有静态阅读证据，没有下载、安装或运行 fork/插件，没有访问真实网关，没有调用模型 API，也没有使用或保存凭据。GitHub 发布仍保持知乎审批门禁，本次不发布知乎。",
+  "checkedAt": "2026-08-14T03:16:00Z"
+}
