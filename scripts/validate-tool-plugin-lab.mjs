@@ -26,6 +26,7 @@ const required = [
   [index.includes('export const inject = ["tools"]'), "tools injection"],
   [index.includes('ctx.tools.register({'), "tools registration"],
   [index.includes('name: "greet"'), "greet name"],
+  [index.includes('type: "object"'), "parameters object root"],
   [index.includes('required: ["name"]'), "required parameter"],
   [index.includes('schema: { type: "string" }'), "output schema"],
   [index.includes('[greet-tool] registered'), "registration sentinel"],
@@ -36,6 +37,7 @@ const required = [
   [facts.offlineRegistration === "PASS", "offline registration boundary"],
   [readme.includes("defineTool") && readme.includes("NOT_RUN"), "README boundary"],
   [offline.includes("tool.execute") && offline.includes("output.render"), "offline verifier"],
+  [offline.includes('parameters schema root must have type object'), "parameters root check"],
 ];
 const failures = required.filter(([, label]) => !required.find(([ok, currentLabel]) => currentLabel === label && ok)).map(([, label]) => label);
 if (failures.length > 0) {
