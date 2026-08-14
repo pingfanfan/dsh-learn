@@ -80,6 +80,7 @@ pnpm public-audit
 - 无 Key 第一个可安装插件实验：[labs/hello-plugin/README.md](labs/hello-plugin/README.md)。
 - 完全新手安装、启动 Web UI 和第一个插件：[content/canonical/dsh-zero-to-first-plugin-rc6.md](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-zero-to-first-plugin-rc6.md](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
 - 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
+- dsh-plugin-check rc.6 生态兼容性复核：[content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md](content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md)；GitHub 已有真实文件回执，生态仓库声明已核对，第三方插件动态安装仍为 `NOT_RUN`。
 - DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
 - DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
