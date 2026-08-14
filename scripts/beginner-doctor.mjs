@@ -14,6 +14,19 @@ const requiredFiles = [
   "labs/hello-plugin/verify.mjs",
   "content/canonical/dsh-zero-to-first-plugin-rc6.md",
 ];
+const beginnerScreenshots = [
+  "01-official-run-readme.jpg",
+  "02-official-plugin-publish.jpg",
+  "03-terminal-node-version.svg",
+  "04-terminal-dsh-web.svg",
+  "05-terminal-plugin.svg",
+  "06-terminal-beginner-doctor.svg",
+  "07-dsh-first-run-api-key-prompt.jpg",
+  "08-dsh-web-ui-no-key.jpg",
+  "09-nodejs-download-page.jpg",
+  "10-github-download-zip.jpg",
+  "11-plugin-edit-indexjs.jpg",
+];
 
 function versionOf(command) {
   const executable = process.platform === "win32" && command === "npx" ? "npx.cmd" : command;
@@ -67,6 +80,16 @@ else {
   console.log(`FAIL dsh-learn 练习文件：${missing.join(", ")}`);
 }
 
+const missingScreenshots = beginnerScreenshots.filter((file) =>
+  !existsSync(resolve(root, "content/assets/dsh-beginner", file)),
+);
+if (missingScreenshots.length === 0) {
+  console.log(`PASS 新手截图资源 ${beginnerScreenshots.length} 张`);
+} else {
+  failures.push(`缺少新手截图：${missingScreenshots.join(", ")}`);
+  console.log(`FAIL 新手截图资源：缺少 ${missingScreenshots.join(", ")}`);
+}
+
 const currentPath = resolve(root);
 if (/[^\\x00-\\x7F]/.test(currentPath)) {
   warnings.push("当前路径含有非 ASCII 字符，遇到插件路径问题时请把项目移到只含英文和数字的短路径");
@@ -97,6 +120,8 @@ if (reportRequested) {
   console.log(`PLATFORM=${process.platform}`);
   console.log(`ARCH=${process.arch}`);
   console.log(`PROJECT_FILES=${missing.length === 0 ? "PASS" : "FAIL"}`);
+  console.log(`SCREENSHOTS=${missingScreenshots.length === 0 ? "PASS" : "FAIL"}`);
+  console.log(`SCREENSHOT_COUNT=${beginnerScreenshots.length - missingScreenshots.length}/${beginnerScreenshots.length}`);
   console.log("PATH=redacted");
   console.log("NETWORK=not_checked");
   console.log("KEY_STATUS=not_read");
