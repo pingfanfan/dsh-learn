@@ -60,14 +60,14 @@ DeepSeek Harness 官方 Discussions 的 #539–#549，放在一起看，比单�
 
 以后即使同一个仓库更新了 README，也要把新的 commit、包版本和复测结果重新绑定，旧的静态检查不能自动变成新的运行结论。
 
-维护基线（2026-08-14）。官方 Discussions 当前已复核到 7 页、700 条公开讨论，编号从 `#12` 到 `#720`，这个新分页只用于确认上游仍在增长，不改写本卡对 #539–#549 的历史观察，也不把后续 `#550–#720` 的其他报告混入本卡结论。
+维护基线（2026-08-14）。此前官方 Discussions 已复核到 7 页、700 条公开讨论，编号从 `#12` 到 `#720`。当前来源已复核到第 11 页、最后编号 `#1068`，这些新分页只用于确认上游仍在增长，不改写本卡对 #539–#549 的历史观察，也不把后续 `#550–#1068` 的其他报告混入本卡结论。
 
 
 对新手来说，暂时不用理解所有 Cordis 细节，先知道自己正在看的是页面、host、profile、插件入口还是模型请求，已经足够把很多`DSH 好像坏了`的感觉拆开。
 
 ## 验证范围与来源
 
-- 事实基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`；当前讨论列表复核为 7 页、700 条、#12–#720。
+- 事实基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`。当前讨论列表已复核到第 11 页、最后编号 #1068。
 - 历史观察：#539–#549 的原始观察时间为 2026-08-13T23:44:07Z，原始列表是 6 页、535 条、最后编号 #549。当前分页只做维护基线，不改写历史观察。
 - #542 与 #543 的代码层线索来自固定 commit 的 `resolveWorkspacePath` 与 Web RPC；这不是官方修复结论。
 - #544 的 `happyren/dsh-agent-messaging` 固定 commit 为 `d6fc3abfde2467aa5b6b5598fea2f0e1ece2fdac`，静态读取 package.json、README、patch 和入口源码，没有下载、安装、启动或调用模型。
@@ -78,5 +78,6 @@ DeepSeek Harness 官方 Discussions 的 #539–#549，放在一起看，比单�
 - [官方 resolveWorkspacePath 源码](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/runtime/src/client/workspaces/path.ts)
 - [官方 Web RPC 源码](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/connection/src/client/rpc.ts)
 - [dsh-agent-messaging](https://github.com/happyren/dsh-agent-messaging)，静态审查固定 commit `d6fc3abfde2467aa5b6b5598fea2f0e1ece2fdac`
+- [当前 Discussions 分页基线](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
