@@ -1,0 +1,47 @@
+{
+  "claim": "官方 Discussion #563 报告 Windows 原生目录选择器在读取包含特定中文字符的路径时可能提前截断，导致 DSH 工作区创建使用一条不存在的短路径；固定 commit 中的 readUtf16 实现包含只检查 UTF-16LE 低字节的终止判断。dsh-learn 将这个主张收窄为可离线验证的 UTF-16 字符串读取风险，不把社区修复候选写成官方版本修复。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/563",
+      "title": "DeepSeek Harness Discussion #563：Win32 原生目录选择器中文路径截断报告",
+      "kind": "official",
+      "accessedAt": "2026-08-14T05:47:13Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/host/directory-picker-native/src/win32-dialog-bindings.ts",
+      "title": "DeepSeek Harness 固定 commit 的 Win32 目录选择器源码",
+      "kind": "official",
+      "accessedAt": "2026-08-14T05:47:13Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/host/directory-picker-native/package.json",
+      "title": "DeepSeek Harness 固定 commit 的目录选择器包清单",
+      "kind": "official",
+      "accessedAt": "2026-08-14T05:47:13Z"
+    },
+    {
+      "url": "https://github.com/pingfanfan/dsh-learn/blob/main/scripts/win32-path-doctor.mjs",
+      "title": "dsh-learn 本地 Win32 路径体检器",
+      "kind": "repository",
+      "accessedAt": "2026-08-14T05:47:13Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh-host-directory-picker-native",
+    "version": "0.1.0-rc.5"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; UTF-16 local fixtures; no Windows dialog; no API key; no model request",
+    "commands": [
+      "node scripts/win32-path-doctor.mjs",
+      "node scripts/validate-win32-path-doctor.mjs",
+      "pnpm validate:win32-path-doctor"
+    ],
+    "result": "PASS",
+    "notes": "离线夹具用安卓开发和自定义中文路径比较旧的低字节判断与两个字节同时为零的判断，复现提前截断并验证修正判断保留完整路径。没有在 Windows 原生对话框或 DSH runtime 中运行，真实 Windows 复测仍为 NOT_RUN；没有使用、保存或展示 API Key，没有安装未知第三方插件。"
+  },
+  "confidence": 94
+}
