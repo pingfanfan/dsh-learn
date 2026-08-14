@@ -1,0 +1,44 @@
+{
+  "claim": "截至 2026-08-13，DeepSeek Harness 官方 GitHub Discussions 已有维护者欢迎公告、Announcements、Q&A、Ideas、Show and tell、General 等入口，并出现 memory 迁移、企微添加和飞书问卷等中文讨论；这支持制作一张社区入口与发帖准备卡，但不支持把任何具体问题写成已有官方解决方案。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/12","title":"DeepSeek Harness 维护者欢迎公告（Discussion #12）","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/14","title":"关于 memory 迁移的官方 Discussions 讨论（Discussion #14）","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30","title":"DeepSeek Harness Discussions API 当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md","title":"DeepSeek Harness README（固定 commit）","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 第 1 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 第 2 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 第 3 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 第 4 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 第 5 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/565","title":"Discussion #565 当前公开详情","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/566","title":"Discussion #566 当前公开详情","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/567","title":"Discussion #567 当前公开详情","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/568","title":"Discussion #568 当前公开详情","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/569","title":"Discussion #569 当前公开详情","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/570","title":"Discussion #570 当前公开详情","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:41:22Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/720","title":"Discussion #720 当前公开列表最后一项","kind":"official","accessedAt":"2026-08-14T03:41:22Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified current Discussions pages 1–7, detail pages #12 and #14, fixed-commit README and dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/12",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/14",
+      "READ README.md at 47f9438",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/720"
+    ],
+    "result": "PASS",
+    "notes": "#12 的早期预览和社区反馈边界仍成立，#14 仍是 memory 迁移需求讨论，不是官方迁移方案。当前公开分页为 7 页、700 项，第一页从 #12 开始，第七页到 #720；新分页只作为维护基线。没有调用模型 API，没有读取或保存凭据，没有安装第三方插件，也没有发布知乎。"
+  },
+  "confidence": 98
+}
