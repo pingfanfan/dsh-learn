@@ -2,8 +2,10 @@
 
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { tmpdir } from "node:os";
 
 const checkNetwork = process.argv.includes("--network");
 
@@ -29,19 +31,56 @@ function versionOf(command) {
 }
 
 async function checkNpmRegistry() {
-  const url = "https://registry.npmjs.org/@deepseek-ai%2fdsh";
+  const registry = "https://registry.npmjs.org";
+  const npm = process.platform === "win32" ? "npm.cmd" : "npm";
+  const configDir = await mkdtemp(resolve(tmpdir(), "dsh-learn-npm-check-"));
+  const userConfig = resolve(configDir, "empty.npmrc");
   try {
-    const response = await fetch(url, {
-      method: "HEAD",
-      signal: AbortSignal.timeout(5000),
+    // Use the same npm client that npx will use for the real experiment. An
+    // isolated empty config prevents a user's private .npmrc from becoming
+    // part of this preflight or its output.
+    await writeFile(userConfig, "", "utf8");
+    const output = execFileSync(npm, [
+      "view",
+      "@deepseek-ai/dsh@0.1.0-rc.6",
+      "version",
+      "--registry",
+      registry,
+      "--userconfig",
+      userConfig,
+      "--fetch-retries=0",
+      "--fetch-timeout=5000",
+      "--fetch-retry-mintimeout=1000",
+      "--fetch-retry-maxtimeout=2000",
+      "--audit=false",
+      "--fund=false",
+    ], {
+      cwd: root,
+      encoding: "utf8",
+      timeout: 8000,
+      stdio: ["ignore", "pipe", "pipe"],
+      env: {
+        ...process.env,
+        NPM_CONFIG_USERCONFIG: userConfig,
+        NPM_CONFIG_REGISTRY: registry,
+        NPM_CONFIG_AUDIT: "false",
+        NPM_CONFIG_FUND: "false",
+      },
     });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    if (!output.trim().split(/\s+/).includes("0.1.0-rc.6")) {
+      throw new Error("npm did not return the requested DSH version");
+    }
     console.log("PASS npm registry 可达");
     return true;
   } catch (error) {
-    console.log(`FAIL npm registry 不可达：${error instanceof Error ? error.message : String(error)}`);
+    const detail = error instanceof Error && "stderr" in error && typeof error.stderr === "string"
+      ? error.stderr.trim().split("\n").at(-1)
+      : error instanceof Error ? error.message : String(error);
+    console.log(`FAIL npm registry 不可达：${detail || "npm view failed"}`);
     console.log("这通常是网络、DNS、代理或防火墙问题，不代表插件代码失败。恢复后再运行：node labs/hello-plugin/verify.mjs");
     return false;
+  } finally {
+    await rm(configDir, { recursive: true, force: true });
   }
 }
 
