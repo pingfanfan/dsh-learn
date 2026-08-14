@@ -1,6 +1,6 @@
 # dsh-learn 完全新手入口地图
 
-这份地图是给维护者和 Agent 用的验收表。对外的新手正文仍然从[完全新手教程：从安装到第一个插件](../content/canonical/dsh-zero-to-first-plugin-rc6.md)进入；这里把“读者到底要看到什么、哪张图负责什么、什么结果才算验证过”拆开记录。
+这份地图是给维护者和 Agent 用的验收表。对外的新手可以先从[完全新手快速上手卡](../content/canonical/dsh-beginner-quickstart-rc6.md)完成第一轮，再进入[完全新手教程：从安装到第一个插件](../content/canonical/dsh-zero-to-first-plugin-rc6.md)；这里把“读者到底要看到什么、哪张图负责什么、什么结果才算验证过”拆开记录。
 
 ## 默认假设
 
@@ -43,6 +43,7 @@
 ## 当前复测状态
 
 - 文档、图片链接、编辑区隔离检查：`pnpm validate:beginner-entry` 已通过。
+- 单页截图快速上手卡：`pnpm validate:beginner-quickstart` 已通过；它复用现有 9 张截图，不新增动态成功声明。
 - 新手环境检查脚本的静态验证：`pnpm validate:beginner-doctor` 已通过。
 - 插件前置检查脚本的静态验证：`pnpm validate:plugin-doctor` 已通过。
 - 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在固定 rc.6 版本检查阶段得到 `ENOTFOUND registry.npmjs.org`，探针现在会输出面向新手的阻塞说明，而不是原始 Node.js 堆栈；因此不能把本轮写成安装、加载、移除通过。恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
