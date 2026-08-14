@@ -34,7 +34,7 @@ for (const marker of ["export const name", "ctx.effect", "loaded", "unloaded"]) 
 for (const marker of ["dsh-hello-plugin", "id: hello-plugin"]) {
   if (!patch.includes(marker)) errors.push(`patch missing marker: ${marker}`);
 }
-for (const marker of ["DSH_HOME", "plugin", "dump-config", "remove", "DEEPSEEK_API_KEY", "BLOCKED_NETWORK", "plugin-doctor.mjs --network", "网络、DNS、代理或防火墙"]) {
+for (const marker of ["DSH_HOME", "pluginPath", "bundleName", "pluginId", "dump-config", "remove", "DEEPSEEK_API_KEY", "BLOCKED_NETWORK", "plugin-doctor.mjs --network", "网络、DNS、代理或防火墙"]) {
   if (!probe.includes(marker)) errors.push(`probe missing marker: ${marker}`);
 }
 if (/sk-[A-Za-z0-9_-]{12,}|-----BEGIN [A-Z ]+ PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9_]{20,}/.test(`${readme}\n${packageText}\n${source}\n${patch}\n${probe}`)) {
