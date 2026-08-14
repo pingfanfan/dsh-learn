@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "node scripts/validate-discussion-kit.mjs content/canonical/discussion-minimal-repro-kit.md && pnpm public-audit && pnpm check && git diff --check",
+  "notes": "在官方 Discussions 当前公开列表基线 github-discussions-public-list-through-564-2026-08-14 下复测标题、Markdown 结构、代码块闭合、版本边界、最小复现字段、脱敏提醒、双语模板与官方来源。固定 commit 的贡献政策和 README 已通过 GitHub connector 复核；内容仍不包含凭据、私密日志或未经证实的具体缺陷结论。",
+  "checkedAt": "2026-08-14T00:49:00.000Z"
+}
