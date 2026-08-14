@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "FAQ content review on content/canonical/dsh-discussions-current-720.md && pnpm public-audit && pnpm check && git diff --check",
+  "notes": "事实卡绑定当前官方 Discussions 7 页、700 条、最后编号 #720 的维护基线，明确区分 #619、#620、#623、#720 的用户报告或提案与官方功能；把首次 Web UI、API Key、工作区、插件生命周期和源码构建分层，并链接完全新手教程。正文未写入凭据、私人路径或模型调用结果，也没有发布知乎。",
+  "checkedAt": "2026-08-14T04:00:00Z"
+}
