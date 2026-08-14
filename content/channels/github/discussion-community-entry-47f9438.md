@@ -1,6 +1,6 @@
 # DeepSeek Harness 官方社区入口：先选对板块，再提交最小信息
 
-> 事实基线：2026-08-14；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；npm `@deepseek-ai/dsh@0.1.0-rc.6`。本次维护复核时，官方 Discussions 分页为 7 页、700 条公开讨论，编号从 `#12` 到 `#720`，中间存在编号空缺。DSH 仍处于 Developer Preview，下面的入口和讨论内容可能随官方仓库变化。
+> 事实基线：2026-08-14；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；npm `@deepseek-ai/dsh@0.1.0-rc.6`。本次维护复核时，官方 Discussions 分页为第 11 页、1100 条公开讨论，编号从 `#12` 到 `#1068`，中间存在编号空缺。DSH 仍处于 Developer Preview，下面的入口和讨论内容可能随官方仓库变化。
 
 ## 现在发生了什么
 
@@ -49,7 +49,7 @@ DeepSeek Harness 的官方 GitHub Discussions 已经出现维护者欢迎公告�
 - [DeepSeek Harness Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)
 - [维护者欢迎公告（Discussion #12）](https://github.com/deepseek-ai/deepseek-harness/discussions/12)
 - [关于 memory 迁移的讨论（Discussion #14）](https://github.com/deepseek-ai/deepseek-harness/discussions/14)
-- [官方 Discussions 当前分页快照（复核至 #720）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7)
+- [官方 Discussions 当前分页快照（复核至 #1068）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 - [DeepSeek Harness README（固定 commit）](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md)
 
 
