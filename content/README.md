@@ -10,3 +10,5 @@
 工具插件的本地 schema 体检和 #297 事实边界见 [`canonical/dsh-tool-schema-doctor-297.md`](canonical/dsh-tool-schema-doctor-297.md)；对应的检查脚本不联网、不调用模型。
 
 Windows 中文路径的 UTF-16 截断排错见 [`canonical/dsh-win32-chinese-path-563.md`](canonical/dsh-win32-chinese-path-563.md)；对应的 doctor 只验证本地字符串读取逻辑，不代表 Windows 原生对话框或 DSH runtime 已通过。
+
+Code Mode 外层 `run_code` 与内层 `bash` 的 `description` 分层排错见 [`canonical/dsh-code-mode-args-558.md`](canonical/dsh-code-mode-args-558.md)；对应的 doctor 只读取本地教学 JSON，不联网、不启动 DSH、不调用模型。
