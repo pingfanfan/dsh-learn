@@ -17,6 +17,9 @@ const required = [
   "scripts/beginner-start.mjs",
   "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web",
   "没有联网，也没有读取或发送任何 API Key",
+  "reportRequested",
+  "PATH=redacted",
+  "KEY_STATUS=not_read",
 ];
 for (const item of required) {
   if (!doctor.includes(item)) failures.push(`missing ${item}`);
@@ -30,6 +33,16 @@ const result = execFileSync(process.execPath, [doctorPath], {
 for (const item of ["PASS Node.js", "PASS npm", "PASS npx", "PASS 环境可以进入 DSH 启动步骤", "node scripts/beginner-start.mjs"]) {
   if (!result.includes(item)) failures.push(`runtime missing ${item}`);
 }
+
+const report = execFileSync(process.execPath, [doctorPath, "--report"], {
+  encoding: "utf8",
+  stdio: ["ignore", "pipe", "pipe"],
+});
+for (const item of ["DSH_VERSION=0.1.0-rc.6", "PATH=redacted", "NETWORK=not_checked", "KEY_STATUS=not_read", "WEB=not_started", "PLUGIN=not_started"]) {
+  if (!report.includes(item)) failures.push(`report missing ${item}`);
+}
+const personalPathMarkers = [["/", "Users", "/"].join(""), ["/", "home", "/"].join(""), ["\\\\", "Users", "\\\\"].join("")];
+if (personalPathMarkers.some((marker) => report.includes(marker))) failures.push("report leaks a home path");
 
 if (failures.length > 0) {
   console.error(`FAIL ${failures.join(", ")}`);
