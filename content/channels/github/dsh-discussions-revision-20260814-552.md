@@ -1,8 +1,8 @@
 # DSH Discussions #550–#552：从文件拖拽排障到本地 RAG 插件
 
-> 事实基线：2026-08-13T23:58:15Z；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；`@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview，社区项目和问题都不等于官方功能或官方修复。
+> 历史事实基线：2026-08-13T23:58:15Z；当前来源复核到 2026-08-14T01:27:30Z。DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；`@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview，社区项目和问题都不等于官方功能或官方修复。
 
-DeepSeek Harness 官方 Discussions 已复核到 6 页、538 条公开讨论，最后编号是 #552。最近新增的 3 条内容分别落在 Web UI 输入问题、模型网关兼容性和社区插件集成三层，不能统称为同一种 DSH 故障。
+DeepSeek Harness 官方 Discussions 当前已复核到 6 页、577 条公开讨论，编号从 #12 到 #591。#550、#551、#552 分别落在 Web UI 输入问题、模型网关兼容性和社区插件集成三层，不能统称为同一种 DSH 故障。
 
 ## #550：Windows/WSL 文件拖拽报告
 
@@ -20,7 +20,7 @@ Discussion #551 认为 reasoning 模型通过 OpenAI-compatible 网关访问时�
 
 `dsh-rag-kb` 展示了一个本地 RAG 知识库：浏览器端悬浮面板，主机端文档切片、本机 Ollama embedding、JSON 索引，以及 `kb_search`、`kb_index`、`kb_status` 工具。
 
-当前 README 要求把两个源码包复制进 DSH 仓库，修改 4 处 TypeScript/bundle 配置，合并 `cordis.patch.yml`，执行 `pnpm install` 和两次构建，再启动 Ollama 并重启 `dsh web`。两个包版本为 `0.1.0-rc.5`，依赖 DSH workspace 包，公开资料没有给出独立发布 tarball 或干净 profile 的 `dsh plugin add` 命令。
+当前公开仓库 main commit 为 `bdfc83238ffeb0bc58839e4c03476c51da558629`。README 要求把两个源码包复制进 DSH 仓库，修改 4 处 TypeScript/bundle 配置，合并 `cordis.patch.yml`，执行 `pnpm install` 和两次构建，再启动 Ollama 并重启 `dsh web`。host/client 两个包版本仍为 `0.1.0-rc.5`，依赖 DSH workspace 包，公开资料没有给出独立发布 tarball 或干净 profile 的 `dsh plugin add` 命令。
 
 host 入口注入 `webServer`、`fs`、`subprocess`、`sandboxPolicy` 与 `tools`，并通过 `curl.exe` 请求本机 Ollama。这带有明显的 Windows 假设；能否在 macOS、Linux 或 npm 发布版 DSH 中直接工作，不能从展示文字推出。
 
@@ -37,4 +37,4 @@ host 入口注入 `webServer`、`fs`、`subprocess`、`sandboxPolicy` 与 `tools
 - [固定 commit 的 `catalog.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/llm/llm-pi-ai/src/catalog.ts)
 - [`dsh-rag-kb` 仓库](https://github.com/AlowEnsoul/dsh-rag-kb) · [README](https://raw.githubusercontent.com/AlowEnsoul/dsh-rag-kb/main/README.md)
 
-> 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
+> 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。当前复核没有下载、安装或运行第三方插件，也没有发布知乎。
