@@ -6,7 +6,7 @@
 
 DSH 目前仍是 Developer Preview，版本变化会比较快，下面的命令固定到 `@deepseek-ai/dsh@0.1.0-rc.6`，官方仓库基线固定到 `47f9438`，以后看到旧文章，先找它写的版本，再决定是否照做。
 
-## 你会用到的三个东西
+## 先准备好环境
 
 Node.js 是运行 DSH 所需的基础软件，它不是 DSH，也不是模型，你可以把它理解成让电脑能够执行 JavaScript 工具的一套运行环境。
 
@@ -16,7 +16,7 @@ Node.js 是运行 DSH 所需的基础软件，它不是 DSH，也不是模型，
 
 这三样东西的关系可以这样记。Node.js 负责执行，终端负责发出命令，浏览器负责显示页面。
 
-## 安装 Node.js
+**安装 Node.js**
 
 打开 Node.js 官方下载页，选择一个满足 DSH 要求的版本。当前官方根目录的 package manifest 要求 Node.js `22.19.0` 或更高的 22.x，或者 24.x 及以上版本。安装器一路使用默认选项即可，安装结束以后重新打开终端。
 
@@ -51,7 +51,7 @@ node scripts/beginner-doctor.mjs
 
 如果提示当前 Node.js 版本不满足要求，卸载旧版以后安装满足要求的版本，不要用 `npm install` 去修复 Node.js 版本，这两个动作解决的是不同问题。
 
-## 启动 DSH 的 Web UI
+**启动 DSH 的 Web UI**
 
 找一个你容易找到的文件夹并打开终端，macOS 可以在 Finder 里进入文件夹以后右键打开终端，Windows 可以在资源管理器地址栏输入 `powershell`，也可以使用 Windows Terminal。
 
@@ -63,6 +63,14 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 第一次运行时，`npx` 会从 npm 下载对应版本的 DSH，网络较慢时终端可能停留一会儿，看到本机地址以后不要关掉窗口，用浏览器打开 `127.0.0.1` 的 `3080` 端口。
 
+对新手来说，这条命令就是 `安装并启动 DSH`。`npx` 会把指定版本下载到本机的 npm 缓存，再运行它。你不需要先把 `dsh` 全局安装，也不需要自己配置 PATH。教程把版本号写全，是为了让每个人先使用同一个基线。
+
+如果只想确认 DSH 版本，可以运行下面这条命令，它不会打开 Web UI。
+
+```bash
+npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --version
+```
+
 ![官方 README 中的 DSH 启动说明](../../assets/dsh-beginner/01-official-run-readme.jpg)
 
 ![终端里启动 DSH Web UI](../../assets/dsh-beginner/04-terminal-dsh-web.svg)
@@ -73,7 +81,7 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 要停止 DSH，在终端按 `Ctrl` 加 `C`，它只会停止当前进程，文件仍然保留，下次可以再次运行同一条命令。
 
-## 第一次打开页面不要急着接模型
+**第一次打开页面不要急着接模型**
 
 看到网页，只能说明 DSH 的 Web UI 进程已经启动，还不能说明 provider 配置正确，也不能说明模型已经能够回答问题。
 
@@ -89,7 +97,7 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 等无 Key 基线稳定以后，再在 DSH 自己的设置页面中按当前版本提示配置模型，凭据只放在本机配置或环境变量中，不要写进 `package.json`，不要贴到 Issue，也不要发进聊天记录，模型能回答属于另一项验证，不能拿它替代插件安装验证。
 
-## 下载 dsh-learn 的练习文件
+**下载 dsh-learn 的练习文件**
 
 想完成下面的插件实验，需要 dsh-learn 的文件，完全不会 Git 也没有关系，可以打开 dsh-learn 的 GitHub 页面，选择下载 ZIP，解压到一个路径短、只包含英文和数字的文件夹。
 
@@ -99,7 +107,9 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 进入解压后的 `dsh-learn` 文件夹，再打开终端，让终端当前所在的位置就是这个文件夹，因为下面的路径都是从项目根目录开始写的，学习阶段不需要先安装 dsh-learn 的全部开发依赖，第一条实验命令会自己调用固定版本的 DSH。
 
-## 安装插件前先检查 pnpm
+## 安装并运行第一个插件
+
+**安装插件前先检查 pnpm**
 
 启动 Web UI 只需要 Node.js，但 DSH 的 `plugin` 子命令会在 profile 目录里调用 pnpm，到了这一步才需要额外的包管理器。先运行下面这条检查，不要等安装命令卡住以后再猜网络是不是坏了。
 
@@ -115,7 +125,7 @@ npm install --global pnpm
 
 这一步只安装包管理器，不会填写 API Key，也不会发起模型请求，`plugin-doctor` 只检查版本和练习文件，不读取凭据。
 
-## 用无 Key 实验安装第一个插件
+**用无 Key 实验安装第一个插件**
 
 项目里已经准备了 `labs/hello-plugin`，它是一个只打印加载状态的最小插件，目的是让你看清安装、profile 发现、插件加载和移除是否都发生了。
 
@@ -133,7 +143,7 @@ node labs/hello-plugin/verify.mjs
 
 这一步遇到 npm registry 超时，不能写成插件代码失败，等网络恢复以后用同一条命令重新运行，遇到 Node 版本错误先修 Node.js，遇到本地路径错误先把项目移到短路径，再重复实验。
 
-## 从示例复制一个自己的插件
+**从示例复制一个自己的插件**
 
 无 Key 实验成功以后，可以复制 `labs/hello-plugin` 文件夹，把副本改名为 `my-first-plugin`，用文本编辑器打开副本里的 `index.js`，只改日志中的文字，例如改成 `my-first-plugin loaded`，其他文件先不要动。
 
@@ -141,32 +151,47 @@ node labs/hello-plugin/verify.mjs
 
 ![第一个插件的文件结构和 index.js](../../assets/dsh-beginner/11-plugin-edit-indexjs.jpg)
 
-这个小改动能让你看到自己的代码是否被加载，`package.json` 负责声明这是一个 npm 包，`dsh.bundle.patch` 负责声明它提供一层组合配置，`cordis.patch.yml` 负责把插件入口插进配置树，`index.js` 负责导出插件并执行 `apply`，四个文件各自只管一层。
+这个小改动能让你看到自己的代码是否被加载。`package.json` 负责声明这是一个 npm 包，`dsh.bundle.patch` 负责声明它提供一层组合配置。`cordis.patch.yml` 负责把插件入口插进配置树，`index.js` 负责导出插件并执行 `apply`。四个文件各自只管一层。
 
-官方插件教程里的手动安装命令是下面这一类形式。它假设你已经安装好 DSH CLI，并且当前终端位于包含插件目录的工作区。
+官方插件教程里的手动安装命令是下面这一类形式。为了不让新手再处理一次全局安装，这里仍然使用前面同一个固定版本的 `npx`；当前终端需要位于包含插件目录的工作区。先用 `verify.mjs` 完成第一次实验以后，再考虑手动逐条执行。
 
 ![官方插件教程中的 bundle 与 profile](../../assets/dsh-beginner/02-official-plugin-publish.jpg)
 
 ```bash
-dsh plugin --profile demo add ./my-first-plugin
-dsh --profile demo --dump-config
-dsh --profile demo
-dsh plugin --profile demo remove dsh-hello-plugin
+npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo add ./my-first-plugin
 ```
 
-命令需要在 CLI 可用时执行。
+安装完成后，导出 `demo` profile 的配置。
 
-如果终端提示找不到 `dsh`，先不要改插件文件，回到官方 CLI 安装说明把 CLI 安装完成后再重复这组命令。新手阶段更推荐先运行项目提供的 `verify.mjs`，因为它把临时目录和清理动作都处理好了。
+```bash
+npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo --dump-config
+```
+
+确认配置里出现插件以后，再启动 profile。
+
+```bash
+npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo
+```
+
+实验结束后，移除这个插件。
+
+```bash
+npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo remove dsh-hello-plugin
+```
+
+这组命令会操作名为 `demo` 的 profile。新手阶段更推荐先运行项目提供的 `verify.mjs`，因为它会创建临时的 `DSH_HOME`，实验结束后自动清理，不会把练习包写进你平时使用的配置。无论是安装成功、配置导出、加载日志还是移除结果，都要以终端实际输出为准。
 
 配置导出里能看到插件组合层，启动时能看到你改过的日志，移除以后 profile 里不再保留这个包，这三类结果分别对应发现、加载和清理，只看到安装命令返回成功还不足以证明插件已经运行。
 
-## 工具插件放在下一层
+## 从插件实验走向下一步
+
+**工具插件放在下一层**
 
 DSH 官方还支持把工具注册到 `ctx.tools`，工具插件需要参数 schema、返回值 schema、渲染器和执行逻辑，之后还要观察模型是否真的发起工具调用，它比只打印加载日志多了几项变量。
 
 所以 dsh-learn 把 `labs/tool-plugin` 放在 hello 插件之后，当前离线检查已经覆盖 manifest、`inject`、工具名称、参数和返回值 schema、执行函数和渲染器，真实安装探针还依赖 npm registry，网络不可达时不把它写成通过，你可以把它当成第二个实验，等第一个插件的安装路径已经熟悉以后再碰。
 
-## 新手最常遇到的几种情况
+**新手最常遇到的几种情况**
 
 终端提示 `node` 不存在，处理 Node.js 安装和终端重启。
 
@@ -182,7 +207,7 @@ DSH 官方还支持把工具注册到 `ctx.tools`，工具插件需要参数 sch
 
 Windows 用户还要留意路径问题，官方 Discussions 中已经有中文路径截断和原生目录选择器相关记录，初学时把练习目录放到短路径里，能少掉一层干扰。
 
-## 做完以后你应该记住什么
+**做完以后你应该记住什么**
 
 启动 DSH、打开网页、模型回答和插件调用是四个检查点，无 Key 阶段可以验证前三层中的一部分和插件加载层，不能推出 provider 或模型已经可用。
 
