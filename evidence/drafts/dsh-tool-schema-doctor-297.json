@@ -1,0 +1,42 @@
+{
+  "claim": "官方 Discussion #297 记录了一次图片识别工具插件参数 schema 根类型错误导致模型函数调用请求失败的报告；dsh-learn 将其中可独立验证的规则收窄为 parameters.type 必须为 object，并提供不联网、不调用模型的本地体检器和离线契约检查。帖子中关于 fork、插件修复和 Harness 修复分支的内容不被写成官方版本已发布修复。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/297",
+      "title": "DeepSeek Harness Discussion #297：图片识别插件 schema 错误与后续说明",
+      "kind": "official",
+      "accessedAt": "2026-08-14T05:33:25Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/tool.zh.md",
+      "title": "DeepSeek Harness 固定 commit 的工具开发文档",
+      "kind": "official",
+      "accessedAt": "2026-08-14T05:33:25Z"
+    },
+    {
+      "url": "https://github.com/pingfanfan/dsh-learn/blob/main/scripts/tool-schema-doctor.mjs",
+      "title": "dsh-learn 本地工具 schema 体检器",
+      "kind": "repository",
+      "accessedAt": "2026-08-14T05:33:25Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; local fixtures; no API key; no model request",
+    "commands": [
+      "node scripts/tool-schema-doctor.mjs ./labs/tool-plugin/index.js",
+      "pnpm validate:tool-schema-doctor",
+      "node labs/tool-plugin/verify-offline.mjs",
+      "pnpm validate:tool-plugin-lab"
+    ],
+    "result": "PASS",
+    "notes": "The local doctor passes the correct fixture and rejects a fixture without parameters.type object. The offline lab checks registration, parameter schema, execute and renderer. Dynamic DSH installation and model tool invocation remain NOT_RUN; npm registry access is a separate network preflight. No unknown third-party plugin was installed."
+  },
+  "confidence": 92
+}
