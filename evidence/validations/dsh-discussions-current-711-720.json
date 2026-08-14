@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && node scripts/validate-discussions-current-711-720.mjs content/canonical/dsh-discussions-current-711-720.md",
+  "notes": "事实卡逐条绑定官方 Discussions #711–#720，明确区分用户报告、Ideas、Q&A 和 Show and tell；没有把社区插件、安装命令、补丁建议、Windows/Python/工具调用现象写成官方修复或 dsh-learn 动态复现。完全新手入口仍链接固定 rc.6 的无 Key 教程，凭据、模型调用和知乎发布边界通过检查。",
+  "checkedAt": "2026-08-14T04:16:30Z"
+}
