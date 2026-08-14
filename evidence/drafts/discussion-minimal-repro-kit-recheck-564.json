@@ -1,0 +1,90 @@
+{
+  "claim": "在当前官方贡献政策下，DeepSeek Harness 鼓励通过 GitHub Discussions 反馈问题、创建插件、编写 how-to 和回答社区问题；官方 README 同时说明项目处于 Developer Preview 且可能发生兼容性破坏。因此，按精确版本组织环境、最小复现、实际与预期结果的中英双语模板，是面向 DSH 用户的可复用生态资产，而不是未经验证的缺陷结论。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/CONTRIBUTING.md",
+      "title": "DeepSeek Harness CONTRIBUTING.md（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+      "title": "DeepSeek Harness README（固定 commit）",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions",
+      "title": "DeepSeek Harness Discussions",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=30",
+      "title": "DeepSeek Harness Discussions 旧版公开列表来源",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1",
+      "title": "DeepSeek Harness Discussions 分页列表第 1 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2",
+      "title": "DeepSeek Harness Discussions 分页列表第 2 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3",
+      "title": "DeepSeek Harness Discussions 分页列表第 3 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4",
+      "title": "DeepSeek Harness Discussions 分页列表第 4 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5",
+      "title": "DeepSeek Harness Discussions 分页列表第 5 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6",
+      "title": "DeepSeek Harness Discussions 分页列表第 6 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:47:00Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "repo-manifest=0.1.0-rc.5; npm-latest=0.1.0-rc.6; discussions-pages=6; pageCounts=100,100,100,100,100,50; discussions-items=550; discussions-last=564; discussions-revision=github-discussions-public-list-through-564-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "macOS; Node.js v25.8.2; dsh-learn workspace; GitHub connector verified fixed official docs and current public Discussions",
+    "commands": [
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --help",
+      "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --version",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo --help",
+      "env DSH_HOME=<isolated-temp-dir> npx --yes @deepseek-ai/dsh@0.1.0-rc.6 --profile demo --dump-config",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6"
+    ],
+    "result": "PASS",
+    "notes": "固定 commit 的 CONTRIBUTING.md 仍说明暂不接受外部 Pull Request，但鼓励 Discussions、插件、how-to 和社区答疑；固定 commit 的 README 仍说明 Developer Preview、兼容性破坏风险和 Web UI 启动方式。无 Key CLI 冒烟实验已有通过记录；当前讨论列表已复核到 6 页、550 条、最后编号 #564。模板只支持版本固定、隔离目录和最小复现建议，不声称任何具体 DSH 缺陷已经复现或解决。"
+  },
+  "confidence": 98
+}
