@@ -1,0 +1,41 @@
+{
+  "claim": "截至 2026-08-14，生态项目 dsh-plugin-check 的 main HEAD 为 8b3ea76ef909dae92cbd677d090ea6f64647fae7。该提交标题明确写着对齐 DSH 0.1.0-rc.6 依赖线并按 rc.6 类型重建 lib；当前 package.json 声明 @deepseek-ai/cordis ^4.0.1、@deepseek-ai/dsh-invariants >=0.0.1-rc.1 <0.2.0、@deepseek-ai/dsh-tools >=0.0.1-rc.1 <0.2.0，并保留 dsh.bundle.patch 的 Profile Bundle 声明。现有 README 仍同时保留旧 rc.1 兼容说明，因此这组证据只能支持“生态仓库正在进行 rc.6 兼容对齐，并具备 bundle 形状”，不能支持 dsh-learn 已经安装、运行或确认与当前 DSH 全链路兼容。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/omdsh-dev/dsh-plugin-check/commit/8b3ea76ef909dae92cbd677d090ea6f64647fae7",
+      "title": "dsh-plugin-check rc.6 兼容对齐提交",
+      "kind": "repository",
+      "accessedAt": "2026-08-14T02:22:00Z"
+    },
+    {
+      "url": "https://github.com/omdsh-dev/dsh-plugin-check/blob/main/package.json",
+      "title": "dsh-plugin-check 当前 package.json",
+      "kind": "repository",
+      "accessedAt": "2026-08-14T02:22:00Z"
+    },
+    {
+      "url": "https://github.com/omdsh-dev/dsh-plugin-check/blob/main/README.md",
+      "title": "dsh-plugin-check 当前 README",
+      "kind": "repository",
+      "accessedAt": "2026-08-14T02:22:00Z"
+    }
+  ],
+  "baseline": {
+    "repository": "omdsh-dev/dsh-plugin-check",
+    "commit": "8b3ea76ef909dae92cbd677d090ea6f64647fae7",
+    "package": "@deepseek-ai/dsh-plugin-check",
+    "version": "0.0.1; dsh-baseline=0.1.0-rc.6"
+  },
+  "reproduction": {
+    "environment": "GitHub connector fetched the public commit diff, package.json and README; dsh-learn workspace",
+    "commands": [
+      "GET https://github.com/omdsh-dev/dsh-plugin-check/commit/8b3ea76ef909dae92cbd677d090ea6f64647fae7",
+      "GET https://github.com/omdsh-dev/dsh-plugin-check/blob/main/package.json",
+      "GET https://github.com/omdsh-dev/dsh-plugin-check/blob/main/README.md"
+    ],
+    "result": "NOT_RUN",
+    "notes": "没有克隆、安装或启动第三方插件，没有调用模型 API。当前本机 npm registry 不可达，因此没有把 package.json 声明写成动态安装或运行兼容；README 仍保留 rc.1 兼容和旧版本说明，需在网络恢复后按 rc.6 profile 重新复测。"
+  },
+  "confidence": 92
+}
