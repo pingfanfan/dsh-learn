@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "#535–#537 的历史结论保持不变；正文新增当前维护基线，明确当前列表已到 6 页、600 条、最后编号 #614，但不把 #538–#614 混入原有结论。没有把用户报告、Ideas 或 Show and tell 写成官方修复、已实现功能或官方发行版，没有调用模型 API、下载第三方二进制或写入凭据，也没有发布知乎。",
+  "checkedAt": "2026-08-14T02:12:30Z"
+}
