@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "在官方 Discussions 当前公开列表基线 github-discussions-public-list-through-564-2026-08-14 下复核官方首页、Discussion #12 欢迎公告、Discussion #14 memory 迁移讨论、入口分类、版本限定、事实/推测边界、内部链接和敏感信息。入口卡继续只整理社区入口与发帖准备，不把任何讨论回复写成官方兼容性承诺；本次没有模型 API 调用，也没有读取或写入凭据。",
+  "checkedAt": "2026-08-14T00:39:00.000Z"
+}
