@@ -18,22 +18,23 @@
     {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/707","title":"Discussion #707：Node 版本与 MCP 冲突","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
     {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/708","title":"Discussion #708：插件安装后重启失败","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
     {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/714","title":"Discussion #714：两个最小社区插件","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/720","title":"Discussion #720：Web 连接、端口与 Windows 退出信号","kind":"official","accessedAt":"2026-08-14T03:52:00Z"},
     {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md","title":"DeepSeek Harness README（固定 commit）","kind":"official","accessedAt":"2026-08-14T02:34:00Z"}
   ],
   "baseline": {
     "repository": "deepseek-ai/deepseek-harness",
     "commit": "47f943859bef60e4160492346772ded9b24f765a",
     "package": "@deepseek-ai/dsh",
-    "version": "0.1.0-rc.6; discussions=github-discussions-public-list-through-714-2026-08-14; discussions-pages=7; pageCounts=100,100,100,100,100,100,96; discussions-items=696; discussions-first=12; discussions-last=714; discussions-revision=github-discussions-public-list-through-714-2026-08-14"
+    "version": "0.1.0-rc.6; discussions=github-discussions-public-list-through-714-2026-08-14; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; source-attestation-revision=deepseek-harness-discussions-attested-through-720-2026-08-14T03:52:00Z"
   },
   "reproduction": {
-    "environment": "GitHub connector verified official Discussions API pages 1–7 and detail pages #619, #623, #649, #650, #656, #700, #707, #708 and #714; dsh-learn workspace",
+    "environment": "GitHub connector verified official Discussions API pages 1–7 and detail pages #619, #623, #649, #650, #656, #700, #707, #708, #714 and #720; dsh-learn workspace",
     "commands": [
       "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
-      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/619,623,649,650,656,700,707,708,714"
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/619,623,649,650,656,700,707,708,714,720"
     ],
     "result": "PASS",
-    "notes": "复核到 7 页、696 项，最后编号 #714。正文只把选中的条目写成用户报告、Ideas、社区建议、Q&A 或 Show and tell，并明确没有把社区 workaround 写成官方解决方案；没有在 Windows/Linux 报告环境中动态复现，没有安装第三方插件，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
+    "notes": "分页维护基线已更新到 7 页、700 项、最后编号 #720；正文仍只把 #619–#714 选中的条目写成用户报告、Ideas、社区建议、Q&A 或 Show and tell，#720 仅作为当前列表边界复核，不改变教程的历史讨论范围。没有在 Windows/Linux 报告环境中动态复现，没有安装第三方插件，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
   },
   "confidence": 96
 }
