@@ -1,0 +1,17 @@
+{
+  "outer": {
+    "tool": "run_code",
+    "arguments": {
+      "code": "const result = await tools.bash({ command: \"pwd\" });\nreturn result;",
+      "description": "检查当前目录"
+    }
+  },
+  "nested": [
+    {
+      "tool": "bash",
+      "arguments": {
+        "command": "pwd"
+      }
+    }
+  ]
+}
