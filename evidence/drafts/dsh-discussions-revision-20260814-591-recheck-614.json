@@ -1,0 +1,47 @@
+{
+  "claim": "截至 2026-08-14T01:45:00Z，通过 DeepSeek Harness 官方 Discussions API 复核，公开列表为 6 页、577 条讨论，编号从 #12 到 #591，中间存在编号空缺。当前新增信号包括：#565 的 dsh-openclaw-acp 社区插件展示；#571 的工具调度失败后会话持久化状态无法继续请求报告；#572 的多份物理 dsh-tools 依赖导致 Symbol 查找失败报告；#573 的自部署模型与 pi 依赖变化反馈；#589 的 Windows Hyper-V 保留端口导致默认 3080 启动 EACCES 报告；以及 #591 的企业微信联系入口问答。它们分别属于社区插件、用户报告或问答，不是官方修复或已合并功能；dsh-learn 没有在 Windows 上动态复现 #589，没有运行第三方插件、没有调用模型 API，也没有把 #587 的安全讨论纳入公开资产。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 第 1 页","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 第 2 页","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 第 3 页","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 第 4 页","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 第 5 页","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/565","title":"Discussion #565：dsh-openclaw-acp 社区插件展示","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/571","title":"Discussion #571：工具调度失败后的会话状态报告","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/572","title":"Discussion #572：多份 dsh-tools 物理副本导致调度器查找失败报告","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/573","title":"Discussion #573：自部署模型与 pi 依赖变化反馈","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/587","title":"Discussion #587：安全边界讨论（仅作风险排除记录）","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/589","title":"Discussion #589：Windows Hyper-V 保留端口导致 3080 启动失败报告","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/591","title":"Discussion #591：企业微信联系入口问答","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/573/comments","title":"Discussion #573 公开评论","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/589/comments","title":"Discussion #589 公开评论","kind":"official","accessedAt":"2026-08-14T01:58:30Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/591/comments","title":"Discussion #591 公开评论","kind":"official","accessedAt":"2026-08-14T01:58:30Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified all six current Discussions list pages, detail pages #565, #571, #572, #573, #587, #589 and #591, plus public comments for #573, #589 and #591; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..6",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/565",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/571",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/572",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/573",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/587",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/589",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/591",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/573/comments",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/589/comments",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/591/comments"
+    ],
+    "result": "PASS",
+    "notes": "当前分页计数由 100、100、100、100、100、100 组成，共 600 项，最后编号 #614。#565、#571、#572、#573、#589 和 #591 只作为公开信号记录；没有把用户报告写成官方修复。#587 涉及安全讨论，当前仅记录为风险排除项，不复制其漏洞细节、不生成公开资产、不进行安全披露。#591 的新增评论仍为用户描述和个人猜测，没有维护者确认。没有下载或运行第三方插件，没有在 Windows 上动态复现，没有调用模型 API，没有使用或保存 API Key。"
+  },
+  "confidence": 95
+}
