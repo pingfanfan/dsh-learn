@@ -81,6 +81,7 @@ pnpm public-audit
 - 完全新手安装、启动 Web UI 和第一个插件：[content/canonical/dsh-zero-to-first-plugin-rc6.md](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-zero-to-first-plugin-rc6.md](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
 - 完全新手截图快速上手卡：[content/canonical/dsh-beginner-quickstart-rc6.md](content/canonical/dsh-beginner-quickstart-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-beginner-quickstart-rc6.md](content/channels/github/dsh-beginner-quickstart-rc6.md)。
 - 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
+- DSH 工具参数根体检器：[scripts/tool-schema-doctor.mjs](scripts/tool-schema-doctor.mjs)；可在不联网、不调用模型的情况下检查本地工具插件的 `parameters.type`、工具名称和 `execute`，配套事实卡：[content/canonical/dsh-tool-schema-doctor-297.md](content/canonical/dsh-tool-schema-doctor-297.md)。
 - dsh-plugin-check 当前 rc.6 安装说明：[content/canonical/dsh-plugin-check-rc6-current-install-notes-20260814.md](content/canonical/dsh-plugin-check-rc6-current-install-notes-20260814.md)；GitHub 已有真实文件回执，生态仓库声明已核对，第三方插件动态安装仍为 `NOT_RUN`。旧版 `dsh-plugin-check-rc6-compatibility-20260814.md` 已退休，仅保留 8b3ea76 历史记录。
 - DSH 生态插件 npm rc.6 迁移事实卡：[content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md](content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md)；对照 `dsh-plugin-check` 与 `dsh-plugin-dev` 的 README 变更，GitHub 已有真实文件回执，未把上游自述写成 dsh-learn 动态兼容结论。
 - DSH 新手安装与插件安全排错路径：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
@@ -149,7 +150,7 @@ Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线
 
 完全新手下载项目后，可以先运行 `node scripts/beginner-doctor.mjs`。它只在本地检查 Node.js、npm、npx、练习文件、11 张新手截图和路径提示，不联网、不读取 API Key；通过以后会直接打印固定版本的 DSH 启动命令。需要向别人求助时可追加 `--report`，它只打印一份把路径标成 `redacted`、明确写出 `SCREENSHOTS=PASS`、`KEY_STATUS=not_read` 的安全诊断回执，不上传任何内容。准备安装插件时，再运行 `node scripts/plugin-doctor.mjs`，它会单独检查 DSH 所需的 pnpm；准备做真实安装前可追加 `--network`，先确认 npm registry 可达，避免把网络超时误判成插件代码失败。
 
-工具插件实验可以运行 `pnpm validate:tool-plugin-lab`，检查 `ctx.tools.register`、参数与返回值 schema、bundle manifest 和无 Key 边界；`pnpm validate:tool-plugin-offline` 可以在无网络时验证执行函数和渲染器，真实 DSH 安装探针仍需要 npm registry 可达，模型工具调用仍是 `NOT_RUN`。
+工具插件实验可以运行 `pnpm validate:tool-plugin-lab`，检查 `ctx.tools.register`、参数与返回值 schema、bundle manifest 和无 Key 边界；`pnpm validate:tool-plugin-offline` 可以在无网络时验证执行函数和渲染器，`pnpm validate:tool-schema-doctor` 会用一个通过和一个故意错误的本地插件夹具回归 `parameters.type` 失败提示；真实 DSH 安装探针仍需要 npm registry 可达，模型工具调用仍是 `NOT_RUN`。
 
 启动与插件安装排障教程复用同一份无 Key 实验，并把 CLI、profile、bundle、插件加载、Web UI、模型和工具调用分层；官方 Discussions 中的真实启动、Node、路径和全局安装问题只作为公开排障信号，不被写成同一个故障。
 
