@@ -2,6 +2,6 @@
   "kind": "content-review",
   "result": "PASS",
   "command": "polish-article tone/period checks; pnpm check; pnpm public-audit; git diff --check",
-  "notes": "维护复核保留 #560–#564 的历史事实和原始观察时间，只把当前 Discussions 来源基线更新到 7 页、696 条、最后编号 #714。正文明确没有把 #565–#714 混入历史结论，没有在 Windows/Linux 报告环境中动态复现，没有下载、安装或运行第三方插件、fork 或网关探测脚本，没有调用模型 API，也没有使用或保存 API Key。",
+  "notes": "维护复核保留 #560–#564 的历史事实和原始观察时间，只把当前 Discussions 来源基线更新到 7 页、700 条、最后编号 #720。正文明确没有把 #565–#720 混入历史结论，没有在 Windows/Linux 报告环境中动态复现，没有下载、安装或运行第三方插件、fork 或网关探测脚本，没有调用模型 API，也没有使用或保存 API Key。",
   "checkedAt": "2026-08-14T02:50:00.000Z"
 }
