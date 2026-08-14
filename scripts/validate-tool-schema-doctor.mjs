@@ -15,6 +15,7 @@ for (const item of [
   "LOCAL_ONLY",
   "不调用模型",
   "插件自身导入代码的副作用",
+  "defineTool 会先把字段映射编译成对象根",
 ]) {
   if (!source.includes(item)) failures.push(`missing ${item}`);
 }
@@ -25,7 +26,9 @@ delete safeEnv.DEEPSEEK_API_KEY;
 delete safeEnv.DEEPSEEK_API_KEY_ENV;
 const fixtureRoot = await mkdtemp(join(tmpdir(), "dsh-learn-tool-schema-doctor-"));
 const goodPath = join(fixtureRoot, "good.mjs");
+const defineToolPath = join(fixtureRoot, "define-tool-output.mjs");
 const badPath = join(fixtureRoot, "bad.mjs");
+const badMapPath = join(fixtureRoot, "bad-map.mjs");
 await writeFile(goodPath, `export const inject = ["tools"];
 export function apply(ctx) {
   ctx.tools.register({
@@ -35,11 +38,35 @@ export function apply(ctx) {
   });
 }
 `, "utf8");
+await writeFile(defineToolPath, `export const inject = ["tools"];
+function defineTool(options) {
+  return {
+    ...options,
+    parameters: { type: "object", properties: options.parameters },
+  };
+}
+export function apply(ctx) {
+  ctx.tools.register(defineTool({
+    name: "define-tool-output",
+    parameters: { name: { type: "string" } },
+    execute() { return "ok"; },
+  }));
+}
+`, "utf8");
 await writeFile(badPath, `export const inject = ["tools"];
 export function apply(ctx) {
   ctx.tools.register({
     name: "bad",
     parameters: { properties: {} },
+    execute() { return "bad"; },
+  });
+}
+`, "utf8");
+await writeFile(badMapPath, `export const inject = ["tools"];
+export function apply(ctx) {
+  ctx.tools.register({
+    name: "bad-map",
+    parameters: { name: { type: "string" } },
     execute() { return "bad"; },
   });
 }
@@ -55,6 +82,15 @@ try {
     failures.push("good fixture success path missing");
   }
 
+  const defineToolOutput = execFileSync(process.execPath, [scriptPath, defineToolPath], {
+    encoding: "utf8",
+    env: safeEnv,
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  if (!defineToolOutput.includes("defineTool 会先把字段映射编译成对象根")) {
+    failures.push("defineTool compiled-object path missing");
+  }
+
   try {
     execFileSync(process.execPath, [scriptPath, badPath], {
       encoding: "utf8",
@@ -68,6 +104,20 @@ try {
       failures.push("bad fixture did not explain the object-root failure");
     }
   }
+
+  try {
+    execFileSync(process.execPath, [scriptPath, badMapPath], {
+      encoding: "utf8",
+      env: safeEnv,
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    failures.push("bad property-map fixture unexpectedly passed");
+  } catch (error) {
+    const output = `${error.stdout ?? ""}\n${error.stderr ?? ""}`;
+    if (!output.includes("defineTool") || !output.includes("最终定义")) {
+      failures.push("bad property-map fixture did not explain direct-vs-defineTool usage");
+    }
+  }
 } finally {
   await rm(fixtureRoot, { recursive: true, force: true });
 }
@@ -76,4 +126,4 @@ if (failures.length > 0) {
   console.error(`FAIL ${scriptPath} ${failures.join(", ")}`);
   process.exit(1);
 }
-console.log(`PASS ${scriptPath} checks=7`);
+console.log(`PASS ${scriptPath} checks=10`);
