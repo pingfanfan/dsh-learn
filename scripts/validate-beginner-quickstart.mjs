@@ -14,6 +14,7 @@ const required = [
   "# DSH 完全新手快速上手",
   "node --version",
   "node scripts/beginner-doctor.mjs",
+  "node scripts/beginner-start.mjs",
   "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web",
   "http://127.0.0.1:3080",
   "Configure later",
