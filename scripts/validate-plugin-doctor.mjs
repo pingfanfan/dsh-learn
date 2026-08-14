@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 import { execFileSync } from "node:child_process";
-import { readFile } from "node:fs/promises";
+import { chmod, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import process from "node:process";
 
 const scriptPath = "scripts/plugin-doctor.mjs";
@@ -39,6 +41,27 @@ try {
   for (const item of ["FAIL pnpm 未找到", "DSH 的 plugin 子命令", "npm install --global pnpm"]) {
     if (!output.includes(item)) failures.push(`missing failure guidance ${item}`);
   }
+}
+
+const fakeBin = await mkdtemp(join(tmpdir(), "dsh-learn-plugin-doctor-"));
+try {
+  const fakeNpm = join(fakeBin, process.platform === "win32" ? "npm.cmd" : "npm");
+  const fakeNpmScript = process.platform === "win32"
+    ? "@echo off\r\nif \"%1\"==\"--version\" echo 99.0.0\r\nif \"%1\"==\"view\" echo 0.1.0-rc.6\r\n"
+    : "#!/bin/sh\ncase \"$1\" in\n  --version) echo 99.0.0 ;;\n  view) echo 0.1.0-rc.6 ;;\n  *) exit 1 ;;\nesac\n";
+  await writeFile(fakeNpm, fakeNpmScript, "utf8");
+  if (process.platform !== "win32") await chmod(fakeNpm, 0o755);
+  const fakeNetwork = execFileSync(process.execPath, [scriptPath, "--network"], {
+    encoding: "utf8",
+    env: { ...process.env, PATH: `${fakeBin}${process.platform === "win32" ? ";" : ":"}${process.env.PATH ?? ""}` },
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  if (!fakeNetwork.includes("PASS npm registry 可达")) failures.push("npm registry success path missing");
+} catch (error) {
+  const output = `${error.stdout ?? ""}\n${error.stderr ?? ""}`;
+  failures.push(`npm registry success path failed: ${output.trim().split("\n").at(-1) ?? "unknown"}`);
+} finally {
+  await rm(fakeBin, { recursive: true, force: true });
 }
 
 if (failures.length > 0) {
