@@ -86,7 +86,7 @@ pnpm public-audit
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
 - 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
 - Discussions 新问题分流卡：[content/canonical/discussion-triage-41.md](content/canonical/discussion-triage-41.md)。
-- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-revision-20260814-564.md](content/canonical/dsh-discussions-revision-20260814-564.md)；截至 2026-08-14T00:24:53Z 观察到 6 页、550 条公开讨论，最后编号 #564，新增的 #560–#564 按缓存展示、图片输入建议、真实协作反馈、Windows 中文路径和第三方网关兼容分层处理，不把用户报告、Ideas、社区 fork 或测试代码写成官方修复、官方功能或已验证兼容。旧版分页卡保留作历史记录。
+- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-revision-20260814-564.md](content/canonical/dsh-discussions-revision-20260814-564.md)；历史正文截至 2026-08-14T00:24:53Z 记录了 6 页、550 条公开讨论、最后编号 #564；证据基线随后已复核至 2026-08-14T01:27:00Z 的 6 页、556 条、最后编号 #570。#560–#564 仍按缓存展示、图片输入建议、真实协作反馈、Windows 中文路径和第三方网关兼容分层处理，不把用户报告、Ideas、社区 fork 或测试代码写成官方修复、官方功能或已验证兼容。旧版分页卡保留作历史记录。
 - 国产模型与网关矩阵：[labs/provider-matrix/README.md](labs/provider-matrix/README.md)。
 - 第三方插件迁移诊所：[content/canonical/plugin-migration-clinic-47f9438.md](content/canonical/plugin-migration-clinic-47f9438.md)。
 - 扩展点中文能力地图：[content/canonical/extension-map-47f9438.md](content/canonical/extension-map-47f9438.md)。
