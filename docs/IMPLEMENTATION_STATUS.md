@@ -43,6 +43,7 @@
 - [x] 来源定义支持 `official`、`ecosystem`、`community` scope；已把 `dsh-plugin-check`、`dsh-plugin-dev`、`dsh-explain`、`plugin-registry` 和 `dsh-101` 的公开 HEAD 纳入生态监控，生态变化生成 `ecosystem` 机会并使用独立评分信号。
 - [x] 通过 GitHub 连接器核对 `dsh-plugin-check` HEAD `8b3ea76`，完成 EvidencePack、rc.6 依赖声明/Bundle 边界复核和 GitHub 真实发布回执；没有安装或运行第三方插件，动态兼容仍为 `NOT_RUN`。
 - [x] #619–#714 新手安装与插件安全排错路径已完成：覆盖固定版本启动、Node.js/npm/npx/pnpm 前置、首次 Web UI 的 API Key/工作区边界、`--dump-config` 验证 profile bundle、插件加载/移除、Node 20/22 与 Linux 编译工具链分层，以及社区插件的第三方标记；规范稿已完成最终润色，GitHub 已获得真实文件回执，知乎未发布，第三方插件动态安装仍为 `NOT_RUN`。
+- [x] #711–#720 事实卡已完成官方 Discussions 详情核对、工具调用/Python 会话/Windows/存储/流式/Web 启动的证据分层和专用验证；GitHub 已获得真实文件回执（`https://github.com/pingfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-current-711-720.md`），没有安装 #714 的社区插件、没有调用模型 API，知乎未发布。
 - [x] `sourceHealth.errors` 会持久化部分源扫描失败并在恢复后清除；网络故障不会伪装成“上游无变化”，也不会阻塞本地维护。
 - [x] 来源扫描对网络错误和 5xx 按 3 次指数退避重试，永久 4xx 不重试，并在错误中保留源 ID、HTTP 类型和尝试次数；GitHub API JSON 与 raw 文档共存时使用兼容的 Accept 头。
 - [x] `source-attest` 支持连接器或 Agent 只回写公开 revision，不导入源内容和凭据；只清除已被证明恢复的源错误，并复用同一套游标变化、资产失效和复测机会逻辑。
