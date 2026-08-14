@@ -7,7 +7,7 @@
 - 读者不会写代码，不认识 Node.js、终端、`npx`、profile、bundle 或 Cordis。
 - 读者先验证 DSH 能安装、能启动、能打开网页，再接触 API Key 和模型。
 - 第一个插件必须无 Key、可隔离、可重复、可移除。
-- 真实安装前可以先用 `node scripts/plugin-doctor.mjs --network` 检查 npm registry；网络失败只能标记为环境阻塞，不能写成插件代码失败。
+- 真实安装前可以先用 `node scripts/plugin-doctor.mjs --network` 检查 npm registry；该检查使用临时空 npm 配置和固定 rc.6 包查询，不读取用户 `.npmrc` 或 API Key。网络失败只能标记为环境阻塞，不能写成插件代码失败。
 - 截图只负责降低找按钮和认界面的成本；截图不能替代命令输出、版本记录和真实复现。
 
 ## 一条完整路径
