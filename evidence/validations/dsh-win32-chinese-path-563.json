@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "pnpm validate:win32-path-doctor && python3 polish-article/check_tone_cliches.py content/canonical/dsh-win32-chinese-path-563.md && python3 polish-article/check_period_density.py content/canonical/dsh-win32-chinese-path-563.md && pnpm public-audit && git diff --check",
+  "notes": "win32-path-doctor 用默认和自定义中文路径夹具验证低字节提前结束与正确 NUL 判定；事实卡完成 polish-article 终稿门槛，明确区分官方 Discussion、固定源码、离线逻辑回归和未运行的 Windows/DSH runtime。没有使用、保存或展示 API Key，知乎不自动发布。",
+  "checkedAt": "2026-08-14T05:47:13Z"
+}
