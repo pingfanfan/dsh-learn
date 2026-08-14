@@ -1,70 +1,111 @@
-# DSH Discussions 当前复核：从 Web 排障到第一个社区插件
+# 标题候选
 
-## 一句话结论
+| 标题 | 点击欲 | 信息量 | 跟我有关 | 可信 | 差异化 | 总分 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 推荐标题：DSH Discussions #539–#549，Web、Windows 和社区插件怎么排查 | 10 | 10 | 10 | 10 | 10 | 50 |
+| DSH 新手遇到工作区和插件问题，先分清是哪一层 | 9 | 10 | 10 | 10 | 9 | 48 |
+| DeepSeek Harness 的第一个社区插件，安装前先看这 4 处 | 9 | 10 | 9 | 10 | 9 | 47 |
+| Web UI 打不开文件、Windows 路径出错，DSH 排障先记什么 | 9 | 10 | 10 | 10 | 9 | 48 |
+| DSH 社区插件 dsh-agent-messaging，安装前先做静态检查 | 9 | 9 | 9 | 10 | 10 | 47 |
+| 从 #539–#549 看 DSH 早期生态，需求先出现在 Web 和插件层 | 8 | 10 | 9 | 10 | 10 | 47 |
+| DSH 接入社区插件前，先看 bundle、profile 和构建脚本 | 9 | 10 | 10 | 10 | 9 | 48 |
+| 不要把 DSH 的 Web 报错都归到模型，先按这条路径排查 | 9 | 9 | 10 | 10 | 9 | 47 |
 
-截至 2026-08-13T23:44:07Z，DeepSeek Harness 官方 Discussions 分页复核得到 6 页、535 条公开讨论，编号从 `#12` 到 `#549`，中间存在编号空缺。
+# 正文
 
-这不是 DSH 发布了新版本，而是早期生态开始同时暴露几类真实需求：新手遇到工作区和历史加载问题，Windows 用户遇到路径边界，Web 用户需要更完整的错误信息，开发者开始发布可以安装的社区插件。
+DeepSeek Harness 官方 Discussions 的 #539–#549，放在一起看，比单独看某一条报错更有意思。这里既有文档读起来不顺、长文本粘贴卡顿，也有 Web UI 打不开文件、Windows 路径混用、工作区加不进去和历史会话加载失败，到了 #544，又出现了一个按 DSH bundle 方式组织的社区插件。
 
-## 新增信号怎么分层
+这些帖子没有共同指向一个已经确认的根因，也不能当成官方修复公告。它们更像是 DSH 早期用户在使用过程中撞到的几面墙，墙的位置不同，排查方法也不能混在一起。
 
-### 1. Web 和 Windows 排障：有代码线索，但不是官方修复
+## Web UI 的问题，先看 host 和浏览器之间
 
-Discussion #541 记录了 Web UI “打开文件”时的主机边界和错误被静默吞掉的问题；#542 报告 Windows 工作区路径可能出现 `C:\\a/b` 这样的混合分隔符；#543 报告 Web transport 失败时只显示 HTTP 状态而缺少服务端错误正文。
+先看最容易让新手误判的部分。#541 记录的是 Web 页面里的 `Open file`，文件实际在 host 机器上打开，但失败时没有给出足够反馈，用户看到的可能只是按钮没有反应。#543 的情况相近，Web transport 出错以后，页面只留下 HTTP 状态，host 端返回的错误细节没有一起露出来。
 
-其中 #542 和 #543 不只是用户描述。官方固定 commit `47f9438` 中，`resolveWorkspacePath` 确实用字符串拼接 `/` 连接工作区和相对路径，Web RPC 也确实在非 2xx 时只抛出状态码错误。它们支持“值得排查和向上游反馈”的判断，但不等于所有 Windows 用户都会复现，也不等于官方已经接受或修复。
+这两条报告把`页面能不能点`和`host 端有没有完成动作`分开了。你在浏览器里看到 DSH，不代表文件操作一定发生在浏览器所在的机器上，Web 页面只是发出请求，读写文件、打开程序的地方还要看 DSH host 的运行位置。
 
-对新手来说，三个问题应该分开处理：
+#542 则把问题落到了 Windows 路径上，报告里出现了盘符和正斜杠混用的路径形式。官方固定 commit `47f9438` 中的 `resolveWorkspacePath` 确实用字符串拼接 `/` 连接工作区和相对路径，Web RPC 在非 2xx 响应时也主要保留状态码错误，这些代码线索支持继续排查，但还不能推成所有 Windows 用户都会遇到同样的问题。
 
-- 点击文件没有反应，先区分本机 Web、远程 Web 和“文件在 host 上打开”的差异；
-- Windows 路径报错时，记录系统、工作区路径、DSH 版本、原始路径和完整输出，不要只截最后一行；
-- 看到 `HTTP 500` 时保留浏览器、DSH 进程和 host 端日志，因为状态码本身通常不够定位原因。
+遇到这类错误，先保留操作系统、Node.js 和 DSH 版本、工作区路径、浏览器地址、完整命令和第一段错误，别只截最后一行。工作区加不进去的 #547，历史加载失败的 #548，也要把浏览器、路径长度、会话是否刚创建和刷新后是否仍然失败写在一起，否则别人很难判断它属于 Web 页面、工作区配置还是历史数据。
 
-### 2. 工作区、历史和输入体验：当前只能记录报告
+比如文件按钮没有反应时，要核对当前浏览器连接的 DSH 地址，同时查看运行 DSH 的终端和 host 日志有没有动作，文件本身是否存在放到这些信息之后再查。要是页面只显示 500，保留状态码还不够，host 端的第一段错误、请求发生的时间和对应工作区也要一起记录，这些信息比一张没有地址栏的截图更容易让别人复查。
 
-Discussion #540 说长文本粘贴到对话框时会卡顿，#547 以截图报告无法添加工作区，#548 报告历史加载失败并出现 `RangeError: Maximum call stack size exceeded`。这些都是值得进入 FAQ 和复现队列的信号，但目前没有足够信息把它们合并成一个根因，也没有本地复现。
+工作区报错还要注意路径的来源，有些路径来自浏览器选择器，有些来自 profile 或命令行参数，显示出来的字符串相同，不代表经过的是同一层。历史加载失败也一样，先确认是新会话没有内容，还是旧会话读取到一半报错，#548 提到的 `RangeError` 和 `Maximum call stack size exceeded` 只能作为报告中的错误现象，不能顺手扩展成所有历史加载失败的根因。
 
-所以新手遇到类似情况时，应该补齐：浏览器、操作系统、DSH/npm 版本、工作区路径长度、文本长度、session 标识、重现步骤和是否刷新后仍然存在。截图可以帮助定位，但不能替代这些字段。
+【可选口述区 01 开始｜想口述就用原话替换下方正文，不想口述就保留下方正文｜发布前删除本行】
+【口述方向｜可以讲你第一次看到 DSH 页面时，最容易把哪一种状态误认为安装失败，但不要新增未经核验的版本、错误或个人经历｜发布前删除本行】
 
-### 3. #544：一个值得观察的社区 DSH 插件
+对完全新手来说，页面已经打开但输入框不能用、按钮没有反应、工作区列表为空，这些现象看起来很像同一件事，但要回到不同位置看结果，浏览器只能说明页面出现了，终端、host 日志和工作区配置才分别说明服务、文件操作和会话准备到了哪一步。
 
-Discussion #544 展示了 [`dsh-agent-messaging`](https://github.com/happyren/dsh-agent-messaging)，它的目标是让不同 session 之间通过 `peer_list`、`peer_send` 和 `peer_inbox` 传递消息。
+【可选口述区 01 结束｜发布前删除本行】
 
-这不是官方插件，也不是我已经替你安装过的推荐方案。对它做静态审查，可以确认它具备当前 DSH bundle 路线的几个关键形状：
+## #544 的社区插件是什么结构
 
-- `package.json` 声明了 `dsh.bundle.patch`；
-- `cordis.patch.yml` 把插件层插入 profile；
-- `src/index.ts` 依赖 `tools`、`agents` 和 `sessionQuery`，并通过 `ctx.effect()` 注册清理动作；
-- 包含 `prepare` 构建脚本，Git 依赖安装时可能需要在 profile 中允许构建脚本；
-- README 建议 pin commit，而不是直接跟随浮动分支。
+#544 展示的 `dsh-agent-messaging`，目标是让不同 session 之间通过 `peer_list`、`peer_send` 和 `peer_inbox` 传递消息。它不是 DeepSeek 官方插件，dsh-learn 也没有把它下载下来替你安装，但从仓库静态检查可以看到，它已经不只是一个放在 README 里的代码片段。
 
-这正好可以作为新手理解“插件不只是一个 JS 文件”的例子：manifest 决定它能否作为 bundle 被发现，patch 决定它如何进入配置树，运行时代码决定它注册什么能力，构建脚本和依赖则决定安装时会在本机执行什么。
+它的 `package.json` 声明了 `dsh.bundle.patch`，`cordis.patch.yml` 负责把插件层接进 profile，`src/index.ts` 使用 `tools`、`agents` 和 `sessionQuery`，并通过 `ctx.effect()` 注册清理动作。包里还有 `prepare` 构建脚本，README 建议把 Git 依赖锁到固定 commit，这些信息都和新手安装时要承担的风险有关。
 
-## 安装这个社区插件前，至少做四件事
+这里有一个很实际的区别。看到 package.json 里有 bundle 声明，只能说明作者按照当前 DSH 的扩展形状组织了项目，不能说明当前 rc.6 一定能安装它，更不能说明消息已经成功在两个 session 之间传递。安装包、构建依赖、profile 配置、插件加载和运行时消息，需要分别记录回执。
 
-1. 阅读固定 commit 的 `package.json`、README、patch 和入口源码。
-2. 确认它的 `prepare`、依赖和 `allowBuilds` 要求；安装构建脚本不等于 DSH 沙箱。
-3. 把 Git 依赖锁到 commit，先在隔离 profile 里做 `--dump-config` 和加载检查。
-4. 把“包能安装”“插件能加载”“消息能投递”“模型真的按预期调用”分成四个验证点。
+如果以后要检查这类社区包，固定 commit 的 manifest、README、patch 和入口文件要一起阅读，`prepare` 的行为、依赖是否需要构建脚本，也要记录在同一张检查卡上，临时 profile 里的 `--dump-config` 和启动日志则用来确认插件是否进入配置、入口是否加载。模型请求不需要参与这一步，移除后 profile 是否干净也要看一眼。
 
-本次 dsh-learn 只完成了静态审查，没有下载或安装该插件，没有启动它，也没有调用模型。因此，当前最准确的标签是“社区插件观察对象”，不是“已验证兼容插件”。
+`prepare` 需要特别单独记录，因为它可能在安装阶段触发构建，Git 依赖也可能把本机环境带进来。即使插件代码看起来只做 session 消息，安装时执行的脚本、依赖的权限和 profile 的写入范围仍然是另一组问题，不能从 README 里的功能描述推断出来。
 
-## 对 dsh-learn 新手入口的直接影响
+## 其他帖子在提醒哪些使用边界
 
-- 新手排障页需要加入“Web UI、host、工作区路径和 transport 错误不是同一个层次”的提示。
-- 插件教程可以增加一个真实社区包的阅读案例，但仍然把 `labs/hello-plugin` 作为第一个无 Key 实验，避免陌生安装脚本成为入门单点故障。
-- 社区插件索引应同时记录来源、固定 commit、bundle 声明、构建脚本、能力范围和验证状态，不应该只贴一个 GitHub 链接。
+#545 的`工具调用文本化`、#546 的子代理方向和 #549 的项目作业模式优化，属于能力需求或使用反馈，不是已经合并的功能。#540 的长文本粘贴卡顿也没有在这张卡里被扩展成一个确定的性能结论，当前能保留的只是用户遇到过这种体验，以及复现时需要记录文本长度、浏览器和版本。
 
-## 事实边界
+这也是早期项目很容易让新手困惑的地方。讨论区里同时出现了 bug 报告、功能建议、个人 workaround、社区插件和源码线索，标题都叫 Discussion，证据等级却不一样，跟着某个帖子里的命令操作以前，先要判断它是在描述官方现状，还是在展示一个尚未合并的实现。
 
-本卡没有调用模型 API，没有复现 Windows、远程 Web、工作区或历史加载问题，没有下载或运行第三方插件，也没有把社区报告写成官方修复。官方仓库代码基线仍记录为 `47f943859bef60e4160492346772ded9b24f765a`；本卡记录的是 Discussions 和生态仓库的变化。
+#539 的文档反馈看起来不像运行时故障，却会影响新手能不能完成第一次安装，命令写得不清楚，profile、bundle 和 host 的关系就很容易被误读。这个问题适合通过固定版本的截图、命令回执和术语说明来缓解，不能把一篇文档读起来不顺写成 DSH 本身已经坏了。
 
-维护基线（2026-08-14）：官方 Discussions 当前已复核到 6 页、600 条公开讨论，编号从 `#12` 到 `#614`；这个新分页只用于确认上游仍在增长，不改写本卡对 #539–#549 的历史观察，也不把 #550–#614 的其他报告混入本卡结论。
+#540 的长文本粘贴卡顿也需要保留边界，用户报告了文本变长以后界面变慢，但帖子本身没有给出足够的统一复现条件，文本长度、浏览器、系统、会话状态和页面是否刚刚刷新，都会改变结果。新手遇到它时，保留一小段能触发问题的文本和版本信息，比只说`很卡`更有用，也能避免把一次输入体验扩展成性能排名。
+
+从使用链路看，安装命令、Web 页面、工作区、插件 profile 和模型请求是几个相邻但不同的环节。终端里能看到 DSH 进程，不等于浏览器已经连到正确的 host，页面显示工作区，也不等于插件已经进入 bundle，插件日志出现了，更不等于模型会按预期调用工具，排障时把这些结果放在各自的位置，才不会让一条错误覆盖整条链路。
+
+## dsh-learn 先把入口做成两条线
+
+对第一次接触 DSH 的人，第一条线应该保持很窄，固定版本启动 Web UI，在没有 API Key 的情况下确认页面和本地进程，再用隔离 profile 运行无 Key 的 hello-plugin，看到安装、配置导出、加载和移除这几个结果以后，才去看更复杂的社区包。
+
+第二条线才是社区插件观察。每个候选包至少记录来源、固定 commit、bundle 声明、构建脚本、能力范围和验证状态，静态审查就写静态审查，没有下载就不要写安装成功，没有真实端点就不要写兼容，没有模型调用就不要把`工具可用`写进结论。
+
+这样做的好处，是新手即使没有 API Key，也能先学会判断一个插件怎样进入 DSH，开发者也能从真实的安装边界里找到需要补文档、补 doctor 或补测试的位置。#539–#549 还没有给出一套完整答案，但它们已经把问题集中到了 Web 边界、跨平台路径、错误回执和社区 bundle 这几处。
+
+这条入口还应该让读者知道哪些事情暂时不要做，别因为 Web 页面出现了，就立刻把日常 profile 交给一个陌生插件，也别因为社区仓库有一条安装命令，就跳过 manifest 和构建脚本。没有 Key 的实验可以先验证 DSH 进程、profile 和 bundle，等这些部分稳定以后，模型配置和外部网关再单独建立回执，出错时不会把凭据、缓存和插件文件搅在同一个目录里。
+
+对 dsh-learn 来说，#544 提供的价值也不只是一个插件链接，它给了新手一份可以照着阅读的包结构，给了维护者一份可以继续做兼容性检查的对象，还把安装脚本、权限范围和运行时能力之间的差距摆了出来。这个差距没有被一次静态审查消除，但它应该被清楚记录在入口文章里。
+
+以后即使同一个仓库更新了 README，也要把新的 commit、包版本和复测结果重新绑定，旧的静态检查不能自动变成新的运行结论。
+
+维护基线（2026-08-14）。官方 Discussions 当前已复核到 7 页、700 条公开讨论，编号从 `#12` 到 `#720`，这个新分页只用于确认上游仍在增长，不改写本卡对 #539–#549 的历史观察，也不把后续 `#550–#720` 的其他报告混入本卡结论。
+
+【可选口述区 02 开始｜想口述就用原话替换下方正文，不想口述就保留下方正文｜发布前删除本行】
+【口述方向｜可以讲你认为新手最需要先看哪一条安装或排错回执，重点放在个人判断，不增加未验证的插件兼容结论｜发布前删除本行】
+
+对新手来说，暂时不用理解所有 Cordis 细节，先知道自己正在看的是页面、host、profile、插件入口还是模型请求，已经足够把很多`DSH 好像坏了`的感觉拆开。
+
+【可选口述区 02 结束｜发布前删除本行】
+
+# 备用标题
+
+1. DSH 新手排障：Web、Windows 路径和社区插件分别怎么看
+2. DeepSeek Harness 社区插件安装前，先读 manifest 和 profile
+3. 从 #539–#549 看 DSH 早期使用中最容易混淆的几层问题
+
+# 编辑附录（不随正文发布）
+
+- 事实基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`；当前讨论列表复核为 7 页、700 条、#12–#720。
+- 历史观察：#539–#549 的原始观察时间为 2026-08-13T23:44:07Z，原始列表是 6 页、535 条、最后编号 #549。当前分页只做维护基线，不改写历史观察。
+- #542 与 #543 的代码层线索来自固定 commit 的 `resolveWorkspacePath` 与 Web RPC；这不是官方修复结论。
+- #544 的 `happyren/dsh-agent-messaging` 固定 commit 为 `d6fc3abfde2467aa5b6b5598fea2f0e1ece2fdac`，静态读取 package.json、README、patch 和入口源码，没有下载、安装、启动或调用模型。
+- #539–#549 其他内容仍按用户报告或功能反馈记录，没有本地动态复现。
+- 本文不使用、不保存、不展示 API Key，未调用模型 API，知乎不发布。
 
 来源：
 
-- [DeepSeek Harness Discussions 第 1 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1) 至 [第 6 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
-- [#541](https://github.com/deepseek-ai/deepseek-harness/discussions/541)、[#542](https://github.com/deepseek-ai/deepseek-harness/discussions/542)、[#543](https://github.com/deepseek-ai/deepseek-harness/discussions/543)、[#544](https://github.com/deepseek-ai/deepseek-harness/discussions/544)、[#547](https://github.com/deepseek-ai/deepseek-harness/discussions/547)、[#548](https://github.com/deepseek-ai/deepseek-harness/discussions/548)、[#549](https://github.com/deepseek-ai/deepseek-harness/discussions/549)
-- [官方 `resolveWorkspacePath` 源码](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/runtime/src/client/workspaces/path.ts)
+- [DeepSeek Harness Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)
+- [#539](https://github.com/deepseek-ai/deepseek-harness/discussions/539) 至 [#549](https://github.com/deepseek-ai/deepseek-harness/discussions/549)
+- [官方 resolveWorkspacePath 源码](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/runtime/src/client/workspaces/path.ts)
 - [官方 Web RPC 源码](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/connection/src/client/rpc.ts)
 - [dsh-agent-messaging](https://github.com/happyren/dsh-agent-messaging)，静态审查固定 commit `d6fc3abfde2467aa5b6b5598fea2f0e1ece2fdac`
+
+> 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
