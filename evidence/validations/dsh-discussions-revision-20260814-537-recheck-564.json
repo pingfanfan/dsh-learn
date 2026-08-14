@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "在官方 Discussions 当前公开列表基线 github-discussions-public-list-through-564-2026-08-14 下复核 #535、#536、#537 的公开内容、分页数量、事实等级和新手入口影响。正文继续区分用户错误报告、Ideas 想法和 Show and tell 第三方展示；没有把它们写成官方修复、已实现功能或官方发行版，没有调用模型 API、下载第三方二进制或写入凭据。",
+  "checkedAt": "2026-08-14T00:55:00.000Z"
+}
