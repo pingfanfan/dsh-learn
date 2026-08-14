@@ -135,7 +135,7 @@ npm install --global pnpm
 node scripts/plugin-doctor.mjs --network
 ```
 
-看到 `PASS npm registry 可达` 再运行下面的实验。若看到 `FAIL npm registry 不可达`，先处理网络、DNS、代理或防火墙，暂时不要把它判断成插件代码错误，静态检查仍然可以通过，但安装、加载和移除必须等 npm registry 恢复后再实测。
+这项预检会用一个临时的空 npm 配置查询固定的 rc.6 包，和后面的 `npx` 下载走同一个 npm 客户端，但不会读取你平时的 `.npmrc` 或 API Key。看到 `PASS npm registry 可达` 再运行下面的实验。若看到 `FAIL npm registry 不可达`，先处理网络、DNS、代理或防火墙，暂时不要把它判断成插件代码错误，静态检查仍然可以通过，但安装、加载和移除必须等 npm registry 恢复后再实测。
 
 **用无 Key 实验安装第一个插件**
 
