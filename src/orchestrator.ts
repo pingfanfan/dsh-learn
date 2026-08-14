@@ -292,11 +292,20 @@ export class Orchestrator {
       asset.status = "READY";
       asset.staleSourceRevision = undefined;
       asset.updatedAt = new Date().toISOString();
-      assertTransition(opportunity.status, "READY");
-      opportunity.status = "READY";
-      opportunity.revision += 1;
-      opportunity.owner = undefined;
-      opportunity.lease = undefined;
+      const hasPendingAssets = state.assets.some((item) =>
+        item.opportunityId === opportunity.id && ["DRAFT", "VERIFIED"].includes(item.status),
+      );
+      if (hasPendingAssets) {
+        assertTransition(opportunity.status, "BUILDING");
+        opportunity.status = "BUILDING";
+        bumpLeasedOpportunity(opportunity);
+      } else {
+        assertTransition(opportunity.status, "READY");
+        opportunity.status = "READY";
+        opportunity.revision += 1;
+        opportunity.owner = undefined;
+        opportunity.lease = undefined;
+      }
       opportunity.updatedAt = asset.updatedAt;
       return { opportunity: structuredClone(opportunity), asset: structuredClone(asset) };
     })).result;
@@ -316,7 +325,12 @@ export class Orchestrator {
     const normalizedPath = file.relativePath;
     const beforeEvidence = beforeAsset.evidenceIds.map((id) => requireEvidence(before, id));
     const revalidating = beforeAsset.status === "STALE" && beforeEvidence.every((item) => item.status === "VERIFIED");
-    if (beforeAsset.contentHash === file.hash && beforeAsset.canonicalPath === normalizedPath && !revalidating) {
+    if (
+      beforeAsset.contentHash === file.hash &&
+      beforeAsset.canonicalPath === normalizedPath &&
+      !revalidating &&
+      !["DRAFT", "VERIFIED"].includes(beforeAsset.status)
+    ) {
       return { changed: false, asset: structuredClone(beforeAsset) };
     }
     return (await this.store.transact(actor, {
@@ -356,6 +370,27 @@ export class Orchestrator {
       asset.updatedAt = new Date().toISOString();
       closeMaintenanceForAsset(state, asset.id, asset.updatedAt);
       return { changed: true, asset: structuredClone(asset) };
+    })).result;
+  }
+
+  async retireAsset(assetId: string, reason: string, actor = "content-maintenance"): Promise<Asset> {
+    const cleanedReason = reason.trim().slice(0, 500);
+    if (!cleanedReason) throw new Error("Retirement reason is required");
+    return (await this.store.transact(actor, {
+      type: "asset.retired",
+      entityType: "asset",
+      entityId: assetId,
+      details: { reason: cleanedReason },
+    }, (state) => {
+      const asset = requireAsset(state, assetId);
+      if (asset.status !== "STALE") {
+        throw new Error(`Only a stale asset can be retired: ${asset.status}`);
+      }
+      asset.status = "RETIRED";
+      asset.retiredReason = cleanedReason;
+      asset.updatedAt = new Date().toISOString();
+      closeMaintenanceForAsset(state, asset.id, asset.updatedAt);
+      return structuredClone(asset);
     })).result;
   }
 
