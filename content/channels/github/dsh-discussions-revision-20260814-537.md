@@ -54,13 +54,14 @@ Discussion #537 展示了一个社区桌面版，并链接到外部仓库和 Rel
 - [DeepSeek Harness Discussions API 第 4 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4)
 - [DeepSeek Harness Discussions API 第 5 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5)
 - [DeepSeek Harness Discussions API 第 6 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
+- [DeepSeek Harness Discussions 当前分页快照（维护复核至 #1068）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 - [Discussion #535：npx 启动报错](https://github.com/deepseek-ai/deepseek-harness/discussions/535)
 - [Discussion #536：Linux 沙盒想法](https://github.com/deepseek-ai/deepseek-harness/discussions/536)
 - [Discussion #537：社区桌面版展示](https://github.com/deepseek-ai/deepseek-harness/discussions/537)
 
 验证基线是 DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`，以及 `@deepseek-ai/dsh@0.1.0-rc.6`。
 
-维护基线（2026-08-14）：官方 Discussions 当前已复核到 7 页、700 条公开讨论，编号从 `#12` 到 `#720`；这个新分页只用于刷新来源状态，不改写本卡对 #535–#537 的历史观察，也不把后来的讨论混入结论。
+维护基线（2026-08-14）：官方 Discussions 当前已复核到第 11 页、1100 条公开讨论，编号从 `#12` 到 `#1068`；这个新分页只用于刷新来源状态，不改写本卡对 #535–#537 的历史观察，也不把后来的讨论混入结论。
 
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
