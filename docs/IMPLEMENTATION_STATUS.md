@@ -77,6 +77,7 @@
 - [x] Discussion #297 工具 schema 体检资产已完成：`tool-schema-doctor` 在本地、无 API、无模型调用条件下检查插件工具名、`parameters.type = object` 和 `execute`；正确/错误夹具均有回归，事实卡明确区分社区报告、官方文档和 dsh-learn 自己的检查，不把社区 fork 说成官方修复。
 - [x] Discussion #563 中文 Windows 路径资产已完成：`win32-path-doctor` 用离线 UTF-16 夹具复现低字节提前截断，并验证两个字节同时为零的终止判断；事实卡明确区分官方报告、固定源码、社区修复候选和未运行的 Windows 原生对话框/DSH runtime，没有使用 API Key，知乎未发布。
 - [x] Discussion #558 Code Mode 参数分层资产已完成：`code-mode-args-doctor` 用本地 JSON 夹具分别检查外层 `run_code` 与内层 `bash` 的 `description`，覆盖正常、外层缺字段和内层缺字段三条回归路径；GitHub 工具与事实卡均已获得真实文件回执，没有启动 DSH、调用模型 API 或发布知乎。
+- [x] Cordis 论文新手阅读路线已完成：把论文的时间/空间可组合性连接到无 Key profile、bundle 安装/移除和工具注册实验，正文通过 polish-article、标题与开头去重检查，GitHub 文件回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-cordis-paper-beginner-route-20260814.md`，没有调用模型 API，知乎未发布。
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 新增无模型工具 schema doctor，检查本地插件的 `parameters.type = object`、工具名称和 `execute`，并用正确/错误夹具覆盖通过与失败提示；不把社区 Discussion #297 的 fork/PR 自述写成官方版本修复。
 - [x] 完全新手运行 hello-plugin 探针时，npm registry 不可达会输出 `BLOCKED_NETWORK`、网络/DNS/代理检查命令和恢复步骤，不再把 npm 原始堆栈直接交给新手；网络恢复前仍不把安装、加载和移除写成通过。
