@@ -14,6 +14,7 @@ const required = [
   "PASS npm",
   "PASS npx",
   "labs/hello-plugin/verify.mjs",
+  "scripts/beginner-start.mjs",
   "npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web",
   "没有联网，也没有读取或发送任何 API Key",
 ];
@@ -26,7 +27,7 @@ const result = execFileSync(process.execPath, [doctorPath], {
   encoding: "utf8",
   stdio: ["ignore", "pipe", "pipe"],
 });
-for (const item of ["PASS Node.js", "PASS npm", "PASS npx", "PASS 环境可以进入 DSH 启动步骤"]) {
+for (const item of ["PASS Node.js", "PASS npm", "PASS npx", "PASS 环境可以进入 DSH 启动步骤", "node scripts/beginner-start.mjs"]) {
   if (!result.includes(item)) failures.push(`runtime missing ${item}`);
 }
 
