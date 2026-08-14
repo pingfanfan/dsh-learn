@@ -16,7 +16,7 @@
 | --- | --- | --- | --- | --- |
 | 0 | 下载并解压 dsh-learn，不要求先学 Git | “下载 dsh-learn 的练习文件” | `10-github-download-zip.jpg` | 能进入仓库根目录 |
 | 1 | 安装 Node.js，确认 `node`、`npm`、`npx` | “安装 Node.js” | `09-nodejs-download-page.jpg`、`03-terminal-node-version.svg` | `node scripts/beginner-doctor.mjs` 输出 PASS |
-| 2 | 用固定版本启动 DSH Web UI | “启动 DSH 的 Web UI” | `01-official-run-readme.jpg`、`04-terminal-dsh-web.svg` | 浏览器能打开 `http://127.0.0.1:3080` |
+| 2 | 用新手启动入口启动固定版本 DSH Web UI | “启动 DSH 的 Web UI” | `01-official-run-readme.jpg`、`04-terminal-dsh-web.svg` | 浏览器能打开 `http://127.0.0.1:3080`；失败时得到网络、Node 或端口提示 |
 | 3 | 首次打开页面时跳过 Key | “第一次打开页面不要急着接模型” | `07-dsh-first-run-api-key-prompt.jpg`、`08-dsh-web-ui-no-key.jpg` | 看到空工作台；不把它写成模型可用 |
 | 4 | 检查插件安装前置条件 | “安装插件前先检查 pnpm” | `06-terminal-beginner-doctor.svg`（环境检查） | `node scripts/plugin-doctor.mjs` 输出 PASS |
 | 5 | 在临时 `DSH_HOME` 安装、加载、移除 hello-plugin | “用无 Key 实验安装第一个插件” | `05-terminal-plugin.svg` | 看到 install、config、loaded、remove 四类结果 |
@@ -44,6 +44,7 @@
 
 - 文档、图片链接、编辑区隔离检查：`pnpm validate:beginner-entry` 已通过。
 - 单页截图快速上手卡：`pnpm validate:beginner-quickstart` 已通过；它复用现有 9 张截图，不新增动态成功声明。
+- 友好启动入口：`pnpm validate:beginner-start` 已通过；它只包装固定版本的 npx 启动，不读取或发送 API Key。
 - 新手环境检查脚本的静态验证：`pnpm validate:beginner-doctor` 已通过。
 - 插件前置检查脚本的静态验证：`pnpm validate:plugin-doctor` 已通过。
 - 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在固定 rc.6 版本检查阶段得到 `ENOTFOUND registry.npmjs.org`，探针现在会输出面向新手的阻塞说明，而不是原始 Node.js 堆栈；因此不能把本轮写成安装、加载、移除通过。恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
