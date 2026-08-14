@@ -32,7 +32,7 @@
     "repository": "deepseek-ai/deepseek-harness",
     "commit": "47f943859bef60e4160492346772ded9b24f765a",
     "package": "@deepseek-ai/dsh",
-    "version": "0.1.0-rc.6; historical-discussions=github-discussions-public-list-through-614-2026-08-14; current-discussions-pages=7; current-pageCounts=100,100,100,100,100,100,100; current-discussions-items=700; current-discussions-first=12; current-discussions-last=720; current-discussions-revision=github-discussions-public-list-through-720-2026-08-14"
+    "version": "0.1.0-rc.6; historical-discussions=github-discussions-public-list-through-614-2026-08-14; current-discussions-pages=7; current-pageCounts=100,100,100,100,100,100,100; current-discussions-items=700; current-discussions-first=12; current-discussions-last=720; current-discussions-revision=github-discussions-public-list-through-720-2026-08-14; source-attestation-revision=deepseek-harness-discussions-attested-through-720-2026-08-14T03:52:00Z"
   },
   "reproduction": {
     "environment": "GitHub connector verified official Discussions pages 1–7, historical detail pages #592, #593, #594, #597, #598, #599, #600, #601, #602, #605, #606, #609, #611 and #614, selected comments, current #720 and fixed-commit README; dsh-learn workspace",
