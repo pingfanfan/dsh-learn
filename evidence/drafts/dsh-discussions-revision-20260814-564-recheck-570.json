@@ -1,0 +1,52 @@
+{
+  "claim": "截至 2026-08-14T00:24:53Z，通过 DeepSeek Harness 官方 Discussions API 的 6 个分页复核，公开列表为 550 条讨论，最后编号为 #564。#560 是缓存命中率展示，不能单凭截图推导普遍性能；#561 是在模型声明不支持 image 时放宽图片输入校验的功能建议；#562 是一份包含工具链、并行分身和平台体验反馈的用户工作单，不能当作官方修复或 dsh-learn 独立复现；#563 报告 Windows 原生目录选择器读取中文路径时截断，报告中的 readUtf16 代码与官方固定 commit 对应函数一致，但 dsh-learn 没有在 Windows 上动态复现；#564 更新了第三方 OpenAI-compatible 网关兼容方案，社区预设仓库现已可访问，增强 fork 与预设包可以静态核对，但 dsh-learn 没有下载、安装 fork 或插件，也没有调用真实网关或模型 API。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 第 1 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:08:50Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 第 2 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:08:50Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 第 3 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:08:50Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 第 4 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:08:50Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 第 5 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:08:50Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:08:50Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/560","title":"Discussion #560：缓存命中率展示","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/561","title":"Discussion #561：不支持图片模型的输入建议","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/562","title":"Discussion #562：真实协作反馈工作单","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/563","title":"Discussion #563：Win32 中文路径截断报告","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/564","title":"Discussion #564：第三方网关兼容方案展示","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/host/directory-picker-native/src/win32-dialog-bindings.ts","title":"官方固定 commit 的 Win32 目录选择器源码","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/host/apiproxy/src/api-proxy.ts","title":"官方固定 commit 的 API proxy 源码","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/Menger-8/dsh-gateway-presets","title":"社区 dsh-gateway-presets 仓库","kind":"repository","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/Menger-8/dsh-gateway-presets/blob/d01d071cbd92ad200ea4ec7628e169ae87916929/README.zh.md","title":"dsh-gateway-presets README.zh.md（固定 commit）","kind":"repository","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/Menger-8/dsh-gateway-presets/blob/d01d071cbd92ad200ea4ec7628e169ae87916929/package.json","title":"dsh-gateway-presets package.json（固定 commit）","kind":"repository","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/Menger-8/dsh-gateway-presets/blob/d01d071cbd92ad200ea4ec7628e169ae87916929/tools/probe-gateway.ps1","title":"社区网关探测脚本（固定 commit）","kind":"repository","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/Menger-8/deepseek-harness/tree/feature/third-party-gateway-compat","title":"Menger-8 增强 fork 的兼容分支","kind":"repository","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/Menger-8/deepseek-harness/blob/feature/third-party-gateway-compat/.agents/notes/implemented/architecture/2026-08-14-gateway-compat-presets.md","title":"增强 fork 的网关预设设计记录","kind":"repository","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/Menger-8/deepseek-harness/blob/feature/third-party-gateway-compat/packages/llm/llm-gateway-presets/README.zh.md","title":"增强 fork 的网关预设包中文说明","kind":"repository","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/565","title":"Discussion #565：社区插件展示（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/566","title":"Discussion #566：GLM-5.2 中文乱码报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/567","title":"Discussion #567：web_search 端点与代理诊断报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/568","title":"Discussion #568：Node.js 兼容性警告报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/569","title":"Discussion #569：AI 发起社区讨论的治理建议（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:27:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/570","title":"Discussion #570：pnpm workspace 循环依赖警告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:27:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14; gateway-presets=d01d071cbd92ad200ea4ec7628e169ae87916929; fork=42e228e581d0fa078442393e436170aeb56057ab"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified official Discussions pages 1–6 through #614, detail pages #560–#570, official fixed-commit source, current community gateway-presets repository, fork branch and package documentation; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..6",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/560..570",
+      "READ packages/host/directory-picker-native/src/win32-dialog-bindings.ts at 47f9438",
+      "READ packages/host/apiproxy/src/api-proxy.ts at 47f9438",
+      "READ Menger-8/dsh-gateway-presets README.zh.md, package.json, tools/probe-gateway.ps1 at d01d071",
+      "READ Menger-8/deepseek-harness gateway compat note and README.zh.md at 42e228e"
+    ],
+    "result": "PASS",
+    "notes": "原 claim 明确描述 2026-08-14T00:24:53Z 的历史状态，因此不改写 #560–#564 的时间边界。当前列表已扩展到 #614；#565–#614 只用于当前基线，不混入原结论。#563 的代码观察仍只是静态对照，没有在 Windows 上动态复现；#564 的社区预设和增强 fork 仍未下载、安装、构建或运行，也没有访问真实网关或调用模型 API。#562 中的邮箱、私有路径和用户内部材料不进入规范稿。没有使用或保存 API Key。"
+  },
+  "confidence": 96
+}
