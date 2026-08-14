@@ -45,6 +45,7 @@
       "pnpm validate:beginner-quickstart",
       "pnpm validate:beginner-start",
       "pnpm validate:beginner-doctor",
+      "pnpm validate:beginner-plugin-scaffold",
       "pnpm validate:beginner-entry",
       "pnpm validate:plugin-doctor",
       "pnpm validate:plugin-lab",
@@ -52,7 +53,7 @@
       "pnpm public-audit"
     ],
     "result": "PASS",
-    "notes": "本卡只复用现有截图和已记录的证据，不声称本轮 npm 下载、Web UI 启动或插件动态安装成功；新手环境 doctor 默认离线，`--report` 只打印隐藏路径的诊断回执，不读取或上传凭据，并明确 `NETWORK=not_checked`、`WEB=not_started`、`PLUGIN=not_started`。新手启动入口只包装固定版本 npx，并在网络、Node.js 或端口失败时给出 BLOCKED_NETWORK、FAIL_NODE_VERSION 或 FAIL_PORT 提示。真实安装前仍需运行 node scripts/plugin-doctor.mjs --network。当前网络不可达时，hello-plugin 探针和启动入口都应明确输出网络阻塞，而不是插件或 DSH 代码失败。教程默认不需要 API Key，若改编为知乎内容必须经过主理人明确同意。"
+    "notes": "本卡只复用现有截图和已记录的证据，不声称本轮 npm 下载、Web UI 启动或插件动态安装成功；新手环境 doctor 默认离线，`--report` 只打印隐藏路径的诊断回执，不读取或上传凭据，并明确 `NETWORK=not_checked`、`WEB=not_started`、`PLUGIN=not_started`。新手插件脚手架只生成四个本地文件，拒绝覆盖已有目录和路径穿越；通用探针可以按生成的 bundle 名称检查自定义插件，但不因此声称动态安装成功。新手启动入口只包装固定版本 npx，并在网络、Node.js 或端口失败时给出 BLOCKED_NETWORK、FAIL_NODE_VERSION 或 FAIL_PORT 提示。真实安装前仍需运行 node scripts/plugin-doctor.mjs --network。当前网络不可达时，hello-plugin 探针和启动入口都应明确输出网络阻塞，而不是插件或 DSH 代码失败。教程默认不需要 API Key，若改编为知乎内容必须经过主理人明确同意。"
   },
   "confidence": 98
 }
