@@ -74,7 +74,7 @@
 - [x] #592–#614 当前复核卡已完成官方分页、重点 Discussion、评论和固定 README 的多源核验，覆盖新手启动、工作区/浏览器、provider 与 ACP/MCP/Docker 生态信号；明确没有动态复现、没有把社区建议写成官方修复，GitHub 已获得文件回执，知乎未发布。
 - [x] 中文 Discussions 最小复现工具包已把 EvidencePack 更新到 revision 18，并重新绑定 `github-discussions-public-list-through-614-2026-08-14`；正文仍通过专用模板验证、公开审计和 60 项测试，GitHub 规范文件与远端现有内容一致，已记录远端状态回执，知乎未发布。
 - [x] #539–#549 历史复核卡已保留原始时间边界，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；`dsh-agent-messaging` 仍只做固定 commit 静态审查，没有下载、安装或运行，知乎未发布。
-- [x] #560–#564 新手排障卡已保留 Windows 路径、图片输入、缓存展示和第三方网关的历史事实边界，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；社区 fork/预设没有下载、安装或运行，知乎未发布。
+- [x] #560–#564 新手排障卡已保留 Windows 路径、图片输入、缓存展示和第三方网关的历史事实边界，完成从 #614 到 #714 的分页维护复核，并更新 EvidencePack、规范稿与 GitHub 真实文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-564.md`）；社区 fork/预设没有下载、安装或运行，知乎未发布。
 - [x] #553–#559 网关兼容与插件排障卡已保留原始历史观察，补充当前 #614 分页维护基线，并注明 `dsh-gateway-presets` 后续已恢复可访问；增强 fork、preset 和真实网关仍未动态运行，GitHub 规范稿与证据回执已更新，知乎未发布。
 - [x] #535–#537 启动报错、Linux 沙盒想法和社区桌面版复核卡已保留历史证据等级，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；没有下载第三方桌面版或把它写成官方发行版，知乎未发布。
 - [x] #619–#714 新手安装与插件安全排错路径已完成官方文档、Discussion 详情和固定 rc.6 命令的多源核验；文章把截图定位为导航材料，把本机命令回执定位为最终证据，并明确没有动态安装第三方插件、没有调用模型 API，知乎未发布。
@@ -99,3 +99,4 @@
 - [x] DSH 第一个插件端到端教程已完成 `dsh plugin add`、profile manifest、bundle patch、加载日志和 `remove` 的无 Key 证据绑定；规范稿已完成最终润色检查，知乎未发布。
 - [x] DSH 启动与插件安装排障教程已完成官方启动/插件文档和公开 Discussions 的多源核验，复用 rc.6 无 Key bundle 实验，并明确区分 CLI、profile、bundle、插件加载、Web UI、模型和工具调用边界；规范稿已完成最终润色检查，知乎未发布。
 - [x] 当前 #619–#714 新手安装与插件安全排错路径已获得 GitHub 文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-beginner-install-and-plugin-safety-714.md`）；新卡证据基线为 7 页、696 条公开讨论、#12–#714。微博稿因账号近期已有原创内容暂留 outbox，知乎未发布。
+- [x] #560–#564 维护复核已完成：原始观察仍固定为当时的 6 页/550 条/#564，当前来源只更新为 7 页/696 条/#714；规范稿通过最终润色检查，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-564.md`，知乎未发布。
