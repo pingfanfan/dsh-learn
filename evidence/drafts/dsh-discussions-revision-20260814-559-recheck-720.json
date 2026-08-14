@@ -36,7 +36,7 @@
     "repository": "deepseek-ai/deepseek-harness",
     "commit": "47f943859bef60e4160492346772ded9b24f765a",
     "package": "@deepseek-ai/dsh",
-    "version": "0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; fork-branch=42e228e581d0fa078442393e436170aeb56057ab; gateway-presets=d01d071cbd92ad200ea4ec7628e169ae87916929"
+    "version": "0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; source-attestation-revision=deepseek-harness-discussions-attested-through-720-2026-08-14T03:52:00Z; fork-branch=42e228e581d0fa078442393e436170aeb56057ab; gateway-presets=d01d071cbd92ad200ea4ec7628e169ae87916929"
   },
   "reproduction": {
     "environment": "GitHub connector rechecked official Discussions pages 1–7 through #720, preserved detail pages #553–#570, official fixed-commit catalog, public enhancement fork branch, current gateway-presets repository and its package documentation; dsh-learn workspace",
