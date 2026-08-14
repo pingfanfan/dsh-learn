@@ -1,0 +1,47 @@
+{
+  "claim": "截至 2026-08-13，DeepSeek Harness 官方 Discussions 新增了 Windows 11/Firefox 目录选择窗口层级、Windows 目录选择器依赖加载失败和归档会话查看/恢复等用户报告；这些内容支持制作一张问题分流与发帖准备卡，但不支持宣称浏览器兼容性结论、koffi 修复方案或归档恢复方案已经得到官方确认。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/37","title":"Windows 11 下 Firefox 的目录选择对话框问题","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/38","title":"Windows 目录选择器无法打开文件夹","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/40","title":"会话归档后无法查看或恢复","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions","title":"DeepSeek Harness 官方 Discussions 首页","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/30","title":"目录选择器错误（#38 评论引用的相关讨论）","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/38/comments","title":"Discussion #38 公开评论","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/40/comments","title":"Discussion #40 公开评论","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/ui-workspace/README.zh.md","title":"官方固定 commit 的 ui-workspace 中文 README","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 第 1 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 第 2 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 第 3 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 第 4 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 第 5 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页当前公开列表","kind":"official","accessedAt":"2026-08-14T03:37:59Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/720","title":"Discussion #720 当前公开列表最后一项","kind":"official","accessedAt":"2026-08-14T03:37:59Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified current detail pages #37, #38, #40, related #30, public comments for #38 and #40, fixed-commit ui-workspace README, and current Discussions list pages 1–7; dsh-learn workspace",
+    "commands": [
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/37",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/38",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/40",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/30",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/38/comments",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/40/comments",
+      "READ packages/client/ui-workspace/README.zh.md at 47f9438",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/720",
+      "pnpm public-audit",
+      "git diff --check"
+    ],
+    "result": "PASS",
+    "notes": "#37、#38 和 #40 的历史报告仍未发生内容变化。#38 评论仍将问题初步描述为 Node.js 模块加载失败并引用 #30，#40 评论引用固定 commit 的 README 已知限制，其中没有 Session 删除与取消归档控件，删除 Workspace 注册记录不会删除 Session。当前分页为 7 页、700 项，最后编号 #720；新分页只作为维护基线。没有在本机复现 Windows/Firefox 行为，没有调用模型 API，没有运行第三方插件，也没有使用或保存凭据。"
+  },
+  "confidence": 98
+}
