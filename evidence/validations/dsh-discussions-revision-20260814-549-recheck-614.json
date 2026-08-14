@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "#539–#549 的历史观察保持原时间边界；正文新增当前维护基线，明确 EvidencePack 已更新为 6 页、600 条公开讨论、最后编号 #614，但不把 #550–#614 混入旧结论。社区插件仍只做固定 commit 的静态审查，没有下载、安装、启动或调用模型；没有保存凭据，也没有发布知乎。",
+  "checkedAt": "2026-08-14T02:07:00Z"
+}
