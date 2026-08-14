@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "python3 check_tone_cliches.py && python3 check_period_density.py && pnpm public-audit && git diff --check",
+  "notes": "正式新手资产已按内容块重写并完成最终口吻润色，覆盖固定版本启动、Node 与 Linux 前置、首次 Web UI 的 API Key 与工作区状态、profile 插件安装验证、GitHub 规格风险、Node/MCP 隔离、社区最小插件和截图证据边界。语气检查与句号密度检查通过，正文汉字 2713、有效字符 4421、最长完整句 142 字；没有把 Discussions 中的社区报告写成官方修复，也没有声称本轮完成第三方动态安装或模型 API 调用，未发布知乎。",
+  "checkedAt": "2026-08-14T02:43:00Z"
+}
