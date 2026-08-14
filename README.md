@@ -20,7 +20,7 @@
 
 4. 浏览器打开 `http://127.0.0.1:3080`。如果第一次看到 `Add an API key to get started`，先点 `Configure later`；这一步只验证页面能否打开，不代表模型已经配置好。
 5. 准备安装插件前，运行 `node scripts/plugin-doctor.mjs`。Web UI 不需要 pnpm，但 DSH 的 `plugin` 子命令会调用 pnpm；如果检查失败，按它打印的命令安装后再继续。
-6. 回到仓库根目录运行 `node labs/hello-plugin/verify.mjs`，在隔离的临时 `DSH_HOME` 中完成第一个插件的安装、加载、配置检查和移除。这个实验会主动排除 API Key，不会发起模型请求。
+6. 回到仓库根目录运行 `node scripts/create-beginner-plugin.mjs my-first-plugin` 生成自己的最小插件，再运行 `node labs/hello-plugin/verify.mjs ./my-first-plugin`，在隔离的临时 `DSH_HOME` 中完成安装、加载、配置检查和移除。这个过程主动排除 API Key，不会发起模型请求；只想先跑固定示例时，仍可运行 `node labs/hello-plugin/verify.mjs`。
 
 如果你只想先了解 profile、bundle 和配置树，可以从[无 Key 的隔离 profile 实验](labs/cordis-no-key/README.md)开始；如果你想看完整的插件文件结构，再看[第一个插件实验说明](labs/hello-plugin/README.md)。
 
@@ -142,7 +142,7 @@ Discussion 工具包还可以单独运行 `pnpm validate:discussion`，检查版
 
 Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线、提供方覆盖、`NOT_RUN` 边界和凭据泄漏模式。
 
-第一个插件实验可以单独运行 `pnpm validate:plugin-lab` 做静态检查，再运行 `node labs/hello-plugin/verify.mjs` 在临时 `DSH_HOME` 中真实完成本地 bundle 安装、加载和移除；该探针不读取现有凭据，不发起模型请求。
+第一个插件实验可以单独运行 `pnpm validate:plugin-lab` 做静态检查；新手可以先运行 `pnpm beginner:create-plugin my-first-plugin` 生成最小 bundle，再运行 `node labs/hello-plugin/verify.mjs ./my-first-plugin` 在临时 `DSH_HOME` 中完成本地 bundle 安装、加载和移除。该探针不读取现有凭据，不发起模型请求。
 
 零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界；截图快速上手卡可以运行 `pnpm validate:beginner-quickstart`；`pnpm validate:plugin-doctor` 会同时检查 pnpm 缺失时的失败提示。
 
