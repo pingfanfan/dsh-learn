@@ -4,6 +4,10 @@
 
 这篇把读者当成零基础。你不需要先理解 Cordis，也不需要先申请 API Key。跟着做完以后，你应该能完成四件事，确认电脑能运行 DSH，打开 DSH 的 Web UI，在隔离环境里安装一个无 Key 插件，知道模型请求应该放在哪一层。
 
+
+如果你以前没有打开过终端，也不用把它当成程序员专属工具。这里的终端只负责把一行命令交给电脑执行，出现问题时我们看清楚它停在哪一步，不需要猜一堆专业名词。
+
+
 DSH 目前仍是 Developer Preview，版本变化会比较快，下面的命令固定到 `@deepseek-ai/dsh@0.1.0-rc.6`，官方仓库基线固定到 `47f9438`，以后看到旧文章，先找它写的版本，再决定是否照做。
 
 ## 先准备好环境
@@ -14,7 +18,7 @@ Node.js 是运行 DSH 所需的基础软件，它不是 DSH，也不是模型，
 
 浏览器用来打开 DSH 的页面，官方默认地址是本机的 `127.0.0.1` 加 `3080` 端口，它只表示你的电脑，不是一个别人可以访问的公网网址。
 
-这三样东西的关系可以这样记。Node.js 负责执行，终端负责发出命令，浏览器负责显示页面。
+这三样东西的关系可以这样记，Node.js 负责执行，终端负责发出命令，浏览器负责显示页面。
 
 **安装 Node.js**
 
@@ -63,7 +67,7 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 第一次运行时，`npx` 会从 npm 下载对应版本的 DSH，网络较慢时终端可能停留一会儿，看到本机地址以后不要关掉窗口，用浏览器打开 `127.0.0.1` 的 `3080` 端口。
 
-对新手来说，这条命令就是 `安装并启动 DSH`。`npx` 会把指定版本下载到本机的 npm 缓存，再运行它。你不需要先把 `dsh` 全局安装，也不需要自己配置 PATH。教程把版本号写全，是为了让每个人先使用同一个基线。
+对新手来说，这条命令就是 `安装并启动 DSH`。`npx` 会把指定版本下载到本机的 npm 缓存，再运行它，你不需要先把 `dsh` 全局安装，也不需要自己配置 PATH，教程把版本号写全，是为了让每个人先使用同一个基线。
 
 如果只想确认 DSH 版本，可以运行下面这条命令，它不会打开 Web UI。
 
@@ -153,7 +157,7 @@ node labs/hello-plugin/verify.mjs
 
 这个小改动能让你看到自己的代码是否被加载。`package.json` 负责声明这是一个 npm 包，`dsh.bundle.patch` 负责声明它提供一层组合配置。`cordis.patch.yml` 负责把插件入口插进配置树，`index.js` 负责导出插件并执行 `apply`。四个文件各自只管一层。
 
-官方插件教程里的手动安装命令是下面这一类形式。为了不让新手再处理一次全局安装，这里仍然使用前面同一个固定版本的 `npx`；当前终端需要位于包含插件目录的工作区。先用 `verify.mjs` 完成第一次实验以后，再考虑手动逐条执行。
+官方插件教程里的手动安装命令是下面这一类形式。为了不让新手再处理一次全局安装，这里仍然使用前面同一个固定版本的 `npx`。当前终端需要位于包含插件目录的工作区，先用 `verify.mjs` 完成第一次实验以后，再考虑手动逐条执行。
 
 ![官方插件教程中的 bundle 与 profile](../../assets/dsh-beginner/02-official-plugin-publish.jpg)
 
@@ -184,6 +188,10 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 plugin --profile demo remove dsh-hello-plu
 配置导出里能看到插件组合层，启动时能看到你改过的日志，移除以后 profile 里不再保留这个包，这三类结果分别对应发现、加载和清理，只看到安装命令返回成功还不足以证明插件已经运行。
 
 ## 从插件实验走向下一步
+
+
+我建议新手把第一次成功定义得小一点。网页能打开是一项结果，插件能加载是另一项结果，模型能回答又是另一项结果。每次只验证一层，排错时才知道该回到 Node.js、网络、profile 还是模型配置。
+
 
 **工具插件放在下一层**
 
@@ -220,6 +228,7 @@ Windows 用户还要留意路径问题，官方 Discussions 中已经有中文�
 - 事实基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`；npm 包 `@deepseek-ai/dsh@0.1.0-rc.6`；官方根 package manifest 的 Node.js 条件为 `^22.19.0 || >=24.0.0`。
 - 官方启动说明：[README](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md)。
 - 官方插件教程：[打包与安装插件](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/publish.zh.md)。
+- 官方文档中的简写命令为 `dsh plugin --profile demo add ./my-first-plugin`，本文正文使用固定版本的 `npx`，不要求新手先全局安装 DSH。
 - 官方工具教程：[工具](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/tool.zh.md)。
 - Node.js 官方下载页：[nodejs.org](https://nodejs.org/en/download/)。
 - dsh-learn 仓库：[pingfanfan/dsh-learn](https://github.com/pingfanfan/dsh-learn)。
