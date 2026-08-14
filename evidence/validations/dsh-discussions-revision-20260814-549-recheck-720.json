@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "check_tone_cliches.py && check_period_density.py && pnpm public-audit && pnpm check && git diff --check && canonical-to-github render check",
+  "notes": "#539–#549 历史观察保持原时间边界；当前证据基线已更新至官方 Discussions 7 页、700 条、最新 #720。正文按内容块重写为 Web/host 边界、社区 bundle 结构和新手入口三条主线，已通过 polish-article 的语气、句号密度、开头去重和今日头条终稿总检，不把 #550–#720 的后续报告混入原主题；社区插件仍只做静态审查，没有下载、安装、启动或调用模型，没有保存凭据，也没有发布知乎。",
+  "checkedAt": "2026-08-14T03:25:00Z"
+}
