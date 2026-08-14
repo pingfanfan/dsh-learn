@@ -18,7 +18,15 @@ node labs/tool-plugin/verify.mjs
 node labs/tool-plugin/verify-offline.mjs
 ```
 
-离线检查用一个最小的本地工具注册表调用插件入口，验证 `greet` 注册、参数 schema、返回值、执行函数和渲染器。它不证明 DSH runtime 已加载插件，也不证明模型会发起工具调用。
+如果你在改自己的工具插件，可以在真实安装前检查本地入口的参数根：
+
+```bash
+node scripts/tool-schema-doctor.mjs ./my-tool/index.js
+```
+
+它只在本地导入插件，检查 `parameters.type` 是否为 `object`、工具名和 `execute` 是否存在，不访问 npm，也不调用模型。导入陌生插件前仍要阅读其入口文件和构建脚本，因为插件自身可能执行副作用。
+
+离线检查用一个最小的本地工具注册表调用插件入口，验证 `greet` 注册、参数对象根、参数 schema、返回值、执行函数和渲染器。它不证明 DSH runtime 已加载插件，也不证明模型会发起工具调用。
 
 探针会在临时 `DSH_HOME` 中完成：
 
