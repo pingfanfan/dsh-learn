@@ -1,6 +1,6 @@
 # DSH 社区新增 6 条信号：插件、代理报错和源码安装，先分清能不能直接用
 
-截至 2026 年 8 月 14 日这次复核，DeepSeek Harness 官方 Discussions 的公开列表已经翻到 `#614`，6 页一共 600 条，编号从 `#12` 到 `#614`，中间存在编号空缺。本文仍专门复盘 `#565–#570` 这 6 条历史信号；列表数量的变化只发生在社区讨论里，不能当成 DSH 发布了新版本。官方代码基线仍按 commit `47f9438` 记录，npm 上新手路径使用的仍是 `@deepseek-ai/dsh@0.1.0-rc.6`。
+这张卡的原始观察发生在 `#565–#570` 出现时，官方 Discussions 当时是 6 页、556 条，最后编号为 `#570`，随后列表扩展到 6 页、600 条、`#614`，现在又到 7 页、696 条、`#714`。本文仍专门复盘 `#565–#570` 这 6 条历史信号，列表数量的变化只发生在社区讨论里，不能当成 DSH 发布了新版本。官方代码基线仍按 commit `47f9438` 记录，npm 上新手路径使用的仍是 `@deepseek-ai/dsh@0.1.0-rc.6`。
 
 但这 6 条新讨论很有用，因为它们把新手和贡献者会遇到的门槛摆在了不同位置，有人在展示插件，有人在接第三方模型，有人在调 web_search，有人在源码安装时看到 pnpm 警告，还有人开始讨论 AI 是否应该替用户发社区帖子。它们不能混成一张 `DSH 已经支持什么` 的功能表。
 
@@ -10,9 +10,9 @@
 
 ## #565 插件接入 OpenClaw
 
-Discussion #565 展示了社区插件 `dsh-openclaw-acp`。截至本次复核，仓库主分支为 commit `ac475fa`，公开 release 已是 `v0.1.3`；`package.json` 声明依赖 `@deepseek-ai/dsh-acp@0.1.0-rc.6`，插件入口文件则通过 ACP 把 Harness profile 暴露给 OpenClaw。
+Discussion #565 展示了社区插件 `dsh-openclaw-acp`。截至本次复核，仓库主分支为 commit `ac475fa`，公开 release 已是 `v0.1.3`，`package.json` 声明依赖 `@deepseek-ai/dsh-acp@0.1.0-rc.6`，插件入口文件则通过 ACP 把 Harness profile 暴露给 OpenClaw。
 
-当前 README 给出的路径是：先安装 `@deepseek-ai/dsh@0.1.0-rc.6`，再用 `dsh plugin --profile openclaw add` 安装发布的 `.tgz` bundle，最后用 `dsh --profile openclaw --dump-config` 检查配置。这是跨 DSH、OpenClaw、ACPX、渠道插件和模型凭据的进阶路径，不能替代新手先用固定版本打开 DSH Web UI 的入口；dsh-learn 只核对了公开文件和发布元数据，没有执行这条安装命令。
+当前 README 给出的路径会安装 `@deepseek-ai/dsh@0.1.0-rc.6`，然后用 `dsh plugin --profile openclaw add` 加入发布的 `.tgz` bundle，再用 `dsh --profile openclaw --dump-config` 检查配置。这是跨 DSH、OpenClaw、ACPX、渠道插件和模型凭据的进阶路径，不能替代新手先用固定版本打开 DSH Web UI 的入口，dsh-learn 只核对了公开文件和发布元数据，没有执行这条安装命令。
 
 这个项目的分工写得比较清楚，Harness 负责 agent、模型、工具、workspace sandbox 和 session log，OpenClaw ACPX 负责进程和消息路由，微信或其他聊天渠道仍然由 OpenClaw 的渠道插件负责。换句话说，仓库标题里虽然出现了 WeChat，但它没有把微信 SDK 塞进 DSH，也不是 DeepSeek 官方发布的微信版 DSH。
 
@@ -34,7 +34,7 @@ Discussion 作者写了 ACP 初始化、会话创建、stdio JSON-RPC 和新 pro
 
 #566 的标题是用 GLM-5.2 时中文经常乱码，正文说英文正常，并附了一张界面截图。这个现象值得进入排障队列，但目前没有足够信息判断乱码发生在模型输出、代理转发、终端编码、浏览器渲染还是字体显示，截图也不能替代请求和响应的最小记录。
 
-#568 只有一条 Node.js 相关的兼容性讨论，正文是 `node-domexception` 的 deprecated warning，目前讨论状态为 CLOSED。deprecated 是依赖维护状态的提示，不等同于 DSH 启动失败，更不能单凭这一行判断 Node.js 版本不兼容；关闭讨论也不等于官方已经确认修复。遇到类似信息，把 Node.js、pnpm、DSH 精确版本和退出码放在一起，然后看命令最后有没有实际失败。
+#568 只有一条 Node.js 相关的兼容性讨论，正文是 `node-domexception` 的 deprecated warning，目前讨论状态为 CLOSED。deprecated 是依赖维护状态的提示，不等同于 DSH 启动失败，更不能单凭这一行判断 Node.js 版本不兼容，关闭讨论也不等于官方已经确认修复。遇到类似信息，把 Node.js、pnpm、DSH 精确版本和退出码放在一起，然后看命令最后有没有实际失败。
 
 这两个问题暂时最适合进入 `如何收集证据` 的新手教程，不适合变成 `安装某个版本就能解决` 的快捷方案。版本、命令、第一段错误和预期结果没有齐，后续讨论很容易被一张截图带偏。
 
