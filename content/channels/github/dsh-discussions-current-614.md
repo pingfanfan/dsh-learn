@@ -1,12 +1,12 @@
 # DSH Discussions #592–#614：新手先分清路径、端口、浏览器和模型设置
 
-截至 2026 年 8 月 14 日这次复核，DeepSeek Harness 官方 Discussions 已经有 6 页、600 条公开讨论，编号从 `#12` 到 `#614`，中间存在编号空缺。#592–#614 里既有使用问题，也有功能提案、社区项目和插件作者的实验结果，它们可以帮助新手判断自己卡在哪一层，但不能直接当成 DSH 已经合并的功能。
+截至 2026 年 8 月 14 日这次维护复核，DeepSeek Harness 官方 Discussions 当前公开分页已经到 7 页、700 条讨论，最后编号为 `#720`，中间存在编号空缺。本文仍只复盘 `#592–#614` 这组历史讨论，其中既有使用问题，也有功能提案、社区项目和插件作者的实验结果，它们可以帮助新手判断自己卡在哪一层，但不能直接当成 DSH 已经合并的功能。
 
 版本基线仍固定为 `@deepseek-ai/dsh@0.1.0-rc.6` 和官方 commit `47f9438`。本卡没有在 Windows 或 Linux 上动态复现这些报告，没有安装第三方插件、没有调用模型 API，也没有使用或保存 API Key。
 
 ## 先看启动：端口和原生依赖是两类问题
 
-第一次使用 DSH，仍然从完全新手教程里的固定命令开始：
+第一次使用 DSH，仍然从[完全新手教程](dsh-zero-to-first-plugin-rc6.md)里的固定命令开始：
 
 ```bash
 npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
@@ -45,7 +45,7 @@ Linux 用户还要留意 #605。作者报告 `node-pty` 在 Linux x64 环境没�
 ## 来源
 
 - [DeepSeek Harness Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)
-- [当前分页快照（复核至 #614）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
+- [当前分页快照（维护复核至 #720）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7)
 - [#592：带空格的工作区路径](https://github.com/deepseek-ai/deepseek-harness/discussions/592)
 - [#593：ACP steer 提案](https://github.com/deepseek-ai/deepseek-harness/discussions/593)
 - [#594：ACP 流式文本提案](https://github.com/deepseek-ai/deepseek-harness/discussions/594)
@@ -61,5 +61,8 @@ Linux 用户还要留意 #605。作者报告 `node-pty` 在 Linux x64 环境没�
 - [#611：接入其他大模型问答](https://github.com/deepseek-ai/deepseek-harness/discussions/611)
 - [#614：developer role 配置问题](https://github.com/deepseek-ai/deepseek-harness/discussions/614)
 - [DeepSeek Harness README（固定 commit）](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md)
+
+> 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
+
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
