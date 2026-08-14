@@ -1,0 +1,50 @@
+{
+  "claim": "截至 2026-08-14T00:43:31Z，通过 DeepSeek Harness 官方 Discussions API 的分页复核，观察到 6 页、556 条公开讨论，编号从 #12 到 #570，中间存在编号空缺。新增的 #565 是社区插件 dsh-openclaw-acp 的 Show and tell 展示，#566 是 GLM-5.2 中文乱码报告，#567 是非官方 Anthropic 兼容代理凭据与 web_search 端点诊断问题，#568 是 Node.js 兼容性相关的警告，#569 是关于 AI 直接发起社区讨论的治理建议，#570 是源码安装时的 pnpm workspace 循环依赖警告；这些内容支持制作生态索引和新手排障资产，但不支持把社区报告写成官方修复、把第三方插件写成官方组件，或把静态来源和作者自述写成 dsh-learn 的动态复现结果。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 公共列表第 1 页","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 公共列表第 2 页","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 公共列表第 3 页","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 公共列表第 4 页","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 公共列表第 5 页","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/565","title":"Discussion #565：dsh-openclaw-acp 插件展示","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/566","title":"Discussion #566：GLM-5.2 中文乱码报告","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/567","title":"Discussion #567：非官方 Anthropic 兼容代理与 web_search 端点诊断","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/568","title":"Discussion #568：Node.js 版本兼容问题（当前为 CLOSED）","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/569","title":"Discussion #569：社区讨论人工复核建议","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/570","title":"Discussion #570：pnpm workspace 循环依赖警告","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/BeAChanger/dsh-openclaw-acp","title":"dsh-openclaw-acp 社区插件仓库","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://raw.githubusercontent.com/BeAChanger/dsh-openclaw-acp/main/package.json","title":"dsh-openclaw-acp 当前 package.json","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/BeAChanger/dsh-openclaw-acp/releases/tag/v0.1.2","title":"dsh-openclaw-acp v0.1.2 Release（历史版本）","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/BeAChanger/dsh-openclaw-acp/releases/tag/v0.1.3","title":"dsh-openclaw-acp v0.1.3 Release","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://api.github.com/repos/BeAChanger/dsh-openclaw-acp/commits/main","title":"dsh-openclaw-acp 当前 main commit","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/BeAChanger/dsh-openclaw-acp/commit/ac475fa1c81e350eda53edce9fdf1a3126c5b7b5","title":"dsh-openclaw-acp 当前 main commit 页面","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/BeAChanger/dsh-openclaw-acp/blob/main/index.js","title":"dsh-openclaw-acp 插件入口文件","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/BeAChanger/dsh-openclaw-acp/blob/main/cordis.patch.yml","title":"dsh-openclaw-acp bundle patch","kind":"repository","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/web/web-search-deepseek/README.md","title":"DeepSeek Harness web-search-deepseek README（固定 commit）","kind":"official","accessedAt":"2026-08-14T01:57:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/web/web-search-deepseek/README.zh.md","title":"DeepSeek Harness web-search-deepseek 中文 README（固定 commit）","kind":"official","accessedAt":"2026-08-14T01:57:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "repo-manifest=0.1.0-rc.5; npm-latest=0.1.0-rc.6; discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14; dsh-openclaw-acp-main=ac475fa1c81e350eda53edce9fdf1a3126c5b7b5; dsh-openclaw-acp-release=v0.1.3"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified all six current Discussions pages, detail pages #565–#570, fixed-commit official web-search documentation, and dsh-openclaw-acp main, package, entry, patch and v0.1.3 release metadata; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..6",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/565..570",
+      "GET https://api.github.com/repos/BeAChanger/dsh-openclaw-acp/commits/main",
+      "GET https://github.com/BeAChanger/dsh-openclaw-acp/releases/tag/v0.1.3",
+      "GET https://raw.githubusercontent.com/BeAChanger/dsh-openclaw-acp/main/package.json",
+      "GET https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/web/web-search-deepseek/README.zh.md",
+      "pnpm public-audit",
+      "git diff --check"
+    ],
+    "result": "PASS",
+    "notes": "当前分页计数为 100、100、100、100、100、100，共 600 项，最后编号 #614。#565–#570 仍只支持社区插件、用户报告和治理建议的事实记录，不支持把它们写成官方修复；#568 当前为 CLOSED，但这不等于已确认修复。dsh-openclaw-acp 当前 main 为 ac475fa1c81e350eda53edce9fdf1a3126c5b7b5，release 为 v0.1.3，本文只做公开仓库、package、README、入口、patch 和 release 元数据的静态核对，没有下载、安装或运行第三方插件，没有动态复现 #567 或 #570，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
+  },
+  "confidence": 97
+}
