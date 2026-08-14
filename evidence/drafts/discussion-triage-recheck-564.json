@@ -1,0 +1,103 @@
+{
+  "claim": "截至 2026-08-13，DeepSeek Harness 官方 Discussions 新增了 Windows 11/Firefox 目录选择窗口层级、Windows 目录选择器依赖加载失败和归档会话查看/恢复等用户报告；这些内容支持制作一张问题分流与发帖准备卡，但不支持宣称浏览器兼容性结论、koffi 修复方案或归档恢复方案已经得到官方确认。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/37",
+      "title": "Windows 11 下 Firefox 的目录选择对话框问题",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/38",
+      "title": "Windows 目录选择器无法打开文件夹",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions/40",
+      "title": "会话归档后无法查看或恢复",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/discussions",
+      "title": "DeepSeek Harness 官方 Discussions 首页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1",
+      "title": "DeepSeek Harness Discussions 分页列表第 1 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2",
+      "title": "DeepSeek Harness Discussions 分页列表第 2 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3",
+      "title": "DeepSeek Harness Discussions 分页列表第 3 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4",
+      "title": "DeepSeek Harness Discussions 分页列表第 4 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5",
+      "title": "DeepSeek Harness Discussions 分页列表第 5 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6",
+      "title": "DeepSeek Harness Discussions 分页列表第 6 页",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/38/comments",
+      "title": "Discussion #38 公开评论",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    },
+    {
+      "url": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/40/comments",
+      "title": "Discussion #40 公开评论",
+      "kind": "official",
+      "accessedAt": "2026-08-14T00:42:00Z"
+    }
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions-pages=6; pageCounts=100,100,100,100,100,50; discussions-items=550; discussions-last=564; discussions-revision=github-discussions-public-list-through-564-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified current public Discussions pages, Discussion #37, #38, #40 and selected public comments; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/37",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/38",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/40",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/38/comments",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/40/comments"
+    ],
+    "result": "PASS",
+    "notes": "#37、#38、#40 当前仍可访问，公开评论没有把浏览器切换、koffi 依赖或归档恢复写成维护者确认的官方解决方案。这里只复核公开文本，没有在本机动态复现 Windows/Firefox 行为，没有调用模型 API，也没有读取凭据。"
+  },
+  "confidence": 96
+}
