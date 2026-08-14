@@ -29,7 +29,7 @@
     "repository": "deepseek-ai/deepseek-harness",
     "commit": "47f943859bef60e4160492346772ded9b24f765a",
     "package": "@deepseek-ai/dsh",
-    "version": "0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; dsh-rag-kb-commit=bdfc83238ffeb0bc58839e4c03476c51da558629"
+    "version": "0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; source-attestation-revision=deepseek-harness-discussions-attested-through-720-2026-08-14T03:52:00Z; dsh-rag-kb-commit=bdfc83238ffeb0bc58839e4c03476c51da558629"
   },
   "reproduction": {
     "environment": "GitHub connector verified Discussions page 7, the detail pages #550–#552, fixed commit catalog.ts, dsh-rag-kb main commit bdfc83238ffeb0bc58839e4c03476c51da558629, README, host entry and package manifest; dsh-learn workspace",
