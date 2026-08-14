@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "polish-article tone/period/structure checks on content/canonical/discussion-triage-41.md && pnpm public-audit && pnpm check && git diff --check",
+  "notes": "正文已按 #37、#38、#40 的故障位置重写，加入固定 commit 的 ui-workspace README 已知限制，并把当前 Discussions 基线更新为 7 页、700 项、最后编号 #720。正文的语气、句号密度、结构、标题数量、3 至 4 个小标题、2 个口述区、字数和最长句检查全部通过；GitHub 渠道稿由 renderer 生成。没有在 Windows/Firefox 上动态复现，没有调用模型 API，没有运行第三方插件，知乎未发布。",
+  "checkedAt": "2026-08-14T03:39:00Z"
+}
