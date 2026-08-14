@@ -76,7 +76,7 @@
 - [x] #539–#549 历史复核卡已保留原始时间边界，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；`dsh-agent-messaging` 仍只做固定 commit 静态审查，没有下载、安装或运行，知乎未发布。
 - [x] #560–#564 新手排障卡已保留 Windows 路径、图片输入、缓存展示和第三方网关的历史事实边界，完成从 #614 到 #714 的分页维护复核，并更新 EvidencePack、规范稿与 GitHub 真实文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-564.md`）；社区 fork/预设没有下载、安装或运行，知乎未发布。
 - [x] #553–#559 网关兼容与插件排障卡已保留原始历史观察，补充当前 #614 分页维护基线，并注明 `dsh-gateway-presets` 后续已恢复可访问；增强 fork、preset 和真实网关仍未动态运行，GitHub 规范稿与证据回执已更新，知乎未发布。
-- [x] #535–#537 启动报错、Linux 沙盒想法和社区桌面版复核卡已保留历史证据等级，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；没有下载第三方桌面版或把它写成官方发行版，知乎未发布。
+- [x] #535–#537 启动报错、Linux 沙盒想法和社区桌面版复核卡已保留历史证据等级，补充当前 #720 分页维护基线，并更新 GitHub 规范稿与证据回执；没有下载第三方桌面版或把它写成官方发行版，知乎未发布。
 - [x] #619–#714 新手安装与插件安全排错路径已完成官方文档、Discussion 详情和固定 rc.6 命令的多源核验；文章把截图定位为导航材料，把本机命令回执定位为最终证据，并明确没有动态安装第三方插件、没有调用模型 API，知乎未发布。
 
 ## 能力门 D
@@ -103,3 +103,4 @@
 - [x] 中文 Discussions 最小复现工具包维护复核已完成：模板结构通过 `validate-discussion-kit.mjs`，证据基线从 #614 更新到 #714，内容哈希未变，既有 GitHub 发布状态保留，知乎未发布。
 - [x] #565–#570 维护复核已完成：原始观察为 6 页/556 条/#570，当前来源基线为 7 页/696 条/#714；正文通过 polish-article 检查，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-570.md`，没有下载、安装或运行第三方插件，知乎未发布。
 - [x] #550–#552 维护复核已完成：原始观察仍固定在 #550–#552，当前来源基线更新为 7 页/700 条/#720；正文通过 polish-article 检查，补充了完全新手的无 Key 启动、截图证据边界和社区源码集成风险，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-552.md`，没有下载、安装或运行第三方插件，知乎未发布。
+- [x] #535–#537 维护复核已完成：原始观察仍固定在 #535–#537，当前来源基线更新为 7 页/700 条/#720；正文保留用户报告、社区想法和第三方桌面版的证据等级，补充固定 rc.6 的新手启动边界，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-537.md`，没有下载或运行第三方桌面版，知乎未发布。
