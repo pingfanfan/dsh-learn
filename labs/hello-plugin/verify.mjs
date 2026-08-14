@@ -11,7 +11,11 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
 const dshVersion = "0.1.0-rc.6";
 const profileName = "demo";
-const pluginPath = "./labs/hello-plugin";
+const pluginPath = process.argv[2] ?? "./labs/hello-plugin";
+const pluginAbsolutePath = resolve(root, pluginPath);
+let bundleName = "";
+let pluginId = "";
+let loadedMarker = "";
 
 function assertPnpmAvailable() {
   const executable = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
@@ -46,7 +50,8 @@ function safeEnv(home) {
 
 function runDsh(home, args, { timeoutMs = 60000 } = {}) {
   return new Promise((resolveRun, rejectRun) => {
-    const child = spawn("npx", ["--yes", `@deepseek-ai/dsh@${dshVersion}`, ...args], {
+    const npx = process.platform === "win32" ? "npx.cmd" : "npx";
+    const child = spawn(npx, ["--yes", `@deepseek-ai/dsh@${dshVersion}`, ...args], {
       cwd: root,
       env: safeEnv(home),
       stdio: ["ignore", "pipe", "pipe"],
@@ -72,7 +77,8 @@ function runDsh(home, args, { timeoutMs = 60000 } = {}) {
 
 function runUntilLoaded(home) {
   return new Promise((resolveRun, rejectRun) => {
-    const child = spawn("npx", ["--yes", `@deepseek-ai/dsh@${dshVersion}`, "--profile", profileName], {
+    const npx = process.platform === "win32" ? "npx.cmd" : "npx";
+    const child = spawn(npx, ["--yes", `@deepseek-ai/dsh@${dshVersion}`, "--profile", profileName], {
       cwd: root,
       env: safeEnv(home),
       stdio: ["ignore", "pipe", "pipe"],
@@ -88,7 +94,7 @@ function runUntilLoaded(home) {
     };
     const onChunk = (chunk) => {
       output += chunk;
-      if (output.includes("[hello-plugin] loaded")) {
+      if (output.includes(loadedMarker)) {
         child.kill("SIGINT");
         finish(null, { output, loaded: true });
       }
@@ -101,7 +107,7 @@ function runUntilLoaded(home) {
     child.stderr.on("data", onChunk);
     child.once("error", (error) => finish(error));
     child.once("close", (code, signal) => {
-      if (output.includes("[hello-plugin] loaded")) {
+      if (output.includes(loadedMarker)) {
         finish(null, { output, code, signal, loaded: true });
       } else {
         finish(new Error(`profile boot did not load hello-plugin (exit=${code ?? "null"}, signal=${signal ?? "none"})`));
@@ -121,7 +127,7 @@ function isNetworkFailure(value) {
 }
 
 function networkBlockedMessage() {
-  return "BLOCKED_NETWORK 无法连接 npm registry，插件代码尚未进入安装验证。请先运行 node scripts/plugin-doctor.mjs --network，检查网络、DNS、代理或防火墙，恢复后再运行 node labs/hello-plugin/verify.mjs。";
+  return `BLOCKED_NETWORK 无法连接 npm registry，插件代码尚未进入安装验证。请先运行 node scripts/plugin-doctor.mjs --network，检查网络、DNS、代理或防火墙，恢复后再运行 node labs/hello-plugin/verify.mjs ${pluginPath}。`;
 }
 
 function commandFailure(label, result) {
@@ -132,6 +138,13 @@ function commandFailure(label, result) {
 
 const home = await mkdtemp(join(tmpdir(), "dsh-learn-plugin-"));
 try {
+  const pluginManifest = JSON.parse(await readFile(join(pluginAbsolutePath, "package.json"), "utf8"));
+  const patch = await readFile(join(pluginAbsolutePath, "cordis.patch.yml"), "utf8");
+  bundleName = pluginManifest?.name;
+  pluginId = patch.match(/^\s*-\s*id:\s*([a-zA-Z0-9._-]+)\s*$/m)?.[1] ?? "";
+  loadedMarker = `[${pluginId}] loaded`;
+  if (!bundleName || !pluginId) throw new Error("插件 package.json 或 cordis.patch.yml 缺少可识别的 bundle 名称");
+
   assertPnpmAvailable();
   const version = await runDsh(home, ["--version"]);
   if (version.code !== 0) commandFailure("DSH 版本检查", version);
@@ -143,26 +156,26 @@ try {
   const manifestPath = join(home, "profiles", profileName, "package.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
   const bundles = manifest?.dsh?.profile?.bundles ?? [];
-  if (!bundles.includes("dsh-hello-plugin")) {
-    throw new Error("profile manifest does not include dsh-hello-plugin");
+  if (!bundles.includes(bundleName)) {
+    throw new Error(`profile manifest does not include ${bundleName}`);
   }
 
   const dump = await runDsh(home, ["--profile", profileName, "--dump-config"]);
   if (dump.code !== 0) commandFailure("配置导出", dump);
-  assertIncludes(`${dump.stdout}\n${dump.stderr}`, "dsh-hello-plugin", "config dump");
-  assertIncludes(`${dump.stdout}\n${dump.stderr}`, "hello-plugin", "config dump");
+  assertIncludes(`${dump.stdout}\n${dump.stderr}`, bundleName, "config dump");
+  assertIncludes(`${dump.stdout}\n${dump.stderr}`, pluginId, "config dump");
 
   await runUntilLoaded(home);
 
-  const removed = await runDsh(home, ["plugin", "--profile", profileName, "remove", "dsh-hello-plugin"]);
+  const removed = await runDsh(home, ["plugin", "--profile", profileName, "remove", bundleName]);
   if (removed.code !== 0) commandFailure("插件移除", removed);
   const removedManifest = JSON.parse(await readFile(manifestPath, "utf8"));
   const remaining = removedManifest?.dsh?.profile?.bundles ?? [];
-  if (remaining.includes("dsh-hello-plugin")) {
-    throw new Error("profile manifest still includes dsh-hello-plugin after remove");
+  if (remaining.includes(bundleName)) {
+    throw new Error(`profile manifest still includes ${bundleName} after remove`);
   }
 
-  console.log("PASS hello-plugin install/load/remove without API key");
+  console.log(`PASS ${pluginId} install/load/remove without API key`);
 } catch (error) {
   const message = error instanceof Error ? error.message : String(error);
   if (message.startsWith("BLOCKED_NETWORK")) {
