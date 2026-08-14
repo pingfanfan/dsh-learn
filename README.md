@@ -76,40 +76,40 @@ pnpm public-audit
 - DeepSeek Harness HEAD：`47f943859bef60e4160492346772ded9b24f765a`。
 - HEAD 中 CLI 清单：`@deepseek-ai/dsh@0.1.0-rc.5`。
 - npm registry latest：`0.1.0-rc.6`。
-- rc.6 无 Key CLI 冒烟实验：[`labs/rc6-cli-smoke/README.md`](labs/rc6-cli-smoke/README.md)。
-- 无 Key 第一个可安装插件实验：[`labs/hello-plugin/README.md`](labs/hello-plugin/README.md)。
-- 完全新手安装、启动 Web UI 和第一个插件：[`content/canonical/dsh-zero-to-first-plugin-rc6.md`](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[`content/channels/github/dsh-zero-to-first-plugin-rc6.md`](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
-- 完全新手截图快速上手卡：[`content/canonical/dsh-beginner-quickstart-rc6.md`](content/canonical/dsh-beginner-quickstart-rc6.md)；GitHub 干净稿：[`content/channels/github/dsh-beginner-quickstart-rc6.md`](content/channels/github/dsh-beginner-quickstart-rc6.md)。
-- 无 Key 工具注册实验：[`labs/tool-plugin/README.md`](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
-- DSH 工具参数根体检器：[`scripts/tool-schema-doctor.mjs`](scripts/tool-schema-doctor.mjs)；可在不联网、不调用模型的情况下检查本地工具插件的 `parameters.type`、工具名称和 `execute`，配套事实卡：[`content/canonical/dsh-tool-schema-doctor-297.md`](content/canonical/dsh-tool-schema-doctor-297.md)。
-- Windows 中文路径体检器：[`scripts/win32-path-doctor.mjs`](scripts/win32-path-doctor.mjs)；根据官方 Discussion #563 复现 UTF-16LE 低字节提前截断风险，配套新手事实卡：[`content/canonical/dsh-win32-chinese-path-563.md`](content/canonical/dsh-win32-chinese-path-563.md)。它只做本地字符串回归，不代表 Windows 原生对话框或 DSH runtime 已通过。
-- Code Mode 参数分层体检器：[`scripts/code-mode-args-doctor.mjs`](scripts/code-mode-args-doctor.mjs)；根据官方 Discussion #558 区分外层 `run_code` 与内层 `bash` 的 `description`，配套事实卡：[`content/canonical/dsh-code-mode-args-558.md`](content/canonical/dsh-code-mode-args-558.md)。它只读本地教学 JSON，不联网、不启动 DSH、不调用模型。
-- dsh-plugin-check 当前 rc.6 安装说明：[`content/canonical/dsh-plugin-check-rc6-current-install-notes-20260814.md`](content/canonical/dsh-plugin-check-rc6-current-install-notes-20260814.md)；GitHub 已有真实文件回执，生态仓库声明已核对，第三方插件动态安装仍为 `NOT_RUN`。旧版 `dsh-plugin-check-rc6-compatibility-20260814.md` 已退休，仅保留 8b3ea76 历史记录。
-- DSH 生态插件 npm rc.6 迁移事实卡：[`content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md`](content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md)；对照 `dsh-plugin-check` 与 `dsh-plugin-dev` 的 README 变更，GitHub 已有真实文件回执，未把上游自述写成 dsh-learn 动态兼容结论。
-- dsh-101 v0.1.4 新手安装与 profile 兼容提示：[`content/canonical/dsh-101-v014-beginner-install-20260814.md`](content/canonical/dsh-101-v014-beginner-install-20260814.md)；已同步 main commit `086de430` 的 `web` profile 安全门禁，解释独立 profile、三层 bundle、3080/3081 端口和上游脚本依赖 PATH 中 `dsh` 的差别，GitHub 更正回执已记录，动态安装仍为 `NOT_RUN`。
-- DSH 新手安装与插件安全排错路径：[`content/canonical/dsh-beginner-install-and-plugin-safety-714.md`](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
-- Discussions #711–#720 工具调用、Python 会话、Windows 与 Web 启动事实卡：[`content/canonical/dsh-discussions-current-711-720.md`](content/canonical/dsh-discussions-current-711-720.md)；已按官方详情逐条分层，GitHub 已有真实文件回执，未安装社区插件、未调用模型 API，知乎未发布。
-- Discussions 历史复核 #721–#822：[`content/canonical/dsh-discussions-current-822.md`](content/canonical/dsh-discussions-current-822.md)；当前连接器维护基线已推进到 #1068，历史卡不会把 #823–#1068 的新增报告冒充成已核验修复。
-- DSH 启动、bundle 安装、加载与移除教程：[`content/canonical/dsh-first-plugin-rc6.md`](content/canonical/dsh-first-plugin-rc6.md)。
-- DSH 启动失败与插件安装排障路径：[`content/canonical/dsh-startup-plugin-troubleshooting-rc6.md`](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
-- Cordis 论文新手阅读路线：[`content/canonical/dsh-cordis-paper-beginner-route-20260814.md`](content/canonical/dsh-cordis-paper-beginner-route-20260814.md)；把时间/空间可组合性连接到无 Key profile、插件安装/移除和工具注册实验，GitHub 已获得真实文件回执，知乎未发布。
-- 首个规范资产：[`content/canonical/dsh-change-card-47f9438.md`](content/canonical/dsh-change-card-47f9438.md)。
-- Discussions 最小复现工具包：[`content/canonical/discussion-minimal-repro-kit.md`](content/canonical/discussion-minimal-repro-kit.md)。
-- 官方 Discussions 社区入口卡：[`content/canonical/discussion-community-entry-47f9438.md`](content/canonical/discussion-community-entry-47f9438.md)。
-- Discussions 新问题分流卡：[`content/canonical/discussion-triage-41.md`](content/canonical/discussion-triage-41.md)。
-- Discussions 历史 revision 复核事实卡：[`content/canonical/dsh-discussions-current-822.md`](content/canonical/dsh-discussions-current-822.md)；当前连接器已核对到第 11 页、最后编号 #1068，#721–#822 卡保留历史范围，不把 #823–#1068 的社区报告写成官方修复、官方功能或 dsh-learn 已验证兼容；新手安装与插件安全排错教程仍单独保留。
-- 国产模型与网关矩阵：[`labs/provider-matrix/README.md`](labs/provider-matrix/README.md)。
-- 第三方插件迁移诊所：[`content/canonical/plugin-migration-clinic-47f9438.md`](content/canonical/plugin-migration-clinic-47f9438.md)。
-- 扩展点中文能力地图：[`content/canonical/extension-map-47f9438.md`](content/canonical/extension-map-47f9438.md)。
-- 安全边界实测手册：[`content/canonical/security-boundary-47f9438.md`](content/canonical/security-boundary-47f9438.md)。
-- Cordis 无 Key mini-lab：[`labs/cordis-no-key/README.md`](labs/cordis-no-key/README.md)。
-- Python SDK 安全自动化配方：[`labs/python-sdk-safety/README.md`](labs/python-sdk-safety/README.md)。
+- rc.6 无 Key CLI 冒烟实验：[labs/rc6-cli-smoke/README.md](labs/rc6-cli-smoke/README.md)。
+- 无 Key 第一个可安装插件实验：[labs/hello-plugin/README.md](labs/hello-plugin/README.md)。
+- 完全新手安装、启动 Web UI 和第一个插件：[content/canonical/dsh-zero-to-first-plugin-rc6.md](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-zero-to-first-plugin-rc6.md](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
+- 完全新手截图快速上手卡：[content/canonical/dsh-beginner-quickstart-rc6.md](content/canonical/dsh-beginner-quickstart-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-beginner-quickstart-rc6.md](content/channels/github/dsh-beginner-quickstart-rc6.md)。
+- 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
+- DSH 工具参数根体检器：[scripts/tool-schema-doctor.mjs](scripts/tool-schema-doctor.mjs)；可在不联网、不调用模型的情况下检查本地工具插件的 `parameters.type`、工具名称和 `execute`，配套事实卡：[content/canonical/dsh-tool-schema-doctor-297.md](content/canonical/dsh-tool-schema-doctor-297.md)。
+- Windows 中文路径体检器：[scripts/win32-path-doctor.mjs](scripts/win32-path-doctor.mjs)；根据官方 Discussion #563 复现 UTF-16LE 低字节提前截断风险，配套新手事实卡：[content/canonical/dsh-win32-chinese-path-563.md](content/canonical/dsh-win32-chinese-path-563.md)。它只做本地字符串回归，不代表 Windows 原生对话框或 DSH runtime 已通过。
+- Code Mode 参数分层体检器：[scripts/code-mode-args-doctor.mjs](scripts/code-mode-args-doctor.mjs)；根据官方 Discussion #558 区分外层 `run_code` 与内层 `bash` 的 `description`，配套事实卡：[content/canonical/dsh-code-mode-args-558.md](content/canonical/dsh-code-mode-args-558.md)。它只读本地教学 JSON，不联网、不启动 DSH、不调用模型。
+- dsh-plugin-check 当前 rc.6 安装说明：[content/canonical/dsh-plugin-check-rc6-current-install-notes-20260814.md](content/canonical/dsh-plugin-check-rc6-current-install-notes-20260814.md)；GitHub 已有真实文件回执，生态仓库声明已核对，第三方插件动态安装仍为 `NOT_RUN`。旧版 `dsh-plugin-check-rc6-compatibility-20260814.md` 已退休，仅保留 8b3ea76 历史记录。
+- DSH 生态插件 npm rc.6 迁移事实卡：[content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md](content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md)；对照 `dsh-plugin-check` 与 `dsh-plugin-dev` 的 README 变更，GitHub 已有真实文件回执，未把上游自述写成 dsh-learn 动态兼容结论。
+- dsh-101 v0.1.4 新手安装与 profile 兼容提示：[content/canonical/dsh-101-v014-beginner-install-20260814.md](content/canonical/dsh-101-v014-beginner-install-20260814.md)；已同步 main commit `086de430` 的 `web` profile 安全门禁，解释独立 profile、三层 bundle、3080/3081 端口和上游脚本依赖 PATH 中 `dsh` 的差别，GitHub 更正回执已记录，动态安装仍为 `NOT_RUN`。
+- DSH 新手安装与插件安全排错路径：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
+- Discussions #711–#720 工具调用、Python 会话、Windows 与 Web 启动事实卡：[content/canonical/dsh-discussions-current-711-720.md](content/canonical/dsh-discussions-current-711-720.md)；已按官方详情逐条分层，GitHub 已有真实文件回执，未安装社区插件、未调用模型 API，知乎未发布。
+- Discussions 历史复核 #721–#822：[content/canonical/dsh-discussions-current-822.md](content/canonical/dsh-discussions-current-822.md)；当前连接器维护基线已推进到 #1068，历史卡不会把 #823–#1068 的新增报告冒充成已核验修复。
+- DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
+- DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
+- Cordis 论文新手阅读路线：[content/canonical/dsh-cordis-paper-beginner-route-20260814.md](content/canonical/dsh-cordis-paper-beginner-route-20260814.md)；把时间/空间可组合性连接到无 Key profile、插件安装/移除和工具注册实验，GitHub 已获得真实文件回执，知乎未发布。
+- 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
+- Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
+- 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
+- Discussions 新问题分流卡：[content/canonical/discussion-triage-41.md](content/canonical/discussion-triage-41.md)。
+- Discussions 历史 revision 复核事实卡：[content/canonical/dsh-discussions-current-822.md](content/canonical/dsh-discussions-current-822.md)；当前连接器已核对到第 11 页、最后编号 #1068，#721–#822 卡保留历史范围，不把 #823–#1068 的社区报告写成官方修复、官方功能或 dsh-learn 已验证兼容；新手安装与插件安全排错教程仍单独保留。
+- 国产模型与网关矩阵：[labs/provider-matrix/README.md](labs/provider-matrix/README.md)。
+- 第三方插件迁移诊所：[content/canonical/plugin-migration-clinic-47f9438.md](content/canonical/plugin-migration-clinic-47f9438.md)。
+- 扩展点中文能力地图：[content/canonical/extension-map-47f9438.md](content/canonical/extension-map-47f9438.md)。
+- 安全边界实测手册：[content/canonical/security-boundary-47f9438.md](content/canonical/security-boundary-47f9438.md)。
+- Cordis 无 Key mini-lab：[labs/cordis-no-key/README.md](labs/cordis-no-key/README.md)。
+- Python SDK 安全自动化配方：[labs/python-sdk-safety/README.md](labs/python-sdk-safety/README.md)。
 
 GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程、Discussions #539–#549、#550–#552、#553–#559、#560–#564、#565–#591、#592–#614 历史卡、当前 #619–#714 新手安装排错卡和最新 #711–#720 工具调用与启动事实卡；这些资产均以对应证据包和 GitHub 文件回执为准。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡、#619–#714 新手卡和 #711–#720 事实卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。状态账本中还保留若干早期知乎历史文章 URL，但这些回执不构成新任务的授权；当前知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
 
-- 完全新手截图快速上手卡已获得 GitHub 真实文件回执：[`content/channels/github/dsh-beginner-quickstart-rc6.md`](content/channels/github/dsh-beginner-quickstart-rc6.md)；它复用 9 张截图和 rc.6 无 Key 边界，并提供 `node scripts/beginner-start.mjs` 友好启动入口，未发布知乎或微博。
-- dsh-101 当前 web profile 安全门禁已登记为独立上游变更卡：[`content/channels/github/dsh-101-web-profile-guard-20260814.md`](content/channels/github/dsh-101-web-profile-guard-20260814.md)；dsh-101 新手教程同步到 commit `086de430`，动态安装仍为 `NOT_RUN`，知乎不自动发布。
-- Discussions #1025–#1068 新手排障卡：[`content/channels/github/dsh-discussions-current-1068-beginner-triage.md`](content/channels/github/dsh-discussions-current-1068-beginner-triage.md)；覆盖干净 `npx` 启动缺依赖、`headless` 新 profile 安装报告和 rc.6 工具 schema 约束，明确区分社区报告、静态分析与 dsh-learn 未动态复现，GitHub 已发布，知乎仍需主理人同意。
+- 完全新手截图快速上手卡已获得 GitHub 真实文件回执：[content/channels/github/dsh-beginner-quickstart-rc6.md](content/channels/github/dsh-beginner-quickstart-rc6.md)；它复用 9 张截图和 rc.6 无 Key 边界，并提供 `node scripts/beginner-start.mjs` 友好启动入口，未发布知乎或微博。
+- dsh-101 当前 web profile 安全门禁已登记为独立上游变更卡：[content/channels/github/dsh-101-web-profile-guard-20260814.md](content/channels/github/dsh-101-web-profile-guard-20260814.md)；dsh-101 新手教程同步到 commit `086de430`，动态安装仍为 `NOT_RUN`，知乎不自动发布。
+- Discussions #1025–#1068 新手排障卡：[content/channels/github/dsh-discussions-current-1068-beginner-triage.md](content/channels/github/dsh-discussions-current-1068-beginner-triage.md)；覆盖干净 `npx` 启动缺依赖、`headless` 新 profile 安装报告和 rc.6 工具 schema 约束，明确区分社区报告、静态分析与 dsh-learn 未动态复现，GitHub 已发布，知乎仍需主理人同意。
 
 ## 常用命令
 
@@ -192,6 +192,6 @@ pnpm ops asset-retire <asset-id> --reason "已由新版资产替代，旧卡仅�
 未来准备公开推送前，先运行 `pnpm public-audit`。它只检查 Git 会纳入公开仓库的文件，不执行推送；发现个人路径、临时目录或高置信度秘密时会失败。
 
 完整命令与恢复方式见 [无人值守循环手册](ops/runbooks/AUTONOMOUS_LOOP.md)、[发布与纠错手册](ops/runbooks/PUBLISHING.md) 和 [渠道中继手册](ops/runbooks/CHANNEL_RELAY.md)。
-- DSH 无 Key 新手入口：[`content/canonical/dsh-beginner-start-rc6.md`](content/canonical/dsh-beginner-start-rc6.md)。
-- DSH plugin 术语澄清：[`content/canonical/dsh-plugin-topic-vs-legacy.md`](content/canonical/dsh-plugin-topic-vs-legacy.md)。
-- 会话内容搜索 opt-in 教程：[`content/canonical/dsh-session-content-search-opt-in-47f9438.md`](content/canonical/dsh-session-content-search-opt-in-47f9438.md)。
+- DSH 无 Key 新手入口：[content/canonical/dsh-beginner-start-rc6.md](content/canonical/dsh-beginner-start-rc6.md)。
+- DSH plugin 术语澄清：[content/canonical/dsh-plugin-topic-vs-legacy.md](content/canonical/dsh-plugin-topic-vs-legacy.md)。
+- 会话内容搜索 opt-in 教程：[content/canonical/dsh-session-content-search-opt-in-47f9438.md](content/canonical/dsh-session-content-search-opt-in-47f9438.md)。
