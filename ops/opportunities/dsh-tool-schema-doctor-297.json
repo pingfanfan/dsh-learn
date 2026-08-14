@@ -1,0 +1,24 @@
+[
+  {
+    "title": "DSH 工具插件 schema 体检：先拦截 parameters 根类型错误",
+    "summary": "官方 Discussion #297 暴露了工具参数根不是 JSON Schema object 时，模型请求可能反复 400 的新手风险；dsh-learn 可以提供一个不联网、不调用模型的本地 schema doctor，并配套无 Key 工具实验和事实边界卡，让错误在模型请求前暴露。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/discussions/297",
+    "observedAt": "2026-08-14T05:33:25Z",
+    "directDshAction": true,
+    "audience": ["完全新手", "工具插件作者", "DSH 生态项目维护者"],
+    "proposedAssets": ["tool-schema-doctor", "tool-plugin-fact-card", "offline-tool-contract"],
+    "signals": {
+      "userImpact": 90,
+      "freshness": 96,
+      "compounding": 92,
+      "ecosystemValue": 88,
+      "evidenceConfidence": 88,
+      "executability": 96,
+      "duplicatePenalty": 0,
+      "riskPenalty": 0,
+      "maintenancePenalty": 3
+    },
+    "risk": "LOW"
+  }
+]
