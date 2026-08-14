@@ -1,0 +1,35 @@
+{
+  "claim": "截至 2026-08-14T04:15:04Z，通过 DeepSeek Harness 官方 Discussions API 第 7 页和 #711–#720 详情复核，最新十条公开条目分别涉及工具描述中的字面大括号、Python SDK 跨进程会话恢复、菜单跳转、两个社区插件展示、带参数工具调用、Windows 子进程与 shell、存储持久化、LLM 流式与重试、以及 Web 连接和启动；这些内容是用户报告、Ideas、Q&A 或 Show and tell，不是官方修复、已合并功能或 dsh-learn 的动态复现结果。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页（#619–#720）","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/711","title":"Discussion #711：工具描述字面大括号与 code-mode prompt assembly","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/712","title":"Discussion #712：Python SDK 跨进程恢复会话与 id collision","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/713","title":"Discussion #713：多选菜单跳转","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/714","title":"Discussion #714：dsh-plugin-hello 与 dsh-plugin-browser 社区展示","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/715","title":"Discussion #715：带参数工具调用生成 input 空对象","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/716","title":"Discussion #716：工具调用缺少 command 参数","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/717","title":"Discussion #717：Windows 子进程与 shell 行为","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/718","title":"Discussion #718：存储与持久化并发容错","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/719","title":"Discussion #719：LLM 流式超时与重试记录","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/720","title":"Discussion #720：Web 连接、端口和 Windows 退出信号","kind":"official","accessedAt":"2026-08-14T04:15:04Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md","title":"DeepSeek Harness README（固定 commit）","kind":"official","accessedAt":"2026-08-14T04:15:04Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions-pages=7; discussions-page-7-first=619; discussions-page-7-last=720; discussions-items=700; discussions-revision=github-discussions-public-list-through-720-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified official Discussions pages and detail pages #711–#720; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/711..720",
+      "GET https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md"
+    ],
+    "result": "PASS",
+    "notes": "本卡只核对官方公开列表与详情，保留每条内容的报告/提案/展示属性。#714 中的两个社区插件、安装命令和 Playwright 依赖没有被 dsh-learn 下载、安装或运行；#711、#715、#717–#720 的修复建议和复现描述没有被本机动态复现。没有调用模型 API，没有使用或保存 API Key，没有发布知乎。"
+  },
+  "confidence": 96
+}
