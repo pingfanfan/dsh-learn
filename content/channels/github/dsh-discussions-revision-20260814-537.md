@@ -31,7 +31,7 @@ Discussion #537 展示了一个社区桌面版，并链接到外部仓库和 Rel
 第一次启动仍然应该使用固定版本的 `npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web`，先确认 Node.js、终端和本机 Web UI，浏览器页面能出现以后，再处理 API Key、工作区和模型。这样遇到 `sharp` 或 `node-pty` 时，读者知道它发生在启动依赖层，不会把社区桌面版、Linux 沙盒和官方 Web UI 混成同一条安装路径。
 
 - `npx` 下载失败、Node.js 版本不满足、插件树加载失败和某个原生依赖加载失败，不应被混写成一个“DSH 坏了”。
-- Windows 上出现原生模块错误时，先记录完整错误和运行环境，不要看到社区帖子里的单条命令就直接复制到全局环境。
+- Windows 上出现原生模块错误时，先记录完整错误和运行环境，不要看到社区帖子里的单条命令就照搬到全局环境。
 - DSH 官方 Web UI、社区桌面版和 Linux 沙盒是三个不同层次：官方入口、第三方包装、待验证的隔离能力不能互相替代。
 - dsh-learn 的无 Key 插件实验仍然只验证固定版本的本地 bundle 安装、配置发现、加载和移除；它不能证明 Windows 原生依赖、桌面版或模型调用已经可用。
 
@@ -54,14 +54,14 @@ Discussion #537 展示了一个社区桌面版，并链接到外部仓库和 Rel
 - [DeepSeek Harness Discussions API 第 4 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4)
 - [DeepSeek Harness Discussions API 第 5 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5)
 - [DeepSeek Harness Discussions API 第 6 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
-- [DeepSeek Harness Discussions 当前分页快照（维护复核至 #1068）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
+- [DeepSeek Harness Discussions 当前分页快照（维护复核至 #1159）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=12)
 - [Discussion #535：npx 启动报错](https://github.com/deepseek-ai/deepseek-harness/discussions/535)
 - [Discussion #536：Linux 沙盒想法](https://github.com/deepseek-ai/deepseek-harness/discussions/536)
 - [Discussion #537：社区桌面版展示](https://github.com/deepseek-ai/deepseek-harness/discussions/537)
 
 验证基线是 DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`，以及 `@deepseek-ai/dsh@0.1.0-rc.6`。
 
-维护基线（2026-08-14）：官方 Discussions 当前已复核到第 11 页、1100 条公开讨论，编号从 `#12` 到 `#1068`；这个新分页只用于刷新来源状态，不改写本卡对 #535–#537 的历史观察，也不把后来的讨论混入结论。
+维护基线（2026-08-14）：官方 Discussions 当前已复核到第 12 页、观察到 1200 条公开讨论，编号从 `#12` 到 `#1159`；这个新分页只用于刷新来源状态，不改写本卡对 #535–#537 的历史观察，也不把后来的讨论混入结论。
 
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
