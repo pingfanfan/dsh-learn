@@ -70,7 +70,7 @@
 - [x] 官方 Discussions 新问题分流卡已按 #720 当前分页基线重新核对 #37、#38、#40 及公开评论，并读取固定 commit 的 ui-workspace README 已知限制；旧证据包已增强、规范稿和 GitHub 渠道稿已更新并获得新的 GitHub 文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/discussion-triage-41.md`）；仍未把 Windows/Firefox、`koffi` 或归档会话报告写成官方修复，知乎未发布。
 - [x] #550–#552 复核卡已重新读取三条 Discussion、固定 commit 的 `PiAiCompatProfile`/`resolveModelCompat`、以及 `dsh-rag-kb` 当前 main commit；正文明确保留历史时间边界，并更新到 #720 分页基线。`dsh-rag-kb` 的两个包仍为 `0.1.0-rc.5`，公开安装仍是源码集成，未被写成可直接 `dsh plugin add` 的 bundle；GitHub 已回写新文件回执，知乎未发布。
 - [x] #565–#570 复核卡已完成从 #614 到 #714 的分页维护复核，并核对 `dsh-openclaw-acp` 当前 main commit `ac475fa` 与 `v0.1.3` release；正文保留社区插件、用户报告、第三方代理和源码安装警告的证据边界，明确 #568 CLOSED 不等于官方修复，没有下载、安装或运行第三方插件，GitHub 规范稿与证据回执已更新，知乎未发布。
-- [x] 官方社区入口卡已按实时分页复核到 #614，更新为 6 页、600 条公开讨论，并保留 #12 欢迎公告、#14 memory 需求、板块选择和最小复现准备的历史事实边界；GitHub 渠道稿已准备同步，知乎未发布。
+- [x] 官方社区入口卡维护复核已完成：原始观察仍固定在 #12、#14 和社区板块入口，当前来源基线更新为 7 页、700 条公开讨论、最后编号 #720；短 FAQ 保留板块选择、最小复现准备和不把具体问题写成官方解决方案的边界，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/discussion-community-entry-47f9438.md`，没有调用模型 API、没有安装第三方插件，知乎未发布。
 - [x] #592–#614 当前复核卡已完成官方分页、重点 Discussion、评论和固定 README 的多源核验，覆盖新手启动、工作区/浏览器、provider 与 ACP/MCP/Docker 生态信号；明确没有动态复现、没有把社区建议写成官方修复，GitHub 已获得文件回执，知乎未发布。
 - [x] 中文 Discussions 最小复现工具包已把 EvidencePack 更新到 revision 18，并重新绑定 `github-discussions-public-list-through-614-2026-08-14`；正文仍通过专用模板验证、公开审计和 60 项测试，GitHub 规范文件与远端现有内容一致，已记录远端状态回执，知乎未发布。
 - [x] #539–#549 历史复核卡已保留原始时间边界，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；`dsh-agent-messaging` 仍只做固定 commit 静态审查，没有下载、安装或运行，知乎未发布。
