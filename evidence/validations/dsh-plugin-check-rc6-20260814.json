@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "git diff --check && pnpm public-audit",
+  "notes": "规范稿逐项对照 8b3ea76 提交 diff、当前 package.json 和 README，明确区分生态仓库声明与 dsh-learn 未运行的动态兼容性；保留 rc.1 旧文档边界，未把 Profile Bundle 形状写成安装成功。没有第三方安装、模型请求、API Key、知乎发布或私人路径。",
+  "checkedAt": "2026-08-14T02:23:00Z"
+}
