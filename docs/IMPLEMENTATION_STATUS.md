@@ -72,7 +72,7 @@
 - [ ] X 按计划保持禁用。
 
 - [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入 beginner-doctor 环境前置诊断、固定 commit 的官方 README/插件教程截图、明确标注的终端示意图，以及 Node.js 下载、GitHub ZIP 下载和 `index.js` 文件定位的 11 张配套图；GitHub 已发布，知乎未发布。
-- [x] DSH 完全新手截图快速上手卡已完成：把 Node.js、固定 rc.6 安装、Web UI、`Configure later`、pnpm/network 预检和临时 `DSH_HOME` 插件实验压缩为一条入口路径，复用 9 张已有截图并通过专用 validator；新增 `node scripts/beginner-start.mjs` 友好启动入口，在 npm 网络、Node 版本或端口失败时给出新手提示；GitHub 已获得 revision 2 的真实文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-beginner-quickstart-rc6.md`），知乎和微博未发布。
+- [x] DSH 完全新手截图快速上手卡已完成：把 Node.js、固定 rc.6 安装、Web UI、`Configure later`、pnpm/network 预检和临时 `DSH_HOME` 插件实验压缩为一条入口路径，复用 9 张已有截图并通过专用 validator；新增 `node scripts/beginner-start.mjs` 友好启动入口和 `node scripts/beginner-doctor.mjs --report` 安全诊断回执，在 npm 网络、Node 版本或端口失败时给出新手提示；GitHub 正在发布 revision 3，知乎和微博未发布。
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 完全新手运行 hello-plugin 探针时，npm registry 不可达会输出 `BLOCKED_NETWORK`、网络/DNS/代理检查命令和恢复步骤，不再把 npm 原始堆栈直接交给新手；网络恢复前仍不把安装、加载和移除写成通过。
 - [x] 官方 Discussions 监控已修复分页盲区：最新连接器复核到 7 页、700 条公开讨论，编号从 #12 到 #720；#565–#720 的社区插件、工具调度报告、Windows 端口报告和未解决问答已分别分层处理，不把列表增长、用户报告、社区回复、社区 fork 或第三方测试代码包装成新功能、官方修复或官方发行版；#587 的安全细节不复制到公开内容。
