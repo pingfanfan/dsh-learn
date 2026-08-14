@@ -1,0 +1,49 @@
+{
+  "claim": "截至 2026-08-14T01:40:01Z，通过 DeepSeek Harness 官方 Discussions API 复核，公开列表为 6 页、600 条讨论，编号从 #12 到 #614，中间存在编号空缺。#592–#614 包含带空格工作区路径、ACP steer/流式/MCP Ideas、Docker 建议、第三方网关会话用量信号、SIGHUP 静默退出报告、端口占用、Linux node-pty、工作区创建、Firefox WebGL、接入其他模型问答和 developer role 配置问题等信号；这些内容属于用户报告、Ideas、社区建议或问答，不是官方修复、已合并功能或 dsh-learn 的动态复现结果。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 第 1 页（历史复核至 #614）","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 第 2 页（历史复核至 #614）","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 第 3 页（历史复核至 #614）","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 第 4 页（历史复核至 #614）","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 第 5 页（历史复核至 #614）","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页（历史复核至 #614）","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/592","title":"Discussion #592：带空格的工作区路径","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/593","title":"Discussion #593：ACP steer 提案","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/594","title":"Discussion #594：ACP 流式文本提案","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/597","title":"Discussion #597：会话级 MCP 提案","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/598","title":"Discussion #598：Docker 部署建议","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/599","title":"Discussion #599：第三方网关会话用量信号","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/600","title":"Discussion #600：SIGHUP 静默退出报告","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/601","title":"Discussion #601：Web UI 与桌面端问答","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/602","title":"Discussion #602：3080 端口占用报告","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/602/comments","title":"Discussion #602 评论：端口参数建议","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/605","title":"Discussion #605：Linux node-pty 报告","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/606","title":"Discussion #606：工作区创建报告","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/609","title":"Discussion #609：Firefox WebGL 报告","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/611","title":"Discussion #611：接入其他大模型问答","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/611/comments","title":"Discussion #611 评论：provider 入口建议","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/614","title":"Discussion #614：developer role 配置问题","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md","title":"DeepSeek Harness README（固定 commit）","kind":"official","accessedAt":"2026-08-14T01:40:01Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页（当前维护基线至 #720）","kind":"official","accessedAt":"2026-08-14T03:52:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/720","title":"Discussion #720：当前公开列表最后一项","kind":"official","accessedAt":"2026-08-14T03:52:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; historical-discussions=github-discussions-public-list-through-614-2026-08-14; current-discussions-pages=7; current-pageCounts=100,100,100,100,100,100,100; current-discussions-items=700; current-discussions-first=12; current-discussions-last=720; current-discussions-revision=github-discussions-public-list-through-720-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified official Discussions pages 1–7, historical detail pages #592, #593, #594, #597, #598, #599, #600, #601, #602, #605, #606, #609, #611 and #614, selected comments, current #720 and fixed-commit README; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/592,593,594,597,598,599,600,601,602,605,606,609,611,614",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/602/comments",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/611/comments"
+    ],
+    "result": "PASS",
+    "notes": "原 claim 仍固定描述 #614 时的 6 页、600 条历史状态；本次只增加当前第 7 页、700 条、最后编号 #720 的维护基线，没有把 #619–#720 混入 #592–#614 的历史结论。#602 的 --port 仍是社区回复，#611 的 provider 建议仍未形成固定的官方配置教程；没有在 Windows 或 Linux 上运行报告环境，没有安装第三方插件，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
+  },
+  "confidence": 96
+}
