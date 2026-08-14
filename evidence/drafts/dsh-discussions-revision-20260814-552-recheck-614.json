@@ -1,0 +1,50 @@
+{
+  "claim": "截至 2026-08-13T23:58:15Z，通过 DeepSeek Harness 官方 Discussions API 的第 6 页复核，公开列表为 6 页、538 条、最后编号 #552。新增的 #550 是 Windows/WSL 场景下拖拽非图片文件失败的用户报告，#551 是针对 OpenAI-compatible reasoning 网关 developer role 兼容性的 Ideas，#552 是一个本地优先的 RAG 知识库社区插件展示。#551 中关于当前源码只暴露 thinkingFormat 与 supportsReasoningEffort 的静态观察与固定 commit 源码一致，但网关行为没有在 dsh-learn 中复现；#552 的仓库目前按源码复制、配置修改、pnpm 构建和本机 Ollama 的方式接入，不是已经通过 DSH plugin CLI 安装并运行的第三方 bundle。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页当前公开列表","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/550","title":"Discussion #550：Windows/WSL 拖拽非图片文件报告","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/551","title":"Discussion #551：supportsDeveloperRole 兼容性建议","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/552","title":"Discussion #552：dsh-rag-kb 本地 RAG 插件展示","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/llm/llm-pi-ai/src/catalog.ts","title":"固定 commit 中的 PiAiCompatProfile 与 resolveModelCompat","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/AlowEnsoul/dsh-rag-kb","title":"dsh-rag-kb 社区仓库","kind":"repository","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://api.github.com/repos/AlowEnsoul/dsh-rag-kb/commits/main","title":"dsh-rag-kb main 当前提交","kind":"repository","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://raw.githubusercontent.com/AlowEnsoul/dsh-rag-kb/main/README.md","title":"dsh-rag-kb README 与安装步骤","kind":"repository","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://raw.githubusercontent.com/AlowEnsoul/dsh-rag-kb/main/packages/kb/rag-kb/src/index.ts","title":"dsh-rag-kb host 插件入口源码","kind":"repository","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://raw.githubusercontent.com/AlowEnsoul/dsh-rag-kb/main/packages/kb/rag-kb/package.json","title":"dsh-rag-kb host 包 manifest","kind":"repository","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/560","title":"Discussion #560：缓存命中展示（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/561","title":"Discussion #561：不支持图像输入时的行为建议（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/562","title":"Discussion #562：真实协作反馈工作单（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/563","title":"Discussion #563：Win32 中文路径截断报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/564","title":"Discussion #564：第三方网关兼容方案展示（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/565","title":"Discussion #565：社区插件展示（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/566","title":"Discussion #566：GLM-5.2 中文乱码报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/567","title":"Discussion #567：web_search 端点与代理诊断报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/568","title":"Discussion #568：Node.js 兼容性警告报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/569","title":"Discussion #569：AI 发起社区讨论的治理建议（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/570","title":"Discussion #570：pnpm workspace 循环依赖警告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:53:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14; dsh-rag-kb-commit=bdfc83238ffeb0bc58839e4c03476c51da558629"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified the current Discussions page 6, detail pages #550–#552, fixed commit catalog.ts, dsh-rag-kb main commit bdfc83238ffeb0bc58839e4c03476c51da558629, README, host entry and package manifest; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..6",
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions/550..552",
+      "GET https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/llm/llm-pi-ai/src/catalog.ts",
+      "GET https://api.github.com/repos/AlowEnsoul/dsh-rag-kb/commits/main",
+      "GET https://raw.githubusercontent.com/AlowEnsoul/dsh-rag-kb/main/README.md",
+      "GET https://raw.githubusercontent.com/AlowEnsoul/dsh-rag-kb/main/packages/kb/rag-kb/src/index.ts",
+      "GET https://raw.githubusercontent.com/AlowEnsoul/dsh-rag-kb/main/packages/kb/rag-kb/package.json",
+      "pnpm public-audit",
+      "git diff --check"
+    ],
+    "result": "PASS",
+    "notes": "当前列表第 6 页返回 100 条，最后编号 #614；所有六页基线为 600 条。#550、#551、#552 的公开内容仍未出现官方修复或合并结论。dsh-rag-kb main 仍为 bdfc83238ffeb0bc58839e4c03476c51da558629，host 包仍为 0.1.0-rc.5，README 仍要求复制源码、修改仓库配置、pnpm 构建并启动 Ollama；没有独立 dsh plugin add 安装回执。没有下载、安装、构建或运行第三方插件，没有启动 Ollama、启动 DSH 或调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
+  },
+  "confidence": 96
+}
