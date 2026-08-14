@@ -20,7 +20,7 @@
 | 3 | 首次打开页面时跳过 Key | “第一次打开页面不要急着接模型” | `07-dsh-first-run-api-key-prompt.jpg`、`08-dsh-web-ui-no-key.jpg` | 看到空工作台；不把它写成模型可用 |
 | 4 | 检查插件安装前置条件 | “安装插件前先检查 pnpm” | `06-terminal-beginner-doctor.svg`（环境检查） | `node scripts/plugin-doctor.mjs` 输出 PASS |
 | 5 | 在临时 `DSH_HOME` 安装、加载、移除 hello-plugin | “用无 Key 实验安装第一个插件” | `05-terminal-plugin.svg` | 看到 install、config、loaded、remove 四类结果 |
-| 6 | 复制示例并只改入口日志 | “从示例复制一个自己的插件” | `02-official-plugin-publish.jpg`、`11-plugin-edit-indexjs.jpg` | 能区分 `package.json`、patch 和 `index.js` 的职责 |
+| 6 | 生成或复制示例，验证自己的最小插件 | “从示例制作一个自己的插件” | `02-official-plugin-publish.jpg`、`11-plugin-edit-indexjs.jpg` | `create-beginner-plugin` 生成目录；自定义路径探针完成 install、config、loaded、remove |
 
 ## 截图清单与证据边界
 
@@ -46,6 +46,7 @@
 - 单页截图快速上手卡：`pnpm validate:beginner-quickstart` 已通过；它复用现有 9 张截图，不新增动态成功声明。
 - 友好启动入口：`pnpm validate:beginner-start` 已通过；它只包装固定版本的 npx 启动，不读取或发送 API Key。
 - 新手环境检查脚本的静态验证：`pnpm validate:beginner-doctor` 已通过；追加 `node scripts/beginner-doctor.mjs --report` 可输出不含凭据、路径已隐藏的诊断回执（含 `KEY_STATUS=not_read`），不联网、不上传。
+- 新手插件脚手架：`pnpm validate:beginner-plugin-scaffold` 已通过；它拒绝路径穿越和覆盖已有目录，生成的 bundle 可交给 `node labs/hello-plugin/verify.mjs ./my-first-plugin` 做同一套隔离验证。
 - 插件前置检查脚本的静态验证：`pnpm validate:plugin-doctor` 已通过。
 - 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在固定 rc.6 版本检查阶段得到 `ENOTFOUND registry.npmjs.org`，探针现在会输出面向新手的阻塞说明，而不是原始 Node.js 堆栈；因此不能把本轮写成安装、加载、移除通过。恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
 - 该阻塞不影响“无 Key、隔离目录、安装—加载—移除”的教程设计，但会阻止新增一条当前动态成功回执。
