@@ -1,0 +1,34 @@
+{
+  "claim": "截至 2026-08-13T23:21:32Z，通过 DeepSeek Harness 官方 Discussions API 的分页复核，观察到 6 页、523 条公开讨论，编号从 #12 到 #537，中间存在编号空缺。新增的 #535 是用户报告的 Windows 上 npx 启动与原生依赖加载错误，#536 是 Linux 沙盒方向的社区想法，#537 是社区成员展示的第三方桌面版；这些内容支持更新新手排障和生态索引，但不支持把用户报告写成官方修复、把想法写成已实现功能，或把第三方桌面版写成官方发行版。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 公共列表第 1 页","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 公共列表第 2 页","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 公共列表第 3 页","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 公共列表第 4 页","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 公共列表第 5 页","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 公共列表第 6 页","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 公共列表第 7 页","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/535","title":"Discussion #535：npx 启动时的 Windows 原生依赖错误报告","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/536","title":"Discussion #536：Linux 沙盒方向的社区想法","kind":"official","accessedAt":"2026-08-14T03:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/537","title":"Discussion #537：社区桌面版展示","kind":"official","accessedAt":"2026-08-14T03:20:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "repo-manifest=0.1.0-rc.5; npm-latest=0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector and public GitHub pages verified Discussions pages 1–7 through #720 and detail pages #535–#537; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/535..537",
+      "pnpm public-audit",
+      "git diff --check"
+    ],
+    "result": "PASS",
+    "notes": "当前公开列表为 7 页、700 条，最后编号为 #720；#535、#536、#537 仍属于用户错误报告、Ideas 社区想法和 Show and tell 展示。#535 的 Windows `sharp` 与 `node-pty` 错误来自作者环境，评论中的安装建议没有变成官方修复；#536 没有固定实现或安全复现实验；#537 的桌面版来自外部仓库，不是官方发行版。没有调用模型 API，没有复现 Windows 或 Linux 用户环境，没有下载或运行第三方桌面版，也没有写入凭据或发布知乎。"
+  },
+  "confidence": 98
+}
