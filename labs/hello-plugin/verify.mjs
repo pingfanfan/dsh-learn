@@ -2,7 +2,7 @@
 
 import { execFileSync } from "node:child_process";
 import { mkdtemp, readFile, rm } from "node:fs/promises";
-import { dirname, join, resolve } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 import { tmpdir } from "node:os";
@@ -127,7 +127,11 @@ function isNetworkFailure(value) {
 }
 
 function networkBlockedMessage() {
-  return `BLOCKED_NETWORK 无法连接 npm registry，插件代码尚未进入安装验证。请先运行 node scripts/plugin-doctor.mjs --network，检查网络、DNS、代理或防火墙，恢复后再运行 node labs/hello-plugin/verify.mjs ${pluginPath}。`;
+  const relativePluginPath = relative(root, pluginAbsolutePath).replaceAll("\\", "/");
+  const safePluginPath = relativePluginPath && !relativePluginPath.startsWith("..") && !isAbsolute(relativePluginPath)
+    ? `./${relativePluginPath}`
+    : "<local-plugin>";
+  return `BLOCKED_NETWORK 无法连接 npm registry，插件代码尚未进入安装验证。请先运行 node scripts/plugin-doctor.mjs --network，检查网络、DNS、代理或防火墙，恢复后再运行 node labs/hello-plugin/verify.mjs ${safePluginPath}。`;
 }
 
 function commandFailure(label, result) {
