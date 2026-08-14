@@ -25,6 +25,7 @@ apply(ctx);
 
 const tool = registered.find((item) => item.name === "greet");
 if (!tool) throw new Error("greet was not registered");
+if (tool.parameters?.type !== "object") throw new Error("tool parameters schema root must have type object");
 if (tool.parameters?.required?.[0] !== "name") throw new Error("name is not required");
 if (tool.output?.schema?.type !== "string") throw new Error("output schema is not string");
 
