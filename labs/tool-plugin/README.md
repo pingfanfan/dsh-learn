@@ -18,13 +18,15 @@ node labs/tool-plugin/verify.mjs
 node labs/tool-plugin/verify-offline.mjs
 ```
 
-如果你在改自己的工具插件，可以在真实安装前检查本地入口的参数根：
+如果你在改自己的工具插件，可以在真实安装前检查本地入口的最终参数根：
 
 ```bash
 node scripts/tool-schema-doctor.mjs ./my-tool/index.js
 ```
 
-它只在本地导入插件，检查 `parameters.type` 是否为 `object`、工具名和 `execute` 是否存在，不访问 npm，也不调用模型。导入陌生插件前仍要阅读其入口文件和构建脚本，因为插件自身可能执行副作用。
+它只在本地导入插件，检查传给 `ctx.tools.register()` 的最终定义中 `parameters.type` 是否为 `object`、工具名和 `execute` 是否存在，不访问 npm，也不调用模型。导入陌生插件前仍要阅读其入口文件和构建脚本，因为插件自身可能执行副作用。
+
+这里有一个容易混淆的地方：官方 `defineTool()` 示例里的 `parameters` 是字段映射，例如 `{ name: { type: "string" } }`，它属于作者使用的 DSL，`defineTool()` 会先把它编译成对象根，再交给 `ctx.tools.register()`。如果绕过 `defineTool()` 直接注册，才需要自己写出 `{ type: "object", properties: ... }` 这样的最终 JSON Schema。`tool-schema-doctor` 检查的是后一层，也就是注册表实际收到的工具定义。
 
 离线检查用一个最小的本地工具注册表调用插件入口，验证 `greet` 注册、参数对象根、参数 schema、返回值、执行函数和渲染器。它不证明 DSH runtime 已加载插件，也不证明模型会发起工具调用。
 
@@ -38,7 +40,7 @@ node scripts/tool-schema-doctor.mjs ./my-tool/index.js
 
 ## 这个工具做了什么
 
-`index.js` 使用 `inject = ["tools"]` 等待工具注册表，然后调用 `ctx.tools.register()` 注册一个 `greet` 定义。参数 schema 要求 `name` 字段，输出 schema 声明字符串，`render` 把规范值转换成模型可见内容。
+`index.js` 使用 `inject = ["tools"]` 等待工具注册表，然后调用 `ctx.tools.register()` 注册一个 `greet` 定义。这个实验为了减少依赖，直接写最终 JSON Schema 对象根，参数 schema 要求 `name` 字段，输出 schema 声明字符串，`render` 把规范值转换成模型可见内容。
 
 这个实验使用原始 JSON Schema 直接注册，目的是减少首次安装时的额外依赖。生产插件应优先参考官方 `defineTool` DSL，它会从参数 schema 推导类型并在执行前校验参数。两者都属于工具注册层，但本实验没有把原始注册示例包装成生产级安全结论。
 
