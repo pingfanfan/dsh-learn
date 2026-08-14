@@ -129,6 +129,14 @@ npm install --global pnpm
 
 这一步只安装包管理器，不会填写 API Key，也不会发起模型请求，`plugin-doctor` 只检查版本和练习文件，不读取凭据。
 
+后面的安装步骤还需要从 npm 下载固定版本的 DSH 和 profile 依赖。如果你不想等到安装命令超时以后才判断网络，可以先运行一次可选的网络预检，命令如下
+
+```bash
+node scripts/plugin-doctor.mjs --network
+```
+
+看到 `PASS npm registry 可达` 再运行下面的实验。若看到 `FAIL npm registry 不可达`，先处理网络、DNS、代理或防火墙，暂时不要把它判断成插件代码错误，静态检查仍然可以通过，但安装、加载和移除必须等 npm registry 恢复后再实测。
+
 **用无 Key 实验安装第一个插件**
 
 项目里已经准备了 `labs/hello-plugin`，它是一个只打印加载状态的最小插件，目的是让你看清安装、profile 发现、插件加载和移除是否都发生了。
