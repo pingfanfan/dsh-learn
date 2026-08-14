@@ -75,7 +75,7 @@ Discussion #1025 的 `terminal_search` 是功能提案和社区 fork，不是 rc
 
 ## 来源
 
-- [官方 Discussions 第 11 页：当前分页至 #1068](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
+- [官方 Discussions 当前分页至 #1159](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=12)
 - [#1030](https://github.com/deepseek-ai/deepseek-harness/discussions/1030) · [#1032](https://github.com/deepseek-ai/deepseek-harness/discussions/1032) · [#1040](https://github.com/deepseek-ai/deepseek-harness/discussions/1040) · [#1068](https://github.com/deepseek-ai/deepseek-harness/discussions/1068)
 - [官方插件打包与安装文档](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/publish.zh.md)
 
