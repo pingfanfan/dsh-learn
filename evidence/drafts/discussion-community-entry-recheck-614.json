@@ -23,7 +23,7 @@
     "repository": "deepseek-ai/deepseek-harness",
     "commit": "47f943859bef60e4160492346772ded9b24f765a",
     "package": "@deepseek-ai/dsh",
-    "version": "0.1.0-rc.6; discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14"
+    "version": "0.1.0-rc.6; discussions=github-discussions-public-list-through-614-2026-08-14; discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14"
   },
   "reproduction": {
     "environment": "GitHub connector verified Discussion #12, #14, fixed-commit README, and current public Discussions pages 1–6 through #614; dsh-learn workspace",
