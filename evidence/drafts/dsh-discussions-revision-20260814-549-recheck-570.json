@@ -1,0 +1,52 @@
+{
+  "claim": "截至 2026-08-13T23:44:07Z，通过 DeepSeek Harness 官方 Discussions API 分页复核，观察到 6 页、535 条公开讨论，编号从 #12 到 #549，中间存在编号空缺。#539–#549 新增了 Web UI、Windows 路径、错误可诊断性、社区插件、工具调用、子代理、工作区和历史加载等信号。官方固定 commit 中的 resolveWorkspacePath 与 Web RPC 实现分别支持 #542 和 #543 的代码层观察；#544 展示了一个名为 dsh-agent-messaging 的社区 DSH bundle，但其安装、构建和运行兼容性仍未在 dsh-learn 中实测。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 公共列表第 1 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:06:13Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 公共列表第 2 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:06:13Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 公共列表第 3 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:06:13Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 公共列表第 4 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:06:13Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 公共列表第 5 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:06:13Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 公共列表第 6 页（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:06:13Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/541","title":"Discussion #541：Web 端打开文件的主机边界报告","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/542","title":"Discussion #542：Windows 路径分隔符报告","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/543","title":"Discussion #543：Web transport 错误细节报告","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/544","title":"Discussion #544：dsh-agent-messaging 社区插件展示","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/runtime/src/client/workspaces/path.ts","title":"官方 resolveWorkspacePath 源码（固定 commit）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/client/connection/src/client/rpc.ts","title":"官方 Web RPC 源码（固定 commit）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/happyren/dsh-agent-messaging","title":"社区插件仓库","kind":"repository","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/happyren/dsh-agent-messaging/blob/d6fc3abfde2467aa5b6b5598fea2f0e1ece2fdac/package.json","title":"社区插件 package.json（固定 commit）","kind":"repository","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/happyren/dsh-agent-messaging/blob/d6fc3abfde2467aa5b6b5598fea2f0e1ece2fdac/README.md","title":"社区插件安装与安全说明（固定 commit）","kind":"repository","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/560","title":"Discussion #560：缓存命中展示（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/561","title":"Discussion #561：不支持图像输入时的行为建议（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/562","title":"Discussion #562：真实协作反馈工作单（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/563","title":"Discussion #563：Win32 中文路径截断报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/564","title":"Discussion #564：第三方网关兼容方案展示（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/565","title":"Discussion #565：社区插件展示（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/566","title":"Discussion #566：GLM-5.2 中文乱码报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/567","title":"Discussion #567：web_search 端点与代理诊断报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/568","title":"Discussion #568：Node.js 兼容性警告报告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/569","title":"Discussion #569：AI 发起社区讨论的治理建议（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/570","title":"Discussion #570：pnpm workspace 循环依赖警告（仅作当前列表基线）","kind":"official","accessedAt":"2026-08-14T01:20:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14; community-plugin=happyren/dsh-agent-messaging@d6fc3ab; plugin-version=0.0.1"
+  },
+  "reproduction": {
+    "environment": "GitHub connector rechecked official Discussions pages 1–6 through #614, detail pages #541–#544 and #560–#570, official source files at fixed commit, and the community plugin repository; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..6",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/539..549",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/560..570",
+      "READ packages/client/runtime/src/client/workspaces/path.ts at 47f9438",
+      "READ packages/client/connection/src/client/rpc.ts at 47f9438",
+      "READ happyren/dsh-agent-messaging package.json, README.md, cordis.patch.yml, src/index.ts at d6fc3ab"
+    ],
+    "result": "PASS",
+    "notes": "原 claim 明确是 2026-08-13T23:44:07Z 的历史观察，因此不改写 #539–#549 的时间边界。当前列表已扩展到 #614；#560–#614 只用于当前基线，不混入旧事实卡。#542 与 #543 的关键代码形状仍在官方固定 commit 中得到核对；#541、#547、#548 仍按社区报告记录，未推断根因。#544 的插件只做仓库、manifest、README 和入口源码静态审查，没有下载、安装、启动或调用模型。没有调用模型 API，没有保存凭据，也没有发布知乎。"
+  },
+  "confidence": 96
+}
