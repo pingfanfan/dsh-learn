@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "python3 /Users/pingfan/.codex/skills/polish-article/scripts/check_tone_cliches.py content/canonical/dsh-discussions-revision-20260814-591.md && python3 /Users/pingfan/.codex/skills/polish-article/scripts/check_period_density.py content/canonical/dsh-discussions-revision-20260814-591.md && python3 /Users/pingfan/.codex/skills/polish-article/scripts/validate_toutiao_final.py content/canonical/dsh-discussions-revision-20260814-591.md && pnpm public-audit && pnpm check && git diff --check",
+  "notes": "正文已按内容块重写，保留 #565–#591 的历史范围，并将当前官方 Discussions 基线更新为 7 页、700 项、最后编号 #720。正文的语气、句号密度、结构、标题数量、3 至 4 个小标题、2 个口述区、字数和最长句检查全部通过；GitHub 渠道稿由 renderer 生成。#565、#571、#572、#573、#589 和 #591 仍按社区插件、用户报告或使用反馈处理，#587 只作风险排除记录；没有运行第三方插件，没有在 Windows 上动态复现，没有调用模型 API，没有发布知乎。",
+  "checkedAt": "2026-08-14T03:32:00Z"
+}
