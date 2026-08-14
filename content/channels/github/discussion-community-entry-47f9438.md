@@ -1,6 +1,6 @@
 # DeepSeek Harness 官方社区入口：先选对板块，再提交最小信息
 
-> 事实基线：2026-08-13；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；npm `@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview，下面的入口和讨论内容可能随官方仓库变化。
+> 事实基线：2026-08-14；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；npm `@deepseek-ai/dsh@0.1.0-rc.6`。本次复核时，官方 Discussions 分页为 6 页、600 条公开讨论，编号从 `#12` 到 `#614`，中间存在编号空缺。DSH 仍处于 Developer Preview，下面的入口和讨论内容可能随官方仓库变化。
 
 ## 现在发生了什么
 
@@ -8,7 +8,7 @@ DeepSeek Harness 的官方 GitHub Discussions 已经出现维护者欢迎公告�
 
 当前能直接看到的入口包括：Announcements（维护者公告）、Q&A（使用问题和排障）、Ideas（功能建议）、Show and tell（插件、工作流和实践展示）以及 General（不适合其他板块的讨论）。具体入口以 [官方 Discussions 首页](https://github.com/deepseek-ai/deepseek-harness/discussions) 当前显示为准。
 
-首批讨论已经出现了中文问题，例如把 Codex/Claude Code 的 memory 迁移到 Harness、企微无法添加，以及飞书调查问卷的昵称限制。它们说明社区入口已经不只是一个空页面，但不代表这些问题已经有统一官方解决方案。
+早期讨论已经出现了中文问题，例如把 Codex/Claude Code 的 memory 迁移到 Harness、企微无法添加，以及飞书调查问卷的昵称限制。它们说明社区入口已经不只是一个空页面，但不代表这些问题已经有统一官方解决方案；后续讨论数量还在快速增加，发帖前应以当前首页和板块状态为准。
 
 ## 新手应该怎么选
 
@@ -49,6 +49,7 @@ DeepSeek Harness 的官方 GitHub Discussions 已经出现维护者欢迎公告�
 - [DeepSeek Harness Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)
 - [维护者欢迎公告（Discussion #12）](https://github.com/deepseek-ai/deepseek-harness/discussions/12)
 - [关于 memory 迁移的讨论（Discussion #14）](https://github.com/deepseek-ai/deepseek-harness/discussions/14)
+- [官方 Discussions 当前分页快照（复核至 #614）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
 - [DeepSeek Harness README（固定 commit）](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md)
 
 
