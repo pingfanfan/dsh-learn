@@ -70,6 +70,8 @@ dsh-learn 可以先提供不依赖 API Key 的 DSH 安装、Web UI 启动和 hel
 
 这张卡以后既可以帮助用户自己排障，也可以帮助社区作者贡献 preset，前提是它把真实回执、适用范围和未测试的部分一起写出来，不能只留下一个看起来很完整的字段表。
 
+维护基线（2026-08-14）：官方 Discussions 当前已复核到 6 页、600 条公开讨论，编号从 `#12` 到 `#614`。#559 链接的 `dsh-gateway-presets` 已在后续核验中恢复可访问，但这只更新来源状态，不改写本卡对 #553–#559 的历史观察，也不把 #560–#614 的其他报告混入结论。
+
 ## 验证范围与来源
 
 - [官方 Discussions 第 6 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
@@ -82,4 +84,3 @@ dsh-learn 可以先提供不依赖 API Key 的 DSH 安装、Web UI 启动和 hel
 - [#559 链接的 `dsh-gateway-presets` 仓库（核对时返回 404）](https://github.com/Menger-8/dsh-gateway-presets)
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
-
