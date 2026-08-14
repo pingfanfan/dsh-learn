@@ -24,6 +24,8 @@ const required = [
   "node scripts/plugin-doctor.mjs",
   "node scripts/plugin-doctor.mjs --network",
   "node labs/hello-plugin/verify.mjs",
+  "node scripts/create-beginner-plugin.mjs my-first-plugin",
+  "node labs/hello-plugin/verify.mjs ./my-first-plugin",
   "临时 `DSH_HOME`",
   "DEEPSEEK_API_KEY",
   "BLOCKED_NETWORK",
