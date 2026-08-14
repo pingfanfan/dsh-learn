@@ -60,6 +60,27 @@ test("source watch retries transient network failures and preserves the successf
   assert.equal(result.observations[0].revision, "abc123");
 });
 
+test("source watch preserves a safe network error code after retries", async (t) => {
+  const root = await mkdtemp(join(tmpdir(), "dsh-source-watch-error-code-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await mkdir(join(root, "ops"), { recursive: true });
+  await writeFile(join(root, "ops", "sources.json"), JSON.stringify([{
+    id: "unreachable", label: "unreachable", kind: "github-head", url: "https://example.com/unreachable",
+    sourceId: "repository", enabled: true,
+  }]));
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => {
+    const error = new Error("fetch failed");
+    Object.defineProperty(error, "cause", { value: { code: "ENOTFOUND" } });
+    throw error;
+  };
+  t.after(() => { globalThis.fetch = originalFetch; });
+
+  const result = await observeSources(root, "ops/sources.json", { retryDelayMs: 0 });
+
+  assert.match(result.errors[0].error, /failed after 3 attempts: fetch failed \[ENOTFOUND\]/);
+});
+
 test("source watch does not retry a permanent client error", async (t) => {
   const root = await mkdtemp(join(tmpdir(), "dsh-source-watch-client-error-"));
   t.after(() => rm(root, { recursive: true, force: true }));
