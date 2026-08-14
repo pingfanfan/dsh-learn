@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Agent-operated Chinese DeepSeek Harness ecosystem growth system",
   "engines": {
-    "node": ">=22.18"
+    "node": ">=22.19"
   },
   "scripts": {
     "ops": "node src/cli.ts",
