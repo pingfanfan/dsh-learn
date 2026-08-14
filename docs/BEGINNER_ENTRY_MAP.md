@@ -45,7 +45,7 @@
 - 文档、图片链接、编辑区隔离检查：`pnpm validate:beginner-entry` 已通过。
 - 新手环境检查脚本的静态验证：`pnpm validate:beginner-doctor` 已通过。
 - 插件前置检查脚本的静态验证：`pnpm validate:plugin-doctor` 已通过。
-- 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在探针的 `npx --version` 阶段超时；随后对 npm registry 的直接 DNS 请求得到 `ENOTFOUND registry.npmjs.org`，因此不能把本轮写成安装、加载、移除通过；恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
+- 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在固定 rc.6 版本检查阶段得到 `ENOTFOUND registry.npmjs.org`，探针现在会输出面向新手的阻塞说明，而不是原始 Node.js 堆栈；因此不能把本轮写成安装、加载、移除通过。恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
 - 该阻塞不影响“无 Key、隔离目录、安装—加载—移除”的教程设计，但会阻止新增一条当前动态成功回执。
 
 ## 安全红线
