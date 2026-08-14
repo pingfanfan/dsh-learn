@@ -65,11 +65,11 @@
 - [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入 beginner-doctor 环境前置诊断、固定 commit 的官方 README/插件教程截图、明确标注的终端示意图，以及 Node.js 下载、GitHub ZIP 下载和 `index.js` 文件定位的 11 张配套图；GitHub 已发布，知乎未发布。
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 官方 Discussions 监控已修复分页盲区：最新连接器复核到 6 页、600 条公开讨论，编号从 #12 到 #614；#565–#614 的社区插件、工具调度报告、Windows 端口报告和未解决问答已分别分层处理，不把列表增长、用户报告、社区回复、社区 fork 或第三方测试代码包装成新功能、官方修复或官方发行版；#587 的安全细节不复制到公开内容。
-- [x] 官方 Discussions 新问题分流卡已按 #614 当前分页基线重新核对 #37、#38、#40 及公开评论，正文日期和 GitHub 渠道稿已更新并获得新的 GitHub 文件回执；仍未把 Windows/Firefox、`koffi` 或归档会话报告写成官方修复，知乎未发布。
+- [x] 官方 Discussions 新问题分流卡已按 #614 当前分页基线重新核对 #37、#38、#40 及公开评论，旧证据包已增强、规范稿和 GitHub 渠道稿已更新并获得新的 GitHub 文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/discussion-triage-41.md`）；仍未把 Windows/Firefox、`koffi` 或归档会话报告写成官方修复，知乎未发布。
 - [x] #550–#552 复核卡已重新读取三条 Discussion、固定 commit 的 `PiAiCompatProfile`/`resolveModelCompat`、以及 `dsh-rag-kb` 当前 main commit；正文明确保留历史时间边界，并更新到 #614 分页基线。`dsh-rag-kb` 的两个包仍为 `0.1.0-rc.5`，公开安装仍是源码集成，未被写成可直接 `dsh plugin add` 的 bundle；GitHub 已回写新文件回执，知乎未发布。
 - [x] #565–#570 复核卡已更新到 #614 分页基线，并核对 `dsh-openclaw-acp` 当前 main commit `ac475fa` 与 `v0.1.3` release；正文保留社区插件、用户报告、第三方代理和源码安装警告的证据边界，明确 #568 CLOSED 不等于官方修复，没有下载、安装或运行第三方插件，知乎未发布。
 - [x] 官方社区入口卡已按实时分页复核到 #614，更新为 6 页、600 条公开讨论，并保留 #12 欢迎公告、#14 memory 需求、板块选择和最小复现准备的历史事实边界；GitHub 渠道稿已准备同步，知乎未发布。
-- [x] #592–#614 当前复核卡已完成官方分页、重点 Discussion、评论和固定 README 的多源核验，覆盖新手启动、工作区/浏览器、provider 与 ACP/MCP/Docker 生态信号；明确没有动态复现、没有把社区建议写成官方修复，GitHub 已准备同步，知乎未发布。
+- [x] #592–#614 当前复核卡已完成官方分页、重点 Discussion、评论和固定 README 的多源核验，覆盖新手启动、工作区/浏览器、provider 与 ACP/MCP/Docker 生态信号；明确没有动态复现、没有把社区建议写成官方修复，GitHub 已获得文件回执，知乎未发布。
 
 ## 能力门 D
 
