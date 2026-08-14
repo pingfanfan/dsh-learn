@@ -73,9 +73,12 @@ async function checkNpmRegistry() {
     console.log("PASS npm registry 可达");
     return true;
   } catch (error) {
-    const detail = error instanceof Error && "stderr" in error && typeof error.stderr === "string"
-      ? error.stderr.trim().split("\n").at(-1)
+    const rawDetail = error instanceof Error && "stderr" in error && typeof error.stderr === "string"
+      ? error.stderr
       : error instanceof Error ? error.message : String(error);
+    const detail = rawDetail.trim().split("\n").find((line) =>
+      /ENOTFOUND|EAI_AGAIN|ETIMEDOUT|ECONNRESET|npm error code|npm error network request|fetch failed/i.test(line),
+    ) ?? rawDetail.trim().split("\n").at(-1);
     console.log(`FAIL npm registry 不可达：${detail || "npm view failed"}`);
     console.log("这通常是网络、DNS、代理或防火墙问题，不代表插件代码失败。恢复后再运行：node labs/hello-plugin/verify.mjs");
     return false;
