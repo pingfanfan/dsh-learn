@@ -102,7 +102,19 @@ node labs/hello-plugin/verify.mjs
 
 ## 想自己改一个插件
 
-先复制 `labs/hello-plugin` 文件夹，把副本改名为 `my-first-plugin`，只修改 `index.js` 里的加载日志，`package.json`、`cordis.patch.yml` 和其他文件先保持不动。
+不想手动复制文件时，可以在 dsh-learn 根目录用脚手架生成自己的最小插件：
+
+```bash
+node scripts/create-beginner-plugin.mjs my-first-plugin
+```
+
+它只生成 `package.json`、`index.js`、`cordis.patch.yml` 和 README，不联网、不读取 Key，也不会覆盖已经存在的目录。生成以后，先用同一个隔离探针验证这个新目录：
+
+```bash
+node labs/hello-plugin/verify.mjs ./my-first-plugin
+```
+
+验证器会根据你生成的 bundle 名称和 patch 中的插件 id 检查安装、配置、加载和移除。如果你想手动练习，也可以复制 `labs/hello-plugin` 文件夹，把副本改名为 `my-first-plugin`；第一次只修改 `index.js` 里的加载日志，`package.json`、`cordis.patch.yml` 和其他文件先保持不动。
 
 ![找到插件入口 index.js](../assets/dsh-beginner/11-plugin-edit-indexjs.jpg)
 
