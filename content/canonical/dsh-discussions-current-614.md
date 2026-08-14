@@ -1,6 +1,6 @@
 # DSH Discussions #592–#614：新手先分清路径、端口、浏览器和模型设置
 
-截至 2026 年 8 月 14 日这次维护复核，DeepSeek Harness 官方 Discussions 当前公开分页已经到 7 页、700 条讨论，最后编号为 `#720`，中间存在编号空缺。本文仍只复盘 `#592–#614` 这组历史讨论，其中既有使用问题，也有功能提案、社区项目和插件作者的实验结果，它们可以帮助新手判断自己卡在哪一层，但不能直接当成 DSH 已经合并的功能。
+截至 2026 年 8 月 14 日这次维护复核，官方 Discussions 当前来源已复核到第 11 页、最后编号为 `#1068`，中间存在编号空缺。此前分页维护到 7 页、700 条、#720，后续分页只用于确认上游增长，不改写本文对 `#592–#614` 这组历史讨论的观察。本文其中既有使用问题，也有功能提案、社区项目和插件作者的实验结果，它们可以帮助新手判断自己卡在哪一层，但不能直接当成 DSH 已经合并的功能。
 
 版本基线仍固定为 `@deepseek-ai/dsh@0.1.0-rc.6` 和官方 commit `47f9438`。本卡没有在 Windows 或 Linux 上动态复现这些报告，没有安装第三方插件、没有调用模型 API，也没有使用或保存 API Key。
 
@@ -45,7 +45,7 @@ Linux 用户还要留意 #605。作者报告 `node-pty` 在 Linux x64 环境没�
 ## 来源
 
 - [DeepSeek Harness Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)
-- [当前分页快照（维护复核至 #720）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7)
+- [当前分页快照（维护复核至 #1068）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 - [#592：带空格的工作区路径](https://github.com/deepseek-ai/deepseek-harness/discussions/592)
 - [#593：ACP steer 提案](https://github.com/deepseek-ai/deepseek-harness/discussions/593)
 - [#594：ACP 流式文本提案](https://github.com/deepseek-ai/deepseek-harness/discussions/594)
