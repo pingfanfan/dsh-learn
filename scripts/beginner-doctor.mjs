@@ -7,6 +7,7 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const reportRequested = process.argv.includes("--report");
 const requiredFiles = [
   "package.json",
   "scripts/beginner-start.mjs",
@@ -67,7 +68,7 @@ else {
 }
 
 const currentPath = resolve(root);
-  if (/[^\\x00-\\x7F]/.test(currentPath)) {
+if (/[^\\x00-\\x7F]/.test(currentPath)) {
   warnings.push("当前路径含有非 ASCII 字符，遇到插件路径问题时请把项目移到只含英文和数字的短路径");
 }
 if (currentPath.length > 120) {
@@ -83,4 +84,23 @@ if (failures.length > 0) {
   console.log("下一步：");
   console.log("node scripts/beginner-start.mjs");
   console.log("底层命令：npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web");
+}
+
+if (reportRequested) {
+  const pnpmVersion = versionOf("pnpm");
+  console.log("\n--- DSH 新手诊断回执（可粘贴，不含凭据） ---");
+  console.log("DSH_VERSION=0.1.0-rc.6");
+  console.log(`NODE_VERSION=${nodeVersion}`);
+  console.log(`NPM_VERSION=${npmVersion ?? "not_found"}`);
+  console.log(`NPX_VERSION=${npxVersion ?? "not_found"}`);
+  console.log(`PNPM_VERSION=${pnpmVersion ?? "not_found"}`);
+  console.log(`PLATFORM=${process.platform}`);
+  console.log(`ARCH=${process.arch}`);
+  console.log(`PROJECT_FILES=${missing.length === 0 ? "PASS" : "FAIL"}`);
+  console.log("PATH=redacted");
+  console.log("NETWORK=not_checked");
+  console.log("KEY_STATUS=not_read");
+  console.log("WEB=not_started");
+  console.log("PLUGIN=not_started");
+  console.log("--- DSH 新手诊断回执结束 ---");
 }
