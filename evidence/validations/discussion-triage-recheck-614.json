@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "分流卡已按官方 Discussions 当前基线复核到 #614；正文保留 #37、#38、#40 的问题报告边界，并链接当前的新手启动与问题分流卡。没有把浏览器兼容性、koffi 修复或归档恢复写成官方结论；没有动态复现 Windows，也没有使用或保存凭据。知乎不发布。",
+  "checkedAt": "2026-08-14T01:48:15Z"
+}
