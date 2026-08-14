@@ -1,8 +1,8 @@
 # DSH Discussions #550–#552：从文件拖拽排障到本地 RAG 插件
 
-> 历史事实基线：2026-08-13T23:58:15Z；当前来源复核到 2026-08-14T01:27:30Z。DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；`@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview，社区项目和问题都不等于官方功能或官方修复。
+> 历史事实基线：2026-08-13T23:58:15Z；当前来源复核到 2026-08-14T01:53:00Z。DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；`@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview，社区项目和问题都不等于官方功能或官方修复。
 
-DeepSeek Harness 官方 Discussions 当前已复核到 6 页、577 条公开讨论，编号从 #12 到 #591。#550、#551、#552 分别落在 Web UI 输入问题、模型网关兼容性和社区插件集成三层，不能统称为同一种 DSH 故障。
+DeepSeek Harness 官方 Discussions 当前已复核到 6 页、600 条公开讨论，编号从 #12 到 #614，中间存在编号空缺。#550、#551、#552 分别落在 Web UI 输入问题、模型网关兼容性和社区插件集成三层，不能统称为同一种 DSH 故障。
 
 ## #550：Windows/WSL 文件拖拽报告
 
