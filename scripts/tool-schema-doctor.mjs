@@ -72,8 +72,11 @@ for (const [index, tool] of registered.entries()) {
   if (typeof tool.name !== "string" || !tool.name.trim()) {
     failures.push(`${label}缺少 name`);
   }
-  if (!isObject(tool.parameters) || tool.parameters.type !== "object") {
-    failures.push(`${label}的 parameters.type 必须是 "object"；请使用 JSON Schema 的对象根`);
+  if (!isObject(tool.parameters)) {
+    failures.push(`${label}缺少 parameters 对象；直接注册时请传入最终 JSON Schema`);
+  } else if (tool.parameters.type !== "object") {
+    const currentType = Object.hasOwn(tool.parameters, "type") ? String(tool.parameters.type) : "未声明";
+    failures.push(`${label}的 parameters.type 必须是 "object"，当前是 ${currentType}；直接注册时请使用 JSON Schema 对象根，如果使用官方 defineTool，请检查它返回给 ctx.tools.register() 的最终定义`);
   }
   if (typeof tool.execute !== "function") {
     failures.push(`${label}缺少 execute(args)`);
@@ -89,4 +92,5 @@ if (failures.length > 0) {
 
 console.log(`PASS 工具 schema 体检：${registered.length} 个工具`);
 console.log("PASS parameters.type = object");
+console.log("PASS 检查对象：ctx.tools.register() 收到的最终工具定义（defineTool 会先把字段映射编译成对象根）");
 console.log("LOCAL_ONLY 不联网、不调用模型；插件自身导入代码的副作用仍需先审阅");
