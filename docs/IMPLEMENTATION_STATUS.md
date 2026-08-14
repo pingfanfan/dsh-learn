@@ -75,6 +75,7 @@
 - [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入 beginner-doctor 环境前置诊断、固定 commit 的官方 README/插件教程截图、明确标注的终端示意图，以及 Node.js 下载、GitHub ZIP 下载和 `index.js` 文件定位的 11 张配套图；GitHub 已发布，知乎未发布。
 - [x] DSH 完全新手截图快速上手卡已完成：把 Node.js、固定 rc.6 安装、Web UI、`Configure later`、pnpm/network 预检和临时 `DSH_HOME` 插件实验压缩为一条入口路径，复用 9 张已有截图并通过专用 validator；新增 `node scripts/beginner-start.mjs` 友好启动入口、`node scripts/beginner-doctor.mjs --report` 安全诊断回执和 `node scripts/create-beginner-plugin.mjs my-first-plugin` 无覆盖脚手架，在 npm 网络、Node 版本或端口失败时给出新手提示；GitHub 已获得 revision 4 的真实文件回执，知乎和微博未发布。
 - [x] Discussion #297 工具 schema 体检资产已完成：`tool-schema-doctor` 在本地、无 API、无模型调用条件下检查插件工具名、`parameters.type = object` 和 `execute`；正确/错误夹具均有回归，事实卡明确区分社区报告、官方文档和 dsh-learn 自己的检查，不把社区 fork 说成官方修复。
+- [x] Discussion #563 中文 Windows 路径资产已完成：`win32-path-doctor` 用离线 UTF-16 夹具复现低字节提前截断，并验证两个字节同时为零的终止判断；事实卡明确区分官方报告、固定源码、社区修复候选和未运行的 Windows 原生对话框/DSH runtime，没有使用 API Key，知乎未发布。
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 新增无模型工具 schema doctor，检查本地插件的 `parameters.type = object`、工具名称和 `execute`，并用正确/错误夹具覆盖通过与失败提示；不把社区 Discussion #297 的 fork/PR 自述写成官方版本修复。
 - [x] 完全新手运行 hello-plugin 探针时，npm registry 不可达会输出 `BLOCKED_NETWORK`、网络/DNS/代理检查命令和恢复步骤，不再把 npm 原始堆栈直接交给新手；网络恢复前仍不把安装、加载和移除写成通过。
