@@ -8,7 +8,7 @@
 
 你不需要先会写代码，也不需要先准备 API Key。建议按下面的顺序进入：
 
-1. 阅读[完全新手教程：从安装到第一个插件](content/canonical/dsh-zero-to-first-plugin-rc6.md)，里面有 Node.js、终端、Web UI、首次 API Key 提示和实际界面截图。
+1. 先看[完全新手快速上手卡](content/canonical/dsh-beginner-quickstart-rc6.md)，按截图完成安装、启动 Web UI 和第一个无 Key 插件；需要完整解释时，再看[完全新手教程：从安装到第一个插件](content/canonical/dsh-zero-to-first-plugin-rc6.md)。
 2. 下载本仓库 ZIP，解压后在项目根目录运行 `node scripts/beginner-doctor.mjs`，先确认 Node.js、npm、npx 和练习文件都在。这一步只需要 Node.js，不要求你先安装 pnpm。
 3. 用固定版本安装并启动 DSH：
 
@@ -79,6 +79,7 @@ pnpm public-audit
 - rc.6 无 Key CLI 冒烟实验：[labs/rc6-cli-smoke/README.md](labs/rc6-cli-smoke/README.md)。
 - 无 Key 第一个可安装插件实验：[labs/hello-plugin/README.md](labs/hello-plugin/README.md)。
 - 完全新手安装、启动 Web UI 和第一个插件：[content/canonical/dsh-zero-to-first-plugin-rc6.md](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-zero-to-first-plugin-rc6.md](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
+- 完全新手截图快速上手卡：[content/canonical/dsh-beginner-quickstart-rc6.md](content/canonical/dsh-beginner-quickstart-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-beginner-quickstart-rc6.md](content/channels/github/dsh-beginner-quickstart-rc6.md)。
 - 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
 - dsh-plugin-check rc.6 生态兼容性复核：[content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md](content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md)；GitHub 已有真实文件回执，生态仓库声明已核对，第三方插件动态安装仍为 `NOT_RUN`。
 - DSH 新手安装与插件安全排错路径：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
@@ -141,7 +142,7 @@ Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线
 
 第一个插件实验可以单独运行 `pnpm validate:plugin-lab` 做静态检查，再运行 `node labs/hello-plugin/verify.mjs` 在临时 `DSH_HOME` 中真实完成本地 bundle 安装、加载和移除；该探针不读取现有凭据，不发起模型请求。
 
-零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界；`pnpm validate:plugin-doctor` 会同时检查 pnpm 缺失时的失败提示。
+零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界；截图快速上手卡可以运行 `pnpm validate:beginner-quickstart`；`pnpm validate:plugin-doctor` 会同时检查 pnpm 缺失时的失败提示。
 
 完全新手下载项目后，可以先运行 `node scripts/beginner-doctor.mjs`。它只在本地检查 Node.js、npm、npx、练习文件和路径提示，不联网、不读取 API Key；通过以后会直接打印固定版本的 DSH 启动命令。准备安装插件时，再运行 `node scripts/plugin-doctor.mjs`，它会单独检查 DSH 所需的 pnpm；准备做真实安装前可追加 `--network`，先确认 npm registry 可达，避免把网络超时误判成插件代码失败。
 
