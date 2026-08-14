@@ -25,6 +25,7 @@
     "validate:beginner-doctor": "node scripts/validate-beginner-doctor.mjs",
     "validate:plugin-doctor": "node scripts/validate-plugin-doctor.mjs",
     "validate:beginner-entry": "node scripts/validate-beginner-entry.mjs content/canonical/dsh-zero-to-first-plugin-rc6.md content/channels/github/dsh-zero-to-first-plugin-rc6.md",
+    "validate:beginner-quickstart": "node scripts/validate-beginner-quickstart.mjs content/canonical/dsh-beginner-quickstart-rc6.md content/channels/github/dsh-beginner-quickstart-rc6.md",
     "validate:extension-map": "node scripts/validate-extension-map.mjs content/canonical/extension-map-47f9438.md diagram/cordis-mind-model/cordis-mind-model.svg",
     "validate:cordis-lab": "node scripts/validate-cordis-lab.mjs labs/cordis-no-key/compatibility.json labs/cordis-no-key/README.md labs/cordis-no-key/probe.mjs",
     "validate:python-sdk-safety": "node scripts/validate-python-sdk-safety.mjs labs/python-sdk-safety/safety-matrix.json labs/python-sdk-safety/README.md labs/python-sdk-safety/preflight.py",
