@@ -1,6 +1,6 @@
 # DSH 当前 Discussions 复核：新手先分清首次配置、插件生命周期和启动问题
 
-这张卡最初维护复核时，DeepSeek Harness 官方 Discussions 公开列表从 7 页、696 条、最后编号 `#714` 变化到 7 页、700 条、最后编号 `#720`，编号中间存在空缺；现在来源已复核到第 11 页、最后编号 `#1068`。本文仍只讨论 #619、#620、#623 和 #720 这组历史信号，列表变长本身不等于 DSH 发布了新功能，也不等于某个用户报告已经修复。
+这张卡最初维护复核时，DeepSeek Harness 官方 Discussions 公开列表从 7 页、696 条、最后编号 `#714` 变化到 7 页、700 条、最后编号 `#720`，编号中间存在空缺；现在来源已复核到第 12 页，观察到的最后编号为 `#1159`。本文仍只讨论 #619、#620、#623 和 #720 这组历史信号，列表变长本身不等于 DSH 发布了新功能，也不等于某个用户报告已经修复。
 
 这次新增条目里，最值得新手先知道的是几类容易混淆的边界：
 
@@ -28,7 +28,7 @@
 
 ## 来源
 
-- [DeepSeek Harness Discussions 当前分页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7)
+- [DeepSeek Harness Discussions 当前分页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=12)
 - [官方 README（固定 commit）](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md)
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
