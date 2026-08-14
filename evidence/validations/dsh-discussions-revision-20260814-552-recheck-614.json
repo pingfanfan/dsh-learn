@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "#550–#552 保留历史事实基线，当前 Discussions 基线更新到 #614，dsh-rag-kb main commit 仍为 bdfc83238ffeb0bc58839e4c03476c51da558629。正文没有把 Windows/WSL 报告、网关行为或社区源码集成写成动态复现、官方修复或独立 bundle；没有下载、安装、构建或运行第三方插件，没有调用模型 API。知乎不发布。",
+  "checkedAt": "2026-08-14T01:53:00Z"
+}
