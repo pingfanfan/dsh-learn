@@ -36,6 +36,7 @@
 - [x] 上游 HEAD/npm/贡献政策、架构/Cordis/Python SDK/sandbox 文档、Discussions 和插件 topic 游标，以及固定 commit URL 到逻辑文档源的自动失效映射。
 - [x] 来源定义支持 `official`、`ecosystem`、`community` scope；已把 `dsh-plugin-check`、`dsh-plugin-dev`、`dsh-explain`、`plugin-registry` 和 `dsh-101` 的公开 HEAD 纳入生态监控，生态变化生成 `ecosystem` 机会并使用独立评分信号。
 - [x] 通过 GitHub 连接器核对 `dsh-plugin-check` HEAD `8b3ea76`，完成 EvidencePack、rc.6 依赖声明/Bundle 边界复核和 GitHub 真实发布回执；没有安装或运行第三方插件，动态兼容仍为 `NOT_RUN`。
+- [x] #619–#714 新手安装与插件安全排错路径已完成：覆盖固定版本启动、Node.js/npm/npx/pnpm 前置、首次 Web UI 的 API Key/工作区边界、`--dump-config` 验证 profile bundle、插件加载/移除、Node 20/22 与 Linux 编译工具链分层，以及社区插件的第三方标记；规范稿已完成最终润色，GitHub 已获得真实文件回执，知乎未发布，第三方插件动态安装仍为 `NOT_RUN`。
 - [x] `sourceHealth.errors` 会持久化部分源扫描失败并在恢复后清除；网络故障不会伪装成“上游无变化”，也不会阻塞本地维护。
 - [x] 来源扫描对网络错误和 5xx 按 3 次指数退避重试，永久 4xx 不重试，并在错误中保留源 ID、HTTP 类型和尝试次数；GitHub API JSON 与 raw 文档共存时使用兼容的 Accept 头。
 - [x] `source-attest` 支持连接器或 Agent 只回写公开 revision，不导入源内容和凭据；只清除已被证明恢复的源错误，并复用同一套游标变化、资产失效和复测机会逻辑。
@@ -65,7 +66,7 @@
 
 - [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入 beginner-doctor 环境前置诊断、固定 commit 的官方 README/插件教程截图、明确标注的终端示意图，以及 Node.js 下载、GitHub ZIP 下载和 `index.js` 文件定位的 11 张配套图；GitHub 已发布，知乎未发布。
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
-- [x] 官方 Discussions 监控已修复分页盲区：最新连接器复核到 6 页、600 条公开讨论，编号从 #12 到 #614；#565–#614 的社区插件、工具调度报告、Windows 端口报告和未解决问答已分别分层处理，不把列表增长、用户报告、社区回复、社区 fork 或第三方测试代码包装成新功能、官方修复或官方发行版；#587 的安全细节不复制到公开内容。
+- [x] 官方 Discussions 监控已修复分页盲区：最新连接器复核到 7 页、696 条公开讨论，编号从 #12 到 #714；#565–#714 的社区插件、工具调度报告、Windows 端口报告和未解决问答已分别分层处理，不把列表增长、用户报告、社区回复、社区 fork 或第三方测试代码包装成新功能、官方修复或官方发行版；#587 的安全细节不复制到公开内容。
 - [x] 官方 Discussions 新问题分流卡已按 #614 当前分页基线重新核对 #37、#38、#40 及公开评论，旧证据包已增强、规范稿和 GitHub 渠道稿已更新并获得新的 GitHub 文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/discussion-triage-41.md`）；仍未把 Windows/Firefox、`koffi` 或归档会话报告写成官方修复，知乎未发布。
 - [x] #550–#552 复核卡已重新读取三条 Discussion、固定 commit 的 `PiAiCompatProfile`/`resolveModelCompat`、以及 `dsh-rag-kb` 当前 main commit；正文明确保留历史时间边界，并更新到 #614 分页基线。`dsh-rag-kb` 的两个包仍为 `0.1.0-rc.5`，公开安装仍是源码集成，未被写成可直接 `dsh plugin add` 的 bundle；GitHub 已回写新文件回执，知乎未发布。
 - [x] #565–#570 复核卡已更新到 #614 分页基线，并核对 `dsh-openclaw-acp` 当前 main commit `ac475fa` 与 `v0.1.3` release；正文保留社区插件、用户报告、第三方代理和源码安装警告的证据边界，明确 #568 CLOSED 不等于官方修复，没有下载、安装或运行第三方插件，知乎未发布。
@@ -76,6 +77,7 @@
 - [x] #560–#564 新手排障卡已保留 Windows 路径、图片输入、缓存展示和第三方网关的历史事实边界，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；社区 fork/预设没有下载、安装或运行，知乎未发布。
 - [x] #553–#559 网关兼容与插件排障卡已保留原始历史观察，补充当前 #614 分页维护基线，并注明 `dsh-gateway-presets` 后续已恢复可访问；增强 fork、preset 和真实网关仍未动态运行，GitHub 规范稿与证据回执已更新，知乎未发布。
 - [x] #535–#537 启动报错、Linux 沙盒想法和社区桌面版复核卡已保留历史证据等级，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；没有下载第三方桌面版或把它写成官方发行版，知乎未发布。
+- [x] #619–#714 新手安装与插件安全排错路径已完成官方文档、Discussion 详情和固定 rc.6 命令的多源核验；文章把截图定位为导航材料，把本机命令回执定位为最终证据，并明确没有动态安装第三方插件、没有调用模型 API，知乎未发布。
 
 ## 能力门 D
 
@@ -96,3 +98,4 @@
 - [x] DSH plugin 术语 FAQ 已完成当前官方 README 与固定 commit 的证据绑定；没有安装未知第三方包，也没有把 topic、安装成功或未运行实验写成运行时兼容。
 - [x] DSH 第一个插件端到端教程已完成 `dsh plugin add`、profile manifest、bundle patch、加载日志和 `remove` 的无 Key 证据绑定；规范稿已完成最终润色检查，知乎未发布。
 - [x] DSH 启动与插件安装排障教程已完成官方启动/插件文档和公开 Discussions 的多源核验，复用 rc.6 无 Key bundle 实验，并明确区分 CLI、profile、bundle、插件加载、Web UI、模型和工具调用边界；规范稿已完成最终润色检查，知乎未发布。
+- [x] 当前 #619–#714 新手安装与插件安全排错路径已获得 GitHub 文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-beginner-install-and-plugin-safety-714.md`）；新卡证据基线为 7 页、696 条公开讨论、#12–#714。微博稿因账号近期已有原创内容暂留 outbox，知乎未发布。
