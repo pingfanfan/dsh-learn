@@ -1,0 +1,24 @@
+[
+  {
+    "title": "DSH Windows 中文路径截断：给新手一条可离线验证的排错路径",
+    "summary": "官方 Discussion #563 报告 Win32 原生目录选择器可能把包含特定中文字符的路径提前截断，导致工作区创建拿到不存在的短路径；dsh-learn 可以提供不联网、不调用模型的 UTF-16 路径 doctor 和中文新手事实卡，先把路径读取风险与权限、版本、模型问题分开。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/discussions/563",
+    "observedAt": "2026-08-14T05:47:13Z",
+    "directDshAction": true,
+    "audience": ["中文 Windows 新手", "DSH 工作区用户", "DSH 维护者"],
+    "proposedAssets": ["win32-path-doctor", "win32-chinese-path-fact-card", "offline-utf16-regression"],
+    "signals": {
+      "userImpact": 88,
+      "freshness": 98,
+      "compounding": 90,
+      "ecosystemValue": 84,
+      "evidenceConfidence": 94,
+      "executability": 97,
+      "duplicatePenalty": 0,
+      "riskPenalty": 0,
+      "maintenancePenalty": 4
+    },
+    "risk": "LOW"
+  }
+]
