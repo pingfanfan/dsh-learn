@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "FAQ content review on content/canonical/dsh-discussions-current-614.md && pnpm public-audit && pnpm check && git diff --check",
+  "notes": "这张短 FAQ 保留 #592–#614 的历史讨论范围，更新官方 Discussions 当前维护基线为 7 页、700 条公开讨论、最后编号 #720，并增加完全新手教程链接。正文仍把端口、SIGHUP、node-pty、工作区/浏览器、provider、ACP/MCP、Docker 和 developer role 分成不同证据层，不把社区回复写成官方修复或动态复现。没有调用模型 API、安装第三方插件、使用或保存 API Key，也没有发布知乎。",
+  "checkedAt": "2026-08-14T03:55:00Z"
+}
