@@ -82,6 +82,7 @@ pnpm public-audit
 - 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
 - dsh-plugin-check rc.6 生态兼容性复核：[content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md](content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md)；GitHub 已有真实文件回执，生态仓库声明已核对，第三方插件动态安装仍为 `NOT_RUN`。
 - DSH 新手安装与插件安全排错路径：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
+- Discussions #711–#720 工具调用、Python 会话、Windows 与 Web 启动事实卡：[content/canonical/dsh-discussions-current-711-720.md](content/canonical/dsh-discussions-current-711-720.md)；已按官方详情逐条分层，GitHub 已有真实文件回执，未安装社区插件、未调用模型 API，知乎未发布。
 - DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
 - DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
@@ -96,7 +97,7 @@ pnpm public-audit
 - Cordis 无 Key mini-lab：[labs/cordis-no-key/README.md](labs/cordis-no-key/README.md)。
 - Python SDK 安全自动化配方：[labs/python-sdk-safety/README.md](labs/python-sdk-safety/README.md)。
 
-GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程、Discussions #539–#549、#550–#552、#553–#559、#560–#564、#565–#591、#592–#614 历史卡和当前 #619–#714 新手安装排错卡；这些资产均以对应证据包和 GitHub 文件回执为准。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡与 #619–#714 新手卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。状态账本中还保留若干早期知乎历史文章 URL，但这些回执不构成新任务的授权；当前知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
+GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程、Discussions #539–#549、#550–#552、#553–#559、#560–#564、#565–#591、#592–#614 历史卡、当前 #619–#714 新手安装排错卡和最新 #711–#720 工具调用与启动事实卡；这些资产均以对应证据包和 GitHub 文件回执为准。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡、#619–#714 新手卡和 #711–#720 事实卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。状态账本中还保留若干早期知乎历史文章 URL，但这些回执不构成新任务的授权；当前知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
 
 ## 常用命令
 
