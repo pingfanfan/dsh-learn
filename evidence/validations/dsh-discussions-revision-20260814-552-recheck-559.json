@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "GitHub connector rechecked Discussions page 6 through #559; pnpm public-audit; git diff --check",
+  "notes": "当前公开列表仍包含 #550、#551、#552，旧规范稿所记录的 Windows/WSL 文件拖拽报告、网关兼容性 Ideas 和 dsh-rag-kb 源码集成边界没有被新列表内容推翻。旧稿是一个明确标注时间和版本的历史复核卡，不需要把 #553–#559 追加进去，新变化由 dsh-discussions-revision-20260814-559.md 单独承接。没有下载或运行第三方插件，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。",
+  "checkedAt": "2026-08-14T00:20:00Z"
+}
