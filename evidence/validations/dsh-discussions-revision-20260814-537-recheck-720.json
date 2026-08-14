@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit; pnpm check; git diff --check; canonical-to-github render check",
+  "notes": "正文仍只复盘 #535–#537，当前来源基线更新为 7 页、700 条公开讨论、最后编号 #720，并补充固定 rc.6 的完全新手启动边界。没有把 #535 用户错误写成官方修复，没有把 #536 想法写成已实现沙盒，也没有把 #537 社区桌面版写成官方发行版；没有调用模型 API、下载或运行第三方桌面版，也没有发布知乎。",
+  "checkedAt": "2026-08-14T03:22:00.000Z"
+}
