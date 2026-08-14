@@ -30,7 +30,13 @@ node scripts/beginner-doctor.mjs
 
 ## 安装并启动 DSH
 
-输入下面这条命令：
+推荐先输入这条新手启动命令：
+
+```bash
+node scripts/beginner-start.mjs
+```
+
+它会先确认 Node.js 和 `npx`，再调用固定版本的 DSH；网络、Node 版本或端口出错时，会在原始输出后补一条对应的检查建议。如果你想直接执行底层命令，也可以输入：
 
 ```bash
 npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
