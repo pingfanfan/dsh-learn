@@ -42,7 +42,7 @@
     "repository": "deepseek-ai/deepseek-harness",
     "commit": "47f943859bef60e4160492346772ded9b24f765a",
     "package": "@deepseek-ai/dsh",
-    "version": "discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; community-plugin=happyren/dsh-agent-messaging@d6fc3ab; plugin-version=0.0.1"
+    "version": "discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; source-attestation-revision=deepseek-harness-discussions-attested-through-720-2026-08-14T03:52:00Z; community-plugin=happyren/dsh-agent-messaging@d6fc3ab; plugin-version=0.0.1"
   },
   "reproduction": {
     "environment": "GitHub connector rechecked official Discussions pages 1–7 through #720, detail pages #539–#549 and #560–#570, official source files at fixed commit, and the community plugin repository; dsh-learn workspace",
