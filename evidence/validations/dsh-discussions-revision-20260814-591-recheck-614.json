@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "正文和 GitHub 渠道稿已将官方 Discussions 基线更新至 6 页、600 项、最后编号 #614，同时保留 #565–#591 的历史范围；新增公开评论没有改变 #591 的证据边界。#587 仍只作为风险排除项，不复制安全细节；没有运行第三方插件、没有在 Windows 上动态复现、没有调用模型 API，也没有发布知乎。",
+  "checkedAt": "2026-08-14T01:58:30Z"
+}
