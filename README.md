@@ -89,6 +89,7 @@ pnpm public-audit
 - DSH 新手安装与插件安全排错路径：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
 - Discussions #711–#720 工具调用、Python 会话、Windows 与 Web 启动事实卡：[content/canonical/dsh-discussions-current-711-720.md](content/canonical/dsh-discussions-current-711-720.md)；已按官方详情逐条分层，GitHub 已有真实文件回执，未安装社区插件、未调用模型 API，知乎未发布。
 - DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
+- Cordis 论文新手阅读路线：[content/canonical/dsh-cordis-paper-beginner-route-20260814.md](content/canonical/dsh-cordis-paper-beginner-route-20260814.md)；把时间/空间可组合性连接到无 Key profile、插件安装/移除和工具注册实验，GitHub 已获得真实文件回执，知乎未发布。
 - DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
