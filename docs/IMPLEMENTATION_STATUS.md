@@ -41,7 +41,7 @@
 - [x] 内容哈希、渠道去重、更新稿替代与未知远端状态保护。
 - [x] 上游 HEAD/npm/贡献政策、架构/Cordis/Python SDK/sandbox 文档、Discussions 和插件 topic 游标，以及固定 commit URL 到逻辑文档源的自动失效映射。
 - [x] 来源定义支持 `official`、`ecosystem`、`community` scope；已把 `dsh-plugin-check`、`dsh-plugin-dev`、`dsh-explain`、`plugin-registry` 和 `dsh-101` 的公开 HEAD 纳入生态监控，生态变化生成 `ecosystem` 机会并使用独立评分信号。
-- [x] 通过 GitHub 连接器核对 `dsh-plugin-check` HEAD `8b3ea76`，完成 EvidencePack、rc.6 依赖声明/Bundle 边界复核和 GitHub 真实发布回执；没有安装或运行第三方插件，动态兼容仍为 `NOT_RUN`。
+- [x] 通过 GitHub 连接器核对 `dsh-plugin-check` 当前 HEAD `397aa26`，并复核 `dsh-plugin-dev` 当前 HEAD `6cfe425`；完成 npm rc.6、Profile Bundle、web/headless 和 tarball 路径的 EvidencePack 与 GitHub 真实发布回执。旧 `8b3ea76` 只保留作历史复核，没有安装或运行第三方插件，动态兼容仍为 `NOT_RUN`。
 - [x] #619–#714 新手安装与插件安全排错路径已完成：覆盖固定版本启动、Node.js/npm/npx/pnpm 前置、首次 Web UI 的 API Key/工作区边界、`--dump-config` 验证 profile bundle、插件加载/移除、Node 20/22 与 Linux 编译工具链分层，以及社区插件的第三方标记；规范稿已完成最终润色，GitHub 已获得真实文件回执，知乎未发布，第三方插件动态安装仍为 `NOT_RUN`。
 - [x] #711–#720 事实卡已完成官方 Discussions 详情核对、工具调用/Python 会话/Windows/存储/流式/Web 启动的证据分层和专用验证；GitHub 已获得真实文件回执（`https://github.com/pingfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-current-711-720.md`），没有安装 #714 的社区插件、没有调用模型 API，知乎未发布。
 - [x] `sourceHealth.errors` 会持久化部分源扫描失败并在恢复后清除；网络故障不会伪装成“上游无变化”，也不会阻塞本地维护。
