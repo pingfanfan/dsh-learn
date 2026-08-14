@@ -100,3 +100,4 @@
 - [x] DSH 启动与插件安装排障教程已完成官方启动/插件文档和公开 Discussions 的多源核验，复用 rc.6 无 Key bundle 实验，并明确区分 CLI、profile、bundle、插件加载、Web UI、模型和工具调用边界；规范稿已完成最终润色检查，知乎未发布。
 - [x] 当前 #619–#714 新手安装与插件安全排错路径已获得 GitHub 文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-beginner-install-and-plugin-safety-714.md`）；新卡证据基线为 7 页、696 条公开讨论、#12–#714。微博稿因账号近期已有原创内容暂留 outbox，知乎未发布。
 - [x] #560–#564 维护复核已完成：原始观察仍固定为当时的 6 页/550 条/#564，当前来源只更新为 7 页/696 条/#714；规范稿通过最终润色检查，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-564.md`，知乎未发布。
+- [x] 中文 Discussions 最小复现工具包维护复核已完成：模板结构通过 `validate-discussion-kit.mjs`，证据基线从 #614 更新到 #714，内容哈希未变，既有 GitHub 发布状态保留，知乎未发布。
