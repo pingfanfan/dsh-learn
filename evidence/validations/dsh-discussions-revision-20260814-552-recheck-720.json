@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "polish-article tone/period checks; current opening checked pairwise against recent maintenance cards; pnpm public-audit; pnpm check; git diff --check",
+  "notes": "正文仍只复盘 #550–#552，当前来源基线更新为 7 页、700 条公开讨论、最后编号 #720。补充了完全新手的无 Key 启动、Web UI 状态、截图与终端证据边界，并继续区分官方源码、社区作者自述和 dsh-learn 未做动态复现的范围。dsh-rag-kb 仍未下载、安装、构建或运行，没有启动 Ollama、调用模型 API、读取或保存 API Key，也没有发布知乎。",
+  "checkedAt": "2026-08-14T03:12:00.000Z"
+}
