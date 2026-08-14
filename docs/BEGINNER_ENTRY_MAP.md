@@ -6,6 +6,7 @@
 
 - 读者不会写代码，不认识 Node.js、终端、`npx`、profile、bundle 或 Cordis。
 - 读者先验证 DSH 能安装、能启动、能打开网页，再接触 API Key 和模型。
+- “页面能打开但输入框不可用”属于首次 provider/workspace 尚未配置的可预期状态；不把它当成安装失败。
 - 第一个插件必须无 Key、可隔离、可重复、可移除。
 - 真实安装前可以先用 `node scripts/plugin-doctor.mjs --network` 检查 npm registry；该检查使用临时空 npm 配置和固定 rc.6 包查询，不读取用户 `.npmrc` 或 API Key。网络失败只能标记为环境阻塞，不能写成插件代码失败。
 - 截图只负责降低找按钮和认界面的成本；截图不能替代命令输出、版本记录和真实复现。
@@ -18,9 +19,10 @@
 | 1 | 安装 Node.js，确认 `node`、`npm`、`npx` | “安装 Node.js” | `09-nodejs-download-page.jpg`、`03-terminal-node-version.svg` | `node scripts/beginner-doctor.mjs` 输出 PASS |
 | 2 | 用新手启动入口启动固定版本 DSH Web UI | “启动 DSH 的 Web UI” | `01-official-run-readme.jpg`、`04-terminal-dsh-web.svg` | 浏览器能打开 `http://127.0.0.1:3080`；失败时得到网络、Node 或端口提示 |
 | 3 | 首次打开页面时跳过 Key | “第一次打开页面不要急着接模型” | `07-dsh-first-run-api-key-prompt.jpg`、`08-dsh-web-ui-no-key.jpg` | 看到空工作台；不把它写成模型可用 |
-| 4 | 检查插件安装前置条件 | “安装插件前先检查 pnpm” | `06-terminal-beginner-doctor.svg`（环境检查） | `node scripts/plugin-doctor.mjs` 输出 PASS |
-| 5 | 在临时 `DSH_HOME` 安装、加载、移除 hello-plugin | “用无 Key 实验安装第一个插件” | `05-terminal-plugin.svg` | 看到 install、config、loaded、remove 四类结果 |
-| 6 | 生成或复制示例，验证自己的最小插件 | “从示例制作一个自己的插件” | `02-official-plugin-publish.jpg`、`11-plugin-edit-indexjs.jpg` | `create-beginner-plugin` 生成目录；自定义路径探针完成 install、config、loaded、remove |
+| 4 | （可选）从源码启动 DSH 本体 | “可选：从源码启动 DSH” | `01-official-run-readme.jpg` | 能区分普通使用路径和源码开发路径；源码结果以本机回执为准 |
+| 5 | 检查插件安装前置条件 | “安装插件前先检查 pnpm” | `06-terminal-beginner-doctor.svg`（环境检查） | `node scripts/plugin-doctor.mjs` 输出 PASS |
+| 6 | 在临时 `DSH_HOME` 安装、加载、移除 hello-plugin | “用无 Key 实验安装第一个插件” | `05-terminal-plugin.svg` | 看到 install、config、loaded、remove 四类结果 |
+| 7 | 生成或复制示例，验证自己的最小插件 | “从示例制作一个自己的插件” | `02-official-plugin-publish.jpg`、`11-plugin-edit-indexjs.jpg` | `create-beginner-plugin` 生成目录；自定义路径探针完成 install、config、loaded、remove |
 
 ## 截图清单与证据边界
 
@@ -37,6 +39,8 @@
 | `09-nodejs-download-page.jpg` | Node.js 官方页面 | 官方安装器入口；当前截图为 macOS | Windows/Linux 安装器的具体按钮 |
 | `10-github-download-zip.jpg` | dsh-learn 公开仓库 | `Code → Download ZIP` 的位置 | 下载后的本机路径 |
 | `11-plugin-edit-indexjs.jpg` | dsh-learn 公开仓库 | 示例插件入口文件的位置 | 在 GitHub 页面直接改文件就能完成本地实验 |
+
+主卡目前没有把源码安装步骤伪装成一张“已在所有系统实机完成”的截图；源码路径只有官方 README 截图和命令说明。等获得对应系统的真实终端回执后，再补充源码安装截图。
 
 示例终端图会用示例版本号和输出；官方页面截图会随网站变化而过期；Windows/Linux 用户可以沿用同一组命令，但当前视觉截图以 macOS 为主，不能把 macOS 截图冒充 Windows 实测。需要补充其他系统截图时，必须在对应系统真实打开页面后再加入证据包。
 
