@@ -1,70 +1,106 @@
-# DSH Discussions #565–#591：新插件、工具调度报告与 Windows 启动排障
+# DSH #565–#591 出现社区插件，新手安装前先看这几层边界
 
-DeepSeek Harness 官方 Discussions 已复核到 6 页、600 条公开讨论，列表最后编号为 #614，中间存在编号空缺。本页固定在 `@deepseek-ai/dsh@0.1.0-rc.6` 和官方 commit `47f9438`，只整理对 DSH 用户、插件作者和新手教程有用的信号。
+DeepSeek Harness 官方 Discussions 的 #565–#591，已经出现了一个比较完整的早期生态切面，社区有人把 DSH 接进 OpenClaw 和 ACP，也有人记录 Web 工具调度崩溃、Windows 端口启动失败、自部署模型依赖和企业微信联系入口的问题。它们放在一起看，读者会发现一个很现实的顺序，插件越来越像一个可以独立生长的生态，普通用户承担的安装、权限和排错成本也跟着变多了。
 
-先说边界：下面提到的第三方插件没有由 dsh-learn 下载或运行，Windows 端口问题没有在 Windows 实机动态复现，也没有调用模型 API。社区讨论中的说法，不自动等于官方功能或官方修复。
+这些帖子不是同一种证据，#565 是社区插件展示，#571、#572 和 #589 是用户报告，#573 和 #591 更接近使用反馈，#587 讨论安全边界。本文只把它们放在各自的位置，不把作者的验证写成官方功能，也不把一次 workaround 写成所有机器都适用的修复。
 
-## 新手先处理启动问题
+## #565 的插件已经跨到 OpenClaw，但它仍是外部项目
 
-第一次使用 DSH，可以先跟随[从安装到第一个插件的完全新手教程](dsh-zero-to-first-plugin-rc6.md)：
+#565 展示的 `dsh-openclaw-acp`，作者把它做成一个外部 `dsh.bundle`，通过官方 `@deepseek-ai/dsh-acp` 传输层，把 Harness profile 接到 OpenClaw 的 ACPX 运行时。作者还把安装命令、隔离 profile、ACP 初始化和 stdio 通信列为自己的验证范围，并明确说没有做真实微信投递测试。
 
-```bash
-npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
-```
+这个边界对新手很重要。DSH 这一层负责 agent、模型、工具、工作区和会话日志，OpenClaw ACPX 负责 ACP 进程的启动和消息路由，具体渠道插件才处理微信认证、发送者身份和消息投递，三者被放进同一条命令里以后，看起来像一个产品，实际仍然是几套依赖在一起运行。
 
-如果 Windows 终端出现 `listen EACCES`，并且错误指向 `127.0.0.1:3080`，先检查端口，不要马上重装 Node.js 或修改插件。
+帖子给出的安装示例包含固定版本的 pnpm、`@deepseek-ai/dsh@0.1.0-rc.6`，以及一个 release tarball 地址，随后用 `dsh plugin --profile openclaw add` 写入隔离 profile。这个命令可以帮助读者理解社区作者希望用户怎样安装，但 dsh-learn 没有下载、安装或运行这个包，所以本文不能给出已经装好或微信已经打通的结论。
 
-在 PowerShell 中查看 3080 是否已有进程占用：
+对完全新手来说，看到 `dsh plugin add` 以后，不要只问插件能不能提供某个功能，还要知道它被放进哪个 profile，安装阶段有没有构建脚本，启动时会加载哪些 bundle，卸载以后配置和依赖是否还留在本机。社区 README 里的功能描述和本机运行回执，属于两件事。
+
+
+对新手而言，插件的名字和安装命令只是入口，profile 里有没有它、启动时有没有加载它、它有没有把预期能力暴露出来，还要分别看配置导出和终端回执，不能因为命令没有报错，就把后面的运行结果一并算进去。
+
+
+## Windows 的 3080 报错，先区分端口问题和插件问题
+
+#589 是一条很适合放进新手入口的 Windows 报告。作者在 Windows 上启动 `dsh web` 时，默认端口 `3080` 报出 `EACCES`，机器上并没有进程占用这个端口，进一步检查后发现它落进了 Hyper-V 的 excluded port range，改用 `13080` 后作者报告可以启动。
+
+这条帖子使用的是 Windows 11、Node.js v24.14.0、pnpm 11.7.0 和 v0.1.0-rc.5 源码构建环境，dsh-learn 没有在 Windows 实机上复现它，因此 `13080` 只能作为社区报告里的例子，不能写成官方固定端口。评论里有人确认使用 `dsh web --port <port>` 可以起来，但这依然是用户经验，不是上游修复公告。
+
+第一次启动 DSH 的读者，可以把这条路径记在自己的排障卡里。终端里出现 `listen EACCES` 并指向本机 3080 端口时，在 PowerShell 运行下面两条命令，分别看有没有程序占用端口，以及 3080 是否落在系统保留区间。
 
 ```powershell
 Get-NetTCPConnection -LocalPort 3080 -ErrorAction SilentlyContinue
-```
-
-再查看 Windows 是否把这个端口放进了系统排除区间：
-
-```powershell
 netsh interface ipv4 show excludedportrange protocol=tcp
 ```
 
-如果 3080 落在保留范围内，Discussion #589 的作者报告可以换一个端口，例如：
+两条命令执行完以后，继续看终端回执。
+
+如果端口确实属于保留区间，可以在固定的 rc.6 命令上换一个没有冲突的端口，例如
 
 ```bash
 npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web --port 13080
 ```
 
-`13080` 只是社区报告里的示例，并非官方规定端口，也不是 dsh-learn 在 Windows 上实测通过的固定答案。以终端最终打印的本机地址为准；换端口仍失败时，再检查 Node.js 版本、权限、路径和启动日志。
+这只是换端口的示例。
 
-## 这几条讨论分别说明什么
+浏览器要打开终端最后打印的本机地址，不能只凭默认的 `3080` 猜地址。换端口仍然失败时，再把 Node.js 版本、系统、运行目录和完整错误保存下来，别一上来重装 Node.js，也别把端口错误归到插件身上。
 
-- **#565：`dsh-openclaw-acp`。** 这是社区展示的外部 `dsh.bundle`，作者自述包含 ACP 接入、隔离 profile 和打包产物。它说明 DSH 周围开始出现跨工具编排尝试，但它不是官方插件，dsh-learn 也没有验证其安装、运行或 WeChat 通道。
-- **#571、#572：工具调度报告。** #571 讨论工具失败后会话无法继续请求，#572 讨论多份物理 `@deepseek-ai/dsh-tools` 副本可能导致 Symbol 查找不一致。这些适合高级插件排障，不能写成 dsh-learn 已经复现的根因，更不能让第一次安装的用户直接修改 `node_modules`。
-- **#573：自部署模型与依赖变化。** 这是社区反馈，不是本卡确认的兼容性结论。若要复现，应记录 DSH 版本、provider、profile 和完整依赖树。
-- **#591：企业微信联系入口。** 后续评论仍是用户描述添加失败和个人猜测，没有维护者确认原因或处理结果。
+## #571 和 #572 把新手带进了高级排障区
 
-## 插件作者应该保留什么证据
+#571 的作者报告说，Web profile 中一次工具调度失败后，会话里保存了 assistant 的 `tool_calls`，却没有对应的 `tool` 结果，后续请求持续收到 400，作者给出的 workaround 是放弃旧会话并建立新会话。#572 则把另一类错误指向多份物理 `@deepseek-ai/dsh-tools`，作者认为不同副本带来的 Symbol 不一致可能让 scheduler 查找为空，并报告自己通过统一依赖目录观察到改善。
 
-新手实验仍建议从 dsh-learn 的无 Key、本地、可移除 `hello-plugin` 开始。只有完成基础启动后，才进入第三方插件或外部编排器。
+这两条材料对插件作者和上游维护者很有价值，因为它们都把错误放到了工具调度和依赖装载层，但目前仍是社区报告，dsh-learn 没有在本机复现，也没有把作者提到的 junction、依赖替换或 profile 改造写成新手操作步骤。Windows 上复制目录、建立 junction、重装 workspace，可能改变很多变量，不能拿来当成一条没有副作用的排错命令。
 
-DSH 负责 profile、模型、工具、工作区和沙箱边界，外部编排器负责进程生命周期和消息路由，渠道插件还会带来登录、身份和消息投递权限。系统越复杂，依赖和凭据范围越大，排障时就越需要保留最小复现。
+新手遇到工具调用失败时，先记住会话是否还能继续，保留 DSH 版本、profile、系统、Node.js 版本、触发动作和第一段错误，旧会话连续重试仍然失败，就换一个新会话验证是否只有当前历史受影响。不要因为错误里出现 `prepare`，就马上修改 `node_modules`，也不要为了排查依赖把日常 profile 的凭据和插件全部搬到一个陌生目录。
 
-提交新的 Discussion 时，至少写清：
+对于插件开发者，复现卡需要再多写一层，包括依赖树里同一个包是否出现多个物理目录、包管理器的 linker 配置、插件的构建方式和工具调用顺序，之后才有可能把用户报告整理成上游能复查的最小案例。#571 的会话状态问题和 #572 的依赖副本问题彼此有关，但不能合并成一个已经证明的根因。
 
-- DSH 精确版本和 commit；
-- 操作系统、Node.js、包管理器和 profile；
-- 最小命令、实际结果和预期结果；
-- 是否能在临时目录或干净 profile 中重复；
-- 已经排除的端口、路径、依赖和 provider 差异。
 
-不要把 API Key、Cookie、私有路径或完整内部日志贴到公开讨论中。#587 涉及安全边界，本页不复制其漏洞细节，也不把它改写成公开教程。
+工具调用出错以后，读者最容易做的事情就是重复点击重试，但如果会话历史本身已经进入异常状态，重复请求只会让判断更乱，保留错误并换一个干净会话，比立刻改依赖目录更容易知道问题落在哪一层。
 
-## 来源
 
+## #573、#587 和 #591 说明生态边界还没有收拢
+
+#573 的标题是自部署模型依赖变化带来的抱怨，正文没有展开完整环境，评论也只是围绕 pi 的取舍交流，不能从这一条帖子推断 DSH 对所有自部署模型的支持范围。它提醒开发者，模型接入、底层运行时和插件能力之间有依赖关系，写教程时要把实际版本和环境一起写出来。
+
+#591 是企业微信联系人添加失败的求助帖，当前有多条用户跟帖，大家提出了限流等猜测，但没有维护者确认原因。文章可以记录联系入口遇到添加失败，不能把猜测写成腾讯限制，也不能向读者承诺换一种二维码或等待某个时间就一定能解决。
+
+#587 的主题涉及第三方插件在启动阶段的信任边界，帖子提出了较严重的安全判断。这里不展开漏洞细节，也不把一篇公开 Discussion 当作已经完成的安全审计，普通用户仍然应该把第三方插件视为需要审查的可执行代码，安装前阅读来源、固定版本、manifest 和 patch，实验放在临时 `DSH_HOME`，不要把 API Key、Cookie 或日常工作区交给没有了解过的包。
+
+因此 dsh-learn 的新手入口应该分成两条线。第一条线只做固定版本启动、Web 页面、临时 profile 和无 Key 的 hello-plugin，确认安装、加载、配置导出和移除这些本地回执，第二条线才去阅读社区包的 bundle、构建脚本和运行权限，模型请求、外部网关和渠道登录另行验证。
+
+这个顺序不要求新手先学会 Cordis，也不需要用 API Key 才能判断一个插件怎样进入 profile。看懂安装目录和回执以后，再决定是否承担第三方依赖和凭据风险，教程才是在帮用户减少试错，而不是把一条社区命令包装成已经完成的产品体验。
+
+无 Key 的新手入口还可以把结果拆成几格来记。`--version` 能返回固定版本，只代表命令被找到，Web 页面能打开，只代表本机服务和浏览器之间有了连接，临时 profile 里能看到 hello-plugin，只代表插件进入了当前实验环境，至于模型能不能回复，还要等 API 配置和网络验证，不能拿其中一格替代另外几格。
+
+截图在这里也有自己的位置。它可以留下浏览器地址、按钮状态和错误提示，终端回执则更适合确认启动命令、端口、profile 和退出原因，插件的配置导出还要单独保存，三种材料拼在一起，别人才能知道问题发生在页面、服务、配置还是模型请求，单独一张没有地址栏的页面截图很难承担这个判断。
+
+社区包的安装也不必一开始就追求复杂功能。把包名、来源仓库、固定版本、安装命令、profile 名称、启动结果和移除结果记在同一张卡上，安装没有发生就写未安装，静态读过 README 就写静态检查，已经运行过以后再补运行回执，这种记录方式对新手和插件作者都比较清楚。
+
+无 Key 实验的价值，是把模型之外的环节拆出来观察。你可以确认 DSH 命令来自哪个版本，profile 是否被创建，插件有没有进入配置层，移除以后目录是否还留着异常文件，这些结果都不需要向外部模型发请求，也不会因为模型没有回复，就把安装和加载一并判定为失败。
+
+这对制作新手教程也有一个具体要求，命令旁边要放它要证明的事情，截图旁边要写它没有证明的事情。比如 Web 页面截图能让人确认浏览器看到了界面，却不能证明工作区可读，配置导出能让人看到 bundle，却不能证明工具已经被模型调用，教程把这些边界写清楚，读者就不会把一张图当成整条链路的成功证明。
+
+本文的历史范围仍然是 #565–#591。维护复核时，官方 Discussions 列表已更新为 7 页、700 条公开讨论，编号从 `#12` 到 `#720`，后续编号只用来标记上游分页增长，不混入本卡的历史结论。
+
+官方源码观察固定在 commit `47f943859bef60e4160492346772ded9b24f765a`，包版本基线为 `@deepseek-ai/dsh@0.1.0-rc.6`。
+
+## 验证范围与来源
+
+- 当前基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`；`@deepseek-ai/dsh@0.1.0-rc.6`；Discussions 复核为 7 页、700 条、#12–#720。
+- 历史边界：本文只讨论 #565、#571、#572、#573、#587、#589 和 #591 等 #565–#591 范围内的信号，当前分页不改变历史观察。
+- #565：社区作者展示 `BeAChanger/dsh-openclaw-acp`，本文只复述其公开说明，没有下载、安装、启动或验证 OpenClaw、微信渠道和 ACP 实际通信。
+- #571、#572：用户报告工具调度和多份 `dsh-tools` 物理副本问题，本文没有动态复现，也没有把 junction 或依赖替换写成新手教程。
+- #573、#591：分别是自部署模型依赖反馈和企业微信联系入口求助，评论没有提供足够证据支持更强结论。
+- #587：只保留安全边界提醒，不复制漏洞细节、不进行安全披露、不运行第三方插件。
+- #589：Windows 端口报告使用 rc.5 源码构建，dsh-learn 没有 Windows 实机复现，`13080` 只是作者示例。
+- 本文不使用、不保存、不展示 API Key，没有调用模型 API，知乎不发布。
 - [DeepSeek Harness Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)
-- [#565：dsh-openclaw-acp](https://github.com/deepseek-ai/deepseek-harness/discussions/565)
-- [#571：工具调度失败后的会话状态](https://github.com/deepseek-ai/deepseek-harness/discussions/571)
-- [#572：多份 dsh-tools 物理副本](https://github.com/deepseek-ai/deepseek-harness/discussions/572)
-- [#573：自部署模型与 pi 依赖](https://github.com/deepseek-ai/deepseek-harness/discussions/573)
-- [#589：Windows 3080 端口启动失败](https://github.com/deepseek-ai/deepseek-harness/discussions/589)
-- [#591：企业微信联系入口](https://github.com/deepseek-ai/deepseek-harness/discussions/591)
+- [Discussion #565](https://github.com/deepseek-ai/deepseek-harness/discussions/565)
+- [Discussion #571](https://github.com/deepseek-ai/deepseek-harness/discussions/571)
+- [Discussion #572](https://github.com/deepseek-ai/deepseek-harness/discussions/572)
+- [Discussion #573](https://github.com/deepseek-ai/deepseek-harness/discussions/573)
+- [Discussion #587](https://github.com/deepseek-ai/deepseek-harness/discussions/587)
+- [Discussion #589](https://github.com/deepseek-ai/deepseek-harness/discussions/589)
+- [Discussion #591](https://github.com/deepseek-ai/deepseek-harness/discussions/591)
+- [当前分页基线](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7)
 
-当前基线：`github-discussions-public-list-through-614-2026-08-14`；6 页，600 条公开讨论，编号从 #12 到 #614。本文没有调用模型 API，没有运行第三方插件，也没有发布知乎。
+> 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
