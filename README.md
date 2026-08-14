@@ -13,10 +13,10 @@
 3. 用固定版本安装并启动 DSH：
 
    ```bash
-   npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
+   node scripts/beginner-start.mjs
    ```
 
-   这里的“安装”指 `npx` 按固定版本下载并运行 DSH，不是把 CLI 永久写进系统。第一层故意不让新手先处理全局安装、PATH 和版本切换；等 Web UI 和无 Key 插件实验通过以后，再学习官方的其他安装方式。
+   这里的“安装”指启动入口内部用 `npx` 按固定版本下载并运行 DSH，不是把 CLI 永久写进系统。启动入口会把网络、Node 版本和端口错误翻译成新手提示；如果要看底层命令，仍然可以使用 `npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web`。第一层故意不让新手先处理全局安装、PATH 和版本切换；等 Web UI 和无 Key 插件实验通过以后，再学习官方的其他安装方式。
 
 4. 浏览器打开 `http://127.0.0.1:3080`。如果第一次看到 `Add an API key to get started`，先点 `Configure later`；这一步只验证页面能否打开，不代表模型已经配置好。
 5. 准备安装插件前，运行 `node scripts/plugin-doctor.mjs`。Web UI 不需要 pnpm，但 DSH 的 `plugin` 子命令会调用 pnpm；如果检查失败，按它打印的命令安装后再继续。
