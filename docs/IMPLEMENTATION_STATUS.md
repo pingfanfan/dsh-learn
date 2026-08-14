@@ -66,6 +66,7 @@
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 官方 Discussions 监控已修复分页盲区：最新连接器复核到 6 页、577 条公开讨论，编号从 #12 到 #591；#565–#591 的社区插件、工具调度报告、Windows 端口报告和未解决问答已分别分层处理，不把列表增长、用户报告、社区回复、社区 fork 或第三方测试代码包装成新功能、官方修复或官方发行版；#587 的安全细节不复制到公开内容。
 - [x] 官方 Discussions 新问题分流卡已按 #591 当前分页基线重新核对 #37、#38、#40 及公开评论，正文日期和 GitHub 渠道稿已更新并获得新的 GitHub 文件回执；仍未把 Windows/Firefox、`koffi` 或归档会话报告写成官方修复，知乎未发布。
+- [x] #550–#552 复核卡已重新读取三条 Discussion、固定 commit 的 `PiAiCompatProfile`/`resolveModelCompat`、以及 `dsh-rag-kb` 当前 main commit；正文明确保留历史时间边界，并更新到 #591 分页基线。`dsh-rag-kb` 的两个包仍为 `0.1.0-rc.5`，公开安装仍是源码集成，未被写成可直接 `dsh plugin add` 的 bundle；GitHub 已回写新文件回执，知乎未发布。
 
 ## 能力门 D
 
