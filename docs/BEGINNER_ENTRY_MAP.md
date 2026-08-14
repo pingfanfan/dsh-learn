@@ -48,7 +48,7 @@
 - 新手环境检查脚本的静态验证：`pnpm validate:beginner-doctor` 已通过；追加 `node scripts/beginner-doctor.mjs --report` 可输出不含凭据、路径已隐藏的诊断回执（含 `KEY_STATUS=not_read`），不联网、不上传。
 - 新手插件脚手架：`pnpm validate:beginner-plugin-scaffold` 已通过；它拒绝路径穿越和覆盖已有目录，生成的 bundle 可交给 `node labs/hello-plugin/verify.mjs ./my-first-plugin` 做同一套隔离验证。
 - 插件前置检查脚本的静态验证：`pnpm validate:plugin-doctor` 已通过。
-- 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在固定 rc.6 版本检查阶段得到 `ENOTFOUND registry.npmjs.org`，探针现在会输出面向新手的阻塞说明，而不是原始 Node.js 堆栈；因此不能把本轮写成安装、加载、移除通过。恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
+- 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机的 npm 客户端仍无法访问 registry，预检会输出面向新手的阻塞说明，而不是原始堆栈；因此不能把本轮写成安装、加载、移除通过。恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
 - 该阻塞不影响“无 Key、隔离目录、安装—加载—移除”的教程设计，但会阻止新增一条当前动态成功回执。
 
 ## 安全红线
