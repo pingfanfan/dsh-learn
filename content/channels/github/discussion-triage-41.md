@@ -2,6 +2,10 @@
 
 > 事实基线：2026-08-14；DeepSeek Harness commit `47f943859bef60e4160492346772ded9b24f765a`；npm `@deepseek-ai/dsh@0.1.0-rc.6`。DSH 仍处于 Developer Preview。本文整理的是官方 Discussions 中的用户报告，不是官方修复公告，也没有调用模型 API。
 
+截至这次复核，官方 Discussions 的公开列表已经到 #614，共 6 页、600 条，编号中间有空缺。下面这张卡专门保留 #37、#38、#40 这三个适合做排障训练的早期案例，当前新增问题则放在[新手启动与问题分流卡](https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-current-614.md)里，两个入口不要混成一篇“万能修复清单”。
+
+如果你还没有启动过 DSH，先从[完全新手教程：从安装到第一个插件](https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-zero-to-first-plugin-rc6.md)开始，确认 Node.js、Web UI 和本机端口都正常，再拿这张卡整理 Windows、浏览器或会话问题。
+
 ## 这一轮新增了哪些可复用线索
 
 ### 1. Windows 11 + Firefox 的目录选择窗口层级问题
@@ -14,7 +18,7 @@ Discussion [#37](https://github.com/deepseek-ai/deepseek-harness/discussions/37)
 
 Discussion [#38](https://github.com/deepseek-ai/deepseek-harness/discussions/38) 报告 `directory picker failed`，错误指向 `@deepseek-ai/dsh-host-directory-picker-native` 尝试加载 `koffi` 但找不到模块。讨论中的后续回复把它初步判断为 Node.js 模块加载失败，但截至本卡基线，没有可写成官方修复的结论。
 
-不要把一段错误堆栈直接复制到公开帖子里。先记录 DSH 精确版本、Node.js 版本、操作系统、包管理器、安装方式和最小复现步骤；错误中的本地路径、用户名和私有目录需要脱敏。
+不要把未经脱敏的错误堆栈贴到公开帖子里。先记录 DSH 精确版本、Node.js 版本、操作系统、包管理器、安装方式和最小复现步骤；错误中的本地路径、用户名和私有目录需要脱敏。
 
 ### 3. 会话归档后的查看与恢复入口
 
