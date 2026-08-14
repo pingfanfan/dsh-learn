@@ -24,26 +24,28 @@
     {"url":"https://github.com/BeAChanger/dsh-openclaw-acp/blob/main/cordis.patch.yml","title":"dsh-openclaw-acp bundle patch","kind":"repository","accessedAt":"2026-08-14T01:57:00.000Z"},
     {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/web/web-search-deepseek/README.md","title":"DeepSeek Harness web-search-deepseek README（固定 commit）","kind":"official","accessedAt":"2026-08-14T01:57:00.000Z"},
     {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/web/web-search-deepseek/README.zh.md","title":"DeepSeek Harness web-search-deepseek 中文 README（固定 commit）","kind":"official","accessedAt":"2026-08-14T01:57:00.000Z"},
-    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页（当前复核至 #714）","kind":"official","accessedAt":"2026-08-14T02:58:00.000Z"}
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页（当前复核至 #720）","kind":"official","accessedAt":"2026-08-14T03:52:00.000Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/720","title":"Discussion #720：Web 连接、端口与 Windows 退出信号","kind":"official","accessedAt":"2026-08-14T03:52:00.000Z"}
   ],
   "baseline": {
     "repository": "deepseek-ai/deepseek-harness",
     "commit": "47f943859bef60e4160492346772ded9b24f765a",
     "package": "@deepseek-ai/dsh",
-    "version": "repo-manifest=0.1.0-rc.5; npm-latest=0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,96; discussions-items=696; discussions-first=12; discussions-last=714; discussions-revision=github-discussions-public-list-through-714-2026-08-14; dsh-openclaw-acp-main=ac475fa1c81e350eda53edce9fdf1a3126c5b7b5; dsh-openclaw-acp-release=v0.1.3"
+    "version": "repo-manifest=0.1.0-rc.5; npm-latest=0.1.0-rc.6; discussions-pages=7; pageCounts=100,100,100,100,100,100,100; discussions-items=700; discussions-first=12; discussions-last=720; discussions-revision=github-discussions-public-list-through-720-2026-08-14; source-attestation-revision=deepseek-harness-discussions-attested-through-720-2026-08-14T03:52:00Z; dsh-openclaw-acp-main=ac475fa1c81e350eda53edce9fdf1a3126c5b7b5; dsh-openclaw-acp-release=v0.1.3"
   },
   "reproduction": {
-    "environment": "GitHub connector rechecked all seven public Discussions pages, detail pages #565–#570, fixed-commit official web-search documentation, and dsh-openclaw-acp main, package, entry, patch and v0.1.3 release metadata; dsh-learn workspace",
+    "environment": "GitHub connector rechecked all seven public Discussions pages through #720, detail pages #565–#570, fixed-commit official web-search documentation, and dsh-openclaw-acp main, package, entry, patch and v0.1.3 release metadata; dsh-learn workspace",
     "commands": [
       "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
       "GET https://github.com/deepseek-ai/deepseek-harness/discussions/565..570",
       "GET https://api.github.com/repos/BeAChanger/dsh-openclaw-acp/commits/main",
       "GET https://github.com/BeAChanger/dsh-openclaw-acp/releases/tag/v0.1.3",
       "GET https://raw.githubusercontent.com/BeAChanger/dsh-openclaw-acp/main/package.json",
-      "GET https://github.com/deepseek-ai/deepseek-harness/blob/47f9438/packages/web/web-search-deepseek/README.zh.md"
+      "GET https://github.com/deepseek-ai/deepseek-harness/blob/47f9438/packages/web/web-search-deepseek/README.zh.md",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/720"
     ],
     "result": "PASS",
-    "notes": "当前列表已复核到 7 页、696 项，最后编号 #714。#565–#570 仍只支持社区插件、用户报告和治理建议的事实记录，不支持把它们写成官方修复；#568 当前为 CLOSED，但这不等于已确认修复。dsh-openclaw-acp 当前 main 为 ac475fa1c81e350eda53edce9fdf1a3126c5b7b5，release 为 v0.1.3，本文只做公开仓库、package、README、入口、patch 和 release 元数据的静态核对，没有下载、安装或运行第三方插件，没有动态复现 #567 或 #570，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
+    "notes": "当前列表已复核到 7 页、700 项，最后编号 #720。#565–#570 仍只支持社区插件、用户报告和治理建议的事实记录，不支持把它们写成官方修复；#568 当前为 CLOSED，但这不等于已确认修复。dsh-openclaw-acp 当前 main 为 ac475fa1c81e350eda53edce9fdf1a3126c5b7b5，release 为 v0.1.3，本文只做公开仓库、package、README、入口、patch 和 release 元数据的静态核对，没有下载、安装或运行第三方插件，没有动态复现 #567 或 #570，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
   },
   "confidence": 97
 }
