@@ -26,6 +26,14 @@ node scripts/beginner-doctor.mjs
 
 看到 `PASS 环境可以进入 DSH 启动步骤` 再继续。这个检查只读取本机版本和练习文件，不联网，也不读取 API Key。
 
+如果需要向别人求助，可以追加 `--report`：
+
+```bash
+node scripts/beginner-doctor.mjs --report
+```
+
+它只在终端打印一份可复制的诊断回执，会明确写出 `PATH=redacted`、`KEY_STATUS=not_read`、`NETWORK=not_checked`；它不上传报告，也不代表 DSH 或插件已经启动。
+
 ![检查 Node.js、npm 和练习文件](../assets/dsh-beginner/06-terminal-beginner-doctor.svg)
 
 ## 安装并启动 DSH
