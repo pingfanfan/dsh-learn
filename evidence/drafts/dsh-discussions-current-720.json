@@ -1,0 +1,29 @@
+{
+  "claim": "截至 2026-08-14T03:52:00Z，通过 DeepSeek Harness 官方 Discussions API 复核，公开列表由此前的 7 页、696 条、最后编号 #714 变化为 7 页、700 条、最后编号 #720，中间存在编号空缺。新近条目包含首次打开 Web UI 需要 API Key 与工作区、动态 Cordis 插件删除后无法恢复、源码构建缺少 unrun、WebSocket 半开连接、端口范围校验和 Windows SIGTERM 等新手可感知的启动与插件生命周期信号；这些内容属于用户报告、Ideas 或社区问题，不是官方修复、已合并功能或 dsh-learn 的动态复现结果。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页（当前维护复核至 #720）","kind":"official","accessedAt":"2026-08-14T03:52:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/619","title":"Discussion #619：首次打开 Web UI 需要 API Key 与工作区","kind":"official","accessedAt":"2026-08-14T03:52:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/620","title":"Discussion #620：动态 Cordis 插件删除后无法恢复","kind":"official","accessedAt":"2026-08-14T03:52:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/623","title":"Discussion #623：源码构建缺少 unrun","kind":"official","accessedAt":"2026-08-14T03:52:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/720","title":"Discussion #720：Web 连接、端口与 Windows 退出信号","kind":"official","accessedAt":"2026-08-14T03:52:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md","title":"DeepSeek Harness README（固定 commit）","kind":"official","accessedAt":"2026-08-14T03:52:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; current-discussions-pages=7; current-pageCounts=100,100,100,100,100,100,100; current-discussions-items=700; current-discussions-first=12; current-discussions-last=720; current-discussions-revision=github-discussions-public-list-through-720-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified official Discussions pages 1–7, selected detail pages #619, #620, #623 and #720, and fixed-commit README; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/619,620,623,720",
+      "GET https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md"
+    ],
+    "result": "PASS",
+    "notes": "本次只把列表变化和新近公开条目写成事实卡，没有把用户报告写成官方修复或通用教程。#619 的 API Key/工作区是报告者对首次使用的观察，#620 是动态 Cordis 生命周期提案，#623 是源码构建报告，#720 是用户对连接与 Windows 行为的分析；均未由 dsh-learn 在本机动态复现。没有调用模型 API，没有使用或保存 API Key，没有安装第三方插件，也没有发布知乎。"
+  },
+  "confidence": 97
+}
