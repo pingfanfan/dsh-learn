@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "当前 #592–#614 事实卡已按内容块重写为新手启动、工作区/浏览器、provider/外部工具和提交最小信息四个阅读路标，正文明确区分官方 README、Discussion 用户报告、Ideas、社区评论和 dsh-learn 未做动态复现的边界。没有把 --port、node-gyp、provider 或 Docker 建议写成官方解决方案；没有调用模型 API、安装第三方插件、使用或保存 API Key，也没有发布知乎。已按 polish-article 的事实、口述节奏、开头与小标题规则人工复核。",
+  "checkedAt": "2026-08-14T01:46:00Z"
+}
