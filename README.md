@@ -88,14 +88,15 @@ pnpm public-audit
 - DSH 生态插件 npm rc.6 迁移事实卡：[content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md](content/canonical/dsh-ecosystem-npm-rc6-migration-20260814.md)；对照 `dsh-plugin-check` 与 `dsh-plugin-dev` 的 README 变更，GitHub 已有真实文件回执，未把上游自述写成 dsh-learn 动态兼容结论。
 - DSH 新手安装与插件安全排错路径：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
 - Discussions #711–#720 工具调用、Python 会话、Windows 与 Web 启动事实卡：[content/canonical/dsh-discussions-current-711-720.md](content/canonical/dsh-discussions-current-711-720.md)；已按官方详情逐条分层，GitHub 已有真实文件回执，未安装社区插件、未调用模型 API，知乎未发布。
+- Discussions 当前复核 #721–#822：[content/canonical/dsh-discussions-current-822.md](content/canonical/dsh-discussions-current-822.md)；把新手环境、Windows 工作区、源码 pnpm、社区插件、插件事件、工具参数和高风险安全信息分层，未安装社区插件、未调用模型 API，也未扩写安全利用细节。
 - DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
-- Cordis 论文新手阅读路线：[content/canonical/dsh-cordis-paper-beginner-route-20260814.md](content/canonical/dsh-cordis-paper-beginner-route-20260814.md)；把时间/空间可组合性连接到无 Key profile、插件安装/移除和工具注册实验，GitHub 已获得真实文件回执，知乎未发布。
 - DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
+- Cordis 论文新手阅读路线：[content/canonical/dsh-cordis-paper-beginner-route-20260814.md](content/canonical/dsh-cordis-paper-beginner-route-20260814.md)；把时间/空间可组合性连接到无 Key profile、插件安装/移除和工具注册实验，GitHub 已获得真实文件回执，知乎未发布。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
 - 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
 - Discussions 新问题分流卡：[content/canonical/discussion-triage-41.md](content/canonical/discussion-triage-41.md)。
-- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-current-720.md](content/canonical/dsh-discussions-current-720.md)；截至最近一次连接器核对已复核到 7 页、700 条公开讨论，编号从 #12 到 #720。#619–#714 按首次 Web UI、Node/编译前置、profile 插件加载、Node/MCP 隔离和最小社区插件分层处理，不把社区说法写成官方修复、官方功能或 dsh-learn 已验证兼容。旧版 #592–#614 分页卡保留作历史记录；新手安装与插件安全排错教程仍单独保留。
+- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-current-822.md](content/canonical/dsh-discussions-current-822.md)；截至最近一次连接器核对已复核到第 8 页、最后编号 #822。#721–#822 按新手环境、插件作者、模型适配和高风险披露分层处理，不把社区说法写成官方修复、官方功能或 dsh-learn 已验证兼容；旧版 #720 卡保留作历史记录，新手安装与插件安全排错教程仍单独保留。
 - 国产模型与网关矩阵：[labs/provider-matrix/README.md](labs/provider-matrix/README.md)。
 - 第三方插件迁移诊所：[content/canonical/plugin-migration-clinic-47f9438.md](content/canonical/plugin-migration-clinic-47f9438.md)。
 - 扩展点中文能力地图：[content/canonical/extension-map-47f9438.md](content/canonical/extension-map-47f9438.md)。
