@@ -256,7 +256,12 @@ function isRetryableStatus(status: number): boolean {
 }
 
 function errorMessage(error: unknown): string {
-  return error instanceof Error ? error.message : String(error);
+  if (!(error instanceof Error)) return String(error);
+  const cause = "cause" in error ? error.cause : undefined;
+  if (isObject(cause) && typeof cause.code === "string" && cause.code.trim()) {
+    return `${error.message} [${cause.code.trim()}]`;
+  }
+  return error.message;
 }
 
 async function delay(milliseconds: number): Promise<void> {
