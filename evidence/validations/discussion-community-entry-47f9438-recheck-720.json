@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "FAQ content review on content/canonical/discussion-community-entry-47f9438.md && pnpm public-audit && pnpm check && git diff --check",
+  "notes": "社区入口卡保留短 FAQ 结构，更新官方 Discussions 基线为 7 页、700 项、最后编号 #720，并保留 #12 欢迎公告、#14 memory 需求、板块选择、最小复现准备和不把具体问题写成官方解决方案的边界。GitHub 渠道稿由 renderer 生成；没有调用模型 API、读取或保存凭据、安装第三方插件或发布知乎。",
+  "checkedAt": "2026-08-14T03:43:00Z"
+}
