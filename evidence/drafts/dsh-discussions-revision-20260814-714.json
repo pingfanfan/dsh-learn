@@ -1,0 +1,39 @@
+{
+  "claim": "截至 2026-08-14T02:34:00Z，通过 DeepSeek Harness 官方 Discussions API 复核，公开列表已扩展到 7 页、696 条讨论，编号从 #12 到 #714，中间存在编号空缺。新增讨论中，#619 记录首次打开 Web UI 时 API Key 与工作区未配置会让输入框保持禁用；#623 记录源码构建缺少 tsdown 的可选 peer unrun；#649 提议一键环境 doctor；#650 记录 Linux 原生 node-pty 与 Node/GCC 组合的安装风险；#656 记录 github: 插件依赖安装成功但未进入 dsh.profile.bundles；#700 记录缺少 build-essential 会导致安装失败；#707 询问 DSH 与 MCP 对 Node 主版本的冲突；#708 记录第三方插件安装后重启 Web 失败；#714 分享两个最小社区插件模板。它们分别属于用户报告、Ideas、Q&A 或 Show and tell，不是官方修复、已合并功能或 dsh-learn 的动态复现结果。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1","title":"DeepSeek Harness Discussions 第 1 页","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=2","title":"DeepSeek Harness Discussions 第 2 页","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=3","title":"DeepSeek Harness Discussions 第 3 页","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=4","title":"DeepSeek Harness Discussions 第 4 页","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=5","title":"DeepSeek Harness Discussions 第 5 页","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7","title":"DeepSeek Harness Discussions 第 7 页（至 #714）","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/619","title":"Discussion #619：首次 Web UI 配置","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/623","title":"Discussion #623：源码构建与 unrun","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/649","title":"Discussion #649：一键环境 doctor 提议","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/650","title":"Discussion #650：Linux 原生编译工具链","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/656","title":"Discussion #656：github: 插件未进入 profile bundle","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/700","title":"Discussion #700：build-essential 安装前置","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/707","title":"Discussion #707：Node 版本与 MCP 冲突","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/708","title":"Discussion #708：插件安装后重启失败","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/714","title":"Discussion #714：两个最小社区插件","kind":"official","accessedAt":"2026-08-14T02:34:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md","title":"DeepSeek Harness README（固定 commit）","kind":"official","accessedAt":"2026-08-14T02:34:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions=github-discussions-public-list-through-714-2026-08-14; discussions-pages=7; pageCounts=100,100,100,100,100,100,96; discussions-items=696; discussions-first=12; discussions-last=714; discussions-revision=github-discussions-public-list-through-714-2026-08-14"
+  },
+  "reproduction": {
+    "environment": "GitHub connector verified official Discussions API pages 1–7 and detail pages #619, #623, #649, #650, #656, #700, #707, #708 and #714; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..7",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/619,623,649,650,656,700,707,708,714"
+    ],
+    "result": "PASS",
+    "notes": "复核到 7 页、696 项，最后编号 #714。正文只把选中的条目写成用户报告、Ideas、社区建议、Q&A 或 Show and tell，并明确没有把社区 workaround 写成官方解决方案；没有在 Windows/Linux 报告环境中动态复现，没有安装第三方插件，没有调用模型 API，没有使用或保存 API Key，也没有发布知乎。"
+  },
+  "confidence": 96
+}
