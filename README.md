@@ -9,7 +9,7 @@
 你不需要先会写代码，也不需要先准备 API Key。建议按下面的顺序进入：
 
 1. 先看[完全新手快速上手卡](content/canonical/dsh-beginner-quickstart-rc6.md)，按截图完成安装、启动 Web UI 和第一个无 Key 插件；需要完整解释时，再看[完全新手教程：从安装到第一个插件](content/canonical/dsh-zero-to-first-plugin-rc6.md)。
-2. 下载本仓库 ZIP，解压后在项目根目录运行 `node scripts/beginner-doctor.mjs`，先确认 Node.js、npm、npx 和练习文件都在。这一步只需要 Node.js，不要求你先安装 pnpm。
+2. 下载本仓库 ZIP，解压后在项目根目录运行 `node scripts/beginner-doctor.mjs`，先确认 Node.js、npm、npx、练习文件和 11 张新手截图都在。这一步只需要 Node.js，不要求你先安装 pnpm。
 3. 用固定版本安装并启动 DSH：
 
    ```bash
@@ -147,7 +147,7 @@ Provider 矩阵可以单独运行 `pnpm validate:providers`，检查固定基线
 
 零基础入口可以运行 `pnpm validate:beginner-entry`，检查 Node.js、npx、Web UI、无 Key 插件实验、官方截图、本地示意图、图片路径和凭据边界；截图快速上手卡可以运行 `pnpm validate:beginner-quickstart`；`pnpm validate:plugin-doctor` 会同时检查 pnpm 缺失时的失败提示。
 
-完全新手下载项目后，可以先运行 `node scripts/beginner-doctor.mjs`。它只在本地检查 Node.js、npm、npx、练习文件和路径提示，不联网、不读取 API Key；通过以后会直接打印固定版本的 DSH 启动命令。需要向别人求助时可追加 `--report`，它只打印一份把路径标成 `redacted`、明确写出 `KEY_STATUS=not_read` 的安全诊断回执，不上传任何内容。准备安装插件时，再运行 `node scripts/plugin-doctor.mjs`，它会单独检查 DSH 所需的 pnpm；准备做真实安装前可追加 `--network`，先确认 npm registry 可达，避免把网络超时误判成插件代码失败。
+完全新手下载项目后，可以先运行 `node scripts/beginner-doctor.mjs`。它只在本地检查 Node.js、npm、npx、练习文件、11 张新手截图和路径提示，不联网、不读取 API Key；通过以后会直接打印固定版本的 DSH 启动命令。需要向别人求助时可追加 `--report`，它只打印一份把路径标成 `redacted`、明确写出 `SCREENSHOTS=PASS`、`KEY_STATUS=not_read` 的安全诊断回执，不上传任何内容。准备安装插件时，再运行 `node scripts/plugin-doctor.mjs`，它会单独检查 DSH 所需的 pnpm；准备做真实安装前可追加 `--network`，先确认 npm registry 可达，避免把网络超时误判成插件代码失败。
 
 工具插件实验可以运行 `pnpm validate:tool-plugin-lab`，检查 `ctx.tools.register`、参数与返回值 schema、bundle manifest 和无 Key 边界；`pnpm validate:tool-plugin-offline` 可以在无网络时验证执行函数和渲染器，真实 DSH 安装探针仍需要 npm registry 可达，模型工具调用仍是 `NOT_RUN`。
 
