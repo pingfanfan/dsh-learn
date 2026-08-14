@@ -1,0 +1,23 @@
+[
+  {
+    "title": "DSH Discussions #711–#720：工具调用、Python 会话、Windows 与 Web 启动新信号",
+    "summary": "官方 Discussions 第 7 页新增 #711–#720，集中出现工具描述插值、跨进程 Python 会话恢复、带参工具调用、社区插件展示、Windows 子进程/存储/流式重试和 Web 启动问题；需要制作面向新手的事实分层卡，避免把用户报告或社区插件命令写成官方修复或已验证兼容。",
+    "sourceType": "official",
+    "sourceUrl": "https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7",
+    "observedAt": "2026-08-14T04:15:04Z",
+    "directDshAction": true,
+    "audience": ["完全新手", "插件作者", "Python SDK 使用者", "Windows 用户"],
+    "proposedAssets": ["discussion-fact-card", "beginner-faq"],
+    "signals": {
+      "userImpact": 90,
+      "freshness": 100,
+      "compounding": 88,
+      "ecosystemValue": 82,
+      "evidenceConfidence": 92,
+      "executability": 92,
+      "duplicatePenalty": 8,
+      "maintenancePenalty": 5
+    },
+    "risk": "LOW"
+  }
+]
