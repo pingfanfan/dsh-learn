@@ -12,6 +12,15 @@
 node labs/hello-plugin/verify.mjs
 ```
 
+验证器也接受一个本地 bundle 路径。完全新手可以先生成自己的插件，再验证这个新目录：
+
+```bash
+node scripts/create-beginner-plugin.mjs my-first-plugin
+node labs/hello-plugin/verify.mjs ./my-first-plugin
+```
+
+探针会从 `package.json` 和 `cordis.patch.yml` 读取 bundle 名称与插件 id，不再写死 `hello-plugin`；因此同一套“安装—配置—加载—移除”检查可以复用到脚手架生成的最小插件。它仍然只使用临时 `DSH_HOME`，不会把新插件写进你的日常 profile。
+
 探针会：
 
 1. 创建临时 `DSH_HOME`，不读取现有 profile 或凭据；
