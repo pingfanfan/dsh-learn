@@ -116,15 +116,29 @@ function assertIncludes(value, needle, label) {
   }
 }
 
+function isNetworkFailure(value) {
+  return /ENOTFOUND|EAI_AGAIN|ETIMEDOUT|ECONNRESET|fetch failed|network request|registry\.npmjs\.org/i.test(value);
+}
+
+function networkBlockedMessage() {
+  return "BLOCKED_NETWORK 无法连接 npm registry，插件代码尚未进入安装验证。请先运行 node scripts/plugin-doctor.mjs --network，检查网络、DNS、代理或防火墙，恢复后再运行 node labs/hello-plugin/verify.mjs。";
+}
+
+function commandFailure(label, result) {
+  const output = `${result.stderr}\n${result.stdout}`;
+  if (isNetworkFailure(output)) throw new Error(networkBlockedMessage());
+  throw new Error(`${label} 未完成（退出码 ${result.code ?? "未知"}）。请查看上方步骤并重试。`);
+}
+
 const home = await mkdtemp(join(tmpdir(), "dsh-learn-plugin-"));
 try {
   assertPnpmAvailable();
   const version = await runDsh(home, ["--version"]);
-  if (version.code !== 0) throw new Error(`version command failed: ${version.stderr}`);
+  if (version.code !== 0) commandFailure("DSH 版本检查", version);
   assertIncludes(version.stdout, dshVersion, "version output");
 
   const installed = await runDsh(home, ["plugin", "--profile", profileName, "add", pluginPath]);
-  if (installed.code !== 0) throw new Error(`plugin install failed: ${installed.stderr || installed.stdout}`);
+  if (installed.code !== 0) commandFailure("插件安装", installed);
 
   const manifestPath = join(home, "profiles", profileName, "package.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
@@ -134,14 +148,14 @@ try {
   }
 
   const dump = await runDsh(home, ["--profile", profileName, "--dump-config"]);
-  if (dump.code !== 0) throw new Error(`config dump failed: ${dump.stderr || dump.stdout}`);
+  if (dump.code !== 0) commandFailure("配置导出", dump);
   assertIncludes(`${dump.stdout}\n${dump.stderr}`, "dsh-hello-plugin", "config dump");
   assertIncludes(`${dump.stdout}\n${dump.stderr}`, "hello-plugin", "config dump");
 
   await runUntilLoaded(home);
 
   const removed = await runDsh(home, ["plugin", "--profile", profileName, "remove", "dsh-hello-plugin"]);
-  if (removed.code !== 0) throw new Error(`plugin remove failed: ${removed.stderr || removed.stdout}`);
+  if (removed.code !== 0) commandFailure("插件移除", removed);
   const removedManifest = JSON.parse(await readFile(manifestPath, "utf8"));
   const remaining = removedManifest?.dsh?.profile?.bundles ?? [];
   if (remaining.includes("dsh-hello-plugin")) {
@@ -149,6 +163,14 @@ try {
   }
 
   console.log("PASS hello-plugin install/load/remove without API key");
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error);
+  if (message.startsWith("BLOCKED_NETWORK")) {
+    console.error(message);
+  } else {
+    console.error(`FAIL ${message}`);
+  }
+  process.exitCode = 1;
 } finally {
   await rm(home, { recursive: true, force: true });
 }
