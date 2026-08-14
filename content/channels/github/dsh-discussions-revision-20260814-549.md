@@ -34,6 +34,8 @@ Discussion #544 展示了 [`dsh-agent-messaging`](https://github.com/happyren/ds
 
 本卡没有调用模型 API，没有复现 Windows、远程 Web、工作区或历史加载问题，没有下载或运行第三方插件。官方仓库代码基线仍记录为 `47f943859bef60e4160492346772ded9b24f765a`。
 
+维护基线（2026-08-14）：官方 Discussions 当前已复核到 6 页、600 条公开讨论，编号从 `#12` 到 `#614`；这个新分页只用于确认上游仍在增长，不改写本卡对 #539–#549 的历史观察，也不把 #550–#614 的其他报告混入本卡结论。
+
 来源：
 
 - [DeepSeek Harness Discussions 第 1 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1) 至 [第 6 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
