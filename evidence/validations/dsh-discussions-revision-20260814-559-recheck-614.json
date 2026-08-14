@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "#553–#559 的历史事实边界保持不变；正文新增当前维护基线，并明确 #559 链接的 dsh-gateway-presets 后续已恢复可访问，但不把 #560–#614 混入原结论。增强 fork 与 presets 仓库仍只完成静态阅读，没有下载、安装或运行，没有访问真实网关或调用模型 API，也没有保存凭据或发布知乎。",
+  "checkedAt": "2026-08-14T02:11:00Z"
+}
