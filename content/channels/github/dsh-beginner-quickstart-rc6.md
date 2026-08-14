@@ -86,7 +86,7 @@ npm install --global pnpm
 node scripts/plugin-doctor.mjs --network
 ```
 
-看到 `PASS npm registry 可达` 后，再运行第一个无 Key 插件实验：
+这项预检会用一个临时的空 npm 配置查询固定的 rc.6 包，和后面的 `npx` 下载走同一个 npm 客户端，但不会读取你平时的 `.npmrc` 或 API Key。看到 `PASS npm registry 可达` 后，再运行第一个无 Key 插件实验：
 
 ```bash
 node labs/hello-plugin/verify.mjs
