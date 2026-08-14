@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "node scripts/validate-discussion-kit.mjs content/canonical/discussion-minimal-repro-kit.md && pnpm public-audit && pnpm check && git diff --check",
+  "notes": "中文最小复现工具包的正文和模板结构未改变；固定 commit 的官方贡献政策、README 与 Discussions 当前基线已复核到 #614，6 页共 600 条公开讨论。没有调用模型 API、安装第三方插件或保存凭据。",
+  "checkedAt": "2026-08-14T02:02:48Z"
+}
