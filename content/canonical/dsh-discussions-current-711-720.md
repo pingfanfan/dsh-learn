@@ -1,6 +1,6 @@
 # DSH Discussions #711–#720：先看懂工具调用和启动问题，再碰社区插件
 
-截至 2026 年 8 月 14 日这次维护复核，DeepSeek Harness 官方 Discussions 第 7 页覆盖 #619 到 #720，最近十条 #711–#720 集中出现了工具调用、Python SDK、Windows、存储、流式重试和 Web 启动等信号。
+截至 2026 年 8 月 14 日这次维护复核，历史观察仍固定在官方 Discussions 第 7 页的 #619 到 #720，最近十条 #711–#720 集中出现了工具调用、Python SDK、Windows、存储、流式重试和 Web 启动等信号。当前来源已复核到第 11 页、最后编号 #1068，后续分页只用于维护上游增长，不改写这十条历史观察。
 
 先说结论：这些帖子是用户报告、Ideas、Q&A 或 Show and tell，不等于官方已经修复，也不等于 dsh-learn 已经动态验证。尤其是帖子里出现的补丁建议、第三方插件安装命令和模型调用现象，都要和“官方文档”“本地复现”“社区展示”分开记录。
 
@@ -62,7 +62,7 @@
 
 ## 证据边界
 
-- 本卡基于官方 Discussions 列表和 #711–#720 详情页，版本基线为官方 commit `47f9438` 与 `@deepseek-ai/dsh@0.1.0-rc.6`。
+- 本卡基于官方 Discussions 列表和 #711–#720 详情页，版本基线为官方 commit `47f9438` 与 `@deepseek-ai/dsh@0.1.0-rc.6`。当前列表已复核到第 11 页、最后编号 #1068。
 - 本卡没有在 Windows 或 Linux 上动态复现 #717–#720，没有安装 #714 的两个社区插件，也没有调用模型 API。
 - 帖子中的补丁、环境、安装命令和模型现象仍属于帖子作者的报告，除非另有一手官方修复或本地复现，不写成 dsh-learn 已验证事实。
 - 本卡不使用、不保存、不展示 API Key；知乎发布必须经过主理人明确同意。
@@ -70,6 +70,7 @@
 ## 来源
 
 - [官方 Discussions 第 7 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7)
+- [当前 Discussions 第 11 页基线](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 - [#711](https://github.com/deepseek-ai/deepseek-harness/discussions/711) · [#712](https://github.com/deepseek-ai/deepseek-harness/discussions/712) · [#713](https://github.com/deepseek-ai/deepseek-harness/discussions/713) · [#714](https://github.com/deepseek-ai/deepseek-harness/discussions/714)
 - [#715](https://github.com/deepseek-ai/deepseek-harness/discussions/715) · [#716](https://github.com/deepseek-ai/deepseek-harness/discussions/716) · [#717](https://github.com/deepseek-ai/deepseek-harness/discussions/717) · [#718](https://github.com/deepseek-ai/deepseek-harness/discussions/718)
 - [#719](https://github.com/deepseek-ai/deepseek-harness/discussions/719) · [#720](https://github.com/deepseek-ai/deepseek-harness/discussions/720)
