@@ -100,6 +100,8 @@ pnpm public-audit
 
 GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程、Discussions #539–#549、#550–#552、#553–#559、#560–#564、#565–#591、#592–#614 历史卡、当前 #619–#714 新手安装排错卡和最新 #711–#720 工具调用与启动事实卡；这些资产均以对应证据包和 GitHub 文件回执为准。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡、#619–#714 新手卡和 #711–#720 事实卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。状态账本中还保留若干早期知乎历史文章 URL，但这些回执不构成新任务的授权；当前知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
 
+- 完全新手截图快速上手卡已获得 GitHub 真实文件回执：[content/channels/github/dsh-beginner-quickstart-rc6.md](content/channels/github/dsh-beginner-quickstart-rc6.md)；它复用 9 张截图和 rc.6 无 Key 边界，未发布知乎或微博。
+
 ## 常用命令
 
 ```bash
