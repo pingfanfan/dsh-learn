@@ -81,13 +81,14 @@ pnpm public-audit
 - 完全新手安装、启动 Web UI 和第一个插件：[content/canonical/dsh-zero-to-first-plugin-rc6.md](content/canonical/dsh-zero-to-first-plugin-rc6.md)；GitHub 干净稿：[content/channels/github/dsh-zero-to-first-plugin-rc6.md](content/channels/github/dsh-zero-to-first-plugin-rc6.md)。
 - 无 Key 工具注册实验：[labs/tool-plugin/README.md](labs/tool-plugin/README.md)；离线 schema/注册/执行/渲染检查已通过，真实 npx 探针因 npm registry 超时暂未标成通过。
 - dsh-plugin-check rc.6 生态兼容性复核：[content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md](content/canonical/dsh-plugin-check-rc6-compatibility-20260814.md)；GitHub 已有真实文件回执，生态仓库声明已核对，第三方插件动态安装仍为 `NOT_RUN`。
+- DSH 新手安装与插件安全排错路径：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；已覆盖 #619、#623、#649、#650、#656、#700、#707、#708、#714 的新手启动与插件风险，GitHub 已有真实文件回执，社区报告没有被写成官方修复，知乎未发布。
 - DSH 启动、bundle 安装、加载与移除教程：[content/canonical/dsh-first-plugin-rc6.md](content/canonical/dsh-first-plugin-rc6.md)。
 - DSH 启动失败与插件安装排障路径：[content/canonical/dsh-startup-plugin-troubleshooting-rc6.md](content/canonical/dsh-startup-plugin-troubleshooting-rc6.md)。
 - 首个规范资产：[content/canonical/dsh-change-card-47f9438.md](content/canonical/dsh-change-card-47f9438.md)。
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
 - 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
 - Discussions 新问题分流卡：[content/canonical/discussion-triage-41.md](content/canonical/discussion-triage-41.md)。
-- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-current-614.md](content/canonical/dsh-discussions-current-614.md)；截至 2026-08-14 已复核到 6 页、600 条公开讨论，编号从 #12 到 #614。#592–#614 按新手启动、工作区/浏览器、provider 与 ACP/MCP/Docker 生态信号分层处理，不把社区说法写成官方修复、官方功能或 dsh-learn 已验证兼容；#587 的安全细节不复制到公开内容。旧版分页卡保留作历史记录。
+- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；截至 2026-08-14 已复核到 7 页、696 条公开讨论，编号从 #12 到 #714。#619–#714 按首次 Web UI、Node/编译前置、profile 插件加载、Node/MCP 隔离和最小社区插件分层处理，不把社区说法写成官方修复、官方功能或 dsh-learn 已验证兼容。旧版 #592–#614 分页卡保留作历史记录。
 - 国产模型与网关矩阵：[labs/provider-matrix/README.md](labs/provider-matrix/README.md)。
 - 第三方插件迁移诊所：[content/canonical/plugin-migration-clinic-47f9438.md](content/canonical/plugin-migration-clinic-47f9438.md)。
 - 扩展点中文能力地图：[content/canonical/extension-map-47f9438.md](content/canonical/extension-map-47f9438.md)。
@@ -95,7 +96,7 @@ pnpm public-audit
 - Cordis 无 Key mini-lab：[labs/cordis-no-key/README.md](labs/cordis-no-key/README.md)。
 - Python SDK 安全自动化配方：[labs/python-sdk-safety/README.md](labs/python-sdk-safety/README.md)。
 
-GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程、Discussions #539–#549、#550–#552、#553–#559、#560–#564、#565–#591 和当前 #592–#614 复核卡；这些复核卡均以对应证据包和 GitHub 文件回执为准。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。术语 FAQ、Cordis mini-lab、Python SDK 安全配方、DSH 无 Key 新手入口和会话内容搜索教程也已通过知乎创作中心获得真实文章 URL。知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
+GitHub 已通过连接器同步当前公开候选的 dsh-learn 母仓，并包含术语 FAQ、Cordis 无 Key mini-lab（含可重复探针）、中文 Discussions 最小复现模板、社区入口卡和新问题分流卡、插件迁移诊所、安全边界手册、provider 矩阵、Python SDK 安全配方、扩展点能力地图、DSH 无 Key 新手入口、会话内容搜索 opt-in 教程、Discussions #539–#549、#550–#552、#553–#559、#560–#564、#565–#591、#592–#614 历史卡和当前 #619–#714 新手安装排错卡；这些资产均以对应证据包和 GitHub 文件回执为准。术语 FAQ、DSH 无 Key 新手入口、Cordis 无 Key mini-lab 和会话内容搜索教程已通过已登录的“平凡ZhiH”微博账号获得真实发布回执，社区入口卡已有微博回执，新问题分流卡与 #619–#714 新手卡当前已获得 GitHub 回执，微博稿因账号近期已有原创内容暂留 outbox。术语 FAQ、Cordis mini-lab、Python SDK 安全配方、DSH 无 Key 新手入口和会话内容搜索教程也已通过知乎创作中心获得真实文章 URL。知乎发布必须经过主理人明确同意，本轮没有发布知乎。其余渠道和稿件仍可能只有本地 outbox。GitHub、微博、知乎回执、阅读数据和当前限制详见 [实施状态](docs/IMPLEMENTATION_STATUS.md)；未有回执的内容仍不得写成已发布。
 
 ## 常用命令
 
