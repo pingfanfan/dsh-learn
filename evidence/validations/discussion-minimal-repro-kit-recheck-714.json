@@ -2,6 +2,6 @@
   "kind": "validator",
   "result": "PASS",
   "command": "node scripts/validate-discussion-kit.mjs content/canonical/discussion-minimal-repro-kit.md; pnpm check; pnpm public-audit; git diff --check",
-  "notes": "模板结构未改变，11 个章节、4 个链接和 20 个代码围栏通过验证。固定 commit 的 CONTRIBUTING.md、README 与 Discussions 证据已更新到 7 页、696 条、最后编号 #714；#565–#570 仍只作为列表基线。没有调用模型 API、安装第三方插件或保存凭据，知乎未发布。",
+  "notes": "模板结构未改变，11 个章节、4 个链接和 20 个代码围栏通过验证。固定 commit 的 CONTRIBUTING.md、README 与 Discussions 证据已更新到 7 页、700 条、最后编号 #720；#565–#570 仍只作为列表基线。没有调用模型 API、安装第三方插件或保存凭据，知乎未发布。",
   "checkedAt": "2026-08-14T02:56:00.000Z"
 }
