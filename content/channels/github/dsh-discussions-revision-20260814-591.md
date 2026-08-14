@@ -79,13 +79,13 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web --port 13080
 
 这对制作新手教程也有一个具体要求，命令旁边要放它要证明的事情，截图旁边要写它没有证明的事情。比如 Web 页面截图能让人确认浏览器看到了界面，却不能证明工作区可读，配置导出能让人看到 bundle，却不能证明工具已经被模型调用，教程把这些边界写清楚，读者就不会把一张图当成整条链路的成功证明。
 
-本文的历史范围仍然是 #565–#591。维护复核时，官方 Discussions 列表已更新为 7 页、700 条公开讨论，编号从 `#12` 到 `#720`，后续编号只用来标记上游分页增长，不混入本卡的历史结论。
+本文的历史范围仍然是 #565–#591。此前维护复核时，官方 Discussions 列表已更新为 7 页、700 条公开讨论，编号从 `#12` 到 `#720`。当前来源已复核到第 11 页、最后编号 `#1068`，这些后续编号只用来标记上游分页增长，不混入本卡的历史结论。
 
 官方源码观察固定在 commit `47f943859bef60e4160492346772ded9b24f765a`，包版本基线为 `@deepseek-ai/dsh@0.1.0-rc.6`。
 
 ## 验证范围与来源
 
-- 当前基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`；`@deepseek-ai/dsh@0.1.0-rc.6`；Discussions 复核为 7 页、700 条、#12–#720。
+- 当前基线：DeepSeek Harness 官方 commit `47f943859bef60e4160492346772ded9b24f765a`。使用 `@deepseek-ai/dsh@0.1.0-rc.6`，Discussions 已复核到第 11 页、最后编号 #1068。
 - 历史边界：本文只讨论 #565、#571、#572、#573、#587、#589 和 #591 等 #565–#591 范围内的信号，当前分页不改变历史观察。
 - #565：社区作者展示 `BeAChanger/dsh-openclaw-acp`，本文只复述其公开说明，没有下载、安装、启动或验证 OpenClaw、微信渠道和 ACP 实际通信。
 - #571、#572：用户报告工具调度和多份 `dsh-tools` 物理副本问题，本文没有动态复现，也没有把 junction 或依赖替换写成新手教程。
@@ -101,6 +101,6 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web --port 13080
 - [Discussion #587](https://github.com/deepseek-ai/deepseek-harness/discussions/587)
 - [Discussion #589](https://github.com/deepseek-ai/deepseek-harness/discussions/589)
 - [Discussion #591](https://github.com/deepseek-ai/deepseek-harness/discussions/591)
-- [当前分页基线](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=7)
+- [当前分页基线](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 
 > 非官方中文资料。平凡心智主理，dsh-learn Agent 持续维护。
