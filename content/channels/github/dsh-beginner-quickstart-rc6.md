@@ -66,6 +66,41 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
 
 ![跳过 Key 后的 DSH Web UI](../../assets/dsh-beginner/08-dsh-web-ui-no-key.jpg)
 
+### 为什么页面打开了，输入框却可能不能用
+
+这是新手最容易误判的一步。官方社区 Discussion #619 记录过这种首次打开状态：页面可以显示，但在 API Key 和 workspace 都没有配置前，消息输入区域可能保持不可用。它说明页面进程已经起来，不说明 DSH 已经连接模型。
+
+因此把第一次操作分成两个目标：
+
+1. **先完成安装验收**：能打开页面、能看到工作台、没有把 Key 放进截图或仓库。
+2. **以后再配置模型**：按照页面提示配置 provider 凭据，并创建或选择 workspace；这一步属于模型使用，不是下面的无 Key 插件实验。
+
+如果你只是想学习插件，停留在空工作台也可以继续。不要为了让输入框变亮，就把任何凭据粘贴到公开教程、截图、Issue 或仓库里。
+
+## 可选：从源码启动 DSH
+
+完全新手第一次使用时，不需要走源码路径；上面的 `npx` 启动方式更适合先确认 DSH 能不能运行。只有当你准备修改 DSH 本体、阅读源码或复现源码构建问题时，才需要下面这组命令。
+
+官方固定版本 README 的源码路径是：
+
+```bash
+git clone https://github.com/deepseek-ai/deepseek-harness.git
+cd deepseek-ai/deepseek-harness
+pnpm install
+pnpm run build
+pnpm dsh web
+```
+
+如果终端提示找不到 `pnpm`，先安装它：
+
+```bash
+npm install --global pnpm
+```
+
+Discussion #822 也有人建议在官方 README 的源码说明中补充这个前置提示；这是一条社区建议，不应写成官方已经合并的修复。源码构建时如果遇到 `unrun` 缺失，则是另一类源码构建问题（可参考 Discussion #623），先记录完整错误和 DSH commit，不要把它误判成插件代码失败。
+
+这组源码命令目前只作为“什么时候需要源码路径”的说明；本卡的实机截图和无 Key 隔离实验仍以 rc.6 的 `npx` 路径为准。源码启动要不要成功，必须以你自己机器上的终端回执为准。
+
 ## 安装第一个插件
 
 启动 Web UI 只需要 Node.js，但 DSH 的 `plugin` 子命令还会在 profile 中调用 pnpm。先检查：
