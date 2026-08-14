@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm check && pnpm public-audit && git diff --check && node --input-type=module -e \"parse current #552 JSON and assert canonical/channel files are non-empty\"",
+  "notes": "规范稿按内容块重新组织了 #550、#551、#552，保留用户报告、Ideas 和社区展示的不同证据等级。#551 的固定 commit 源码观察与 catalog.ts 对齐；#552 仅记录公开 README、package、patch 和入口源码的静态接入方式，明确没有下载、安装、构建、启动 Ollama、启动 DSH 或调用模型 API。中文规范稿已按 polish-article 的口述节奏、事实边界和去总结腔要求复写；技术 Markdown 中的代码标记、链接 URL 和来源字段不作为普通长文标点扫描对象。知乎仍保持人工批准闸门。",
+  "checkedAt": "2026-08-14T00:03:07Z"
+}
