@@ -7,6 +7,7 @@
 - 读者不会写代码，不认识 Node.js、终端、`npx`、profile、bundle 或 Cordis。
 - 读者先验证 DSH 能安装、能启动、能打开网页，再接触 API Key 和模型。
 - 第一个插件必须无 Key、可隔离、可重复、可移除。
+- 真实安装前可以先用 `node scripts/plugin-doctor.mjs --network` 检查 npm registry；网络失败只能标记为环境阻塞，不能写成插件代码失败。
 - 截图只负责降低找按钮和认界面的成本；截图不能替代命令输出、版本记录和真实复现。
 
 ## 一条完整路径
@@ -44,7 +45,7 @@
 - 文档、图片链接、编辑区隔离检查：`pnpm validate:beginner-entry` 已通过。
 - 新手环境检查脚本的静态验证：`pnpm validate:beginner-doctor` 已通过。
 - 插件前置检查脚本的静态验证：`pnpm validate:plugin-doctor` 已通过。
-- 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在探针的 `npx --version` 阶段超时；随后对 npm registry 的直接 DNS 请求得到 `ENOTFOUND registry.npmjs.org`，因此不能把本轮写成安装、加载、移除通过；恢复 npm registry 可达性后，重新运行 `node labs/hello-plugin/verify.mjs`。
+- 本轮 hello-plugin 动态复测：暂记为 `BLOCKED_NETWORK`。本机在探针的 `npx --version` 阶段超时；随后对 npm registry 的直接 DNS 请求得到 `ENOTFOUND registry.npmjs.org`，因此不能把本轮写成安装、加载、移除通过；恢复 npm registry 可达性后，先运行 `node scripts/plugin-doctor.mjs --network`，再重新运行 `node labs/hello-plugin/verify.mjs`。
 - 该阻塞不影响“无 Key、隔离目录、安装—加载—移除”的教程设计，但会阻止新增一条当前动态成功回执。
 
 ## 安全红线
