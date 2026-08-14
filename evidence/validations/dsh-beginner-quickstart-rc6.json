@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "pnpm validate:beginner-quickstart && pnpm validate:beginner-entry && pnpm validate:beginner-doctor && pnpm validate:plugin-doctor && pnpm validate:plugin-lab && pnpm check && pnpm public-audit",
+  "notes": "快速上手卡的 9 张截图、固定 rc.6 命令、Node.js/npx 前置、Web UI 本机地址、Configure later、无 Key 隔离插件、BLOCKED_NETWORK 边界、知乎审批提示和凭据模式均通过静态验证；未把本轮网络受阻写成动态安装成功。",
+  "checkedAt": "2026-08-14T05:10:00.000Z"
+}
