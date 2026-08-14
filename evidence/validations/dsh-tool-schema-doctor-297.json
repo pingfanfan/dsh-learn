@@ -1,0 +1,7 @@
+{
+  "kind": "validator",
+  "result": "PASS",
+  "command": "pnpm validate:tool-schema-doctor && pnpm validate:tool-plugin-offline && pnpm validate:tool-plugin-lab && python3 polish-article/check_tone_cliches.py content/canonical/dsh-tool-schema-doctor-297.md && python3 polish-article/check_period_density.py content/canonical/dsh-tool-schema-doctor-297.md && pnpm public-audit && git diff --check",
+  "notes": "本地 tool-schema-doctor 用正确和故意缺少 parameters.type 的插件夹具验证通过与失败路径，工具实验离线检查新增 object 根约束；事实卡依据官方 Discussion #297 和固定 commit 的工具文档，明确区分社区自述、dsh-learn 本地检查和未运行的 DSH runtime/模型调用。没有使用、保存或展示 API Key，没有安装未知第三方插件，知乎不自动发布。",
+  "checkedAt": "2026-08-14T05:30:00Z"
+}
