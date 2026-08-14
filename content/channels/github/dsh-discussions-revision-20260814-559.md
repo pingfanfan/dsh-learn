@@ -10,8 +10,6 @@ Discussion #559 把这个想法拆开了。不同网关虽然都能接收相似�
 
 于是就会出现一种很让人困惑的错误，模型列表能拉出来，模型也能添加，发送消息时却返回 400。问题不一定在 API Key，也不一定在模型名称，可能只是 DSH 把一个网关不接受的字段发出去了。
 
-## #559 展示了什么，暂时没有证明什么
-
 #559 的作者提出了三件事。第一，在添加模型时向端点发几个最小请求，探测思考档位、系统角色和输出字段，第二，用按主机名匹配的 preset 保存已经测过的网关事实，第三，在一个增强 fork 里把更多 compat 开关接进 DSH。
 
 这个方向很适合做生态资产，因为新网关的差异可以沉淀成数据，不必每遇到一个中转站就改一次核心代码，不过这篇 Discussion 是 Show and tell，不是官方发布说明，作者链接的 `dsh-gateway-presets` 仓库在本次核对时返回 GitHub 404，不能把它当成已经可以安装的插件。
@@ -19,8 +17,6 @@ Discussion #559 把这个想法拆开了。不同网关虽然都能接收相似�
 作者的增强 fork 分支可以公开读取，里面确实有 `llm-gateway-presets` 包、模型能力探测模块、注册表测试和 9 个 compat 字段的代码，分支最新提交是 `42e228e`。但它仍然是 `Menger-8/deepseek-harness` 的 fork，不是 `deepseek-ai/deepseek-harness` 官方主仓的合并状态，代码里写了测试，也不等于 dsh-learn 已经用真实网关跑过一次。
 
 官方固定版本的 `PiAiCompatProfile` 当前只暴露 `thinkingFormat` 和 `supportsReasoningEffort` 两个思考相关字段，增强 fork 把 `supportsDeveloperRole`、`maxTokensField` 等更多字段接进来，说明它在解决一个真实的配置缺口，但不能据此写成官方 DSH 已经支持 9 个开关。
-
-## 新手最容易遇到的 4 类误判
 
 如果请求因为 `messages.role` 被拒绝，先检查网关是否接受 `developer`，不要马上重装 DSH，#559 的案例是，某些 OpenAI 兼容端点仍然只接受 `system`、`assistant`、`user` 和 `tool`，同一个请求改用 `developer` 就会失败。
 
@@ -42,8 +38,6 @@ Discussion #559 把这个想法拆开了。不同网关虽然都能接收相似�
 
 如果社区里有人说支持任意 OpenAI 兼容网关，还要继续看它提供的到底是什么，是官方 DSH 已合并的功能，还是 fork，是一个能用 `dsh plugin add` 安装的 bundle，还是需要自己编译的源码，是已经对真实端点做过探测，还是只写了模拟服务器测试。对新手来说，这几个区别比功能列表更重要。
 
-## dsh-learn 现在能负责哪一层
-
 dsh-learn 可以先提供不依赖 API Key 的 DSH 安装、Web UI 启动和 hello-plugin 实验，让新用户建立一个稳定基线，第三方网关则进入单独的兼容性记录，不混进第一个插件已经安装成功的教程里。
 
 后续如果要做网关矩阵，最小记录可以只包括网关主机模式、模型 ID、协议、思考参数、角色字段、输出字段和复测时间，任何一项没有真实回执，就标记为未验证。这样即使某个社区仓库突然消失，读者仍然能看懂这条信息来自哪里、验证到了哪一步，以及自己还需要补哪一项。
@@ -60,8 +54,6 @@ dsh-learn 可以先提供不依赖 API Key 的 DSH 安装、Web UI 启动和 hel
 
 对完全新手来说，这种记录方式比记住 9 个 compat 字段更重要，字段会随版本变化，分层的回执却能帮助你在换网关、换模型和升级 DSH 后重新定位问题。
 
-## 兼容性不是一次性的标签
-
 网关的兼容性还会跟模型和接口版本一起变化，同一个主机名下可能有普通聊天端点、代码端点和不同版本的 API 路径，它们未必拥有完全相同的请求规则。因此预设按主机名提供默认值时，只能作为起点，模型配置和具体路径仍然要纳入记录。
 
 这也是 #559 里能力探测有价值的地方，它没有把某个模型名称当成能力证明，而是尝试用最小请求观察端点的回应。探测结果依旧需要标出模型、路径和时间，因为一条旧回执不能替代升级后的复测，网关服务商也可能在不改域名的情况下调整兼容层。
@@ -70,12 +62,12 @@ dsh-learn 可以先提供不依赖 API Key 的 DSH 安装、Web UI 启动和 hel
 
 这张卡以后既可以帮助用户自己排障，也可以帮助社区作者贡献 preset，前提是它把真实回执、适用范围和未测试的部分一起写出来，不能只留下一个看起来很完整的字段表。
 
-维护基线（2026-08-14）。官方 Discussions 当前已复核到第 11 页、1100 条公开讨论，编号从 `#12` 到 `#1068`。#559 链接的 `dsh-gateway-presets` 已在后续核验中恢复可访问，但这只更新来源状态，不改写本卡对 #553–#559 的历史观察，也不把后续 `#560–#1068` 的其他报告混入结论。
+维护基线（2026-08-14）。官方 Discussions 当前已复核到第 12 页，观察到的最后编号为 `#1159`。#559 链接的 `dsh-gateway-presets` 已在后续核验中恢复可访问，但这只更新来源状态，不改写本卡对 #553–#559 的历史观察，也不把后续 `#560–#1159` 的其他报告混入结论。
 
 ## 验证范围与来源
 
 - [官方 Discussions 第 6 页](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6)
-- [当前分页快照（维护复核至 #1068）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
+- [当前分页快照（维护复核至 #1159，第 12 页）](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=12)
 - [#553](https://github.com/deepseek-ai/deepseek-harness/discussions/553) · [#554](https://github.com/deepseek-ai/deepseek-harness/discussions/554) · [#555](https://github.com/deepseek-ai/deepseek-harness/discussions/555)
 - [#556](https://github.com/deepseek-ai/deepseek-harness/discussions/556) · [#557](https://github.com/deepseek-ai/deepseek-harness/discussions/557) · [#558](https://github.com/deepseek-ai/deepseek-harness/discussions/558) · [#559](https://github.com/deepseek-ai/deepseek-harness/discussions/559)
 - [官方固定 commit 的 `catalog.ts`](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/llm/llm-pi-ai/src/catalog.ts)
