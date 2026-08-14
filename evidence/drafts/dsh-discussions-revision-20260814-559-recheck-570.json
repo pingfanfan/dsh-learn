@@ -1,0 +1,55 @@
+{
+  "claim": "截至 2026-08-14T00:08:25Z，通过 DeepSeek Harness 官方 Discussions API 第 6 页复核，公开列表为 6 页、545 条讨论，最后编号为 #559。#553–#558 分别提供了动态插件 tools.guard、Cordis preset 多次挂载、相对路径本地插件、Windows 首次 pnpm install、模型筛选和 code 模式工具参数等用户报告或功能建议；这些内容大多仍未由 dsh-learn 独立复现。#559 展示了一个第三方 OpenAI-compatible 网关兼容方案，声称包含按网关主机名提供 compat 预设、模型能力探测和增强 fork。作者链接的 dsh-gateway-presets 仓库在核验时返回 GitHub 404，增强 fork 的公开分支则可以静态看到 9 个 compat 字段、网关预设包、探测模块和测试，但 dsh-learn 没有对真实火山方舟端点、模型 API、插件安装或该 fork 进行动态运行，因此不能把 #559 写成官方已合并功能或一键可用插件。",
+  "kind": "MULTI_SOURCE",
+  "sources": [
+    {"url":"https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=6","title":"DeepSeek Harness Discussions 第 6 页当前公开列表（复核至 #614）","kind":"official","accessedAt":"2026-08-14T02:10:45Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/553","title":"Discussion #553：动态插件 ctx.tools.guard 报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/554","title":"Discussion #554：Cordis preset inspect provider 冲突报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/555","title":"Discussion #555：preset 相对路径本地插件建议","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/556","title":"Discussion #556：Windows 首次安装 lefthook 报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/557","title":"Discussion #557：自定义模型搜索与反选建议","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/558","title":"Discussion #558：code 模式 run_code/bash 参数死循环报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/559","title":"Discussion #559：第三方 OpenAI-compatible 网关兼容方案展示","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/llm/llm-pi-ai/src/catalog.ts","title":"官方固定 commit 的 PiAiCompatProfile 与 resolveModelCompat","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/Menger-8/deepseek-harness/tree/feature/third-party-gateway-compat","title":"社区增强 fork 的 third-party-gateway-compat 分支","kind":"repository","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/Menger-8/deepseek-harness/blob/feature/third-party-gateway-compat/.agents/notes/implemented/architecture/2026-08-14-gateway-compat-presets.md","title":"增强 fork 的网关 compat 设计记录","kind":"repository","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/Menger-8/deepseek-harness/blob/feature/third-party-gateway-compat/packages/llm/llm-gateway-presets/README.zh.md","title":"增强 fork 的 gateway presets 包中文说明","kind":"repository","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/Menger-8/deepseek-harness/blob/feature/third-party-gateway-compat/packages/llm/llm-pi-ai/src/probe.ts","title":"增强 fork 的模型能力探测模块","kind":"repository","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/Menger-8/dsh-gateway-presets","title":"#559 链接的 dsh-gateway-presets 仓库（当前已可访问）","kind":"community","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/Menger-8/dsh-gateway-presets/blob/d01d071cbd92ad200ea4ec7628e169ae87916929/README.zh.md","title":"dsh-gateway-presets 当前 README.zh.md","kind":"community","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/Menger-8/dsh-gateway-presets/blob/d01d071cbd92ad200ea4ec7628e169ae87916929/package.json","title":"dsh-gateway-presets 当前 package.json","kind":"community","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/560","title":"Discussion #560：缓存命中展示","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/561","title":"Discussion #561：不支持图像输入时的行为建议","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/562","title":"Discussion #562：真实协作反馈工作单","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/563","title":"Discussion #563：Win32 中文路径截断报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/564","title":"Discussion #564：第三方网关兼容方案展示","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/565","title":"Discussion #565：社区插件展示","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/566","title":"Discussion #566：GLM-5.2 中文乱码报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/567","title":"Discussion #567：web_search 端点与代理诊断报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/568","title":"Discussion #568：Node.js 兼容性警告报告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/569","title":"Discussion #569：AI 发起社区讨论的治理建议","kind":"official","accessedAt":"2026-08-14T01:03:00Z"},
+    {"url":"https://github.com/deepseek-ai/deepseek-harness/discussions/570","title":"Discussion #570：pnpm workspace 循环依赖警告","kind":"official","accessedAt":"2026-08-14T01:03:00Z"}
+  ],
+  "baseline": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "47f943859bef60e4160492346772ded9b24f765a",
+    "package": "@deepseek-ai/dsh",
+    "version": "0.1.0-rc.6; discussions-pages=6; pageCounts=100,100,100,100,100,100; discussions-items=600; discussions-first=12; discussions-last=614; discussions-revision=github-discussions-public-list-through-614-2026-08-14; fork-branch=42e228e581d0fa078442393e436170aeb56057ab; gateway-presets=d01d071cbd92ad200ea4ec7628e169ae87916929"
+  },
+  "reproduction": {
+    "environment": "GitHub connector rechecked official Discussions pages 1–6 through #614, detail pages #553–#570, official fixed-commit catalog, public enhancement fork branch, current gateway-presets repository and its package documentation; dsh-learn workspace",
+    "commands": [
+      "GET https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=1..6",
+      "GET https://github.com/deepseek-ai/deepseek-harness/discussions/553..570",
+      "READ packages/llm/llm-pi-ai/src/catalog.ts at 47f9438",
+      "READ Menger-8/deepseek-harness branch feature/third-party-gateway-compat",
+      "READ packages/llm/llm-gateway-presets/README.zh.md, src/builtin.ts, src/presets.ts",
+      "READ packages/llm/llm-pi-ai/src/probe.ts and probe/preset tests",
+      "GET https://github.com/Menger-8/dsh-gateway-presets",
+      "READ Menger-8/dsh-gateway-presets README.zh.md and package.json at d01d071"
+    ],
+    "result": "PASS",
+    "notes": "旧 claim 中关于 #559 链接仓库 404 的结论带有明确历史时间，当前仓库已经在 2026-08-14T00:18Z 后创建并可访问，因此不改写旧文章，只由本复核绑定当前 baseline。#553–#558 仍按社区报告或 Ideas 记录，未推断根因或修复状态；#559 的增强 fork 与 presets 仓库仍只完成静态阅读，没有下载、安装或运行 fork/插件，没有访问任何真实网关，没有调用模型 API，没有保存凭据。#560–#614 仅用于证明当前列表基线，不混入原有 #553–#559 结论。"
+  },
+  "confidence": 95
+}
