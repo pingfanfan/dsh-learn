@@ -8,3 +8,5 @@
 完全新手入口的截图、步骤、验收信号和当前复测边界见 [`docs/BEGINNER_ENTRY_MAP.md`](../docs/BEGINNER_ENTRY_MAP.md)；单页截图路径见 [`canonical/dsh-beginner-quickstart-rc6.md`](canonical/dsh-beginner-quickstart-rc6.md)。
 
 工具插件的本地 schema 体检和 #297 事实边界见 [`canonical/dsh-tool-schema-doctor-297.md`](canonical/dsh-tool-schema-doctor-297.md)；对应的检查脚本不联网、不调用模型。
+
+Windows 中文路径的 UTF-16 截断排错见 [`canonical/dsh-win32-chinese-path-563.md`](canonical/dsh-win32-chinese-path-563.md)；对应的 doctor 只验证本地字符串读取逻辑，不代表 Windows 原生对话框或 DSH runtime 已通过。
