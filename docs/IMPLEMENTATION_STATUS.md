@@ -59,12 +59,13 @@
 - [x] 微博“平凡ZhiH”和知乎创作中心浏览器登录态已确认。
 - [x] GitHub 首次全仓同步已通过连接器完成；同步前运行 `public-audit`，未使用受阻的本地 SSH 推送路径。
 - [ ] 公众号后台被浏览器安全策略禁止访问，未尝试绕过。
-- [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；公众号仍未发布；微博已完成七条，新增 Discussions 分流卡因上一条原创微博发布不久暂留 outbox，知乎仍按人工同意闸门保持未发布；GitHub 连接器已回写官方 HEAD、Discussions、生态仓库 HEAD、npm latest 和官方文档哈希的公开 attestation，最近一次本地 `status` 仍记录 13 个普通源的网络失败，不能把 sourceHealth 写成 healthy；AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
+- [ ] GitHub 后续远端协调和平台实时连接器仍需继续建设；公众号仍未发布；微博已完成七条，新增 Discussions 分流卡因上一条原创微博发布不久暂留 outbox，知乎仍按人工同意闸门保持未发布；本轮已通过 GitHub 连接器核对并回写官方 HEAD、Discussions、生态仓库 HEAD、npm latest 和官方文档哈希，`sourceHealth` 当前为 `ok: true`；AgentBridge 已支持私有互动快照回传，但平台实时 `fetchInteractions` 仍需渠道授权。
 - [ ] X 按计划保持禁用。
 
 - [x] DSH 完全新手入口已完成 Node.js、终端、npx、Web UI、无 Key 插件、Windows 路径排障和 API Key 边界的重写，加入 beginner-doctor 环境前置诊断、固定 commit 的官方 README/插件教程截图、明确标注的终端示意图，以及 Node.js 下载、GitHub ZIP 下载和 `index.js` 文件定位的 11 张配套图；GitHub 已发布，知乎未发布。
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 官方 Discussions 监控已修复分页盲区：最新连接器复核到 6 页、577 条公开讨论，编号从 #12 到 #591；#565–#591 的社区插件、工具调度报告、Windows 端口报告和未解决问答已分别分层处理，不把列表增长、用户报告、社区回复、社区 fork 或第三方测试代码包装成新功能、官方修复或官方发行版；#587 的安全细节不复制到公开内容。
+- [x] 官方 Discussions 新问题分流卡已按 #591 当前分页基线重新核对 #37、#38、#40 及公开评论，正文日期和 GitHub 渠道稿已更新并获得新的 GitHub 文件回执；仍未把 Windows/Firefox、`koffi` 或归档会话报告写成官方修复，知乎未发布。
 
 ## 能力门 D
 
