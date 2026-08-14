@@ -185,9 +185,12 @@ Could you share the exact DSH version, Node.js version, complete command, and th
 
 ## 参考与复测基线
 
+当前维护基线为 `@deepseek-ai/dsh@0.1.0-rc.6`、官方 commit `47f9438`，Discussions 已复核到第 11 页、最后编号 #1068。这个分页只用于确认上游仍在增长，不把后续讨论写成某个具体缺陷已经复现或解决；模板字段和脱敏边界保持不变。
+
 - [官方 CONTRIBUTING.md](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/CONTRIBUTING.md)
 - [官方 README](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md)
 - [官方 Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)
+- [当前 Discussions 分页基线](https://api.github.com/repos/deepseek-ai/deepseek-harness/discussions?per_page=100&page=11)
 - [dsh-learn 无 Key CLI 冒烟实验](https://github.com/pingfanfan/dsh-learn/blob/main/labs/rc6-cli-smoke/README.md)
 
 本页只在上述基线仍适用时成立。官方 HEAD、npm 版本、CLI 参数或贡献政策变化后，应先复测，再更新本页和渠道稿。
