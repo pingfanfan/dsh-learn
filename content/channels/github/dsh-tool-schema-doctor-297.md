@@ -2,7 +2,7 @@
 
 DeepSeek Harness 的插件不一定要写很多代码，常常是工具注册时的一小段结构没有符合 JSON Schema，结果把人卡在模型请求这一层。官方 Discussions #297 里，一位用户安装自己写的图片识别插件后，模型请求反复出现 `Invalid schema for function vision_query`，错误还指出收到的参数根类型是 `null`。
 
-这条信息只对应一个插件和一次环境，不能扩展成所有 DSH 插件都会出错，也不能当作 dsh-learn 已经在本机重新调用模型复现了这个问题。帖子后续更新把原因指向工具的 `parameters` 根结构，插件传入的是一张属性表，最外层却没有声明 `type = object`，模型函数调用接口需要的则是一个对象参数入口。
+这条信息只对应一个插件和一次环境，不能扩展成所有 DSH 插件都会出错，也不能当作 dsh-learn 已经在本机重新调用模型复现了这个问题。帖子后续把注意力放到了工具的 `parameters` 根结构，错误消息只显示最终送出的 schema 没有得到 `type = object`，模型函数调用接口需要的则是一个对象参数入口。至于插件内部是跳过封装后注册写错，还是组合配置改写了最终定义，不能只靠这条错误消息继续猜。
 
 ## 让插件在请求模型以前暴露问题
 
@@ -10,7 +10,9 @@ DeepSeek Harness 的插件不一定要写很多代码，常常是工具注册时
 
 第一次做工具插件时，安装记录、加载日志和 schema 检查要分开看。安装成功只代表包被写入某个位置，加载成功只代表入口执行过，工具参数能不能被模型接口接受，还需要自己的检查结果。
 
-`parameters` 的根必须是对象，内部再放 `properties`、`required` 和其他 JSON Schema 字段。可以把它理解成一张表的外壳，`properties` 描述表里的列，外壳本身不能被省略，不能把里面那张字段表当成完整参数定义。
+传给 `ctx.tools.register()` 的最终 `parameters` 根必须是对象，内部再放 `properties`、`required` 和其他 JSON Schema 字段。可以把它理解成一张表的外壳，`properties` 描述表里的列，外壳本身不能被省略，不能把里面那张字段表当成完整参数定义。
+
+这里要把官方 `defineTool()` 和跳过封装后的注册分开看。官方工具文档里的 `parameters` 字段映射属于作者层 DSL，源码会把它编译成对象根，然后才交给注册表。如果你绕过 `defineTool()` 调用 `ctx.tools.register()`，就要自己写出最终的 JSON Schema 对象根。dsh-learn 的体检器检查的是注册表收到的后一层，不会把官方 `defineTool()` 的合法字段映射误判成最终 schema。
 
 完全新手不需要在第一次实验里学完 JSON Schema，先记住 `parameters.type = object` 这一条就够了。后面再根据工具需要补充必填字段、额外字段限制和每个参数的类型，遇到错误时也有一个明确的回查位置。
 
@@ -24,7 +26,7 @@ node scripts/tool-schema-doctor.mjs ./labs/tool-plugin/index.js
 
 这条命令只读取本地入口，不会修改你的日常 profile。
 
-这个检查器会在本地导入插件，提供隔离的 `ctx.tools.register()`，收集插件注册的工具，检查工具名称、`parameters.type` 和 `execute` 是否存在。检查器本身不访问 npm，不调用模型，也不需要 API Key。
+这个检查器会在本地导入插件，提供隔离的 `ctx.tools.register()`，收集插件注册的工具，检查最终工具定义的名称、`parameters.type` 和 `execute` 是否存在。检查器本身不访问 npm，不调用模型，也不需要 API Key，它检查的是注册表实际收到的定义，不是 `defineTool()` 调用参数的中间形态。
 
 你生成自己的工具插件以后，可以把路径换成自己的入口文件，也可以给插件目录
 
@@ -35,9 +37,9 @@ node scripts/tool-schema-doctor.mjs ./my-tool
 
 两种写法都指向本地插件，目录写法会寻找其中的 `index.js`。
 
-看到 `PASS parameters.type = object`，只说明本地注册层通过了这一条契约，不能把它写成 DSH runtime、第三方依赖、模型工具调用或安全审计已经通过。检查器会执行插件的 `apply(ctx)`，陌生插件导入前要读 `package.json`、入口文件和构建脚本，确认它可能访问哪些文件、网络或进程。
+看到 `PASS parameters.type = object`，只说明本地注册层收到的最终定义通过了这一条契约，不能把它写成 DSH runtime、第三方依赖、模型工具调用或安全审计已经通过。检查器会执行插件的 `apply(ctx)`，陌生插件导入前要读 `package.json`、入口文件和构建脚本，确认它可能访问哪些文件、网络或进程。
 
-如果工具写成了错误的形状，体检器会把问题指向 `parameters.type`，不用等模型接口返回一段很长的 400 错误以后才猜原因。修好以后，再运行 dsh-learn 的离线实验
+如果跳过封装后的工具写成了错误的形状，体检器会把问题指向 `parameters.type`，如果你使用 `defineTool()`，先检查它返回给注册表的结果，不用等模型接口返回一段很长的 400 错误以后才猜原因。修好以后，再运行 dsh-learn 的离线实验
 
 ```bash
 node labs/tool-plugin/verify-offline.mjs
@@ -59,7 +61,7 @@ node labs/tool-plugin/verify-offline.mjs
 
 ## 社区修复状态仍然要单独看
 
-Discussion #297 的后续回复里，作者提到自己准备了 Harness 侧的修复分支，也为插件侧修复提交了变更，帖子里的 fork 和 PR 状态不能等同于官方仓库已经发布修复。当前教程只提取一条可以独立检查的开发规则，工具参数需要合法的对象根，插件错误应当在加载或本地体检阶段尽早暴露。
+Discussion #297 的后续回复里，作者提到自己准备了 Harness 侧的修复分支，也为插件侧修复提交了变更，帖子里的 fork 和 PR 状态不能等同于官方仓库已经发布修复。当前教程只提取一条可以独立检查的开发规则，注册表最终收到的工具参数需要是合法的对象根，插件错误应当在加载或本地体检阶段尽早暴露，不能把 `defineTool()` 的作者层字段映射和最终 JSON Schema 混为一谈。
 
 完全新手可以从本地无 Key 工具示例起步，跑 schema doctor，接着做离线注册检查，等网络恢复后进行固定版本 DSH 的真实安装和加载，模型尝试调用工具放到后面。每一层都有自己的结果，启动日志不能替代 schema 检查，离线通过也不能替代模型调用。
 
@@ -79,6 +81,7 @@ Discussion #297 的后续回复里，作者提到自己准备了 Harness 侧的�
 
 - 官方讨论：[Discussion #297](https://github.com/deepseek-ai/deepseek-harness/discussions/297)。
 - 官方工具文档：[开发一个工具](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/docs/user/develop/basic/tool.zh.md)。
+- 官方 schema 编译实现：[packages/core/tools/src/schema.ts](https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/packages/core/tools/src/schema.ts)，其中 `parameterSchemaSpecToJsonSchema()` 将 `defineTool()` 的字段映射编译为对象根。
 - 本地检查器：`scripts/tool-schema-doctor.mjs`。
 - 本地验证命令：`pnpm validate:tool-schema-doctor`、`pnpm validate:tool-plugin-offline`、`pnpm validate:tool-plugin-lab`。
 - 本卡只验证本地注册契约，没有调用模型，没有使用或保存 API Key，没有安装第三方插件；知乎不自动发布。
