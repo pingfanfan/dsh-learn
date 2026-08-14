@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "#560–#564 的历史事实边界保持不变；正文新增当前维护基线，明确 EvidencePack 已更新到 6 页、600 条公开讨论、最后编号 #614，但不把 #565–#614 混入原结论。Windows 问题仍未在实机动态复现，第三方网关 fork/预设仍未下载或运行；没有调用模型 API、使用或保存 API Key，也没有发布知乎。",
+  "checkedAt": "2026-08-14T02:09:00Z"
+}
