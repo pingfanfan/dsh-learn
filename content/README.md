@@ -12,3 +12,5 @@
 Windows 中文路径的 UTF-16 截断排错见 [`canonical/dsh-win32-chinese-path-563.md`](canonical/dsh-win32-chinese-path-563.md)；对应的 doctor 只验证本地字符串读取逻辑，不代表 Windows 原生对话框或 DSH runtime 已通过。
 
 Code Mode 外层 `run_code` 与内层 `bash` 的 `description` 分层排错见 [`canonical/dsh-code-mode-args-558.md`](canonical/dsh-code-mode-args-558.md)；对应的 doctor 只读取本地教学 JSON，不联网、不启动 DSH、不调用模型。
+
+Cordis 论文与 DSH 实验的完全新手阅读路线见 [`canonical/dsh-cordis-paper-beginner-route-20260814.md`](canonical/dsh-cordis-paper-beginner-route-20260814.md)；它不要求先配置 API Key，并明确区分论文概念、无 Key 实验和真实模型调用。
