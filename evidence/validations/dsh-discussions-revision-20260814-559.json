@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "polish-article tone/period/opening checks on content/canonical/dsh-discussions-revision-20260814-559.md; pnpm check; pnpm public-audit; git diff --check",
+  "notes": "正文已按内容块重新讲述并完成 polish-article 终稿检查，tone、句号密度、开头与小标题检查均通过，正文 2025 个汉字、2788 个有效文字字符、44/44 句末标点。内容明确区分官方主仓、社区报告、增强 fork、真实端点复测和静态测试证据，未使用或保存 API Key，不把 #559 写成官方合并功能，也没有发布知乎。GitHub 渠道稿由 renderLongform 从规范稿生成。",
+  "checkedAt": "2026-08-14T00:18:00Z"
+}
