@@ -1,6 +1,6 @@
 # DSH Discussions #565–#591：新插件、工具调度报告与 Windows 启动排障
 
-DeepSeek Harness 官方 Discussions 已复核到 6 页、577 条公开讨论，列表最后编号为 #591。本页固定在 `@deepseek-ai/dsh@0.1.0-rc.6` 和官方 commit `47f9438`，只整理对 DSH 用户、插件作者和新手教程有用的信号。
+DeepSeek Harness 官方 Discussions 已复核到 6 页、600 条公开讨论，列表最后编号为 #614，中间存在编号空缺。本页固定在 `@deepseek-ai/dsh@0.1.0-rc.6` 和官方 commit `47f9438`，只整理对 DSH 用户、插件作者和新手教程有用的信号。
 
 先说边界：下面提到的第三方插件没有由 dsh-learn 下载或运行，Windows 端口问题没有在 Windows 实机动态复现，也没有调用模型 API。社区讨论中的说法，不自动等于官方功能或官方修复。
 
@@ -39,7 +39,7 @@ npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web --port 13080
 - **#565：`dsh-openclaw-acp`。** 这是社区展示的外部 `dsh.bundle`，作者自述包含 ACP 接入、隔离 profile 和打包产物。它说明 DSH 周围开始出现跨工具编排尝试，但它不是官方插件，dsh-learn 也没有验证其安装、运行或 WeChat 通道。
 - **#571、#572：工具调度报告。** #571 讨论工具失败后会话无法继续请求，#572 讨论多份物理 `@deepseek-ai/dsh-tools` 副本可能导致 Symbol 查找不一致。这些适合高级插件排障，不能写成 dsh-learn 已经复现的根因，更不能让第一次安装的用户直接修改 `node_modules`。
 - **#573：自部署模型与依赖变化。** 这是社区反馈，不是本卡确认的兼容性结论。若要复现，应记录 DSH 版本、provider、profile 和完整依赖树。
-- **#591：企业微信联系入口。** 目前只是一个没有解决方案的问答，不能据此判断联系失败的原因。
+- **#591：企业微信联系入口。** 后续评论仍是用户描述添加失败和个人猜测，没有维护者确认原因或处理结果。
 
 ## 插件作者应该保留什么证据
 
@@ -67,4 +67,4 @@ DSH 负责 profile、模型、工具、工作区和沙箱边界，外部编排�
 - [#589：Windows 3080 端口启动失败](https://github.com/deepseek-ai/deepseek-harness/discussions/589)
 - [#591：企业微信联系入口](https://github.com/deepseek-ai/deepseek-harness/discussions/591)
 
-当前基线：`github-discussions-public-list-through-591-2026-08-14`；6 页，577 条公开讨论，编号从 #12 到 #591。本文没有调用模型 API，没有运行第三方插件，也没有发布知乎。
+当前基线：`github-discussions-public-list-through-614-2026-08-14`；6 页，600 条公开讨论，编号从 #12 到 #614。本文没有调用模型 API，没有运行第三方插件，也没有发布知乎。
