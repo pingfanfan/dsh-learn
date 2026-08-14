@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "社区入口卡只更新事实基线和当前分页快照，保留欢迎公告、memory 讨论、入口分类、最小复现准备和不声称具体问题已解决的边界。当前官方 Discussions 复核为 6 页、600 项、#12–#614；没有调用模型 API、读取或保存凭据、安装第三方插件或发布知乎。已按 polish-article 的内容块、事实边界、开头与小标题规则人工复核；该 FAQ 没有长文专用的 # 正文 包装，因此不把长文标点脚本的结构性失败冒充为内容失败。",
+  "checkedAt": "2026-08-14T01:45:00Z"
+}
