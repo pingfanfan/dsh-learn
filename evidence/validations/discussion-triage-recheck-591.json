@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "pnpm public-audit && pnpm check && git diff --check",
+  "notes": "分流卡已按当前官方 Discussions 基线复核到 #591；#37、#38、#40 的公开内容和评论仍只支持问题报告与排障准备，不支持浏览器兼容性、koffi 修复或归档恢复结论。正文日期更新为 2026-08-14，保留 rc.6、Windows/Firefox 和未调用模型 API 的边界；没有动态复现 Windows，也没有使用或保存凭据。知乎不发布。",
+  "checkedAt": "2026-08-14T01:30:00Z"
+}
