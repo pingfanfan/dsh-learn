@@ -44,6 +44,7 @@
 - [x] 通过 GitHub 连接器核对 `dsh-plugin-check` 当前 HEAD `397aa26`，并复核 `dsh-plugin-dev` 当前 HEAD `6cfe425`；完成 npm rc.6、Profile Bundle、web/headless 和 tarball 路径的 EvidencePack 与 GitHub 真实发布回执。旧 `8b3ea76` 只保留作历史复核，没有安装或运行第三方插件，动态兼容仍为 `NOT_RUN`。
 - [x] #619–#714 新手安装与插件安全排错路径已完成：覆盖固定版本启动、Node.js/npm/npx/pnpm 前置、首次 Web UI 的 API Key/工作区边界、`--dump-config` 验证 profile bundle、插件加载/移除、Node 20/22 与 Linux 编译工具链分层，以及社区插件的第三方标记；规范稿已完成最终润色，GitHub 已获得真实文件回执，知乎未发布，第三方插件动态安装仍为 `NOT_RUN`。
 - [x] #711–#720 事实卡已完成官方 Discussions 详情核对、工具调用/Python 会话/Windows/存储/流式/Web 启动的证据分层和专用验证；GitHub 已获得真实文件回执（`https://github.com/pingfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-current-711-720.md`），没有安装 #714 的社区插件、没有调用模型 API，知乎未发布。
+- [x] #721–#822 当前复核卡已完成官方分页第 8 页核对；新手环境、Windows 工作区、源码 pnpm、社区插件、插件事件、工具参数与高风险安全信息已分层，GitHub 已获得真实文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-current-822.md`），没有安装社区插件、没有调用模型 API，也没有扩写安全利用细节。
 - [x] `sourceHealth.errors` 会持久化部分源扫描失败并在恢复后清除；网络故障不会伪装成“上游无变化”，也不会阻塞本地维护。
 - [x] 来源扫描对网络错误和 5xx 按 3 次指数退避重试，永久 4xx 不重试，并在错误中保留源 ID、HTTP 类型和尝试次数；GitHub API JSON 与 raw 文档共存时使用兼容的 Accept 头。
 - [x] `source-attest` 支持连接器或 Agent 只回写公开 revision，不导入源内容和凭据；只清除已被证明恢复的源错误，并复用同一套游标变化、资产失效和复测机会逻辑。
@@ -81,6 +82,7 @@
 - [x] DSH 无 Key 工具注册实验已完成 ctx.tools.register、参数/返回值 schema、bundle manifest、离线执行/渲染契约和移除路径验证；npm registry 下载超时导致真实 DSH 探针保持未通过，模型工具调用仍为 NOT_RUN。
 - [x] 新增无模型工具 schema doctor，检查本地插件的 `parameters.type = object`、工具名称和 `execute`，并用正确/错误夹具覆盖通过与失败提示；不把社区 Discussion #297 的 fork/PR 自述写成官方版本修复。
 - [x] 完全新手运行 hello-plugin 探针时，npm registry 不可达会输出 `BLOCKED_NETWORK`、网络/DNS/代理检查命令和恢复步骤，不再把 npm 原始堆栈直接交给新手；网络恢复前仍不把安装、加载和移除写成通过。
+- [x] 当前 Discussions 复核已推进到第 8 页、最后编号 #822；旧的 #720 分页说明保留作历史记录，新卡已把新手环境、Windows 工作区、源码 pnpm、社区插件、插件事件、工具参数与高风险安全信息分层。
 - [x] 官方 Discussions 监控已修复分页盲区：最新连接器复核到 7 页、700 条公开讨论，编号从 #12 到 #720；#565–#720 的社区插件、工具调度报告、Windows 端口报告和未解决问答已分别分层处理，不把列表增长、用户报告、社区回复、社区 fork 或第三方测试代码包装成新功能、官方修复或官方发行版；#587 的安全细节不复制到公开内容。
 - [x] 官方 Discussions 新问题分流卡已按 #720 当前分页基线重新核对 #37、#38、#40 及公开评论，并读取固定 commit 的 ui-workspace README 已知限制；旧证据包已增强、规范稿和 GitHub 渠道稿已更新并获得新的 GitHub 文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/discussion-triage-41.md`）；仍未把 Windows/Firefox、`koffi` 或归档会话报告写成官方修复，知乎未发布。
 - [x] #550–#552 复核卡已重新读取三条 Discussion、固定 commit 的 `PiAiCompatProfile`/`resolveModelCompat`、以及 `dsh-rag-kb` 当前 main commit；正文明确保留历史时间边界，并更新到 #720 分页基线。`dsh-rag-kb` 的两个包仍为 `0.1.0-rc.5`，公开安装仍是源码集成，未被写成可直接 `dsh plugin add` 的 bundle；GitHub 已回写新文件回执，知乎未发布。
@@ -88,6 +90,7 @@
 - [x] 官方社区入口卡维护复核已完成：原始观察仍固定在 #12、#14 和社区板块入口，当前来源基线更新为 7 页、700 条公开讨论、最后编号 #720；短 FAQ 保留板块选择、最小复现准备和不把具体问题写成官方解决方案的边界，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/discussion-community-entry-47f9438.md`，没有调用模型 API、没有安装第三方插件，知乎未发布。
 - [x] #592–#614 维护复核已完成：原始观察仍固定在 #592–#614，当前来源基线更新为 7 页、700 条公开讨论、最后编号 #720；规范稿补上完全新手入口链接，保留启动、工作区/浏览器、provider 与 ACP/MCP/Docker 的证据边界，GitHub 更新回执为 `https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-current-614.md`，没有动态复现、没有把社区建议写成官方修复，知乎未发布。
 - [x] 中文 Discussions 最小复现工具包已把 EvidencePack 更新到 revision 18，并重新绑定 `github-discussions-public-list-through-614-2026-08-14`；正文仍通过专用模板验证、公开审计和 60 项测试，GitHub 规范文件与远端现有内容一致，已记录远端状态回执，知乎未发布。
+- [x] 中文 Discussions 最小复现工具包随后又在当前 #822 分页基线下重新验证；EvidencePack revision 24、规范资产 revision 13 仍通过专用模板验证、公开审计和 63 项测试，知乎未发布。
 - [x] #539–#549 历史复核卡已保留原始时间边界，补充当前 #614 分页维护基线，并更新 GitHub 规范稿与证据回执；`dsh-agent-messaging` 仍只做固定 commit 静态审查，没有下载、安装或运行，知乎未发布。
 - [x] #560–#564 新手排障卡已保留 Windows 路径、图片输入、缓存展示和第三方网关的历史事实边界，完成从 #614 到 #714 的分页维护复核，并更新 EvidencePack、规范稿与 GitHub 真实文件回执（`https://github.com/pingfanfan/dsh-learn/blob/main/content/channels/github/dsh-discussions-revision-20260814-564.md`）；社区 fork/预设没有下载、安装或运行，知乎未发布。
 - [x] #553–#559 网关兼容与插件排障卡已保留原始历史观察，补充当前 #614 分页维护基线，并注明 `dsh-gateway-presets` 后续已恢复可访问；增强 fork、preset 和真实网关仍未动态运行，GitHub 规范稿与证据回执已更新，知乎未发布。
