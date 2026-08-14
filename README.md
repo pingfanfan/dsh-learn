@@ -88,7 +88,7 @@ pnpm public-audit
 - Discussions 最小复现工具包：[content/canonical/discussion-minimal-repro-kit.md](content/canonical/discussion-minimal-repro-kit.md)。
 - 官方 Discussions 社区入口卡：[content/canonical/discussion-community-entry-47f9438.md](content/canonical/discussion-community-entry-47f9438.md)。
 - Discussions 新问题分流卡：[content/canonical/discussion-triage-41.md](content/canonical/discussion-triage-41.md)。
-- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-beginner-install-and-plugin-safety-714.md](content/canonical/dsh-beginner-install-and-plugin-safety-714.md)；截至 2026-08-14 已复核到 7 页、700 条公开讨论，编号从 #12 到 #720。#619–#714 按首次 Web UI、Node/编译前置、profile 插件加载、Node/MCP 隔离和最小社区插件分层处理，不把社区说法写成官方修复、官方功能或 dsh-learn 已验证兼容。旧版 #592–#614 分页卡保留作历史记录。
+- Discussions 当前 revision 复核事实卡：[content/canonical/dsh-discussions-current-720.md](content/canonical/dsh-discussions-current-720.md)；截至最近一次连接器核对已复核到 7 页、700 条公开讨论，编号从 #12 到 #720。#619–#714 按首次 Web UI、Node/编译前置、profile 插件加载、Node/MCP 隔离和最小社区插件分层处理，不把社区说法写成官方修复、官方功能或 dsh-learn 已验证兼容。旧版 #592–#614 分页卡保留作历史记录；新手安装与插件安全排错教程仍单独保留。
 - 国产模型与网关矩阵：[labs/provider-matrix/README.md](labs/provider-matrix/README.md)。
 - 第三方插件迁移诊所：[content/canonical/plugin-migration-clinic-47f9438.md](content/canonical/plugin-migration-clinic-47f9438.md)。
 - 扩展点中文能力地图：[content/canonical/extension-map-47f9438.md](content/canonical/extension-map-47f9438.md)。
@@ -159,6 +159,12 @@ Cordis mini-lab 可以单独运行 `pnpm validate:cordis-lab`，检查隔离 pro
 Python SDK 安全配方可以单独运行 `pnpm validate:python-sdk-safety`，并用 `preflight.py` 做无 Key 的路径、权限和凭据前置检查；真实 SDK 和模型请求仍需单独授权。
 
 维护任务完成时使用 `pnpm ops maintenance-complete` 更新既有资产的验证回执；它不会伪造新的内容版本，也不会替代上游变化后的证据复核。
+
+如果旧资产因上游变化进入 `STALE`，但已经明确被新版资产替代，可以只退休这张历史卡，不删除文件或远端回执：
+
+```bash
+pnpm ops asset-retire <asset-id> --reason "已由新版资产替代，旧卡仅保留作历史记录"
+```
 
 有真实发布回执后，可用 `pnpm ops collect-interactions <publish-job-id>` 同步互动；渠道 Agent 也可以按 [渠道中继手册](ops/runbooks/CHANNEL_RELAY.md) 将公开互动快照写入 `state/private/interactions/`，系统会校验绑定、拦截潜在凭据、按 remote ID 去重，并把评论、引用等长期信号送入机会排序。DRAFT_ONLY、outbox 和 MOCK 不会被当成真实互动来源。
 
