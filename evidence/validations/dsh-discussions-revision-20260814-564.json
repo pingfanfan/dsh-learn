@@ -1,0 +1,7 @@
+{
+  "kind": "content-review",
+  "result": "PASS",
+  "command": "polish-article tone/period/opening checks on content/canonical/dsh-discussions-revision-20260814-564.md; pnpm check; pnpm public-audit; git diff --check",
+  "notes": "规范稿覆盖 #560–#564，并把 Windows 中文路径、图片输入、第三方网关、截图性能数字和新手分层排障放在同一条证据边界内。正文润色检查通过，中文字符 2004、有效字符 2658、句末标点 42/42、最长句 165；正文不保存邮箱、私有路径或凭据。#563 仍是社区报告加固定 commit 静态对照，#564 仍是社区仓库和 fork 的静态核对，没有下载、安装、构建或调用模型 API。知乎保持人工批准闸门。",
+  "checkedAt": "2026-08-14T00:29:00Z"
+}
