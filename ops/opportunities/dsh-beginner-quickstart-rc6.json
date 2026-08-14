@@ -1,0 +1,23 @@
+[
+  {
+    "title": "完全新手截图快速上手：从安装 DSH 到第一个无 Key 插件",
+    "summary": "现有完整新手教程已经覆盖安装、Web UI 和插件，但入口分散在长文、README 与实验说明中；制作一张复用现有截图和 rc.6 证据的单页操作卡，降低第一次行动成本，不新增动态成功声明。",
+    "sourceType": "official",
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness/blob/47f943859bef60e4160492346772ded9b24f765a/README.md",
+    "observedAt": "2026-08-14T05:00:00Z",
+    "directDshAction": true,
+    "audience": ["完全新手", "不会写代码的用户", "第一次安装 DSH 的用户"],
+    "proposedAssets": ["beginner-quickstart", "screenshot-walkthrough"],
+    "signals": {
+      "userImpact": 92,
+      "freshness": 55,
+      "compounding": 96,
+      "ecosystemValue": 65,
+      "evidenceConfidence": 95,
+      "executability": 95,
+      "duplicatePenalty": 10,
+      "maintenancePenalty": 3
+    },
+    "risk": "LOW"
+  }
+]
